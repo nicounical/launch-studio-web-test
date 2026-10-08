@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones para «¿Qué hacemos?» — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Cinco propuestas para la sección «¿Qué hacemos?» (metodología en seis pasos). */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#8b8a84;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h2,h3,p,ol{margin:0;padding:0}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.opt{position:relative;padding:120px var(--pad) 90px}
+.tag{display:inline-block;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:7px 12px;border-radius:4px;margin-bottom:28px}
+.dark .tag{background:var(--white);color:var(--ink)}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.h{font-weight:300;font-size:clamp(40px,6.4vw,104px);line-height:1;letter-spacing:-.035em;margin-top:12px}
+.num{font-weight:800;line-height:.85;color:transparent;-webkit-text-stroke:2px var(--red)}
+.dark{background:var(--ink);color:var(--white)}
+
+/* 1 · Recorrido horizontal: la página baja, el contenido avanza de lado */
+.a{padding:0;height:440vh}
+.a__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.a__track{display:flex;align-items:center;gap:clamp(40px,7vw,130px);padding-inline:var(--pad);will-change:transform}
+.a__intro{flex:none;width:min(80vw,620px)}
+.a__panel{flex:none;width:min(84vw,940px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(20px,4vw,64px);align-items:end}
+.a__panel .num{font-size:clamp(110px,17vw,270px)}
+.a__panel h3{font-weight:400;font-size:clamp(30px,4.2vw,62px);letter-spacing:-.03em;margin:14px 0 12px}
+.a__panel p{font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:rgba(241,240,232,.72);max-width:24em}
+.a__img{aspect-ratio:4/5;max-height:62vh;overflow:hidden;background:#1d1c1a}
+.a__img img{scale:1.2}
+.a__rail{position:absolute;left:var(--pad);right:var(--pad);bottom:40px;height:1px;background:rgba(241,240,232,.25)}
+.a__ball{position:absolute;top:-10px;left:0;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--red)}
+.a__count{position:absolute;right:var(--pad);bottom:58px;font:400 12px var(--mono);letter-spacing:.06em;color:rgba(241,240,232,.6)}
+
+/* 2 · Franjas que se abren */
+.b__strips{display:flex;height:min(74vh,720px);margin-top:clamp(28px,4vw,56px);gap:4px}
+.b__strip{position:relative;flex:1;min-width:0;overflow:hidden;background:var(--ink);color:var(--white);transition:flex .8s cubic-bezier(.7,0,.2,1);text-align:left}
+.b__strip.on{flex:7}
+.b__strip img{position:absolute;inset:0;filter:grayscale(1) brightness(.45);transition:filter .8s,transform 1.2s cubic-bezier(.2,.7,.2,1);transform:scale(1.15)}
+.b__strip.on img{filter:brightness(.62);transform:scale(1)}
+.b__n{position:absolute;left:16px;top:14px;font:400 13px var(--mono);letter-spacing:.06em}
+.b__v{position:absolute;left:50%;bottom:20px;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);font-weight:400;font-size:clamp(18px,1.9vw,26px);letter-spacing:-.01em;white-space:nowrap;transition:opacity .3s}
+.b__strip.on .b__v{opacity:0}
+.b__body{position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,2.6vw,40px);width:min(100%,560px);opacity:0;transform:translateY(24px);transition:opacity .4s,transform .6s}
+.b__strip.on .b__body{opacity:1;transform:none;transition-delay:.35s}
+.b__body h3{font-weight:300;font-size:clamp(34px,5vw,76px);letter-spacing:-.035em;line-height:1}
+.b__body p{font-size:clamp(16px,1.4vw,20px);line-height:1.5;margin-top:12px}
+.b__strip.on::after{content:"";position:absolute;right:20px;top:18px;width:18px;height:18px;border-radius:50%;background:var(--red)}
+
+/* 3 · Lista gigante con foto que sigue al cursor */
+.c{overflow:hidden}
+.c__list{list-style:none;margin-top:clamp(28px,4vw,56px);border-top:1px solid rgba(11,11,11,.16)}
+.c__row{position:relative;display:grid;grid-template-columns:3.2em minmax(0,1fr) minmax(0,22em);align-items:center;gap:16px;padding:clamp(10px,1.4vw,20px) 0;border-bottom:1px solid rgba(11,11,11,.16);transition:opacity .35s,padding .5s cubic-bezier(.2,.7,.2,1)}
+.c__row span{font:400 13px var(--mono);letter-spacing:.06em;color:var(--grey)}
+.c__row h3{font-weight:300;font-size:clamp(40px,8.2vw,132px);line-height:1;letter-spacing:-.045em;transition:color .3s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.c__row p{font-size:clamp(15px,1.3vw,19px);line-height:1.5;opacity:0;transform:translateX(-14px);transition:opacity .35s,transform .5s}
+.c__list.hot .c__row{opacity:.22}
+.c__list.hot .c__row.on{opacity:1}
+.c__row.on h3{color:var(--red);transform:translateX(clamp(8px,2vw,34px))}
+.c__row.on p{opacity:1;transform:none}
+.c__float{position:absolute;left:0;top:0;width:clamp(180px,22vw,330px);aspect-ratio:4/5;overflow:hidden;pointer-events:none;z-index:4;opacity:0;transform:translate(var(--x,0),var(--y,0)) rotate(var(--rot,0deg)) scale(.6);transition:opacity .3s,scale .4s;background:#dddbd0}
+.c__float.on{opacity:1;transform:translate(var(--x,0),var(--y,0)) rotate(var(--rot,0deg)) scale(1)}
+
+/* 4 · Cartas que se apilan */
+.d__stack{margin-top:clamp(28px,4vw,56px)}
+.d__card{position:sticky;top:calc(64px + var(--i)*16px);height:min(76vh,700px);margin-bottom:5vh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);overflow:hidden;transform-origin:50% 0;will-change:transform}
+.d__card:nth-child(3n+1){background:#e6e5db;color:var(--ink);--st:var(--red)}
+.d__card:nth-child(3n+2){background:var(--red);color:var(--white);--st:var(--white)}
+.d__card:nth-child(3n){background:var(--ink);color:var(--white);--st:var(--red)}
+.d__txt{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,3.4vw,56px)}
+.d__txt .num{font-size:clamp(90px,14vw,230px);-webkit-text-stroke-color:var(--st)}
+.d__txt h3{font-weight:300;font-size:clamp(34px,5.2vw,84px);letter-spacing:-.035em;line-height:1}
+.d__txt p{font-size:clamp(16px,1.5vw,21px);line-height:1.5;margin-top:12px;max-width:24em}
+.d__img{overflow:hidden}
+
+/* 5 · La rueda: la bola recorre los seis pasos */
+.e{overflow:hidden}
+.e__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,6vw,100px);align-items:center;margin-top:clamp(20px,3vw,40px)}
+.e__info .num{font-size:clamp(90px,13vw,200px)}
+.e__info h3{font-weight:300;font-size:clamp(38px,5.4vw,88px);letter-spacing:-.035em;line-height:1;margin:16px 0 14px}
+.e__info p{font-size:clamp(17px,1.6vw,22px);line-height:1.5;color:rgba(241,240,232,.75);max-width:22em;min-height:4.6em}
+.e__swap{transition:opacity .3s,transform .4s}
+.e__swap.out{opacity:0;transform:translateY(16px)}
+.e__nav{display:flex;gap:10px;margin-top:22px}
+.e__nav button{width:52px;height:52px;border:1.5px solid rgba(241,240,232,.5);border-radius:50%;font-size:20px;transition:background .2s,border-color .2s}
+.e__nav button:hover{background:var(--red);border-color:var(--red)}
+.e__dial{position:relative;width:min(72%,62vh,520px);aspect-ratio:1;margin-inline:auto}
+.e__ring{position:absolute;inset:9%;border:1.5px solid rgba(241,240,232,.3);border-radius:50%}
+.e__photo{position:absolute;inset:20%;border-radius:50%;overflow:hidden;background:#1d1c1a}
+.e__photo img{position:absolute;inset:0;opacity:0;transform:scale(1.2);transition:opacity .7s,transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.e__photo img.on{opacity:1;transform:scale(1)}
+.e__arm{position:absolute;inset:9%;transition:transform 1s cubic-bezier(.6,0,.2,1)}
+.e__arm i{position:absolute;left:50%;top:0;width:clamp(26px,3.6vw,44px);aspect-ratio:1;margin:calc(clamp(26px,3.6vw,44px)/-2) 0 0 calc(clamp(26px,3.6vw,44px)/-2);border-radius:50%;background:var(--red)}
+.e__node{position:absolute;transform:translate(-50%,-50%);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(241,240,232,.5);padding:6px 4px;transition:color .3s}
+.e__node.on,.e__node:hover{color:var(--white)}
+
+@media (max-width:760px){
+  .a__panel{grid-template-columns:1fr;width:82vw}.a__img{aspect-ratio:4/3;max-height:34vh}
+  .b__strips{flex-direction:column;height:auto}.b__strip{flex:none;height:58px;transition:height .7s cubic-bezier(.7,0,.2,1)}.b__strip.on{flex:none;height:340px}
+  .b__v{writing-mode:horizontal-tb;transform:none;left:56px;bottom:auto;top:14px}
+  .c__row{grid-template-columns:2.4em minmax(0,1fr)}.c__row p{grid-column:2;max-height:0;overflow:hidden;transition:max-height .5s,opacity .35s}.c__row.on p{max-height:9em}
+  .c__float{display:none}
+  .d__card{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);height:min(80vh,640px)}
+  .e__grid{grid-template-columns:1fr}.e__node span{display:none}.e__dial{width:min(78%,360px)}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>«¿Qué hacemos?» · cinco opciones</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a></nav>
+
+<section class="opt a dark" id="a">
+  <div class="a__pin">
+    <div class="a__track" id="aTrack">
+      <div class="a__intro"><p class="tag">Opción 1 · Recorrido horizontal</p><p class="eyebrow">Metodología</p><h2 class="h">¿Qué hacemos?</h2></div>
+    </div>
+    <div class="a__count" id="aCount">01 / 06</div>
+    <div class="a__rail" aria-hidden="true"><div class="a__ball" id="aBall"></div></div>
+  </div>
+</section>
+
+<section class="opt b" id="b">
+  <p class="tag">Opción 2 · Franjas que se abren</p>
+  <p class="eyebrow">Metodología</p><h2 class="h">¿Qué hacemos?</h2>
+  <div class="b__strips" id="bStrips"></div>
+</section>
+
+<section class="opt c" id="c">
+  <p class="tag">Opción 3 · Lista gigante con foto al cursor</p>
+  <p class="eyebrow">Metodología</p><h2 class="h">¿Qué hacemos?</h2>
+  <ol class="c__list" id="cList"></ol>
+  <div class="c__float" id="cFloat" aria-hidden="true"><img id="cImg" alt=""></div>
+</section>
+
+<section class="opt d" id="d">
+  <p class="tag">Opción 4 · Cartas que se apilan</p>
+  <p class="eyebrow">Metodología</p><h2 class="h">¿Qué hacemos?</h2>
+  <div class="d__stack" id="dStack"></div>
+</section>
+
+<section class="opt e dark" id="e">
+  <p class="tag">Opción 5 · La rueda</p>
+  <p class="eyebrow">Metodología</p><h2 class="h">¿Qué hacemos?</h2>
+  <div class="e__grid">
+    <div class="e__info">
+      <div class="e__swap" id="eSwap"><div class="num" id="eNum">01</div><h3 id="eT"></h3><p id="eP"></p></div>
+      <div class="e__nav"><button id="ePrev" aria-label="Paso anterior">←</button><button id="eNext" aria-label="Paso siguiente">→</button></div>
+    </div>
+    <div class="e__dial" id="eDial"><div class="e__ring"></div><div class="e__photo" id="ePhoto"></div><div class="e__arm" id="eArm" aria-hidden="true"><i></i></div></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  var ST=[
+   ['Escuchamos','Antes de empezar, queremos entender tu marca, tus objetivos y qué necesitas realmente.','06-stand-janssen-oncology.jpg','c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'],
+   ['Diseñamos','Creamos un concepto a medida que refleja tu identidad y conecta con tus objetivos.','05-pop-up-store-venca.jpg','5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'],
+   ['Planificamos','Coordinamos cada fase del proyecto para que todo esté bajo control.','04-evento-corporativo-ntt-data.jpg','25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'],
+   ['Producimos','Damos forma a cada detalle junto a nuestra red de colaboradores y proveedores de confianza.','01-taller-amona.jpg','project-1.JPG'],
+   ['Supervisamos','Estamos presentes en cada fase clave para asegurarnos de que todo se ejecuta según lo previsto.','02-evento-promocion-base4.jpg','project-2.jpg'],
+   ['Entregamos','Todo listo para que solo tengas que centrarte en lo importante: tu evento.','03-market-the-office-studio.jpg','project-3.JPG']];
+  var $=function(id){return document.getElementById(id)},n2=function(i){return ('0'+(i+1)).slice(-2)};
+  var src=function(s){return 'assets/img/proyectos/'+s[2]};
+  var img=function(s,cls){return '<img'+(cls?' class="'+cls+'"':'')+' src="'+src(s)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+OLD+s[3]+'\'">'};
+  var cl=function(x){return Math.max(0,Math.min(1,x))};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1 · Recorrido horizontal
+  var aTrack=$('aTrack'),aSec=$('a');
+  aTrack.insertAdjacentHTML('beforeend',ST.map(function(s,i){return '<article class="a__panel"><div><div class="num">'+n2(i)+'</div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div><div class="a__img">'+img(s)+'</div></article>'}).join(''));
+  var aImgs=aTrack.querySelectorAll('.a__img img');
+  function aMove(){var r=aSec.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeight)),max=aTrack.scrollWidth-innerWidth;
+    aTrack.style.transform='translateX('+(-p*max).toFixed(1)+'px)';$('aBall').style.left=(p*100)+'%';
+    $('aCount').textContent=n2(Math.min(5,Math.floor(p*6.001)))+' / 06';
+    aImgs.forEach(function(im){var b=im.parentNode.getBoundingClientRect();im.style.translate=(((b.left+b.width/2)-innerWidth/2)/innerWidth*-9).toFixed(2)+'% 0'})}
+
+  // 2 · Franjas
+  var bS=$('bStrips'),bi=0,bHover=false;
+  bS.innerHTML=ST.map(function(s,i){return '<button class="b__strip" aria-label="'+s[0]+'">'+img(s)+'<span class="b__n">'+n2(i)+'</span><span class="b__v">'+s[0]+'</span><span class="b__body"><h3>'+s[0]+'</h3><p>'+s[1]+'</p></span></button>'}).join('');
+  var strips=bS.children;
+  function bSet(i){bi=i;for(var k=0;k<strips.length;k++)strips[k].classList.toggle('on',k===i)}
+  Array.prototype.forEach.call(strips,function(el,i){el.addEventListener('pointerenter',function(){bHover=true;bSet(i)});el.addEventListener('click',function(){bSet(i)});el.addEventListener('focus',function(){bSet(i)})});
+  bS.addEventListener('pointerleave',function(){bHover=false});bSet(0);
+  if(!calm)setInterval(function(){if(!bHover)bSet((bi+1)%6)},3200);
+
+  // 3 · Lista con foto que sigue al cursor
+  var cL=$('cList'),cF=$('cFloat'),cI=$('cImg'),cSec=$('c'),fx=0,fy=0,tx=0,ty=0,rot=0;
+  cL.innerHTML=ST.map(function(s,i){return '<li class="c__row" tabindex="0"><span>'+n2(i)+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></li>'}).join('');
+  var rowsC=cL.children;
+  function cSet(i){for(var k=0;k<rowsC.length;k++)rowsC[k].classList.toggle('on',k===i);cL.classList.toggle('hot',i>=0);cF.classList.toggle('on',i>=0);
+    if(i>=0){cI.onerror=function(){cI.onerror=null;cI.src=OLD+ST[i][3]};cI.src=src(ST[i])}}
+  Array.prototype.forEach.call(rowsC,function(el,i){el.addEventListener('pointerenter',function(){cSet(i)});el.addEventListener('focus',function(){cSet(i)});el.addEventListener('click',function(){cSet(i)})});
+  cL.addEventListener('pointerleave',function(){cSet(-1)});
+  cSec.addEventListener('pointermove',function(e){var r=cSec.getBoundingClientRect();tx=e.clientX-r.left+30;ty=e.clientY-r.top-cF.offsetHeight/2});
+
+  // 4 · Cartas apiladas
+  var dS=$('dStack');
+  dS.innerHTML=ST.map(function(s,i){return '<article class="d__card" style="--i:'+i+'"><div class="d__txt"><div class="num">'+n2(i)+'</div><div><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div></div><div class="d__img">'+img(s)+'</div></article>'}).join('');
+  var cards=dS.children;
+  function dMove(){for(var i=0;i<cards.length-1;i++){var a=cards[i].getBoundingClientRect(),b=cards[i+1].getBoundingClientRect(),t=cl(1-(b.top-a.top)/a.height);
+    cards[i].style.transform='scale('+(1-.07*t).toFixed(4)+')';cards[i].style.filter='brightness('+(1-.35*t).toFixed(3)+')'}}
+
+  // 5 · La rueda
+  var eD=$('eDial'),eArm=$('eArm'),eP=$('ePhoto'),ei=0,turns=0,eHover=false;
+  eP.innerHTML=ST.map(function(s){return img(s)}).join('');
+  ST.forEach(function(s,i){var a=(i/6)*2*Math.PI-Math.PI/2,b=document.createElement('button');b.className='e__node';b.innerHTML=n2(i)+'<span> '+s[0]+'</span>';var cx=Math.cos(a);
+    b.style.left=(50+46*cx)+'%';b.style.top=(50+47.5*Math.sin(a))+'%';
+    b.style.transform=cx>.3?'translate(14px,-50%)':cx<-.3?'translate(calc(-100% - 14px),-50%)':'translate(-50%,-50%)';b.addEventListener('click',function(){eSet(i)});eD.appendChild(b)});
+  var nodes=eD.querySelectorAll('.e__node'),photos=eP.children,sw=$('eSwap');
+  function eSet(i){var d=((i-ei)%6+6)%6;if(d>3)d-=6;turns+=d;ei=i;
+    eArm.style.transform='rotate('+(turns*60)+'deg)';
+    for(var k=0;k<6;k++){nodes[k].classList.toggle('on',k===i);photos[k].classList.toggle('on',k===i)}
+    sw.classList.add('out');setTimeout(function(){$('eNum').textContent=n2(i);$('eT').textContent=ST[i][0];$('eP').textContent=ST[i][1];sw.classList.remove('out')},260)}
+  $('ePrev').addEventListener('click',function(){eSet((ei+5)%6)});$('eNext').addEventListener('click',function(){eSet((ei+1)%6)});
+  $('e').addEventListener('pointerenter',function(){eHover=true});$('e').addEventListener('pointerleave',function(){eHover=false});
+  $('eT').textContent=ST[0][0];$('eP').textContent=ST[0][1];nodes[0].classList.add('on');photos[0].classList.add('on');
+  if(!calm)setInterval(function(){if(!eHover)eSet((ei+1)%6)},3400);
+
+  var tick=false;function onScroll(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;aMove();dMove()})}}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);aMove();dMove();
+  (function loop(){var ox=fx;fx+=(tx-fx)*.14;fy+=(ty-fy)*.14;rot+=(((fx-ox)*.6)-rot)*.15;
+    cF.style.setProperty('--x',fx.toFixed(1)+'px');cF.style.setProperty('--y',fy.toFixed(1)+'px');cF.style.setProperty('--rot',Math.max(-14,Math.min(14,rot)).toFixed(2)+'deg');
+    requestAnimationFrame(loop)})();
+})();
+</script>
+</body>
+</html>
