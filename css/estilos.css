@@ -83,6 +83,13 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .card:hover .card__img img{transform:scale(1.05)}
 .card__more{font-weight:500;font-size:15px;color:var(--grey)}
 .card:hover .card__more{color:var(--red)}
+/* Palabras gigantes en silueta que se deslizan detrás de los proyectos, como en la portada */
+.words-bg{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-around;overflow:hidden;pointer-events:none;user-select:none}
+.words-bg__row{display:flex;white-space:nowrap;font-weight:800;font-size:clamp(130px,23vw,360px);line-height:1;letter-spacing:-.01em;color:transparent;-webkit-text-stroke:2px rgba(217,51,51,.3)}
+.words-bg__row span{flex:none;padding-right:.25em;animation:marq 70s linear infinite}
+.words-bg__row:nth-child(even) span{animation-direction:reverse;animation-duration:90s}
+.words-bg__row:nth-child(3n) span{animation-duration:55s}
+.sec--words>.wrap{position:relative}
 /* Proyectos en dos columnas desfasadas, con tamaños distintos y mucho aire */
 .pgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(28px,7vw,120px);padding-inline:clamp(0px,6vw,110px)}
 .pgrid__col{display:flex;flex-direction:column;gap:clamp(70px,11vw,190px)}
@@ -171,6 +178,6 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .cta__words span,.hero__cue span,.pcard__badge span{animation:none}
+  .cta__words span,.hero__cue span,.pcard__badge span,.words-bg__row span{animation:none}
   .card__img img{transition:none}
 }
