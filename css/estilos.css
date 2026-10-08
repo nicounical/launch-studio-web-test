@@ -115,23 +115,25 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .form .btn{align-self:flex-start;margin-top:26px}
 .form__msg{min-height:1.6em;font-size:15px;color:var(--grey)}
 
-/* Pie */
-.foot{background:var(--ink);color:var(--white);padding-block:clamp(56px,7vw,96px) 28px}
-.foot__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
-.foot h3{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.foot p{color:rgba(241,240,232,.75);max-width:22em}
-.foot__logo{margin-bottom:16px}
-.foot a{text-decoration:none}
+/* Pie: gris claro, tipografía monoespaciada en mayúsculas, cuatro columnas */
+.foot{background:#e8e7de;color:var(--ink);font-family:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;font-weight:400;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:clamp(40px,4.5vw,56px) clamp(20px,2.2vw,44px) clamp(28px,3vw,44px)}
+.foot__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 24px;min-height:clamp(170px,17vw,250px);align-content:start}
+.foot h3{font:inherit;letter-spacing:inherit;color:var(--ink);margin:0 0 20px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;color:#8b8a84}
+.foot li{overflow-wrap:anywhere}
+.foot a{text-decoration:none;transition:color .2s}
 .foot a:hover{color:var(--red)}
-.foot__base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:clamp(40px,6vw,80px);padding-top:20px;border-top:1px solid rgba(241,240,232,.18);font-size:13px;color:rgba(241,240,232,.55)}
+.foot__base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 32px;margin-top:clamp(36px,5vw,72px);padding-inline:clamp(0px,1.2vw,22px);color:#8b8a84}
 
 @media (max-width:900px){
   .vents,.steps,.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .contact,.proj__body,.foot__grid{grid-template-columns:1fr}
+  .contact,.proj__body{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:560px){
   body{font-size:16px}
   .vents,.steps,.cards{grid-template-columns:1fr}
+  .foot{font-size:13px}
   .pager{grid-template-columns:1fr 1fr}
   .pager__all{display:none}
 }
