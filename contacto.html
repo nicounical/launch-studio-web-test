@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contacto — Launch Studio</title>
+<meta name="description" content="Hablemos de tu próximo proyecto. Escríbenos a info@launchstudiogroup.com o llámanos al +34 681 091 085.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="contacto.html" aria-current="page">Contacto</a></nav>
+</header>
+
+<main>
+<section class="sec sec--top">
+  <div class="outline-bg outline-bg--red" aria-hidden="true">hablemos</div>
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <h1>Hablemos de tu próximo proyecto.</h1>
+      <dl class="contact__data">
+        <dt>Email</dt><dd><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></dd>
+        <dt>Teléfono</dt><dd><a href="tel:+34681091085">+34 681 091 085</a></dd>
+      </dl>
+    </div>
+    <form class="form" id="form-contacto" novalidate>
+      <label for="f-nombre">Nombre y apellido</label><input id="f-nombre" name="nombre" autocomplete="name" required>
+      <label for="f-empresa">Empresa (opcional)</label><input id="f-empresa" name="empresa" autocomplete="organization">
+      <label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required>
+      <label for="f-mensaje">Cuéntanos tu proyecto</label><textarea id="f-mensaje" name="mensaje" rows="5" required></textarea>
+      <button class="btn btn--dark" type="submit">Enviar mensaje <span aria-hidden="true">→</span></button>
+      <p class="form__msg" id="form-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+<div class="wrap"><div class="proj__img"><img src="assets/img/contacto/contacto-galeria.jpg" alt="Proyecto de Launch Studio" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/GALERIA.JPG'"></div></div>
+<div class="spacer"></div>
+</main>
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div><a class="foot__logo" href="index.html"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+      <p>Estudio creativo especializado en stands y eventos corporativos.</p></div>
+    <div><h3>Contacto</h3><p><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><br><a href="tel:+34681091085">+34 681 091 085</a></p></div>
+    <div><h3>Estudio</h3><p>Barcelona · Presencia internacional</p></div>
+  </div>
+  <div class="wrap foot__base"><span>© 2026 Launch Studio</span><span>Versión de prueba</span></div>
+</footer>
+<script src="js/sitio.js"></script>
+</body>
+</html>
