@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones para «Somos» — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Cinco propuestas para la sección «Somos». Cada una ocupa una pantalla. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h2,p{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.opt{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:110px var(--pad) 80px}
+.tag{position:absolute;left:var(--pad);top:64px;z-index:5;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:7px 12px;border-radius:4px}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.big{font-weight:300;font-size:clamp(50px,11.5vw,200px);line-height:.98;letter-spacing:-.04em}
+.lead{font-size:clamp(19px,2.2vw,30px);line-height:1.35;max-width:27em;letter-spacing:-.01em}
+
+/* 1 · Palabra giratoria */
+.o1{gap:clamp(20px,3vw,40px)}
+.o1__ghost{position:absolute;left:-.05em;bottom:-.12em;font-weight:800;font-size:clamp(200px,40vw,640px);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(217,51,51,.28);white-space:nowrap;pointer-events:none;animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(-18%)}}
+.o1 .big{position:relative}
+.rot{display:inline-block;height:1.16em;overflow:hidden;vertical-align:bottom;transition:width .7s cubic-bezier(.7,0,.2,1)}
+.rot__in{display:flex;flex-direction:column;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.rot__in span{height:1.16em;line-height:1.16;color:var(--red);font-weight:500;white-space:nowrap;align-self:flex-start}
+.dot{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--ink);margin-left:.06em;transform-origin:50% 100%}
+.dot.hop{animation:hop .8s cubic-bezier(.3,0,.4,1)}
+@keyframes hop{0%{transform:translateY(0) scale(1,1)}12%{transform:translateY(0) scale(1.25,.7)}45%{transform:translateY(-1.5em) scale(.9,1.1)}78%{transform:translateY(0) scale(1.2,.75)}100%{transform:none}}
+.o1 .lead{position:relative}
+
+/* 2 · Texto que se enciende con el scroll */
+.o2{display:block;min-height:0;height:280vh;padding:0;overflow:visible;background:var(--ink);color:var(--white)}
+.o2__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:28px;padding:110px var(--pad) 90px;overflow:hidden}
+.o2 .tag{background:var(--white);color:var(--ink)}
+.o2__text{font-size:clamp(30px,5.4vw,92px);line-height:1.08;letter-spacing:-.03em;max-width:17em}
+.o2__text span{color:transparent;-webkit-text-stroke:1px rgba(241,240,232,.34);transition:color .35s,-webkit-text-stroke-color .35s}
+.o2__text span.on{color:var(--white);-webkit-text-stroke-color:transparent}
+.o2__text span.k.on{color:var(--red)}
+.o2__rail{position:absolute;left:var(--pad);right:var(--pad);bottom:44px;height:1px;background:rgba(241,240,232,.25)}
+.o2__ball{position:absolute;top:-9px;left:0;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--red)}
+
+/* 3 · La bola como foco */
+.o3{padding:0;cursor:none}
+.o3__layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vw,40px);padding:110px var(--pad) 80px}
+.o3__base .big{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.o3__base .lead{color:rgba(11,11,11,.4)}
+.o3__top{background:var(--red);color:var(--white);clip-path:circle(var(--r,170px) at var(--x,70%) var(--y,45%));will-change:clip-path}
+.o3__top .eyebrow{color:var(--ink)}
+.o3__hint{position:absolute;right:var(--pad);bottom:28px;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(11,11,11,.5)}
+
+/* 4 · Bandas cinéticas */
+.o4{background:var(--red);padding:0;justify-content:center;align-items:center}
+.o4 .tag{background:var(--white);color:var(--ink)}
+.o4__bands{position:absolute;inset:-10% -10%;display:flex;flex-direction:column;justify-content:center;gap:.02em;transform:rotate(-6deg);font-weight:800;font-size:clamp(70px,15vw,260px);line-height:1.02;letter-spacing:-.03em}
+.o4__row{display:flex;white-space:nowrap;will-change:transform}
+.o4__row span{flex:none;padding-right:.3em}
+.o4__row:nth-child(1){color:var(--white)}
+.o4__row:nth-child(2){color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+.o4__row:nth-child(3){color:var(--ink)}
+.o4__card{position:relative;background:var(--white);color:var(--ink);padding:clamp(24px,3.4vw,52px);max-width:min(620px,86vw);transform:rotate(3deg);display:flex;flex-direction:column;gap:16px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.o4__card:hover{transform:rotate(0) scale(1.03)}
+.o4__card h2{font-weight:400;font-size:clamp(30px,4vw,56px);line-height:1;letter-spacing:-.03em}
+.o4__card .lead{font-size:clamp(17px,1.6vw,22px)}
+
+/* 5 · Letras que caen */
+.o5{gap:clamp(22px,3.4vw,48px)}
+.o5 .big{font-weight:400;display:flex;flex-wrap:wrap;column-gap:.24em}
+.o5 .w{display:inline-flex;white-space:nowrap}
+.o5 .l{display:inline-block;transform:translateY(-130vh);transform-origin:50% 100%}
+.o5.on .l{animation:drop 1.25s cubic-bezier(.3,0,.5,1) both;animation-delay:calc(var(--i)*55ms)}
+@keyframes drop{0%{transform:translateY(-130vh)}38%{transform:translateY(0) scale(1.12,.84)}54%{transform:translateY(-.34em) scale(.97,1.04)}70%{transform:translateY(0) scale(1.06,.92)}82%{transform:translateY(-.1em)}100%{transform:none}}
+.o5 .l:hover{color:var(--red)}
+.o5 .ball{display:inline-block;width:.24em;height:.24em;border-radius:50%;background:var(--red);align-self:flex-end;margin:0 0 .16em .04em;transform:translateY(-130vh);transform-origin:50% 100%}
+.o5.on .ball{animation:drop2 1.9s cubic-bezier(.3,0,.5,1) both;animation-delay:calc(var(--i)*55ms + .15s)}
+@keyframes drop2{0%{transform:translateY(-130vh)}30%{transform:translateY(0) scale(1.4,.6)}46%{transform:translateY(-2.2em) scale(.9,1.1)}62%{transform:translateY(0) scale(1.3,.7)}74%{transform:translateY(-.9em)}86%{transform:translateY(0) scale(1.15,.85)}93%{transform:translateY(-.25em)}100%{transform:none}}
+.o5 .lead span{display:inline-block;opacity:0;transform:translateY(22px)}
+.o5.on .lead span{opacity:1;transform:none;transition:opacity .6s,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(1.5s + var(--i)*35ms)}
+.o5 .eyebrow{opacity:0}.o5.on .eyebrow{opacity:1;transition:opacity .6s 1.2s}
+
+@media (max-width:560px){.bar span{display:none}.bar{justify-content:center}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .o1__ghost,.dot.hop{animation:none}
+  .o5 .l,.o5 .ball{transform:none;animation:none!important}
+  .o5 .lead span,.o5 .eyebrow{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>«Somos» · cinco opciones</span><a href="#o1">1</a><a href="#o2">2</a><a href="#o3">3</a><a href="#o4">4</a><a href="#o5">5</a></nav>
+
+<section class="opt o1" id="o1">
+  <p class="tag">Opción 1 · Palabra giratoria</p>
+  <div class="o1__ghost" aria-hidden="true">somos</div>
+  <p class="eyebrow">Somos</p>
+  <h2 class="big" aria-label="Posicionamos marcas.">Posicionamos<br><span class="rot" aria-hidden="true"><span class="rot__in"><span>marcas</span><span>stands</span><span>eventos</span><span>experiencias</span><span>lanzamientos</span></span></span><span class="dot" aria-hidden="true"></span></h2>
+  <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+</section>
+
+<section class="opt o2" id="o2">
+  <div class="o2__pin">
+    <p class="tag">Opción 2 · El texto se enciende al bajar</p>
+    <p class="eyebrow">Somos</p>
+    <p class="o2__text" id="o2text">Posicionamos marcas. Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+    <div class="o2__rail" aria-hidden="true"><div class="o2__ball" id="o2ball"></div></div>
+  </div>
+</section>
+
+<section class="opt o3" id="o3">
+  <p class="tag">Opción 3 · La bola como foco</p>
+  <div class="o3__layer o3__base">
+    <p class="eyebrow">Somos</p>
+    <h2 class="big">Posicionamos marcas.</h2>
+    <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+  </div>
+  <div class="o3__layer o3__top" aria-hidden="true">
+    <p class="eyebrow">Somos</p>
+    <p class="big">Posicionamos marcas.</p>
+    <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+  </div>
+  <p class="o3__hint" aria-hidden="true">Mueve el cursor</p>
+</section>
+
+<section class="opt o4" id="o4">
+  <p class="tag">Opción 4 · Bandas cinéticas</p>
+  <div class="o4__bands" aria-hidden="true">
+    <div class="o4__row"><span>posicionamos marcas ● posicionamos marcas ●</span><span>posicionamos marcas ● posicionamos marcas ●</span></div>
+    <div class="o4__row"><span>stands ● eventos ● experiencias de marca ●</span><span>stands ● eventos ● experiencias de marca ●</span></div>
+    <div class="o4__row"><span>en cualquier punto de Europa ● en cualquier punto de Europa ●</span><span>en cualquier punto de Europa ● en cualquier punto de Europa ●</span></div>
+  </div>
+  <div class="o4__card">
+    <p class="eyebrow">Somos</p>
+    <h2>Posicionamos marcas.</h2>
+    <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+  </div>
+</section>
+
+<section class="opt o5" id="o5">
+  <p class="tag">Opción 5 · Letras que caen</p>
+  <p class="eyebrow">Somos</p>
+  <h2 class="big" id="o5h" aria-label="Posicionamos marcas."></h2>
+  <p class="lead" id="o5p">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+</section>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1 · Palabra giratoria: cambia cada 2 s y la bola da un salto.
+  var rot=document.querySelector('.rot'),inn=document.querySelector('.rot__in'),ws=inn.children,dot=document.querySelector('.dot'),k=0;
+  function setRot(){var h=ws[0].offsetHeight;inn.style.transform='translateY('+(-k*h)+'px)';rot.style.width=ws[k].offsetWidth+'px'}
+  setRot();addEventListener('resize',setRot);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setRot);
+  if(!calm)setInterval(function(){k=(k+1)%ws.length;setRot();dot.classList.remove('hop');void dot.offsetWidth;dot.classList.add('hop')},2000);
+
+  // 2 · Cada palabra se enciende según avanza el scroll; las palabras clave, en rojo.
+  var t2=document.getElementById('o2text'),KEY=/^(marcas|stands|eventos|experiencias)/;
+  t2.innerHTML=t2.textContent.trim().split(/\s+/).map(function(w){return '<span'+(KEY.test(w)?' class="k"':'')+'>'+w+'</span>'}).join(' ');
+  var sp=t2.children,sec2=document.getElementById('o2'),ball2=document.getElementById('o2ball');
+  function scrub(){var r=sec2.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(r.height-innerHeight)));
+    var n=Math.round(p*1.12*sp.length);for(var i=0;i<sp.length;i++)sp[i].classList.toggle('on',i<n);
+    ball2.style.left=(p*100)+'%'}
+
+  // 3 · Un círculo rojo sigue al cursor y deja ver el texto relleno. Sin cursor, se pasea solo.
+  var s3=document.getElementById('o3'),top3=s3.querySelector('.o3__top'),tx=.7,ty=.45,cx=.7,cy=.45,last=0;
+  s3.addEventListener('pointermove',function(e){var r=s3.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;last=performance.now()});
+
+  // 4 · Las bandas avanzan solas y se aceleran con el scroll.
+  var rows=document.querySelectorAll('.o4__row'),off=[0,0,0],vel=0,ly=scrollY;
+
+  function loop(now){
+    if(now-last>2500){tx=.5+.34*Math.cos(now/1700);ty=.5+.26*Math.sin(now/1100)}
+    cx+=(tx-cx)*.12;cy+=(ty-cy)*.12;
+    top3.style.setProperty('--x',(cx*100).toFixed(2)+'%');top3.style.setProperty('--y',(cy*100).toFixed(2)+'%');
+    top3.style.setProperty('--r',(Math.min(innerWidth,innerHeight)*.2+14*Math.sin(now/600)).toFixed(1)+'px');
+    var dy=scrollY-ly;ly=scrollY;vel+=(dy-vel)*.2;
+    rows.forEach(function(r,i){var w=r.firstElementChild.offsetWidth,dir=i%2?1:-1;
+      off[i]=(off[i]+dir*(1.1+i*.35)+dir*vel*.9)%w;
+      r.style.transform='translateX('+(((off[i]%w)-w)%w)+'px)'});
+    requestAnimationFrame(loop);
+  }
+  addEventListener('scroll',scrub,{passive:true});addEventListener('resize',scrub);scrub();
+  if(!calm)requestAnimationFrame(loop);
+
+  // 5 · Las letras caen y rebotan una a una; el punto final es la bola roja.
+  var h5=document.getElementById('o5h'),i5=0;
+  h5.innerHTML='Posicionamos marcas'.split(' ').map(function(w){return '<span class="w" aria-hidden="true">'+w.split('').map(function(c){return '<span class="l" style="--i:'+(i5++)+'">'+c+'</span>'}).join('')+'</span>'}).join('');
+  h5.lastElementChild.insertAdjacentHTML('beforeend','<span class="ball" style="--i:'+i5+'"></span>');
+  var p5=document.getElementById('o5p');
+  p5.innerHTML=p5.textContent.trim().split(/\s+/).map(function(w,i){return '<span style="--i:'+i+'">'+w+'</span>'}).join(' ');
+  var s5=document.getElementById('o5');
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){s5.classList.toggle('on',e.isIntersecting)})},{threshold:.35}).observe(s5);
+  else s5.classList.add('on');
+})();
+</script>
+</body>
+</html>
