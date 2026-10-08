@@ -5,6 +5,15 @@
     var f=function(){nav.classList.toggle('is-scrolled',window.scrollY>window.innerHeight-80)};
     f();window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);
   }
+  // Proyectos: el círculo "Ver proyecto" sigue al cursor dentro de cada foto.
+  document.querySelectorAll('.pcard__img').forEach(function(box){
+    var b=box.querySelector('.pcard__badge');if(!b)return;
+    box.addEventListener('pointermove',function(ev){
+      var r=box.getBoundingClientRect();
+      b.style.setProperty('--x',(ev.clientX-r.left)+'px');b.style.setProperty('--y',(ev.clientY-r.top)+'px');b.style.setProperty('--s',1);
+    });
+    box.addEventListener('pointerleave',function(){b.style.setProperty('--s',0)});
+  });
   // Formulario de contacto (versión de prueba): abre el correo del visitante con el mensaje ya escrito.
   var form=document.getElementById('form-contacto');
   if(form)form.addEventListener('submit',function(ev){
