@@ -5,13 +5,22 @@
     var f=function(){nav.classList.toggle('is-scrolled',window.scrollY>window.innerHeight-80)};
     f();window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);
   }
+  // Menú en móvil: el botón abre y cierra la navegación a pantalla completa.
+  var tg=document.getElementById('nav-toggle');
+  if(nav&&tg){
+    var setMenu=function(open){nav.classList.toggle('is-open',open);tg.setAttribute('aria-expanded',open);tg.textContent=open?'Cerrar':'Menú';document.documentElement.style.overflow=open?'hidden':''};
+    tg.addEventListener('click',function(){setMenu(!nav.classList.contains('is-open'))});
+    nav.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape')setMenu(false)});
+  }
+
   // Movimiento al hacer scroll: los bloques entran al aparecer, las fotos se descubren
   // de arriba abajo y se desplazan dentro de su marco, y las dos columnas de proyectos
   // avanzan a velocidades distintas.
   var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!calm&&'IntersectionObserver' in window){
     document.documentElement.classList.add('js');
-    var els=document.querySelectorAll('.pcard,.vent,.step,.intro>*,.sec__head,.sec--dark h2,.cta__in>*,.proj__img,.prose p,.contact>*');
+    var els=document.querySelectorAll('.pcard,.vent,.step,.svc,.svc-list li,.intro>*,.sec__head,.sec--dark h2,.cta__in>*,.proj__img,.prose p,.contact>*');
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.05});
     els.forEach(function(el,i){
       el.setAttribute('data-reveal','');

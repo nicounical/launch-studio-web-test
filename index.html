@@ -10,12 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=202610082058">
+<link rel="stylesheet" href="css/estilos.css?v=202610091128">
 </head>
 <body class="home">
 <header class="nav nav--over" id="nav">
   <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
-  <nav aria-label="Principal"><a href="index.html" aria-current="page">Inicio</a><a href="proyectos.html">Proyectos</a><a href="contacto.html">Contacto</a></nav>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="index.html" aria-current="page">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
 </header>
 
 <main>
@@ -42,66 +43,16 @@
     <p class="eyebrow">Somos</p>
     <h1>Posicionamos marcas.</h1>
     <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+    <p><a class="btn" href="nosotros.html">Conócenos <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section class="sec sec--tight">
+<section class="sec sec--dark" id="servicios">
+  <div class="outline-bg" aria-hidden="true">servicios</div>
   <div class="wrap">
-    <div class="vents"><article class="vent">
-      <div class="vent__img"><img src="assets/img/ventajas/ventaja-1-llave-en-mano-danone.jpg" alt="Stand producido para Danone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/DANONE.JPG'"></div>
-      <p class="eyebrow">I — Ventaja</p>
-      <h3>Llave en mano</h3>
-      <p>Un único punto de contacto que se encarga de cada detalle, desde la primera idea hasta la entrega final.</p>
-    </article><article class="vent">
-      <div class="vent__img"><img src="assets/img/ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg" alt="Stand producido para Janssen" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JANNSEN.JPG'"></div>
-      <p class="eyebrow">II — Ventaja</p>
-      <h3>Gestión en paralelo</h3>
-      <p>Coordinamos varios proyectos de una misma marca al mismo tiempo, manteniendo una visión global y el mismo nivel de atención en cada uno.</p>
-    </article><article class="vent">
-      <div class="vent__img"><img src="assets/img/ventajas/ventaja-3-partners-locales-biohorizons.jpg" alt="Stand producido para BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"></div>
-      <p class="eyebrow">III — Ventaja</p>
-      <h3>Partners locales en toda Europa</h3>
-      <p>Contamos con una red de talleres y proveedores de confianza en toda Europa para producir con agilidad y con los mismos estándares de calidad.</p>
-    </article></div>
-  </div>
-</section>
-
-<section class="sec sec--dark" id="metodologia">
-  <div class="outline-bg" aria-hidden="true">metodología</div>
-  <div class="wrap">
-    <p class="eyebrow">Metodología</p>
-    <h2>¿Qué hacemos?</h2>
-    <ol class="steps"><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Escuchamos: Stand para Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div>
-        <span class="step__n" aria-hidden="true">01</span>
-        <h3>Escuchamos</h3>
-        <p>Antes de empezar, queremos entender tu marca, tus objetivos y qué necesitas realmente.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Diseñamos: Pop-up store para Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"></div>
-        <span class="step__n" aria-hidden="true">02</span>
-        <h3>Diseñamos</h3>
-        <p>Creamos un concepto a medida que refleja tu identidad y conecta con tus objetivos.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="Planificamos: Evento corporativo para NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"></div>
-        <span class="step__n" aria-hidden="true">03</span>
-        <h3>Planificamos</h3>
-        <p>Coordinamos cada fase del proyecto para que todo esté bajo control.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Producimos: Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div>
-        <span class="step__n" aria-hidden="true">04</span>
-        <h3>Producimos</h3>
-        <p>Damos forma a cada detalle junto a nuestra red de colaboradores y proveedores de confianza.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="Supervisamos: Evento de promoción para BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"></div>
-        <span class="step__n" aria-hidden="true">05</span>
-        <h3>Supervisamos</h3>
-        <p>Estamos presentes en cada fase clave para asegurarnos de que todo se ejecuta según lo previsto.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="Entregamos: Market" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"></div>
-        <span class="step__n" aria-hidden="true">06</span>
-        <h3>Entregamos</h3>
-        <p>Todo listo para que solo tengas que centrarte en lo importante: tu evento.</p>
-      </li></ol>
+    <div class="sec__head"><div><p class="eyebrow">Servicios</p><h2>¿Qué hacemos?</h2></div>
+      <a class="btn btn--line" href="servicios.html">Ver servicios y metodología <span aria-hidden="true">→</span></a></div>
+    <ul class="svc-list"><li><a href="servicios.html#stands"><span>Stands</span><i aria-hidden="true">→</i></a></li><li><a href="servicios.html#eventos"><span>Eventos corporativos</span><i aria-hidden="true">→</i></a></li><li><a href="servicios.html#experiencias"><span>Experiencias de marca</span><i aria-hidden="true">→</i></a></li><li><a href="servicios.html#pop-up"><span>Pop-up stores</span><i aria-hidden="true">→</i></a></li></ul>
   </div>
 </section>
 
@@ -145,16 +96,16 @@
 </section>
 
 </main>
-<script src="js/portada.js?v=202610082058"></script>
+<script src="js/portada.js?v=202610091128"></script>
 <footer class="foot">
   <div class="foot__grid">
-    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-    <div><h3>Qué hacemos</h3><ul><li><a href="proyectos.html">Stands</a></li><li><a href="proyectos.html">Eventos corporativos</a></li><li><a href="proyectos.html">Experiencias de marca</a></li><li><a href="index.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="servicios.html#stands">Stands</a></li><li><a href="servicios.html#eventos">Eventos corporativos</a></li><li><a href="servicios.html#experiencias">Experiencias de marca</a></li><li><a href="servicios.html#pop-up">Pop-up stores</a></li><li><a href="servicios.html#metodologia">Metodología</a></li></ul></div>
     <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34681091085">+34 681 091 085</a></li></ul></div>
     <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
   </div>
   <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
 </footer>
-<script src="js/sitio.js?v=202610082058"></script>
+<script src="js/sitio.js?v=202610091128"></script>
 </body>
 </html>
