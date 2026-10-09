@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portada: el círculo y la palabra — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400&family=Playfair+Display:ital,wght@1,400&family=Poppins:wght@300;400;800&family=Syne:wght@800&display=swap">
+<style>
+/* Cinco portadas en las que la palabra va siempre dentro de una figura sólida (un círculo o una píldora),
+   así nunca se corta por los lados ni se pisa con las letras del fondo o con el logo. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--mono:"DM Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--white);font-family:"Poppins",system-ui,sans-serif}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px clamp(16px,4vw,56px);background:rgba(11,11,11,.92);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.opt{position:relative;height:100vh;height:100svh;min-height:420px;border-bottom:6px solid var(--ink);overflow:hidden}
+.opt svg{display:block;width:100%;height:100%}
+.tag{position:absolute;left:clamp(16px,4vw,56px);bottom:22px;z-index:5;max-width:min(520px,calc(100% - 32px));margin:0;font:400 12px/1.5 var(--mono);letter-spacing:.05em;background:var(--ink);color:var(--white);padding:9px 13px;border-radius:4px}
+.tag b{font-weight:400;text-transform:uppercase;color:#ff8d86}
+@media (max-width:560px){.bar span{display:none}.bar{justify-content:center}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>El círculo con la palabra · seis variantes</span><a href="#c1">1</a><a href="#c2">2</a><a href="#c3">3</a><a href="#c4">4</a><a href="#c5">5</a><a href="#c6">6</a></nav>
+
+<section class="opt" id="c1"><p class="tag"><b>1 · La que elegiste.</b> El círculo aparece con la palabra, se encoge hasta ser la bola y la L sale de ella. Ahora con la misma letra en todas las palabras.</p></section>
+<section class="opt" id="c2"><p class="tag"><b>2 · Cae y rebota.</b> El círculo cae desde arriba con la palabra dentro y rebota antes de asentarse.</p></section>
+<section class="opt" id="c3"><p class="tag"><b>3 · Entra rodando.</b> El círculo llega rodando desde la izquierda; la palabra gira con él y queda derecha al parar.</p></section>
+<section class="opt" id="c4"><p class="tag"><b>4 · Ondas.</b> Al aparecer el círculo salen de él dos anillos que se expanden, como una onda.</p></section>
+<section class="opt" id="c5"><p class="tag"><b>5 · Se llena.</b> Primero solo el contorno del círculo; después se llena de abajo arriba y aparece la palabra.</p></section>
+<section class="opt" id="c6"><p class="tag"><b>6 · Círculo grande a un lado.</b> Un círculo más grande, descentrado a la izquierda, con la palabra a mayor tamaño.</p></section>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg',R=71.1,BX=888.4,BY=572.1,FLOOR=643.2,PX=800,PY=430,LEN=3.05;
+  var LPATH='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
+  var W_='#F1F0E8',K_='#0b0b0b',R_='#D93333';
+  var SC=[{bg:W_,logo:K_,ball:K_,word:R_,wo:.5},{bg:R_,logo:W_,ball:W_,word:K_,wo:.26},{bg:K_,logo:W_,ball:R_,word:R_,wo:.7}];
+  var MID=[['stands'],['eventos'],['experiencias','de marca'],['diseños'],['lanzamientos']];
+  var BG=['crear','stands','experiencias','diseño','eventos','lanzamientos','marca'];
+  var FONTS=[{f:'Poppins',w:400,max:150}];
+  var cl=function(x){return Math.max(0,Math.min(1,x))},ease=function(x){return 1-Math.pow(1-cl(x),3)},
+      io=function(x){x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},
+      back=function(x){x=cl(x)-1;return 1+2.70158*x*x*x+1.70158*x*x},lerp=function(a,b,k){return a+(b-a)*k};
+  var contrast=function(c){return c===W_?K_:W_},third=function(n){return [R_,K_,W_][n%3]};
+  function mix(a,b,k){k=cl(k);var p=function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)})},A=p(a),B=p(b);
+    return 'rgb('+A.map(function(v,i){return Math.round(v+(B[i]-v)*k)}).join(',')+')'}
+  function fall(t,drop){
+    var g=4200,rest=.45,y=-(drop||880),vy=0,tt=t,imp=0;
+    if(t<0)return{y:-(drop||880)-400,sq:0};
+    for(var n=0;n<12;n++){var tf=(-vy+Math.sqrt(vy*vy-2*g*y))/g;
+      if(tt<tf)return{y:y+vy*tt+.5*g*tt*tt,sq:imp*Math.exp(-15*tt)};
+      tt-=tf;var vi=vy+g*tf;imp=Math.min(.2,vi/9000);vy=-vi*rest;y=0;if(-vy<100)break}
+    return{y:0,sq:imp*Math.exp(-15*tt)};
+  }
+  function T(o){o=o||{};var cx=o.cx==null?800:o.cx,cy=o.cy==null?FLOOR:o.cy,sc=o.sc==null?1:o.sc,sq=o.sq||0;
+    return 'translate('+(cx+(o.dx||0))+' '+(cy+(o.dy||0))+') scale('+sc*(1+sq)+' '+sc*(1-sq)+') translate('+(-cx)+' '+(-cy)+')'}
+  // Entradas completas del logo (L y bola).
+  var ENT=[
+   function(v){var f=fall(v-.05);return{L:T({dy:f.y,sq:f.sq}),by:BY+f.y,sq:f.sq}},
+   function(v){var f=fall(v-.3);return{L:T({dy:760*(1-back(v/.7))}),by:BY+f.y,sq:f.sq}},
+   function(v){return{L:T({dx:-1100*(1-ease(v/.7))}),bx:BX+1100*(1-ease((v-.2)/1))}},
+   function(v){var f=fall(v-.35);return{L:T({sc:v<=0?0:back(v/.6)}),by:BY+f.y,sq:f.sq}},
+   function(v){var k=io(v/.9),s=v-.9;return{L:T(),clip:430*k,by:-90+(BY+90)*k,sq:s>0?.22*Math.exp(-7*s)*Math.cos(18*s):0}},
+   function(v){var f=fall(v-.05),s=v-1.0;return{L:T({dy:f.y,sq:f.sq*2.2,dx:s>0?-16*Math.exp(-6*s)*Math.cos(22*s):0}),bx:s<0?BX+900*(1-ease((v-.5)/.5)):BX+110*Math.exp(-3.6*s)*Math.abs(Math.sin(8*s)),sq:s>0?-.2*Math.exp(-9*s):0}},
+   function(v){var k=ease(v/1.35),cx=760,cy=430,re=Math.hypot(BX-cx,BY-cy),te=Math.atan2(BY-cy,BX-cx),th=te-4*Math.PI*(1-k),ro=re*(1+1.3*(1-k));
+      return{L:T({cx:PX,cy:PY,sc:v<=0?0:back(v/.5)}),bx:cx+ro*Math.cos(th),by:cy+ro*Math.sin(th),br:R*(.45+.55*k)}}
+  ];
+  // Entradas solo de la L, cuando la bola ya está en su sitio.
+  var LENT=[
+   function(v){return{L:T({cx:BX,cy:BY,sc:v<=0?0:back(v/.6)})}},
+   function(v){return{L:T(),clip:430*io(v/.8)}},
+   function(v){return{L:T({dx:-1100*(1-ease(v/.7))})}},
+   function(v){return{L:T({dy:760*(1-back(v/.7))})}},
+   function(v){var f=fall(v-.05);return{L:T({dy:f.y,sq:f.sq})}}
+  ];
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,insts=[];
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+  function make(id,idx,mode){
+    var sec=document.getElementById(id);
+    var svg=el('svg',{viewBox:'0 0 1600 900',role:'img','aria-label':'Portada animada'},sec),I={mode:mode,svg:svg,cur:-1,t0:performance.now(),on:true,w:[4000,4000],vw:1600};
+    I.bg=el('rect',{x:-3000,y:-4000,width:7600,height:8900},svg);
+    I.words=el('g',{fill:'none','stroke-linejoin':'round','font-family':'Poppins','font-weight':800,'font-size':500,'stroke-width':5},svg);
+    I.rows=[el('text',{id:'r'+idx+'a',y:400},I.words),el('text',{id:'r'+idx+'b',y:850},I.words)];
+    [-1800,-900,900,1800].forEach(function(dy){['a','b'].forEach(function(s){el('use',{href:'#r'+idx+s,y:dy},I.words)})});
+    I.rings=el('g',{fill:'none','stroke-width':2},svg);[420,560,720,900].forEach(function(r){el('circle',{cx:800,cy:450,r:r},I.rings)});
+    I.sh=el('g',{},svg);I.c2=el('circle',{r:0},I.sh);I.c3=el('circle',{r:0,fill:'none','stroke-width':6},I.sh);I.pill=el('rect',{width:0,height:0},I.sh);I.c1=el('circle',{r:0},I.sh);
+    var defs=el('defs',{},svg);I.lclip=el('rect',{x:-4000,y:217,width:9600,height:2000},el('clipPath',{id:'lc'+idx},defs));
+    I.fclip=el('rect',{x:-3000,y:-3000,width:7600,height:7600},el('clipPath',{id:'fc'+idx},defs));I.fc='url(#fc'+idx+')';
+    el('path',{id:'rp'+idx,d:'M800 80a370 370 0 1 1 -0.1 0'},defs);
+    I.ringT=el('text',{'font-family':'DM Mono,monospace','font-size':27,'letter-spacing':5},svg);
+    I.ringTP=el('textPath',{href:'#rp'+idx,textLength:2290,lengthAdjust:'spacing'},I.ringT);
+    I.ringTP.textContent='LAUNCH STUDIO · STANDS · EVENTOS · EXPERIENCIAS DE MARCA · DISEÑOS · LANZAMIENTOS · ';
+    I.L=el('g',{},el('g',{'clip-path':'url(#lc'+idx+')'},svg));el('path',{transform:'translate(502 132) scale(.3)',d:LPATH},I.L);
+    I.ball=el('ellipse',{rx:0,ry:0},svg);I.flood=el('circle',{r:0},svg);
+    I.mid=el('text',{'text-anchor':'middle'},svg);
+    if(mode!=='ring'){I.rings.setAttribute('display','none');I.ringT.setAttribute('display','none')}else I.words.setAttribute('display','none');
+    return I;
+  }
+  // Fondo y colores de la escena.
+  function scene(I,n,now){
+    var a=SC[n%3];
+    if(I.cur!==n){I.cur=n;I.fresh=true;I.bg.setAttribute('fill',a.bg);I.L.setAttribute('fill',a.logo);
+      I.words.setAttribute('stroke',a.word);I.words.setAttribute('opacity',a.wo);I.rings.setAttribute('stroke',a.word);I.rings.setAttribute('opacity',a.wo*.7);I.ringT.setAttribute('fill',a.logo);
+      var g=function(i){return BG[(2*n+i)%7]},u1=g(1)+' '+g(2)+' '+g(3)+' ',u2=g(4)+' '+g(5)+' '+g(6)+' ';
+      I.rows[0].textContent=u1+u1+u1;I.rows[1].textContent=u2+u2+u2;
+      try{I.w[0]=I.rows[0].getComputedTextLength()/3||4000;I.w[1]=I.rows[1].getComputedTextLength()/3||4000}catch(e){}}
+    var T_=now/1000,d=n%2?1:-1,p0=(T_*240)%I.w[0],p1=(T_*185)%I.w[1];
+    I.rows[0].setAttribute('x',(d<0?-p0:-I.w[0]+p0)-I.w[0]*.5);I.rows[1].setAttribute('x',(d<0?-I.w[1]+p1:-p1)-I.w[1]*.5);
+    I.ringT.setAttribute('transform','rotate('+(T_*14%360)+' 800 450)');
+    return a;
+  }
+  // Coloca la palabra ajustándola a un ancho y alto máximos; devuelve su anchura real.
+  function setWord(I,k,maxW,maxH,color){
+    var m=I.mid,st=FONTS[k%FONTS.length],lines=MID[k%5],size=100,wmax=1;
+    while(m.firstChild)m.removeChild(m.firstChild);
+    m.setAttribute('font-family','"'+st.f+'",Poppins,sans-serif');m.setAttribute('font-weight',st.w);m.setAttribute('font-style',st.it?'italic':'normal');
+    m.setAttribute('font-size',size);m.setAttribute('letter-spacing',(st.ls||0)*size);m.setAttribute('fill',color);
+    var ts=lines.map(function(t){var s=el('tspan',{x:0},m);s.textContent=st.up?t.toUpperCase():t;return s});
+    ts.forEach(function(s){try{wmax=Math.max(wmax,s.getComputedTextLength())}catch(e){wmax=Math.max(wmax,s.textContent.length*55)}});
+    size=Math.min(st.max,size*maxW/wmax,maxH/(lines.length*1.02));
+    m.setAttribute('font-size',size);m.setAttribute('letter-spacing',(st.ls||0)*size);
+    var lh=size*1.02,y0=-(lines.length-1)*lh/2+size*.34;ts.forEach(function(s,i){s.setAttribute('y',y0+i*lh)});
+    return wmax*size/100;
+  }
+  function word(I,x,y,op,dy,sc){I.mid.setAttribute('transform','translate('+x+' '+(y+(dy||0))+') scale('+(sc||1)+')');I.mid.setAttribute('opacity',op)}
+  function circ(c,x,y,r,fill){c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',Math.max(0,r));if(fill)c.setAttribute('fill',fill)}
+  function ball(I,x,y,r,sq,fill,op){var rx=r*(1+sq),ry=r*(1-sq);I.ball.setAttribute('cx',x);I.ball.setAttribute('cy',y+(r-ry));I.ball.setAttribute('rx',Math.max(0,rx));I.ball.setAttribute('ry',Math.max(0,ry));I.ball.setAttribute('fill',fill);I.ball.setAttribute('opacity',op==null?1:op)}
+  // Fase del logo: entrada y, al final, la bola estalla y cambia el color de toda la pantalla.
+  function logo(I,v,n,a,b,e,noFlood){
+    var bx=e.bx==null?BX:e.bx,by=e.by==null?BY:e.by,sq=e.sq||0,br=e.br==null?R:e.br,op=v<0?0:1;
+    I.L.setAttribute('transform',e.L);I.L.setAttribute('opacity',e.hideL?0:op);I.lclip.setAttribute('height',e.clip==null?2000:e.clip);
+    if(noFlood){ball(I,bx,by,br,sq,a.ball,op);I.flood.setAttribute('r',0);return}
+    var x=(n+Math.floor(n/3))%3,w=v-2.0,q=io(w/.5),fill=a.ball;
+    if(w>0){fill=mix(a.ball,b.bg,w/.35);
+      if(x===0)sq=.18*Math.sin(cl(w/.5)*Math.PI);
+      else if(x===1){bx=lerp(BX,800,q);by=lerp(BY,450,q)-150*Math.sin(q*Math.PI)}
+      else bx=BX+420*q*q}
+    if(w<.5){ball(I,bx,by,br,sq,fill,op);I.flood.setAttribute('r',0)}
+    else{ball(I,bx,by,0,0,fill,0);circ(I.flood,bx,by,R+3400*io((w-.5)/.55),b.bg)}
+  }
+  function hideLogo(I){I.L.setAttribute('opacity',0);I.ball.setAttribute('rx',0);I.ball.setAttribute('ry',0);I.flood.setAttribute('r',0)}
+  function hideShapes(I){I.c1.setAttribute('r',0);I.c2.setAttribute('r',0);I.c3.setAttribute('r',0);I.pill.setAttribute('width',0);I.mid.setAttribute('opacity',0)}
+
+  // El círculo con la palabra: seis maneras de entrar. Después siempre se encoge hasta ser la bola y sale la L.
+  function hero(I,t,now){
+    var V=I.mode,tw=V==='B'?2.3:V==='E'?2.2:1.9,S=tw+LEN,n=Math.floor(t/S),u=t%S,a=scene(I,n,now),b=SC[(n+1)%3];
+    var Rb=V==='F'?Math.min(410,I.vw*.4):Math.min(300,I.vw*.34),X0=V==='F'?800-I.vw*.1:800,Y0=450;
+    if(I.fresh){I.fresh=false;setWord(I,n,Rb*1.62,Rb*.95,contrast(a.ball))}
+    if(u>=tw){
+      var v=u-tw;hideShapes(I);I.c1.removeAttribute('clip-path');
+      var e=LENT[n%LENT.length](v);e.sq=.2*Math.exp(-8*v)*Math.cos(18*v);logo(I,v,n,a,b,e);return;
+    }
+    var k=io((u-(tw-.45))/.45),x=X0,y=Y0,r=Rb,rot=0,wop=cl((u-.25)/.2),wdy=22*(1-ease((u-.25)/.45));
+    I.c2.setAttribute('r',0);I.c3.setAttribute('r',0);I.pill.setAttribute('width',0);I.c1.removeAttribute('clip-path');
+    if(V==='A'||V==='F')r=Rb*back(u/.42);
+    else if(V==='B'){y=Y0+fall(u-.05,1050).y;wop=1;wdy=0}
+    else if(V==='C'){x=lerp(-Rb-140,X0,ease(u/.85));rot=(x-X0)/Rb*180/Math.PI;wop=1;wdy=0}
+    else if(V==='D'){r=Rb*back(u/.42);
+      [[I.c3,.3],[I.c2,.55]].forEach(function(p){var q=cl((u-p[1])/.95),c=p[0];c.setAttribute('fill','none');c.setAttribute('stroke',a.ball);c.setAttribute('stroke-width',5*(1-q)+1);
+        c.setAttribute('opacity',q>0?1-q:0);circ(c,X0,Y0,Rb+(I.vw*.2)*ease(q))})}
+    else if(V==='E'){var f=io((u-.35)/.8);
+      I.c3.setAttribute('fill','none');I.c3.setAttribute('stroke',a.ball);I.c3.setAttribute('stroke-width',5);I.c3.setAttribute('opacity',1-k);circ(I.c3,X0,Y0,Rb*back(u/.4));
+      I.c1.setAttribute('clip-path',I.fc);I.fclip.setAttribute('y',k>0?-3000:Y0+Rb-2*Rb*f);wop=cl((u-1.0)/.25);wdy=18*(1-ease((u-1.0)/.4))}
+    circ(I.c1,lerp(x,BX,k),lerp(y,BY,k),lerp(r,R,k),a.ball);
+    I.mid.setAttribute('transform','translate('+x+' '+(y+wdy)+') rotate('+rot+')');I.mid.setAttribute('opacity',wop*(1-cl((u-(tw-.7))/.2)));
+    hideLogo(I);
+  }
+  var DRAW={A:hero,B:hero,C:hero,D:hero,E:hero,F:hero};
+  [['c1','A'],['c2','B'],['c3','C'],['c4','D'],['c5','E'],['c6','F']].forEach(function(p,i){insts.push(make(p[0],i,p[1]))});
+  // Siempre se ve todo el ancho de la composición, así nada se corta por los lados.
+  function fit(){insts.forEach(function(I){var r=I.svg.getBoundingClientRect(),ar=r.width/Math.max(1,r.height),w=ar<1?900:1600,h=w/ar;
+    I.vw=w;I.cur=-1;I.svg.setAttribute('viewBox',(800-w/2)+' '+(450-h/2)+' '+w+' '+h)})}
+  fit();addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){insts.forEach(function(I){I.cur=-1})});
+  if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(es){es.forEach(function(en){insts.forEach(function(I){if(I.svg===en.target)I.on=en.isIntersecting})})},{threshold:.05});insts.forEach(function(I){ob.observe(I.svg)})}
+  if(calm){insts.forEach(function(I){DRAW[I.mode](I,1.0,performance.now())});return}
+  (function frame(now){insts.forEach(function(I){if(I.on)DRAW[I.mode](I,Math.max(0,(now-I.t0)/1000),now)});requestAnimationFrame(frame)})(performance.now());
+})();
+</script>
+</body>
+</html>
