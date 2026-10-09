@@ -12,16 +12,18 @@
     else manif.classList.add('in');
   }
 
-  // «Somos»: cada palabra se enciende según avanza el scroll por la sección.
-  var st=document.getElementById('somos-text');
-  if(st&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var KEY=/^(marcas|stands|eventos|experiencias)/,sec=document.getElementById('somos'),ball=document.getElementById('somos-ball');
-    st.setAttribute('aria-label',st.textContent.trim());
-    st.innerHTML=st.textContent.trim().split(/\s+/).map(function(w){return '<span aria-hidden="true"'+(KEY.test(w)?' class="k"':'')+'>'+w+'</span>'}).join(' ');
-    st.classList.add('is-scrub');
-    var sp=st.children,scrub=function(){var r=sec.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(r.height-window.innerHeight))),n=Math.round(p*1.15*sp.length);
-      for(var i=0;i<sp.length;i++)sp[i].classList.toggle('on',i<n);if(ball)ball.style.left=(p*100)+'%'};
-    window.addEventListener('scroll',scrub,{passive:true});window.addEventListener('resize',scrub);scrub();
+  // «Somos»: las franjas avanzan solas y se aceleran con el scroll.
+  var rows4=document.querySelectorAll('.somos4__row');
+  if(rows4.length&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var sec4=document.getElementById('somos'),off4=[0,0,0],vel4=0,ly4=window.scrollY,vis4=true;
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis4=es[0].isIntersecting}).observe(sec4);
+    (function loop4(){
+      var dy=window.scrollY-ly4;ly4=window.scrollY;vel4+=(dy-vel4)*.2;
+      if(vis4)rows4.forEach(function(r,i){var w=r.firstElementChild.offsetWidth||1,dir=i%2?1:-1;
+        off4[i]=(off4[i]+dir*(1.1+i*.35)+dir*vel4*.9)%w;
+        r.style.transform='translateX('+(((off4[i]%w)-w)%w)+'px)'});
+      requestAnimationFrame(loop4);
+    })();
   }
 
   // Menú en móvil: el botón abre y cierra la navegación a pantalla completa.
