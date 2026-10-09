@@ -61,20 +61,20 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 @media (max-width:640px){.manif__t span{-webkit-text-stroke-width:1.3px}}
 @media (prefers-reduced-motion:reduce){.manif__photo::before{animation:none}.manif__t span{transition:none}}
 
-/* «Somos»: fondo rojo con tres franjas de texto gigante en diagonal que corren en sentidos opuestos
-   y se aceleran con el scroll; el mensaje va en una tarjeta clara inclinada. */
-.somos4{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:clamp(90px,12vw,150px) var(--pad);overflow:hidden;background:var(--red)}
+/* «Somos»: fondo claro con tres franjas de texto gigante en silueta roja, en diagonal, que corren en sentidos
+   opuestos y se aceleran con el scroll; el mensaje va en una tarjeta roja inclinada, abajo a la izquierda. */
+.somos4{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;justify-content:flex-start;padding:clamp(90px,12vw,150px) var(--pad) clamp(48px,9vh,110px);overflow:hidden;background:var(--white)}
 .somos4__bands{position:absolute;inset:-10% -10%;display:flex;flex-direction:column;justify-content:center;transform:rotate(-6deg);font-weight:800;font-size:clamp(70px,15vw,260px);line-height:1.02;letter-spacing:-.03em;pointer-events:none;user-select:none}
-.somos4__row{display:flex;white-space:nowrap;will-change:transform}
+.somos4__row{display:flex;white-space:nowrap;will-change:transform;color:transparent;-webkit-text-stroke:2px rgba(217,51,51,.38)}
 .somos4__row span{flex:none;padding-right:.3em}
-.somos4__row:nth-child(1){color:var(--white)}
-.somos4__row:nth-child(2){color:transparent;-webkit-text-stroke:2.5px var(--ink)}
-.somos4__row:nth-child(3){color:var(--ink)}
-.somos4__card{position:relative;background:var(--white);color:var(--ink);padding:clamp(24px,3.4vw,52px);max-width:min(640px,100%);transform:rotate(3deg);display:flex;flex-direction:column;align-items:flex-start;gap:16px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.somos4__card{position:relative;background:var(--red);color:var(--white);padding:clamp(24px,3.4vw,52px);max-width:min(640px,100%);margin-left:clamp(0px,7vw,130px);transform:rotate(3deg);display:flex;flex-direction:column;align-items:flex-start;gap:16px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .somos4__card:hover{transform:rotate(0) scale(1.03)}
+.somos4__card .eyebrow{color:var(--ink)}
 .somos4__card h1{font-weight:400;font-size:clamp(30px,4vw,56px);line-height:1;letter-spacing:-.03em}
 .somos4__card .lead{font-size:clamp(17px,1.6vw,22px)}
-@media (max-width:640px){.somos4__bands{inset:7% -10%;justify-content:space-between;font-size:27vw}}
+.somos4__card .btn{color:var(--white);border-color:var(--white)}
+.somos4__card .btn:hover{background:var(--white);border-color:var(--white);color:var(--ink)}
+@media (max-width:640px){.somos4__bands{inset:7% -10%;justify-content:space-between;font-size:27vw}.somos4__card{margin-left:0}}
 @media (prefers-reduced-motion:reduce){.somos4__card{transition:none}}
 
 /* Secciones */
