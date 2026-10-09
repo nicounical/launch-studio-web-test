@@ -12,6 +12,18 @@
     else manif.classList.add('in');
   }
 
+  // «Somos»: cada palabra se enciende según avanza el scroll por la sección.
+  var st=document.getElementById('somos-text');
+  if(st&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var KEY=/^(marcas|stands|eventos|experiencias)/,sec=document.getElementById('somos'),ball=document.getElementById('somos-ball');
+    st.setAttribute('aria-label',st.textContent.trim());
+    st.innerHTML=st.textContent.trim().split(/\s+/).map(function(w){return '<span aria-hidden="true"'+(KEY.test(w)?' class="k"':'')+'>'+w+'</span>'}).join(' ');
+    st.classList.add('is-scrub');
+    var sp=st.children,scrub=function(){var r=sec.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(r.height-window.innerHeight))),n=Math.round(p*1.15*sp.length);
+      for(var i=0;i<sp.length;i++)sp[i].classList.toggle('on',i<n);if(ball)ball.style.left=(p*100)+'%'};
+    window.addEventListener('scroll',scrub,{passive:true});window.addEventListener('resize',scrub);scrub();
+  }
+
   // Menú en móvil: el botón abre y cierra la navegación a pantalla completa.
   var tg=document.getElementById('nav-toggle');
   if(nav&&tg){

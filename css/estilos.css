@@ -61,6 +61,17 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 @media (max-width:640px){.manif__t span{-webkit-text-stroke-width:1.3px}}
 @media (prefers-reduced-motion:reduce){.manif__photo::before{animation:none}.manif__t span{transition:none}}
 
+/* «Somos»: la pantalla se queda fija y el texto se enciende palabra a palabra al bajar; las palabras clave, en rojo. */
+.somos2{height:280vh;background:var(--ink);color:var(--white)}
+.somos2__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(18px,2.4vw,30px);padding:110px var(--pad) 90px;overflow:hidden;max-width:1600px;margin:0 auto}
+.somos2__text{font-weight:300;font-size:clamp(30px,5.4vw,92px);line-height:1.08;letter-spacing:-.03em;max-width:17em;text-wrap:wrap}
+.somos2__text.is-scrub span{color:transparent;-webkit-text-stroke:1px rgba(241,240,232,.34);transition:color .35s,-webkit-text-stroke-color .35s}
+.somos2__text.is-scrub span.on{color:var(--white);-webkit-text-stroke-color:transparent}
+.somos2__text.is-scrub span.k.on{color:var(--red)}
+.somos2__rail{position:absolute;left:var(--pad);right:var(--pad);bottom:44px;height:1px;background:rgba(241,240,232,.25)}
+.somos2__ball{position:absolute;top:-9px;left:0;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--red)}
+@media (max-width:560px){.somos2{height:240vh}}
+
 /* Secciones */
 .sec{position:relative;padding-block:clamp(72px,10vw,150px);overflow:hidden}
 .sec--tight{padding-top:0}
