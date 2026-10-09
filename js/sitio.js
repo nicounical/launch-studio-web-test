@@ -5,6 +5,13 @@
     var f=function(){nav.classList.toggle('is-scrolled',window.scrollY>window.innerHeight-80)};
     f();window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);
   }
+  // Bloque «We create»: las letras se rellenan cada vez que el bloque entra en pantalla.
+  var manif=document.getElementById('manifiesto');
+  if(manif){
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){manif.classList.toggle('in',e.isIntersecting)})},{threshold:.4}).observe(manif);
+    else manif.classList.add('in');
+  }
+
   // Menú en móvil: el botón abre y cierra la navegación a pantalla completa.
   var tg=document.getElementById('nav-toggle');
   if(nav&&tg){

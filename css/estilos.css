@@ -47,6 +47,20 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .hero__cue span{position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--hero-fg);animation:cue 1.6s infinite}
 @keyframes cue{0%{transform:translateY(0);opacity:1}100%{transform:translateY(14px);opacity:0}}
 
+/* Bloque «We create. We build. We launch.»: foto del mar en blanco y negro, algo desenfocada,
+   y tres líneas en silueta que se rellenan una tras otra al entrar en pantalla. */
+.manif{position:relative;height:100vh;height:100svh;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;padding:clamp(20px,5vw,80px);background:var(--ink);color:var(--white);isolation:isolate}
+.manif__photo{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.manif__photo::before{content:"";position:absolute;inset:-4%;background:url(../assets/img/manifiesto/manifiesto-mar-paddle-surf.jpg) 50% 50%/cover no-repeat;filter:grayscale(1) blur(3px) contrast(1.05);animation:manif-zoom 26s ease-in-out infinite alternate}
+.manif__photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,.38) 45%,rgba(11,11,11,.62))}
+@keyframes manif-zoom{from{transform:scale(1)}to{transform:scale(1.1)}}
+.manif__t{margin:0;font-weight:800;font-size:clamp(44px,11.2vw,212px);line-height:.94;letter-spacing:-.035em;text-transform:uppercase}
+.manif__t span{display:block;width:max-content;max-width:100%;color:transparent;-webkit-text-stroke:2px var(--white);transition:color .7s,-webkit-text-stroke-color .7s;transition-delay:calc(.4s + var(--i)*.55s)}
+.manif.in .manif__t span{color:var(--white)}
+.manif.in .manif__t span:last-child{color:var(--red);-webkit-text-stroke-color:var(--red)}
+@media (max-width:640px){.manif__t span{-webkit-text-stroke-width:1.3px}}
+@media (prefers-reduced-motion:reduce){.manif__photo::before{animation:none}.manif__t span{transition:none}}
+
 /* Secciones */
 .sec{position:relative;padding-block:clamp(72px,10vw,150px);overflow:hidden}
 .sec--tight{padding-top:0}
