@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entradas del logo — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Catálogo de formas de entrar del logo en la portada. Cada recuadro reproduce una en bucle. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6d6b63;--line:rgba(11,11,11,.14);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased;padding:clamp(28px,5vw,64px) clamp(16px,4vw,56px) 72px}
+h1{font-weight:300;font-size:clamp(34px,5.4vw,76px);letter-spacing:-.035em;line-height:1;margin:10px 0 16px}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);margin:0}
+.lead{font-size:clamp(16px,1.5vw,20px);line-height:1.5;max-width:44em;margin:0;color:var(--grey)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:clamp(20px,2.6vw,36px);margin-top:clamp(28px,4vw,52px)}
+figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.stage{aspect-ratio:10/7;overflow:hidden;border:1px solid var(--line)}
+.stage svg{display:block;width:100%;height:100%}
+figcaption{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:baseline}
+.n{font:400 13px var(--mono);letter-spacing:.06em;color:var(--red);grid-row:span 2}
+.t{font-weight:500;font-size:18px;letter-spacing:-.01em}
+.t small{font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:8px;white-space:nowrap}
+.d{font-size:15px;line-height:1.45;color:var(--grey)}
+</style>
+</head>
+<body>
+<p class="eyebrow">Portada</p>
+<h1>Formas de entrar del logo</h1>
+<p class="lead">Diez entradas distintas, cada una en bucle. Las cuatro primeras ya están en la portada; las otras seis son nuevas. Dime los números que te gustan y hago que la portada vaya alternando solo esas, sin repetir dos veces seguidas la misma.</p>
+<div class="grid" id="grid"></div>
+
+<script>
+(function(){
+  var R=71.1,BX=888.4,BY=572.1,FLOOR=643.2,PX=800,PY=430;
+  var LPATH='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
+  var SC=[{bg:'#F1F0E8',logo:'#0b0b0b',ball:'#0b0b0b'},{bg:'#D93333',logo:'#F1F0E8',ball:'#F1F0E8'},{bg:'#0b0b0b',logo:'#F1F0E8',ball:'#D93333'}];
+  var cl=function(x){return Math.max(0,Math.min(1,x))},ease=function(x){return 1-Math.pow(1-cl(x),3)},
+      io=function(x){x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},
+      back=function(x){x=cl(x)-1;return 1+2.70158*x*x*x+1.70158*x*x};
+  function fall(t){
+    var g=4200,drop=880,rest=.45,y=-drop,vy=0,tt=t,imp=0;
+    if(t<0)return{y:-drop-300,sq:0};
+    for(var n=0;n<12;n++){
+      var tf=(-vy+Math.sqrt(vy*vy-2*g*y))/g;
+      if(tt<tf)return{y:y+vy*tt+.5*g*tt*tt,sq:imp*Math.exp(-15*tt)};
+      tt-=tf;var vi=vy+g*tf;imp=Math.min(.2,vi/9000);vy=-vi*rest;y=0;
+      if(-vy<100)break;
+    }
+    return{y:0,sq:imp*Math.exp(-15*tt)};
+  }
+  // Transformación de la L: desplazamiento, escala, aplastamiento y giro alrededor de un punto.
+  function T(o){o=o||{};var cx=o.cx==null?800:o.cx,cy=o.cy==null?FLOOR:o.cy,sc=o.sc==null?1:o.sc,sq=o.sq||0;
+    return 'translate('+(cx+(o.dx||0))+' '+(cy+(o.dy||0))+') rotate('+(o.rot||0)+') scale('+sc*(1+sq)+' '+sc*(1-sq)+') translate('+(-cx)+' '+(-cy)+')'}
+  var ENT=[
+   {t:'Caída con rebote',d:'El logo entero cae desde arriba y rebota.',now:1,f:function(v){var f=fall(v-.05);return{L:T({dy:f.y,sq:f.sq}),by:BY+f.y,sq:f.sq}}},
+   {t:'La L sube, la bola cae',d:'La L emerge desde abajo y la bola llega después desde arriba.',now:1,f:function(v){var f=fall(v-.3);return{L:T({dy:760*(1-back(v/.7))}),by:BY+f.y,sq:f.sq}}},
+   {t:'Desde los lados',d:'La L entra por la izquierda y la bola rueda desde la derecha.',now:1,f:function(v){return{L:T({dx:-950*(1-ease(v/.7))}),bx:BX+950*(1-ease((v-.2)/1))}}},
+   {t:'Aparece de golpe',d:'La L crece con un pequeño exceso y la bola cae en su sitio.',now:1,f:function(v){var f=fall(v-.35);return{L:T({sc:v<=0?0:back(v/.6)}),by:BY+f.y,sq:f.sq}}},
+   {t:'Péndulo',d:'El logo entra colgado desde arriba y se balancea hasta pararse.',f:function(v){var a=95*Math.exp(-1.9*v)*Math.cos(4.6*v),r=a*Math.PI/180,x=BX-800,y=BY+200;
+      return{L:'rotate('+a+' 800 -200)',bx:800+x*Math.cos(r)-y*Math.sin(r),by:-200+x*Math.sin(r)+y*Math.cos(r)}}},
+   {t:'Se dibuja',d:'La L se va destapando de arriba abajo mientras la bola baja a su lado.',f:function(v){var k=io(v/.9),s=v-.9;
+      return{L:T(),clip:430*k,by:-90+(BY+90)*k,sq:s>0?.22*Math.exp(-7*s)*Math.cos(18*s):0}}},
+   {t:'Nace de la bola',d:'Una bola grande aparece en el centro, se encoge hasta su sitio y de ella sale la L.',f:function(v){var k=io((v-.45)/.65);
+      return{L:T({cx:BX,cy:BY,sc:back((v-.5)/.65)}),hideL:v<.5,bx:PX+(BX-PX)*k,by:PY+(BY-PY)*k,br:R*(3.4*back(v/.4)*(1-k)+k)}}},
+   {t:'Choque',d:'La L cae elástica y la bola llega disparada desde la derecha y rebota contra ella.',f:function(v){var f=fall(v-.05),s=v-1.0;
+      return{L:T({dy:f.y,sq:f.sq*2.2,dx:s>0?-16*Math.exp(-6*s)*Math.cos(22*s):0}),bx:s<0?BX+820*(1-ease((v-.5)/.5)):BX+110*Math.exp(-3.6*s)*Math.abs(Math.sin(8*s)),sq:s>0?-.2*Math.exp(-9*s):0}}},
+   {t:'Zoom',d:'El logo empieza enorme, llenando la pantalla, y se aleja hasta su tamaño.',f:function(v){var s=v-.75,sc=1+10*Math.pow(1-cl(v/.75),3)+(s>0?.07*Math.exp(-6*s)*Math.sin(16*s):0);
+      return{L:T({cx:PX,cy:PY,sc:sc}),bx:PX+(BX-PX)*sc,by:PY+(BY-PY)*sc,br:R*sc,op:cl(v/.12)}}},
+   {t:'Órbita',d:'La L aparece y la bola da dos vueltas a su alrededor antes de posarse.',f:function(v){var k=ease(v/1.35),cx=760,cy=430,re=Math.hypot(BX-cx,BY-cy),te=Math.atan2(BY-cy,BX-cx),th=te-4*Math.PI*(1-k),ro=re*(1+1.3*(1-k));
+      return{L:T({cx:PX,cy:PY,sc:v<=0?0:back(v/.5)}),bx:cx+ro*Math.cos(th),by:cy+ro*Math.sin(th),br:R*(.45+.55*k)}}}
+  ];
+  var grid=document.getElementById('grid'),tiles=[];
+  ENT.forEach(function(e,i){
+    var c=SC[i%3],n=('0'+(i+1)).slice(-2),fig=document.createElement('figure');
+    fig.innerHTML='<div class="stage"><svg viewBox="300 60 1000 700" role="img" aria-label="'+e.t+'"><rect x="-2000" y="-2000" width="5600" height="4900" fill="'+c.bg+'"/>'+
+      '<defs><clipPath id="cp'+i+'"><rect x="0" y="217" width="1600" height="900"/></clipPath></defs>'+
+      '<g clip-path="url(#cp'+i+')"><g fill="'+c.logo+'"><path transform="translate(502 132) scale(.3)" d="'+LPATH+'"/></g></g>'+
+      '<ellipse fill="'+c.ball+'" cx="'+BX+'" cy="'+BY+'" rx="'+R+'" ry="'+R+'"/></svg></div>'+
+      '<figcaption><span class="n">'+n+'</span><span class="t">'+e.t+(e.now?'<small>ya en la portada</small>':'')+'</span><span class="d">'+e.d+'</span></figcaption>';
+    grid.appendChild(fig);
+    var svg=fig.querySelector('svg');
+    tiles.push({e:e,L:svg.querySelector('g>g'),clip:svg.querySelector('clipPath rect'),wrap:svg.querySelector('g[clip-path]'),ball:svg.querySelector('ellipse'),off:i*.23});
+  });
+  function draw(t,v){
+    var o=t.e.f(v),r=o.br==null?R:Math.max(0,o.br),sq=o.sq||0,rx=r*(1+sq),ry=r*(1-sq);
+    t.L.setAttribute('transform',o.L);t.L.setAttribute('opacity',o.hideL?0:(o.op==null?1:o.op));
+    t.clip.setAttribute('height',o.clip==null?900:o.clip);
+    t.ball.setAttribute('cx',o.bx==null?BX:o.bx);t.ball.setAttribute('cy',(o.by==null?BY:o.by)+(r-ry));
+    t.ball.setAttribute('rx',rx);t.ball.setAttribute('ry',ry);t.ball.setAttribute('opacity',o.op==null?1:o.op);
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){tiles.forEach(function(t){draw(t,9)});return}
+  var LOOP=3.4;
+  (function frame(now){tiles.forEach(function(t){draw(t,((now/1000+t.off)%LOOP)-.25)});requestAnimationFrame(frame)})(performance.now());
+})();
+</script>
+</body>
+</html>
