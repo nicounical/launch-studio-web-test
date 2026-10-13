@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones para Nosotros — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Cinco páginas «Nosotros» con más texto explicativo y menos carga visual que el inicio.
+   Arriba se elige qué opción ver; cada una es una página completa. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,80px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol{margin:0;padding:0}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar button{color:var(--white);border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;font:inherit;letter-spacing:inherit;text-transform:inherit}
+.bar button:hover,.bar button:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.page{display:none;padding-top:46px}
+.page.on{display:block}
+.tag{display:inline-block;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:7px 12px;border-radius:4px}
+.wrap{padding-inline:var(--pad);max-width:1440px;margin-inline:auto}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.body p{font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:var(--grey);max-width:34em}
+.body p+p{margin-top:1em}
+.body strong{font-weight:500;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border:1.5px solid currentColor;border-radius:999px;font:500 15px var(--font);text-decoration:none}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.photo{overflow:hidden;background:#dddbd0}
+.dot{display:inline-block;width:.18em;height:.18em;border-radius:50%;background:var(--red);margin-left:.05em}
+.place{display:flex;align-items:center;gap:12px;font:400 13px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.place::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
+/* aparición suave al bajar */
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* 1 · Editorial a dos columnas */
+.p1 .top{padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px)}
+.p1 h1{font-weight:300;font-size:clamp(46px,8.4vw,140px);line-height:.98;letter-spacing:-.045em;margin-top:14px}
+.p1 .photo{aspect-ratio:21/9}
+.p1 .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(28px,6vw,110px);padding-block:clamp(60px,8vw,120px)}
+.p1 .stick{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column;gap:18px}
+.p1 .stick h2{font-weight:400;font-size:clamp(26px,2.8vw,42px);line-height:1.15;letter-spacing:-.02em}
+.p1 .list{list-style:none;margin-top:clamp(40px,5vw,70px);border-top:1px solid var(--line)}
+.p1 .list li{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.p1 .list b{font:400 13px var(--mono);color:var(--red);padding-top:6px}
+.p1 .list h3{font-weight:500;font-size:clamp(19px,1.7vw,24px);margin-bottom:6px}
+.p1 .list p{font-size:16px;line-height:1.55;color:var(--grey)}
+
+/* 2 · La foto se abre desde un círculo */
+.p2 .hero{height:220vh;position:relative}
+.p2 .pin{position:sticky;top:46px;height:calc(100vh - 46px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.p2 .mask{position:absolute;inset:0;clip-path:circle(var(--r,14%) at 50% 50%)}
+.p2 .mask img{transform:scale(var(--s,1.25))}
+.p2 .ttl{position:relative;text-align:center;color:var(--white);mix-blend-mode:difference;font-weight:300;font-size:clamp(44px,8vw,132px);line-height:1;letter-spacing:-.045em}
+.p2 .txt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);padding-block:clamp(70px,9vw,140px)}
+.p2 .txt h2{font-weight:300;font-size:clamp(30px,3.6vw,56px);line-height:1.1;letter-spacing:-.03em}
+.p2 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,44px);padding-bottom:clamp(70px,9vw,140px)}
+.p2 .trio article{display:flex;flex-direction:column;gap:10px}
+.p2 .trio .photo{aspect-ratio:1;border-radius:50%;margin-bottom:12px;width:min(100%,260px)}
+.p2 .trio h3{font-weight:500;font-size:20px}
+.p2 .trio p{font-size:16px;line-height:1.55;color:var(--grey)}
+
+/* 3 · Manifiesto con cita */
+.p3 .top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(28px,6vw,100px);align-items:end;padding-block:clamp(80px,10vw,150px) clamp(50px,6vw,90px)}
+.p3 h1{font-weight:300;font-size:clamp(40px,6.4vw,108px);line-height:1;letter-spacing:-.04em;margin-top:14px}
+.p3 .quote{background:var(--red);color:var(--white);padding-block:clamp(60px,8vw,120px);position:relative;overflow:hidden}
+.p3 .quote p{font-weight:300;font-size:clamp(28px,4.2vw,68px);line-height:1.12;letter-spacing:-.03em;max-width:18em}
+.p3 .quote .ghost{position:absolute;right:-.1em;bottom:-.3em;font-weight:800;font-size:clamp(200px,34vw,560px);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(241,240,232,.25);pointer-events:none}
+.p3 .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px);padding-block:clamp(60px,8vw,120px)}
+.p3 .three article{border-top:2px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.p3 .three h3{font-weight:500;font-size:20px}
+.p3 .three p{font-size:16px;line-height:1.55;color:var(--grey)}
+.p3 .strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;height:min(50vh,460px);padding-bottom:clamp(60px,8vw,110px)}
+
+/* 4 · El párrafo se enciende al bajar */
+.p4 .top{padding-block:clamp(70px,9vw,130px) 0}
+.p4 .lit{font-weight:300;font-size:clamp(28px,4.2vw,68px);line-height:1.15;letter-spacing:-.03em;max-width:19em;margin-top:18px}
+.p4 .lit span{color:rgba(11,11,11,.16);transition:color .4s}
+.p4 .lit span.on{color:var(--ink)}
+.p4 .lit span.k.on{color:var(--red)}
+.p4 .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:center;padding-block:clamp(70px,9vw,130px)}
+.p4 .row .photo{aspect-ratio:4/5;border-radius:999px 999px 0 0}
+.p4 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);margin-bottom:clamp(70px,9vw,130px)}
+.p4 .cards article{background:var(--white);padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:12px;transition:background .4s,color .4s}
+.p4 .cards article:hover{background:var(--ink);color:var(--white)}
+.p4 .cards article:hover p{color:rgba(241,240,232,.75)}
+.p4 .cards b{font:400 13px var(--mono);color:var(--red)}
+.p4 .cards h3{font-weight:400;font-size:clamp(22px,2vw,30px);letter-spacing:-.02em}
+.p4 .cards p{font-size:16px;line-height:1.55;color:var(--grey);transition:color .4s}
+
+/* 5 · Preguntas que se despliegan */
+.p5 .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,100px);align-items:end;padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px)}
+.p5 h1{font-weight:300;font-size:clamp(44px,7.4vw,124px);line-height:.98;letter-spacing:-.045em;margin-top:14px}
+.p5 .tick{display:flex;white-space:nowrap;overflow:hidden;border-block:1px solid var(--line);font:400 clamp(13px,1.2vw,16px) var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:14px 0}
+.p5 .tick span{flex:none;padding-right:2.5em;animation:marq 40s linear infinite}
+@keyframes marq{to{transform:translateX(-100%)}}
+.p5 .acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(28px,6vw,100px);padding-block:clamp(60px,8vw,120px)}
+.p5 .acc .photo{position:sticky;top:90px;aspect-ratio:4/5;align-self:start}
+.p5 details{border-bottom:1px solid var(--line)}
+.p5 details:first-child{border-top:1px solid var(--line)}
+.p5 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:400;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.02em}
+.p5 summary::-webkit-details-marker{display:none}
+.p5 summary i{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);position:relative;transition:background .3s,transform .4s}
+.p5 summary i::before,.p5 summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.p5 summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s}
+.p5 details[open] summary i{background:var(--red);border-color:var(--red);color:var(--white)}
+.p5 details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.p5 details p{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--grey);max-width:34em;padding-bottom:26px}
+
+.cta{background:var(--ink);color:var(--white);padding-block:clamp(60px,8vw,110px)}
+.cta .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px}
+.cta h2{font-weight:300;font-size:clamp(30px,4.4vw,72px);line-height:1;letter-spacing:-.035em;max-width:12em}
+.cta .btn:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+
+@media (max-width:760px){
+  .p1 .cols,.p2 .txt,.p3 .top,.p4 .row,.p5 .top,.p5 .acc{grid-template-columns:1fr}
+  .p1 .stick,.p5 .acc .photo{position:static}
+  .p2 .trio,.p3 .three,.p4 .cards{grid-template-columns:1fr}
+  .p3 .strip{grid-template-columns:1fr 1fr;height:auto}.p3 .strip .photo{aspect-ratio:1}.p3 .strip .photo:first-child{grid-column:span 2;aspect-ratio:16/10}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.p5 .tick span{animation:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Nosotros · cinco opciones</span>
+  <button data-p="1" aria-pressed="true">1 · Editorial</button><button data-p="2" aria-pressed="false">2 · Círculo</button><button data-p="3" aria-pressed="false">3 · Cita</button><button data-p="4" aria-pressed="false">4 · Se enciende</button><button data-p="5" aria-pressed="false">5 · Preguntas</button></nav>
+
+<!-- 1 · Editorial a dos columnas -->
+<main class="page p1 on" id="p1">
+  <div class="wrap top rv"><p class="tag">Opción 1 · Editorial a dos columnas</p><br><br><p class="eyebrow">Nosotros</p><h1>Posicionamos marcas<span class="dot"></span></h1></div>
+  <div class="wrap"><div class="photo rv" data-img="portada/portada-venca.jpg|VENCO.JPG"></div></div>
+  <div class="wrap cols">
+    <div class="stick"><p class="place">Barcelona · Presencia internacional</p><h2>Estudio creativo especializado en stands y eventos corporativos.</h2></div>
+    <div>
+      <div class="body rv"><p><strong>Launch Studio es un estudio creativo de Barcelona.</strong> Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+        <p>Acompañamos a cada marca desde la primera idea hasta la entrega final, con un único interlocutor que se ocupa de cada detalle: el concepto, la producción, el montaje y el día del evento.</p>
+        <p>Trabajamos con una red de talleres y proveedores de confianza en toda Europa, y podemos coordinar varios proyectos de una misma marca a la vez sin perder la visión de conjunto.</p></div>
+      <ol class="list rv"><li><b>01</b><div><h3>Llave en mano</h3><p>Un único punto de contacto que se encarga de cada detalle, desde la primera idea hasta la entrega final.</p></div></li>
+        <li><b>02</b><div><h3>Gestión en paralelo</h3><p>Coordinamos varios proyectos de una misma marca al mismo tiempo, manteniendo una visión global y el mismo nivel de atención en cada uno.</p></div></li>
+        <li><b>03</b><div><h3>Partners locales en toda Europa</h3><p>Una red de talleres y proveedores de confianza para producir con agilidad y con los mismos estándares de calidad.</p></div></li></ol>
+    </div>
+  </div>
+  <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
+</main>
+
+<!-- 2 · La foto se abre desde un círculo -->
+<main class="page p2" id="p2">
+  <section class="hero" id="p2hero"><div class="pin"><div class="mask" id="p2mask"><div class="photo" style="height:100%" data-img="portada/portada-venca.jpg|VENCO.JPG"></div></div>
+    <h1 class="ttl">Posicionamos<br>marcas.</h1></div></section>
+  <div class="wrap txt"><div class="rv"><p class="tag">Opción 2 · La foto se abre desde un círculo</p><br><br><p class="eyebrow">Nosotros</p><br><h2>Un estudio creativo de Barcelona, especializado en stands y eventos corporativos.</h2></div>
+    <div class="body rv"><p>Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+      <p>Nos ocupamos de todo el recorrido: escuchamos lo que necesitas, diseñamos un concepto a medida, planificamos cada fase, producimos con nuestra red de colaboradores, supervisamos el montaje y lo entregamos listo para que solo tengas que centrarte en tu evento.</p></div></div>
+  <div class="wrap trio">
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-1-llave-en-mano-danone.jpg|DANONE.JPG"></div><h3>Llave en mano</h3><p>Un único punto de contacto, desde la primera idea hasta la entrega final.</p></article>
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg|JANNSEN.JPG"></div><h3>Gestión en paralelo</h3><p>Varios proyectos de una misma marca a la vez, con la misma atención en cada uno.</p></article>
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-3-partners-locales-biohorizons.jpg|BIOHORIZONS.JPG"></div><h3>Partners en toda Europa</h3><p>Talleres y proveedores de confianza para producir con agilidad y calidad.</p></article></div>
+  <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
+</main>
+
+<!-- 3 · Manifiesto con cita -->
+<main class="page p3" id="p3">
+  <div class="wrap top"><div class="rv"><p class="tag">Opción 3 · Cita y tres columnas</p><br><br><p class="eyebrow">Nosotros</p><h1>Estudio creativo de stands y eventos corporativos.</h1></div>
+    <div class="body rv"><p>Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa. Desde Barcelona, con presencia internacional.</p></div></div>
+  <section class="quote"><div class="ghost" aria-hidden="true">launch</div><div class="wrap"><p class="rv">«Un único interlocutor, de la primera idea a la entrega final.»</p></div></section>
+  <div class="wrap three">
+    <article class="rv"><h3>Cómo empezamos</h3><p>Antes de diseñar nada, queremos entender tu marca, tus objetivos y qué necesitas realmente.</p></article>
+    <article class="rv"><h3>Cómo producimos</h3><p>Con una red de talleres y proveedores de confianza en toda Europa, con los mismos estándares de calidad en cada lugar.</p></article>
+    <article class="rv"><h3>Cómo entregamos</h3><p>Supervisamos cada fase clave y lo dejamos todo listo para que solo tengas que centrarte en tu evento.</p></article></div>
+  <div class="wrap strip"><div class="photo" data-img="portada/portada-venca.jpg|VENCO.JPG"></div><div class="photo" data-img="ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg|JANNSEN.JPG"></div><div class="photo" data-img="ventajas/ventaja-3-partners-locales-biohorizons.jpg|BIOHORIZONS.JPG"></div></div>
+  <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
+</main>
+
+<!-- 4 · El párrafo se enciende -->
+<main class="page p4" id="p4">
+  <div class="wrap top"><p class="tag">Opción 4 · El párrafo se enciende al bajar</p><br><br><p class="eyebrow">Nosotros</p>
+    <p class="lit" id="lit">Somos un estudio creativo de Barcelona. Posicionamos marcas creando stands, eventos y experiencias que hacen que cada proyecto cobre vida en cualquier punto de Europa.</p></div>
+  <div class="wrap row"><div class="photo rv" data-img="portada/portada-venca.jpg|VENCO.JPG"></div>
+    <div class="body rv"><p><strong>De la primera idea a la entrega final.</strong> Un único interlocutor coordina el concepto, la producción, el montaje y el día del evento, para que no tengas que preocuparte de nada más.</p>
+      <p>Producimos con talleres y proveedores de confianza en toda Europa, y si tu marca tiene varios proyectos a la vez, los llevamos en paralelo con la misma atención en cada uno.</p></div></div>
+  <div class="wrap"><div class="cards">
+    <article class="rv"><b>01</b><h3>Llave en mano</h3><p>Un único punto de contacto que se encarga de cada detalle.</p></article>
+    <article class="rv"><b>02</b><h3>Gestión en paralelo</h3><p>Varios proyectos a la vez, con visión global.</p></article>
+    <article class="rv"><b>03</b><h3>Partners en toda Europa</h3><p>Producción ágil con los mismos estándares de calidad.</p></article></div></div>
+  <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
+</main>
+
+<!-- 5 · Preguntas que se despliegan -->
+<main class="page p5" id="p5">
+  <div class="wrap top"><div class="rv"><p class="tag">Opción 5 · Preguntas que se despliegan</p><br><br><p class="eyebrow">Nosotros</p><h1>Posicionamos marcas<span class="dot"></span></h1></div>
+    <div class="body rv"><p>Launch Studio es un estudio creativo de Barcelona especializado en stands y eventos corporativos. Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p></div></div>
+  <div class="tick" aria-hidden="true"><span>Barcelona ● Presencia internacional ● Stands ● Eventos corporativos ● Experiencias de marca ●</span><span>Barcelona ● Presencia internacional ● Stands ● Eventos corporativos ● Experiencias de marca ●</span></div>
+  <div class="wrap acc"><div class="photo" data-img="portada/portada-venca.jpg|VENCO.JPG"></div>
+    <div>
+      <details open><summary>¿Qué hacemos?<i></i></summary><p>Diseñamos, producimos y montamos stands para ferias y congresos, eventos corporativos, pop-up stores y experiencias de marca.</p></details>
+      <details><summary>¿Cómo trabajamos?<i></i></summary><p>Escuchamos, diseñamos un concepto a medida, planificamos cada fase, producimos con nuestra red de colaboradores, supervisamos el montaje y entregamos todo listo.</p></details>
+      <details><summary>¿Con quién hablas?<i></i></summary><p>Con una sola persona. Un único punto de contacto se encarga de cada detalle, desde la primera idea hasta la entrega final.</p></details>
+      <details><summary>¿Dónde trabajamos?<i></i></summary><p>Desde Barcelona y en toda Europa, con una red de talleres y proveedores de confianza que producen con los mismos estándares de calidad.</p></details>
+      <details><summary>¿Y si tenemos varios proyectos a la vez?<i></i></summary><p>Los coordinamos en paralelo, con una visión global y el mismo nivel de atención en cada uno.</p></details>
+    </div></div>
+  <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
+</main>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  // Fotos: primero la copia local; si no está, la de la web actual.
+  document.querySelectorAll('[data-img]').forEach(function(d){var p=d.dataset.img.split('|'),im=new Image();im.alt='';im.loading='lazy';
+    im.onerror=function(){im.onerror=null;im.src=OLD+p[1]};im.src='assets/img/'+p[0];d.appendChild(im)});
+  // Cambio de opción
+  var pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('[data-p]');
+  function show(n){pages.forEach(function(p){p.classList.toggle('on',p.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);onScroll();reveal()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Aparición suave
+  var io;if(!calm&&'IntersectionObserver' in window){document.documentElement.classList.add('js');
+    io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'})}
+  function reveal(){if(io)document.querySelectorAll('.page.on .rv:not(.in)').forEach(function(el){io.observe(el)})}
+  reveal();
+  // Opción 2: el círculo crece hasta ocupar la pantalla
+  var hero=document.getElementById('p2hero'),mask=document.getElementById('p2mask');
+  // Opción 4: el párrafo se enciende
+  var lit=document.getElementById('lit'),KEY=/^(marcas|stands|eventos|experiencias|Europa)/;
+  lit.setAttribute('aria-label',lit.textContent.trim());
+  lit.innerHTML=lit.textContent.trim().split(/\s+/).map(function(w){return '<span aria-hidden="true"'+(KEY.test(w)?' class="k"':'')+'>'+w+'</span>'}).join(' ');
+  var ls=lit.children;
+  function onScroll(){
+    if(hero.offsetParent){var r=hero.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(r.height-innerHeight)));
+      if(calm)p=1;mask.style.setProperty('--r',(14+62*p*p)+'%');mask.style.setProperty('--s',(1.25-.25*p).toFixed(3))}
+    if(lit.offsetParent){var t=lit.getBoundingClientRect(),q=calm?1:Math.max(0,Math.min(1,(innerHeight*.8-t.top)/(innerHeight*.6))),n=Math.round(q*1.1*ls.length);
+      for(var i=0;i<ls.length;i++)ls[i].classList.toggle('on',i<n)}
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
