@@ -101,6 +101,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .f-rail{position:absolute;left:var(--pad);right:var(--pad);bottom:40px;height:1px;background:rgba(241,240,232,.25)}
 .f-ball{position:absolute;top:-10px;left:0;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--red)}
 
+@media (min-width:761px){.e-q:first-child{grid-column:span 2}}
 @media (max-width:760px){
   .a-row{grid-template-columns:1fr}.a-row .txt{max-height:0;overflow:hidden;transition:max-height .5s,opacity .35s}.a-row.on .txt{max-height:16em}.a-float{display:none}
   .b-strips{flex-direction:column;height:auto}.b-s{flex:none;height:64px;transition:height .7s cubic-bezier(.7,0,.2,1)}.b-s.on{flex:none;height:420px}
@@ -121,7 +122,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <section class="opt b" id="b"><p class="tag">Opción 2 · Franjas que se abren</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="b-strips" id="bStrips"></div></section>
 <section class="opt c" id="c"><p class="tag">Opción 3 · Cartas que se apilan</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div id="cStack"></div></section>
 <section class="opt d" id="d"><p class="tag">Opción 4 · Índice fijo a la izquierda</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="d-grid"><nav class="d-nav" id="dNav" aria-label="Servicios"></nav><div id="dList"></div></div></section>
-<section class="opt e" id="e"><p class="tag">Opción 5 · Cuatro cuadrantes con la bola</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="e-grid" id="eGrid"></div></section>
+<section class="opt e" id="e"><p class="tag">Opción 5 · Cuadrantes con la bola</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="e-grid" id="eGrid"></div></section>
 <section class="opt f dark" id="f"><div class="f-pin"><div class="f-track" id="fTrack"><div class="f-intro"><p class="tag">Opción 6 · Recorrido horizontal</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2></div></div><div class="f-rail" aria-hidden="true"><div class="f-ball" id="fBall"></div></div></div></section>
 
 <script>
@@ -130,12 +131,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   var S=[
    {k:'stands',t:'Stands',d:'Diseñamos, fabricamos y montamos stands para congresos y ferias: corporativos, comerciales e institucionales, con integración audiovisual y acabados cuidados.',img:'06-stand-janssen-oncology.jpg',old:'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG',rel:[['06-stand-janssen-oncology','Janssen Oncology'],['07-stand-truphone','Truphone'],['08-stand-ti-medi-jvm','TI-MEDI / JVM'],['09-stand-biohorizons','BioHorizons']]},
    {k:'eventos',t:'Eventos corporativos',d:'Diseño y producción integral del espacio: escenografía, estructuras, iluminación y el resto de elementos técnicos, coordinando cada fase.',img:'04-evento-corporativo-ntt-data.jpg',old:'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',rel:[['04-evento-corporativo-ntt-data','NTT DATA'],['02-evento-promocion-base4','BASE4']]},
-   {k:'experiencias',t:'Experiencias de marca',d:'Propuestas que convierten la marca en una experiencia y refuerzan el vínculo con su comunidad.',img:'01-taller-amona.jpg',old:'project-1.JPG',rel:[['01-taller-amona','Taller Amona'],['03-market-the-office-studio','Market']]},
-   {k:'pop-up',t:'Pop-up stores',d:'Producción y montaje de espacios temporales con un fuerte impacto visual: fabricación, instalación y acabados dentro de los plazos previstos.',img:'05-pop-up-store-venca.jpg',old:'5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG',rel:[['05-pop-up-store-venca','Venca']]}];
+   {k:'experiencias',t:'Experiencias de marca',d:'Propuestas que convierten la marca en una experiencia y refuerzan el vínculo con su comunidad.',img:'01-taller-amona.jpg',old:'project-1.JPG',rel:[['01-taller-amona','Taller Amona'],['03-market-the-office-studio','Market'],['05-pop-up-store-venca','Venca']]},
+   {k:'renders',t:'Renders, interiorismo y planimetría',d:'Visualizamos cada espacio antes de producirlo: renders, diseño de interiores y planos técnicos para la fabricación y el montaje.',path:'assets/img/nosotros/nosotros-gradas.jpg',old:'VENCO.JPG',rel:[]},
+   {k:'grafico',t:'Diseño gráfico',d:'La gráfica que acompaña cada stand, evento o espacio de marca, pensada para que la marca se reconozca a primera vista.',img:'03-market-the-office-studio.jpg',old:'project-3.JPG',rel:[]}];
   var $=function(id){return document.getElementById(id)},cl=function(x){return Math.max(0,Math.min(1,x))},n2=function(i){return ('0'+(i+1)).slice(-2)};
-  var src=function(s){return 'assets/img/proyectos/'+s.img};
+  var src=function(s){return s.path||('assets/img/proyectos/'+s.img)};
   var img=function(s){return '<img src="'+src(s)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+OLD+s.old+'\'">'};
-  var rel=function(s){return '<p class="rel"><b>Proyectos</b>'+s.rel.map(function(r){return '<a href="proyectos/'+r[0]+'.html">'+r[1]+'</a>'}).join('')+'</p>'};
+  var rel=function(s){if(!s.rel.length)return '';return '<p class="rel"><b>Proyectos</b>'+s.rel.map(function(r){return '<a href="proyectos/'+r[0]+'.html">'+r[1]+'</a>'}).join('')+'</p>'};
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // 1
