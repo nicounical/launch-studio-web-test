@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones para Servicios — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis maneras de presentar los cuatro servicios. Cada opción ocupa una o varias pantallas. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#8b8a84;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h2,h3,p,ul,ol{margin:0;padding:0}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.opt{position:relative;padding:120px var(--pad) 100px;border-bottom:6px solid var(--ink)}
+.tag{display:inline-block;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:7px 12px;border-radius:4px;margin-bottom:26px}
+.dark{background:var(--ink);color:var(--white)} .dark .tag{background:var(--white);color:var(--ink)}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.h{font-weight:300;font-size:clamp(38px,6vw,96px);line-height:1;letter-spacing:-.035em;margin:12px 0 clamp(30px,4vw,60px)}
+.rel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
+.rel b{font-weight:600;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);margin-right:4px}
+.rel a{font-size:14px;font-weight:400;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:5px 13px;opacity:.85}
+.rel a:hover{background:var(--red);border-color:var(--red);color:var(--white);opacity:1}
+.desc{font-size:clamp(16px,1.45vw,20px);line-height:1.5;max-width:28em}
+
+/* 1 · Lista gigante con foto al cursor */
+.a{overflow:hidden}
+.a-list{list-style:none;border-top:1px solid var(--line)}
+.a-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;padding:clamp(14px,2vw,28px) 0;border-bottom:1px solid var(--line);transition:opacity .35s}
+.a-row h3{font-weight:300;font-size:clamp(40px,7.6vw,124px);line-height:1;letter-spacing:-.045em;transition:color .3s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.a-row .txt{opacity:0;transform:translateX(-14px);transition:opacity .35s,transform .5s}
+.a-list.hot .a-row{opacity:.25}.a-list.hot .a-row.on{opacity:1}
+.a-row.on h3{color:var(--red);transform:translateX(clamp(8px,2vw,30px))}
+.a-row.on .txt{opacity:1;transform:none}
+.a-float{position:absolute;left:0;top:0;width:clamp(200px,22vw,320px);aspect-ratio:4/5;overflow:hidden;pointer-events:none;z-index:4;opacity:0;transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg)) scale(.6);transition:opacity .3s,scale .4s;background:#dddbd0}
+.a-float.on{opacity:1;transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg)) scale(1)}
+
+/* 2 · Franjas que se abren */
+.b-strips{display:flex;gap:4px;height:min(76vh,720px)}
+.b-s{position:relative;flex:1;min-width:0;overflow:hidden;background:var(--ink);color:var(--white);transition:flex .8s cubic-bezier(.7,0,.2,1)}
+.b-s.on{flex:5}
+.b-s img{position:absolute;inset:0;filter:grayscale(1) brightness(.45);transform:scale(1.15);transition:filter .8s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.b-s.on img{filter:brightness(.55);transform:none}
+.b-v{position:absolute;left:50%;bottom:22px;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);font-weight:400;font-size:clamp(20px,2vw,28px);white-space:nowrap;transition:opacity .3s}
+.b-s.on .b-v{opacity:0}
+.b-body{position:absolute;left:0;bottom:0;padding:clamp(18px,2.6vw,40px);width:min(100%,600px);opacity:0;transform:translateY(24px);transition:opacity .4s,transform .6s}
+.b-s.on .b-body{opacity:1;transform:none;transition-delay:.35s}
+.b-body h3{font-weight:300;font-size:clamp(36px,5vw,80px);line-height:1;letter-spacing:-.035em;margin-bottom:12px}
+
+/* 3 · Cartas que se apilan */
+.c-card{position:sticky;top:calc(64px + var(--i)*18px);height:min(78vh,720px);margin-bottom:5vh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);overflow:hidden;transform-origin:50% 0}
+.c-card:nth-child(4n+1){background:#e6e5db}
+.c-card:nth-child(4n+2){background:var(--red);color:var(--white)}
+.c-card:nth-child(4n+3){background:var(--ink);color:var(--white)}
+.c-card:nth-child(4n){background:var(--white);border:1px solid var(--line)}
+.c-txt{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(22px,3.4vw,56px)}
+.c-txt h3{font-weight:300;font-size:clamp(38px,6vw,100px);line-height:.98;letter-spacing:-.04em}
+.c-card:nth-child(4n+2) .rel b{color:var(--ink)}
+
+/* 4 · Índice fijo a la izquierda */
+.d-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,90px)}
+.d-nav{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column;gap:4px}
+.d-nav a{text-decoration:none;font-weight:300;font-size:clamp(28px,3.6vw,58px);line-height:1.15;letter-spacing:-.03em;color:rgba(11,11,11,.22);transition:color .3s,padding .4s}
+.d-nav a.on{color:var(--ink);padding-left:clamp(10px,1.4vw,22px)}
+.d-nav a.on::before{content:"";display:inline-block;width:.24em;height:.24em;border-radius:50%;background:var(--red);margin-right:.3em;vertical-align:.2em}
+.d-item{min-height:80vh;display:flex;flex-direction:column;justify-content:center;gap:20px;scroll-margin-top:90px}
+.d-img{aspect-ratio:16/10;overflow:hidden;background:#dddbd0}
+.d-item h3{font-weight:400;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.02em}
+
+/* 5 · Cuatro cuadrantes con la bola */
+.e-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
+.e-q{position:relative;min-height:min(62vh,560px);overflow:hidden;background:var(--white);display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:clamp(20px,3vw,44px)}
+.e-ball{background:var(--ink);position:absolute;right:clamp(20px,3vw,44px);top:clamp(20px,3vw,44px);width:clamp(90px,11vw,170px);aspect-ratio:1;border-radius:50%;overflow:hidden;transition:width .8s cubic-bezier(.7,0,.2,1),right .8s cubic-bezier(.7,0,.2,1),top .8s cubic-bezier(.7,0,.2,1),border-radius .8s}
+.e-ball img{filter:grayscale(1)}
+.e-q:hover .e-ball,.e-q:focus-within .e-ball{width:240%;right:-70%;top:-70%}
+.e-q:hover .e-ball img{filter:brightness(.5)}
+.e-q h3,.e-q .desc,.e-q .rel{position:relative;transition:color .5s}
+.e-q:hover h3,.e-q:hover .desc,.e-q:hover .rel{color:var(--white)}
+.e-q h3{font-weight:300;font-size:clamp(34px,4.4vw,72px);line-height:1;letter-spacing:-.035em}
+.e-q .n{position:absolute;left:clamp(20px,3vw,44px);top:clamp(20px,3vw,44px);font:400 13px var(--mono);letter-spacing:.06em;color:var(--red)}
+
+/* 6 · Recorrido horizontal */
+.f{padding:0;height:360vh}
+.f-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.f-track{display:flex;align-items:center;gap:clamp(40px,6vw,110px);padding-inline:var(--pad);will-change:transform}
+.f-intro{flex:none;width:min(80vw,560px)}
+.f-panel{flex:none;width:min(86vw,980px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,60px);align-items:center}
+.f-img{aspect-ratio:4/5;max-height:64vh;overflow:hidden;border-radius:50% 50% 0 0;background:#1d1c1a}
+.f-panel h3{font-weight:300;font-size:clamp(40px,5.6vw,92px);line-height:1;letter-spacing:-.04em;margin-bottom:16px}
+.f-rail{position:absolute;left:var(--pad);right:var(--pad);bottom:40px;height:1px;background:rgba(241,240,232,.25)}
+.f-ball{position:absolute;top:-10px;left:0;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--red)}
+
+@media (max-width:760px){
+  .a-row{grid-template-columns:1fr}.a-row .txt{max-height:0;overflow:hidden;transition:max-height .5s,opacity .35s}.a-row.on .txt{max-height:16em}.a-float{display:none}
+  .b-strips{flex-direction:column;height:auto}.b-s{flex:none;height:64px;transition:height .7s cubic-bezier(.7,0,.2,1)}.b-s.on{flex:none;height:420px}
+  .b-v{writing-mode:horizontal-tb;transform:none;left:20px;bottom:auto;top:18px}
+  .c-card{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);height:min(84vh,680px)}
+  .d-grid{grid-template-columns:1fr}.d-nav{display:none}.d-item{min-height:0;padding-bottom:40px}
+  .e-grid{grid-template-columns:1fr}
+  .f-panel{grid-template-columns:1fr;width:82vw}.f-img{aspect-ratio:4/3;max-height:32vh}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Servicios · seis opciones</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a><a href="#f">6</a></nav>
+
+<section class="opt a" id="a"><p class="tag">Opción 1 · Lista gigante con foto al cursor</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><ol class="a-list" id="aList"></ol><div class="a-float" id="aFloat" aria-hidden="true"><img id="aImg" alt=""></div></section>
+<section class="opt b" id="b"><p class="tag">Opción 2 · Franjas que se abren</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="b-strips" id="bStrips"></div></section>
+<section class="opt c" id="c"><p class="tag">Opción 3 · Cartas que se apilan</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div id="cStack"></div></section>
+<section class="opt d" id="d"><p class="tag">Opción 4 · Índice fijo a la izquierda</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="d-grid"><nav class="d-nav" id="dNav" aria-label="Servicios"></nav><div id="dList"></div></div></section>
+<section class="opt e" id="e"><p class="tag">Opción 5 · Cuatro cuadrantes con la bola</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2><div class="e-grid" id="eGrid"></div></section>
+<section class="opt f dark" id="f"><div class="f-pin"><div class="f-track" id="fTrack"><div class="f-intro"><p class="tag">Opción 6 · Recorrido horizontal</p><p class="eyebrow">Servicios</p><h2 class="h">Stands, eventos y experiencias de marca.</h2></div></div><div class="f-rail" aria-hidden="true"><div class="f-ball" id="fBall"></div></div></div></section>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  var S=[
+   {k:'stands',t:'Stands',d:'Diseñamos, fabricamos y montamos stands para congresos y ferias: corporativos, comerciales e institucionales, con integración audiovisual y acabados cuidados.',img:'06-stand-janssen-oncology.jpg',old:'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG',rel:[['06-stand-janssen-oncology','Janssen Oncology'],['07-stand-truphone','Truphone'],['08-stand-ti-medi-jvm','TI-MEDI / JVM'],['09-stand-biohorizons','BioHorizons']]},
+   {k:'eventos',t:'Eventos corporativos',d:'Diseño y producción integral del espacio: escenografía, estructuras, iluminación y el resto de elementos técnicos, coordinando cada fase.',img:'04-evento-corporativo-ntt-data.jpg',old:'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',rel:[['04-evento-corporativo-ntt-data','NTT DATA'],['02-evento-promocion-base4','BASE4']]},
+   {k:'experiencias',t:'Experiencias de marca',d:'Propuestas que convierten la marca en una experiencia y refuerzan el vínculo con su comunidad.',img:'01-taller-amona.jpg',old:'project-1.JPG',rel:[['01-taller-amona','Taller Amona'],['03-market-the-office-studio','Market']]},
+   {k:'pop-up',t:'Pop-up stores',d:'Producción y montaje de espacios temporales con un fuerte impacto visual: fabricación, instalación y acabados dentro de los plazos previstos.',img:'05-pop-up-store-venca.jpg',old:'5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG',rel:[['05-pop-up-store-venca','Venca']]}];
+  var $=function(id){return document.getElementById(id)},cl=function(x){return Math.max(0,Math.min(1,x))},n2=function(i){return ('0'+(i+1)).slice(-2)};
+  var src=function(s){return 'assets/img/proyectos/'+s.img};
+  var img=function(s){return '<img src="'+src(s)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+OLD+s.old+'\'">'};
+  var rel=function(s){return '<p class="rel"><b>Proyectos</b>'+s.rel.map(function(r){return '<a href="proyectos/'+r[0]+'.html">'+r[1]+'</a>'}).join('')+'</p>'};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1
+  var aL=$('aList'),aF=$('aFloat'),aI=$('aImg'),aSec=$('a'),tx=0,ty=0,fx=0,fy=0,rot=0;
+  aL.innerHTML=S.map(function(s){return '<li class="a-row" tabindex="0"><h3>'+s.t+'</h3><div class="txt"><p class="desc">'+s.d+'</p>'+rel(s)+'</div></li>'}).join('');
+  function aSet(i){[].forEach.call(aL.children,function(r,k){r.classList.toggle('on',k===i)});aL.classList.toggle('hot',i>=0);aF.classList.toggle('on',i>=0);
+    if(i>=0){aI.onerror=function(){aI.onerror=null;aI.src=OLD+S[i].old};aI.src=src(S[i])}}
+  [].forEach.call(aL.children,function(r,i){r.addEventListener('pointerenter',function(){aSet(i)});r.addEventListener('focus',function(){aSet(i)});r.addEventListener('click',function(){aSet(i)})});
+  aL.addEventListener('pointerleave',function(){aSet(-1)});
+  aSec.addEventListener('pointermove',function(e){var r=aSec.getBoundingClientRect();tx=e.clientX-r.left+40;ty=e.clientY-r.top-aF.offsetHeight/2});
+  (function loop(){var ox=fx;fx+=(tx-fx)*.14;fy+=(ty-fy)*.14;rot+=(((fx-ox)*.6)-rot)*.15;
+    aF.style.setProperty('--x',fx.toFixed(1)+'px');aF.style.setProperty('--y',fy.toFixed(1)+'px');aF.style.setProperty('--r',Math.max(-14,Math.min(14,rot)).toFixed(2)+'deg');requestAnimationFrame(loop)})();
+
+  // 2
+  var bS=$('bStrips'),bi=0,bHover=false;
+  bS.innerHTML=S.map(function(s){return '<div class="b-s" tabindex="0">'+img(s)+'<span class="b-v">'+s.t+'</span><div class="b-body"><h3>'+s.t+'</h3><p class="desc">'+s.d+'</p>'+rel(s)+'</div></div>'}).join('');
+  function bSet(i){bi=i;[].forEach.call(bS.children,function(e,k){e.classList.toggle('on',k===i)})}
+  [].forEach.call(bS.children,function(e,i){e.addEventListener('pointerenter',function(){bHover=true;bSet(i)});e.addEventListener('click',function(){bSet(i)});e.addEventListener('focusin',function(){bSet(i)})});
+  bS.addEventListener('pointerleave',function(){bHover=false});bSet(0);
+  if(!calm)setInterval(function(){if(!bHover)bSet((bi+1)%S.length)},3600);
+
+  // 3
+  var cS=$('cStack');
+  cS.innerHTML=S.map(function(s,i){return '<article class="c-card" style="--i:'+i+'"><div class="c-txt"><h3>'+s.t+'</h3><div><p class="desc">'+s.d+'</p>'+rel(s)+'</div></div><div>'+img(s)+'</div></article>'}).join('');
+  function cMove(){var c=cS.children;for(var i=0;i<c.length-1;i++){var a=c[i].getBoundingClientRect(),b=c[i+1].getBoundingClientRect(),t=cl(1-(b.top-a.top)/a.height);
+    c[i].style.transform='scale('+(1-.06*t).toFixed(4)+')';c[i].style.filter='brightness('+(1-.3*t).toFixed(3)+')'}}
+
+  // 4
+  $('dNav').innerHTML=S.map(function(s){return '<a href="#d-'+s.k+'">'+s.t+'</a>'}).join('');
+  $('dList').innerHTML=S.map(function(s){return '<article class="d-item" id="d-'+s.k+'"><div class="d-img">'+img(s)+'</div><h3>'+s.t+'</h3><p class="desc">'+s.d+'</p>'+rel(s)+'</article>'}).join('');
+  var dLinks=$('dNav').children,dItems=$('dList').children;
+  function dMove(){var best=0,bd=1e9;for(var i=0;i<dItems.length;i++){var r=dItems[i].getBoundingClientRect(),d=Math.abs(r.top+r.height/2-innerHeight/2);if(d<bd){bd=d;best=i}}
+    for(var k=0;k<dLinks.length;k++)dLinks[k].classList.toggle('on',k===best)}
+
+  // 5
+  $('eGrid').innerHTML=S.map(function(s,i){return '<article class="e-q" tabindex="0"><span class="n">'+n2(i)+'</span><div class="e-ball">'+img(s)+'</div><h3>'+s.t+'</h3><p class="desc">'+s.d+'</p>'+rel(s)+'</article>'}).join('');
+
+  // 6
+  var fT=$('fTrack'),fSec=$('f');
+  fT.insertAdjacentHTML('beforeend',S.map(function(s){return '<article class="f-panel"><div class="f-img">'+img(s)+'</div><div><h3>'+s.t+'</h3><p class="desc" style="color:rgba(241,240,232,.75)">'+s.d+'</p>'+rel(s)+'</div></article>'}).join(''));
+  function fMove(){var r=fSec.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeight)),max=fT.scrollWidth-innerWidth;fT.style.transform='translateX('+(-p*max).toFixed(1)+'px)';$('fBall').style.left=(p*100)+'%'}
+
+  var tick=false;function onScroll(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;cMove();dMove();fMove()})}}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);cMove();dMove();fMove();
+})();
+</script>
+</body>
+</html>
