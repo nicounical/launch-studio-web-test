@@ -259,3 +259,19 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .nos__words li.on:last-child{color:var(--red);-webkit-text-stroke-color:var(--red)}
 @media (max-width:760px){.nos__top,.nos__acc{grid-template-columns:1fr}.nos__words li{font-size:clamp(40px,13vw,64px)}}
 @media (prefers-reduced-motion:reduce){.nos__words li{color:var(--ink);-webkit-text-stroke-color:var(--ink)}}
+
+/* ---------- Metodología (bloque estrecho sobre rojo) ---------- */
+.met{background:var(--red);color:var(--white);padding-block:clamp(36px,4.4vw,60px)}
+.met__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:clamp(20px,2.4vw,34px)}
+.met .eyebrow{color:var(--ink);font-size:12px}
+.met h2{margin:0;font-weight:300;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.025em;line-height:1}
+.met__cols{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,26px)}
+.met__col{position:relative;padding-top:16px}
+.met__col::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(11,11,11,.25)}
+.met__col::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--white);transform:scaleX(0);transform-origin:0 50%;transition:transform .7s cubic-bezier(.7,0,.2,1);transition-delay:var(--d)}
+.met.in .met__col::after{transform:scaleX(1)}
+.met__n{font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;color:var(--ink)}
+.met__col h3{font-weight:400;font-size:clamp(16px,1.5vw,21px);margin:8px 0 6px;letter-spacing:0}
+.met__col p{margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.85)}
+@media (max-width:860px){.met__cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.met__col p{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.met__col::after{transform:none}}

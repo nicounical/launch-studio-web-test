@@ -92,3 +92,10 @@
   function f(){for(var i=0;i<li.length;i++)li[i].classList.toggle('on',calm||li[i].getBoundingClientRect().top<innerHeight*.62)}
   addEventListener('scroll',f,{passive:true});addEventListener('resize',f);f();
 })();
+
+// Metodología: las líneas blancas se dibujan al llegar al bloque
+(function(){
+  var m=document.querySelector('.met');if(!m)return;
+  if(!('IntersectionObserver' in window)){m.classList.add('in');return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){m.classList.add('in');io.disconnect()}})},{threshold:.35});io.observe(m);
+})();
