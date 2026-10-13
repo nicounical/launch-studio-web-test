@@ -128,27 +128,45 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .p3 .strip{grid-template-columns:1fr 1fr;height:auto}.p3 .strip .photo{aspect-ratio:1}.p3 .strip .photo:first-child{grid-column:span 2;aspect-ratio:16/10}
   .bar span{display:none}.bar{justify-content:center}
 }
+
+/* ajustes con el texto nuevo */
+.p1 .list{margin-top:0}
+.p1 .list li{grid-template-columns:3.2em minmax(0,1fr);align-items:baseline}
+.p1 .list h3{font-weight:300;font-size:clamp(28px,3vw,48px);letter-spacing:-.03em;margin:0}
+.p1 .body p:first-child{font-size:clamp(22px,2.2vw,32px);line-height:1.35;color:var(--ink)}
+.p2 .trio{grid-template-columns:repeat(4,minmax(0,1fr))}
+.p2 .trio b,.p3 .three b{font:400 13px var(--mono);color:var(--red)}
+.p2 .trio h3{font-weight:300;font-size:clamp(24px,2.4vw,38px);letter-spacing:-.03em}
+.p3 .three{grid-template-columns:repeat(4,minmax(0,1fr))}
+.p3 .three h3{font-weight:300;font-size:clamp(28px,3vw,48px);letter-spacing:-.03em}
+.p4 .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+.p4 .cards article{min-height:clamp(150px,16vw,240px);justify-content:space-between}
+.p4 .cards h3{font-size:clamp(26px,2.6vw,40px)}
+.p4 .row .body p:first-child{font-size:clamp(24px,2.4vw,36px);line-height:1.25;letter-spacing:-.02em}
+.p5 h1{font-size:clamp(40px,5.6vw,96px)}
+.p5 .acc{align-items:center}
+.p5 .words{list-style:none;display:flex;flex-direction:column}
+.p5 .words li{display:flex;align-items:baseline;gap:.5em;padding:.18em 0;border-bottom:1px solid var(--line);font-weight:600;font-size:clamp(46px,7.4vw,124px);line-height:1;letter-spacing:-.045em;color:transparent;-webkit-text-stroke:1.5px rgba(11,11,11,.35);transition:color .5s,-webkit-text-stroke-color .5s}
+.p5 .words li:first-child{border-top:1px solid var(--line)}
+.p5 .words b{font:400 13px var(--mono);letter-spacing:0;color:var(--red);-webkit-text-stroke:0}
+.p5 .words li.on{color:var(--ink);-webkit-text-stroke-color:var(--ink)}
+.p5 .words li.on:last-child{color:var(--red);-webkit-text-stroke-color:var(--red)}
+@media (max-width:760px){.p2 .trio,.p3 .three,.p4 .cards{grid-template-columns:1fr 1fr}.p4 .cards h3,.p3 .three h3,.p2 .trio h3{font-size:22px}.p4 .cards article{padding:18px 14px}}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.p5 .tick span{animation:none}}
 </style>
 </head>
 <body>
 <nav class="bar" aria-label="Opciones"><span>Nosotros · cinco opciones</span>
-  <button data-p="1" aria-pressed="true">1 · Editorial</button><button data-p="2" aria-pressed="false">2 · Círculo</button><button data-p="3" aria-pressed="false">3 · Cita</button><button data-p="4" aria-pressed="false">4 · Se enciende</button><button data-p="5" aria-pressed="false">5 · Preguntas</button></nav>
+  <button data-p="1" aria-pressed="true">1 · Editorial</button><button data-p="2" aria-pressed="false">2 · Círculo</button><button data-p="3" aria-pressed="false">3 · Cita</button><button data-p="4" aria-pressed="false">4 · Se enciende</button><button data-p="5" aria-pressed="false">5 · Palabras</button></nav>
 
 <!-- 1 · Editorial a dos columnas -->
 <main class="page p1 on" id="p1">
-  <div class="wrap top rv"><p class="tag">Opción 1 · Editorial a dos columnas</p><br><br><p class="eyebrow">Nosotros</p><h1>Posicionamos marcas<span class="dot"></span></h1></div>
+  <div class="wrap top rv"><p class="tag">Opción 1 · Editorial a dos columnas</p><br><br><p class="eyebrow">Posicionamos marcas</p><h1>Un estudio creativo que convierte ideas en experiencias<span class="dot"></span></h1></div>
   <div class="wrap"><div class="photo rv" data-img="portada/portada-venca.jpg|VENCO.JPG"></div></div>
   <div class="wrap cols">
-    <div class="stick"><p class="place">Barcelona · Presencia internacional</p><h2>Estudio creativo especializado en stands y eventos corporativos.</h2></div>
-    <div>
-      <div class="body rv"><p><strong>Launch Studio es un estudio creativo de Barcelona.</strong> Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
-        <p>Acompañamos a cada marca desde la primera idea hasta la entrega final, con un único interlocutor que se ocupa de cada detalle: el concepto, la producción, el montaje y el día del evento.</p>
-        <p>Trabajamos con una red de talleres y proveedores de confianza en toda Europa, y podemos coordinar varios proyectos de una misma marca a la vez sin perder la visión de conjunto.</p></div>
-      <ol class="list rv"><li><b>01</b><div><h3>Llave en mano</h3><p>Un único punto de contacto que se encarga de cada detalle, desde la primera idea hasta la entrega final.</p></div></li>
-        <li><b>02</b><div><h3>Gestión en paralelo</h3><p>Coordinamos varios proyectos de una misma marca al mismo tiempo, manteniendo una visión global y el mismo nivel de atención en cada uno.</p></div></li>
-        <li><b>03</b><div><h3>Partners locales en toda Europa</h3><p>Una red de talleres y proveedores de confianza para producir con agilidad y con los mismos estándares de calidad.</p></div></li></ol>
-    </div>
+    <ol class="list stick"><li><b>01</b><h3>Concepto</h3></li><li><b>02</b><h3>Diseño</h3></li><li><b>03</b><h3>Producción</h3></li><li><b>04</b><h3>Experiencia</h3></li></ol>
+    <div class="body rv"><p><strong>Diseñamos y producimos eventos, stands y espacios de marca</strong> que conectan con las personas y hacen que cada proyecto tenga algo que contar.</p>
+      <p>Trabajamos en toda Europa, acompañando cada proyecto desde el concepto hasta la producción y el montaje.</p></div>
   </div>
   <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
 </main>
@@ -157,56 +175,54 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <main class="page p2" id="p2">
   <section class="hero" id="p2hero"><div class="pin"><div class="mask" id="p2mask"><div class="photo" style="height:100%" data-img="portada/portada-venca.jpg|VENCO.JPG"></div></div>
     <h1 class="ttl">Posicionamos<br>marcas.</h1></div></section>
-  <div class="wrap txt"><div class="rv"><p class="tag">Opción 2 · La foto se abre desde un círculo</p><br><br><p class="eyebrow">Nosotros</p><br><h2>Un estudio creativo de Barcelona, especializado en stands y eventos corporativos.</h2></div>
-    <div class="body rv"><p>Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
-      <p>Nos ocupamos de todo el recorrido: escuchamos lo que necesitas, diseñamos un concepto a medida, planificamos cada fase, producimos con nuestra red de colaboradores, supervisamos el montaje y lo entregamos listo para que solo tengas que centrarte en tu evento.</p></div></div>
+  <div class="wrap txt"><div class="rv"><p class="tag">Opción 2 · La foto se abre desde un círculo</p><br><br><p class="eyebrow">Posicionamos marcas</p><br><h2>Un estudio creativo que convierte ideas en experiencias.</h2></div>
+    <div class="body rv"><p>Diseñamos y producimos eventos, stands y espacios de marca que conectan con las personas y hacen que cada proyecto tenga algo que contar.</p>
+      <p>Trabajamos en toda Europa, acompañando cada proyecto desde el concepto hasta la producción y el montaje.</p></div></div>
   <div class="wrap trio">
-    <article class="rv"><div class="photo" data-img="ventajas/ventaja-1-llave-en-mano-danone.jpg|DANONE.JPG"></div><h3>Llave en mano</h3><p>Un único punto de contacto, desde la primera idea hasta la entrega final.</p></article>
-    <article class="rv"><div class="photo" data-img="ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg|JANNSEN.JPG"></div><h3>Gestión en paralelo</h3><p>Varios proyectos de una misma marca a la vez, con la misma atención en cada uno.</p></article>
-    <article class="rv"><div class="photo" data-img="ventajas/ventaja-3-partners-locales-biohorizons.jpg|BIOHORIZONS.JPG"></div><h3>Partners en toda Europa</h3><p>Talleres y proveedores de confianza para producir con agilidad y calidad.</p></article></div>
+    <article class="rv"><div class="photo" data-img="portada/portada-venca.jpg|VENCO.JPG"></div><b>01</b><h3>Concepto</h3></article>
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-1-llave-en-mano-danone.jpg|DANONE.JPG"></div><b>02</b><h3>Diseño</h3></article>
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg|JANNSEN.JPG"></div><b>03</b><h3>Producción</h3></article>
+    <article class="rv"><div class="photo" data-img="ventajas/ventaja-3-partners-locales-biohorizons.jpg|BIOHORIZONS.JPG"></div><b>04</b><h3>Experiencia</h3></article></div>
   <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
 </main>
 
-<!-- 3 · Manifiesto con cita -->
+<!-- 3 · Cita -->
 <main class="page p3" id="p3">
-  <div class="wrap top"><div class="rv"><p class="tag">Opción 3 · Cita y tres columnas</p><br><br><p class="eyebrow">Nosotros</p><h1>Estudio creativo de stands y eventos corporativos.</h1></div>
-    <div class="body rv"><p>Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa. Desde Barcelona, con presencia internacional.</p></div></div>
-  <section class="quote"><div class="ghost" aria-hidden="true">launch</div><div class="wrap"><p class="rv">«Un único interlocutor, de la primera idea a la entrega final.»</p></div></section>
+  <div class="wrap top"><div class="rv"><p class="tag">Opción 3 · Cita y cuatro palabras</p><br><br><p class="eyebrow">Posicionamos marcas</p><h1>Un estudio creativo que convierte ideas en experiencias.</h1></div>
+    <div class="body rv"><p>Diseñamos y producimos eventos, stands y espacios de marca que conectan con las personas y hacen que cada proyecto tenga algo que contar.</p></div></div>
+  <section class="quote"><div class="ghost" aria-hidden="true">launch</div><div class="wrap"><p class="rv">Trabajamos en toda Europa, acompañando cada proyecto desde el concepto hasta la producción y el montaje.</p></div></section>
   <div class="wrap three">
-    <article class="rv"><h3>Cómo empezamos</h3><p>Antes de diseñar nada, queremos entender tu marca, tus objetivos y qué necesitas realmente.</p></article>
-    <article class="rv"><h3>Cómo producimos</h3><p>Con una red de talleres y proveedores de confianza en toda Europa, con los mismos estándares de calidad en cada lugar.</p></article>
-    <article class="rv"><h3>Cómo entregamos</h3><p>Supervisamos cada fase clave y lo dejamos todo listo para que solo tengas que centrarte en tu evento.</p></article></div>
+    <article class="rv"><b>01</b><h3>Concepto</h3></article>
+    <article class="rv"><b>02</b><h3>Diseño</h3></article>
+    <article class="rv"><b>03</b><h3>Producción</h3></article>
+    <article class="rv"><b>04</b><h3>Experiencia</h3></article></div>
   <div class="wrap strip"><div class="photo" data-img="portada/portada-venca.jpg|VENCO.JPG"></div><div class="photo" data-img="ventajas/ventaja-2-gestion-en-paralelo-janssen.jpg|JANNSEN.JPG"></div><div class="photo" data-img="ventajas/ventaja-3-partners-locales-biohorizons.jpg|BIOHORIZONS.JPG"></div></div>
   <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
 </main>
 
 <!-- 4 · El párrafo se enciende -->
 <main class="page p4" id="p4">
-  <div class="wrap top"><p class="tag">Opción 4 · El párrafo se enciende al bajar</p><br><br><p class="eyebrow">Nosotros</p>
-    <p class="lit" id="lit">Somos un estudio creativo de Barcelona. Posicionamos marcas creando stands, eventos y experiencias que hacen que cada proyecto cobre vida en cualquier punto de Europa.</p></div>
+  <div class="wrap top"><p class="tag">Opción 4 · El párrafo se enciende al bajar</p><br><br><p class="eyebrow">Posicionamos marcas</p>
+    <p class="lit" id="lit">Un estudio creativo que convierte ideas en experiencias. Diseñamos y producimos eventos, stands y espacios de marca que conectan con las personas.</p></div>
   <div class="wrap row"><div class="photo rv" data-img="portada/portada-venca.jpg|VENCO.JPG"></div>
-    <div class="body rv"><p><strong>De la primera idea a la entrega final.</strong> Un único interlocutor coordina el concepto, la producción, el montaje y el día del evento, para que no tengas que preocuparte de nada más.</p>
-      <p>Producimos con talleres y proveedores de confianza en toda Europa, y si tu marca tiene varios proyectos a la vez, los llevamos en paralelo con la misma atención en cada uno.</p></div></div>
+    <div class="body rv"><p><strong>Hacemos que cada proyecto tenga algo que contar.</strong></p>
+      <p>Trabajamos en toda Europa, acompañando cada proyecto desde el concepto hasta la producción y el montaje.</p></div></div>
   <div class="wrap"><div class="cards">
-    <article class="rv"><b>01</b><h3>Llave en mano</h3><p>Un único punto de contacto que se encarga de cada detalle.</p></article>
-    <article class="rv"><b>02</b><h3>Gestión en paralelo</h3><p>Varios proyectos a la vez, con visión global.</p></article>
-    <article class="rv"><b>03</b><h3>Partners en toda Europa</h3><p>Producción ágil con los mismos estándares de calidad.</p></article></div></div>
+    <article class="rv"><b>01</b><h3>Concepto</h3></article>
+    <article class="rv"><b>02</b><h3>Diseño</h3></article>
+    <article class="rv"><b>03</b><h3>Producción</h3></article>
+    <article class="rv"><b>04</b><h3>Experiencia</h3></article></div></div>
   <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
 </main>
 
-<!-- 5 · Preguntas que se despliegan -->
+<!-- 5 · Palabras que se encienden -->
 <main class="page p5" id="p5">
-  <div class="wrap top"><div class="rv"><p class="tag">Opción 5 · Preguntas que se despliegan</p><br><br><p class="eyebrow">Nosotros</p><h1>Posicionamos marcas<span class="dot"></span></h1></div>
-    <div class="body rv"><p>Launch Studio es un estudio creativo de Barcelona especializado en stands y eventos corporativos. Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p></div></div>
-  <div class="tick" aria-hidden="true"><span>Barcelona ● Presencia internacional ● Stands ● Eventos corporativos ● Experiencias de marca ●</span><span>Barcelona ● Presencia internacional ● Stands ● Eventos corporativos ● Experiencias de marca ●</span></div>
+  <div class="wrap top"><div class="rv"><p class="tag">Opción 5 · Palabras que se encienden</p><br><br><p class="eyebrow">Posicionamos marcas</p><h1>Un estudio creativo que convierte ideas en experiencias<span class="dot"></span></h1></div>
+    <div class="body rv"><p>Diseñamos y producimos eventos, stands y espacios de marca que conectan con las personas y hacen que cada proyecto tenga algo que contar.</p>
+      <p>Trabajamos en toda Europa, acompañando cada proyecto desde el concepto hasta la producción y el montaje.</p></div></div>
+  <div class="tick" aria-hidden="true"><span>Concepto ● Diseño ● Producción ● Experiencia ● Concepto ● Diseño ● Producción ● Experiencia ●</span><span>Concepto ● Diseño ● Producción ● Experiencia ● Concepto ● Diseño ● Producción ● Experiencia ●</span></div>
   <div class="wrap acc"><div class="photo" data-img="portada/portada-venca.jpg|VENCO.JPG"></div>
-    <div>
-      <details open><summary>¿Qué hacemos?<i></i></summary><p>Diseñamos, producimos y montamos stands para ferias y congresos, eventos corporativos, pop-up stores y experiencias de marca.</p></details>
-      <details><summary>¿Cómo trabajamos?<i></i></summary><p>Escuchamos, diseñamos un concepto a medida, planificamos cada fase, producimos con nuestra red de colaboradores, supervisamos el montaje y entregamos todo listo.</p></details>
-      <details><summary>¿Con quién hablas?<i></i></summary><p>Con una sola persona. Un único punto de contacto se encarga de cada detalle, desde la primera idea hasta la entrega final.</p></details>
-      <details><summary>¿Dónde trabajamos?<i></i></summary><p>Desde Barcelona y en toda Europa, con una red de talleres y proveedores de confianza que producen con los mismos estándares de calidad.</p></details>
-      <details><summary>¿Y si tenemos varios proyectos a la vez?<i></i></summary><p>Los coordinamos en paralelo, con una visión global y el mismo nivel de atención en cada uno.</p></details>
-    </div></div>
+    <ol class="words" id="words"><li><b>01</b>Concepto</li><li><b>02</b>Diseño</li><li><b>03</b>Producción</li><li><b>04</b>Experiencia</li></ol></div>
   <section class="cta"><div class="wrap"><h2>Hablemos de tu próximo proyecto.</h2><a class="btn" href="contacto.html">Contacto →</a></div></section>
 </main>
 
@@ -229,15 +245,16 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   // Opción 2: el círculo crece hasta ocupar la pantalla
   var hero=document.getElementById('p2hero'),mask=document.getElementById('p2mask');
   // Opción 4: el párrafo se enciende
-  var lit=document.getElementById('lit'),KEY=/^(marcas|stands|eventos|experiencias|Europa)/;
+  var lit=document.getElementById('lit'),KEY=/^(ideas|experiencias|eventos|stands|personas)/;
   lit.setAttribute('aria-label',lit.textContent.trim());
   lit.innerHTML=lit.textContent.trim().split(/\s+/).map(function(w){return '<span aria-hidden="true"'+(KEY.test(w)?' class="k"':'')+'>'+w+'</span>'}).join(' ');
-  var ls=lit.children;
+  var ls=lit.children,words=document.getElementById('words'),ws=words.children;
   function onScroll(){
     if(hero.offsetParent){var r=hero.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(r.height-innerHeight)));
       if(calm)p=1;mask.style.setProperty('--r',(14+62*p*p)+'%');mask.style.setProperty('--s',(1.25-.25*p).toFixed(3))}
     if(lit.offsetParent){var t=lit.getBoundingClientRect(),q=calm?1:Math.max(0,Math.min(1,(innerHeight*.8-t.top)/(innerHeight*.6))),n=Math.round(q*1.1*ls.length);
       for(var i=0;i<ls.length;i++)ls[i].classList.toggle('on',i<n)}
+    if(words.offsetParent){for(var j=0;j<ws.length;j++){var y=ws[j].getBoundingClientRect().top;ws[j].classList.toggle('on',calm||y<innerHeight*.62)}}
   }
   addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
 })();
