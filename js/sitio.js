@@ -84,3 +84,11 @@
     msg.textContent='Se ha abierto tu programa de correo con el mensaje preparado. Si no se abre, escríbenos a info@launchstudiogroup.com.';
   });
 })();
+
+// Nosotros: las cuatro palabras se rellenan al bajar
+(function(){
+  var w=document.getElementById('nos-words');if(!w)return;
+  var li=w.children,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function f(){for(var i=0;i<li.length;i++)li[i].classList.toggle('on',calm||li[i].getBoundingClientRect().top<innerHeight*.62)}
+  addEventListener('scroll',f,{passive:true});addEventListener('resize',f);f();
+})();
