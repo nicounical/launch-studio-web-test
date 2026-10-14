@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Más opciones contacto (inicio) — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis bloques de contacto sin imagen, mezclando las opciones 4 (palabra que se rellena),
+   5 (dos mitades) y 6 (botón redondo que gira). El email siempre abre el correo. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h2,h3,p,ul{margin:0;padding:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.gap{padding:100px var(--pad) 24px;background:#e3e2d8;color:var(--grey);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.gap b{display:inline-block;background:var(--ink);color:var(--white);font-weight:400;padding:7px 12px;border-radius:4px;margin-right:10px}
+.blk{position:relative;overflow:hidden;padding:clamp(70px,9vw,130px) var(--pad)}
+.dark{background:var(--ink);color:var(--white)}
+.redbg{background:var(--red);color:var(--white)}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.redbg .eyebrow{color:var(--ink)}
+.mono{font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.info{display:flex;flex-wrap:wrap;gap:10px 34px}
+.info a{text-decoration:none;transition:color .3s}
+.info a:hover{color:var(--red)}
+.redbg .info a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;border:1.5px solid currentColor;font-weight:500;font-size:15px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+/* palabra en contorno que se rellena (base de la opción 4) */
+.fill{position:relative;display:inline-block;font-weight:800;line-height:.9;letter-spacing:-.06em;white-space:nowrap}
+.fill{--st:var(--ink)}.dark .fill,.b .fill{--st:var(--white)}
+.fill .o{color:transparent;-webkit-text-stroke:2px var(--st)}
+.fill .f{position:absolute;inset:0;color:var(--fc,var(--red));clip-path:inset(-25% calc(100% - var(--p,0)*100%) -25% 0)}
+/* botón redondo con texto que gira (base de la opción 6) */
+.rb{position:relative;flex:none;width:var(--s,200px);aspect-ratio:1;border-radius:50%;background:var(--rb,var(--red));color:var(--rbc,var(--white));display:grid;place-items:center;text-decoration:none;transition:transform .5s var(--ease),background .4s,color .4s}
+.rb:hover{transform:scale(1.07) rotate(-8deg);background:var(--rbh,var(--ink));color:var(--white)}
+.rb svg{position:absolute;inset:8%;width:84%;height:84%;animation:spin 18s linear infinite}
+.rb:hover svg{animation-duration:6s}
+.rb text{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;fill:currentColor}
+.rb b{font-weight:300;font-size:calc(var(--s,200px)*.13);letter-spacing:-.03em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 1 · Palabra + botón al final */
+.a-row{display:flex;align-items:center;gap:clamp(14px,2vw,30px);margin:18px 0 clamp(30px,4vw,56px)}
+.a .fill{font-size:clamp(64px,14vw,240px)}
+.a .rb{--s:clamp(110px,13vw,210px)}
+.a-foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-top:1px solid var(--line);padding-top:22px}
+.a-foot p{font-size:clamp(17px,1.6vw,22px);max-width:24em}
+
+/* 2 · Dos mitades con la palabra que se rellena al pasar el ratón */
+.b{padding:0;display:flex;min-height:min(72vh,640px)}
+.b-h{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:30px;padding:clamp(30px,4.4vw,70px) var(--pad);transition:flex .8s var(--ease)}
+.b-h:hover{flex:1.5}
+.b-h:first-child{background:var(--ink);color:var(--white);text-decoration:none}
+.b-h:last-child{background:var(--red);color:var(--white)}
+.b .fill{font-size:clamp(46px,6.6vw,118px);--fc:var(--red)}
+.b .fill .f{transition:clip-path 1s var(--ease);clip-path:inset(-25% 100% -25% 0)}
+.b-h:first-child:hover .fill .f{clip-path:inset(-25% 0 -25% 0)}
+.b-mail{font-weight:300;font-size:clamp(20px,2vw,34px);white-space:nowrap;letter-spacing:-.03em;text-decoration:none;line-height:1.15;word-break:break-word}
+.b-mail span{background:linear-gradient(currentColor,currentColor) 0 100%/0% 2px no-repeat;transition:background-size .6s var(--ease)}
+.b-mail:hover span{background-size:100% 2px}
+.b-tel{font-weight:300;font-size:clamp(18px,1.8vw,26px);text-decoration:none}
+.b-h .eyebrow{color:inherit;opacity:.7}
+.b-go{display:inline-flex;align-items:center;gap:14px;font-weight:500}
+.b-go i{width:56px;aspect-ratio:1;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-style:normal;transition:transform .6s var(--ease),background .4s,color .4s}
+.b-h:first-child:hover .b-go i{transform:rotate(-45deg);background:var(--white);color:var(--ink)}
+
+/* 3 · Tres líneas que se rellenan + botón */
+.c-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,60px);align-items:center}
+.c-lines{display:flex;flex-direction:column}
+.c .fill{font-size:clamp(56px,10.4vw,180px);color:var(--white)}
+.c .fill:nth-child(3){--fc:var(--red)}
+.c .rb{--s:clamp(150px,17vw,250px);--rbh:var(--white)}
+.c .rb:hover{color:var(--ink)}
+.c .info{color:rgba(241,240,232,.7);margin-top:clamp(30px,4vw,56px);border-top:1px solid rgba(241,240,232,.18);padding-top:22px}
+
+/* 4 · Dos mitades con el botón en la unión */
+.d{padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:min(66vh,580px)}
+.d-h{display:flex;flex-direction:column;justify-content:space-between;gap:26px;padding:clamp(30px,4.4vw,70px) var(--pad)}
+.d-h:first-child{background:var(--white);border-top:1px solid var(--line)}
+.d-h:nth-of-type(2){background:var(--ink);color:var(--white);padding-left:calc(clamp(75px,7.5vw,115px) + clamp(24px,3vw,48px))}
+.d-h:first-child{padding-right:calc(clamp(75px,7.5vw,115px) + clamp(24px,3vw,48px))}
+.d h2{font-weight:300;font-size:clamp(32px,3.8vw,64px);line-height:1;letter-spacing:-.04em}
+.d-h ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.d-h ul a{font-size:clamp(17px,1.6vw,24px);text-decoration:none;transition:color .3s}
+.d-h ul a:hover{color:var(--red)}
+.d .rb{position:absolute;left:50%;top:50%;--s:clamp(150px,15vw,230px);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);z-index:2;--rbh:var(--white)}
+.d .rb:hover{color:var(--ink)}
+.d-h:first-child p.lead{font-size:clamp(16px,1.4vw,19px);color:var(--grey);max-width:22em;line-height:1.5}
+
+/* 5 · Rojo con palabra blanca que se rellena */
+.e .fill{font-size:clamp(56px,13vw,230px);color:var(--white);--fc:var(--white);margin:16px 0 clamp(30px,4vw,56px)}
+.e .fill{--st:rgba(255,255,255,.75)}
+.e-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.35)}
+.e-row>a{display:flex;flex-direction:column;gap:8px;padding:22px clamp(0px,1.4vw,22px) 4px 0;text-decoration:none;transition:color .3s}
+.e-row>a+a{padding-left:clamp(14px,1.6vw,26px);border-left:1px solid rgba(255,255,255,.35)}
+.e-row b{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.e-row span{font-size:clamp(16px,1.6vw,24px);letter-spacing:-.02em;overflow-wrap:anywhere}
+.e-row>a:hover span{color:var(--ink)}
+
+/* 6 · Botón grande + tres filas que se abren */
+.f-grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(30px,6vw,110px);align-items:center}
+.f .rb{--s:clamp(170px,22vw,320px)}
+.f-rows{border-top:1px solid var(--line)}
+.f-r{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,30px) clamp(10px,1.4vw,22px);border-bottom:1px solid var(--line);text-decoration:none;overflow:hidden;isolation:isolate;transition:color .45s}
+.f-r::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:50% 100%;transition:transform .55s var(--ease);z-index:-1}
+.f-r:hover{color:var(--white)}.f-r:hover::before{transform:none}
+.f-r small{display:block;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.f-r span{font-size:clamp(22px,2.6vw,40px);letter-spacing:-.03em;line-height:1.1;word-break:break-word}
+.f-r i{flex:none;font-style:normal;font-size:24px;transition:transform .5s var(--ease)}
+.f-r:hover i{transform:rotate(-45deg)}
+
+@media (max-width:760px){
+  .b-mail{white-space:normal;overflow-wrap:anywhere}
+  .b,.d{display:flex;flex-direction:column}.b-h:hover{flex:1}.b-h,.d-h{min-height:300px}
+  .d .rb{position:relative;left:auto;top:auto;margin:-70px auto;--s:140px;order:2}.d-h:first-child{order:1}.d-h:nth-of-type(2){order:3}.d-h:nth-of-type(2){padding-left:var(--pad);padding-top:80px}.d-h:first-child{padding-bottom:80px;padding-right:var(--pad)}
+  .c-grid,.f-grid{grid-template-columns:1fr}.c .rb,.f .rb{justify-self:start}
+  .e-row{grid-template-columns:1fr}.e-row>a+a{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.35)}
+  .a-row{flex-wrap:wrap}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01s!important;animation:none!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Contacto en el inicio · seis opciones más</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a><a href="#f">6</a><a href="opciones-contacto-landing.html">Ver las anteriores</a></nav>
+
+<div class="gap"><b>Opción 1</b>«Hablemos» se rellena al bajar y termina en el botón que gira</div>
+<section class="blk a" id="a">
+  <p class="eyebrow">Contacto</p>
+  <div class="a-row"><span class="fill" data-scroll aria-label="Hablemos"><span class="o" aria-hidden="true">Hablemos</span><span class="f" aria-hidden="true">Hablemos</span></span>
+    <a class="rb" href="contacto.html" aria-label="Ir al formulario de contacto"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ca" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#ca" textLength="505" lengthAdjust="spacing">Cuéntanos tu proyecto · Escríbenos ·</textPath></text></svg><b>→</b></a></div>
+  <div class="a-foot"><p>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia.</p>
+    <div class="info mono"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34673071256">+34 673 071 256</a><span>Barcelona</span></div></div>
+</section>
+
+<div class="gap"><b>Opción 2</b>Dos mitades · la palabra se rellena al pasar el ratón</div>
+<section class="blk b" id="b">
+  <a class="b-h" href="contacto.html"><p class="eyebrow">Formulario</p>
+    <span class="fill" aria-label="Escríbenos"><span class="o" aria-hidden="true">Escríbenos</span><span class="f" aria-hidden="true">Escríbenos</span></span>
+    <span class="b-go"><i aria-hidden="true">→</i>Cuéntanos tu proyecto</span></a>
+  <div class="b-h"><p class="eyebrow">O directamente</p>
+    <div><a class="b-mail" href="mailto:info@launchstudiogroup.com"><span>info@launchstudiogroup.com</span></a><br><br><a class="b-tel" href="tel:+34673071256">+34 673 071 256</a></div>
+    <p class="mono">Barcelona · Presencia internacional</p></div>
+</section>
+
+<div class="gap"><b>Opción 3</b>Tres líneas que se rellenan una tras otra</div>
+<section class="blk c dark" id="c">
+  <p class="eyebrow" style="margin-bottom:18px">Contacto</p>
+  <div class="c-grid">
+    <div class="c-lines" id="cLines" aria-label="Hablemos de tu proyecto">
+      <span class="fill" aria-hidden="true"><span class="o">Hablemos</span><span class="f">Hablemos</span></span>
+      <span class="fill" aria-hidden="true"><span class="o">de tu</span><span class="f">de tu</span></span>
+      <span class="fill" aria-hidden="true"><span class="o">proyecto.</span><span class="f">proyecto.</span></span></div>
+    <a class="rb" href="contacto.html" aria-label="Ir al formulario de contacto"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cc" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#cc" textLength="505" lengthAdjust="spacing">Hablemos de tu proyecto · Escríbenos ·</textPath></text></svg><b>Empezar</b></a>
+  </div>
+  <div class="info mono"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34673071256">+34 673 071 256</a><span>Barcelona · Presencia internacional</span></div>
+</section>
+
+<div class="gap"><b>Opción 4</b>Dos mitades con el botón en la unión</div>
+<section class="blk d" id="d">
+  <div class="d-h"><p class="eyebrow">Contacto</p><h2>Hablemos de tu próximo proyecto.</h2><p class="lead">Rellena el formulario o escríbenos directamente.</p></div>
+  <div class="d-h"><p class="eyebrow">Escríbenos</p><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul><p class="mono" style="opacity:.6">Barcelona · Presencia internacional</p></div>
+  <a class="rb" href="contacto.html" aria-label="Ir al formulario de contacto"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cd" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#cd" textLength="505" lengthAdjust="spacing">Formulario de contacto · Formulario ·</textPath></text></svg><b>→</b></a>
+</section>
+
+<div class="gap"><b>Opción 5</b>Rojo · «¿Empezamos?» se rellena de blanco al bajar</div>
+<section class="blk e redbg" id="e">
+  <p class="eyebrow">Contacto</p>
+  <span class="fill" data-scroll aria-label="¿Empezamos?"><span class="o" aria-hidden="true">¿Empezamos?</span><span class="f" aria-hidden="true">¿Empezamos?</span></span>
+  <div class="e-row">
+    <a href="contacto.html"><b>Formulario</b><span>Cuéntanos tu proyecto →</span></a>
+    <a href="mailto:info@launchstudiogroup.com"><b>Email</b><span>info@launchstudiogroup.com</span></a>
+    <a href="tel:+34673071256"><b>Teléfono</b><span>+34 673 071 256</span></a></div>
+</section>
+
+<div class="gap"><b>Opción 6</b>Botón grande y tres maneras de contactar</div>
+<section class="blk f" id="f">
+  <p class="eyebrow" style="margin-bottom:clamp(24px,3vw,44px)">Contacto · Hablemos de tu próximo proyecto</p>
+  <div class="f-grid">
+    <a class="rb" href="contacto.html" aria-label="Ir al formulario de contacto"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cf" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#cf" textLength="505" lengthAdjust="spacing">Hablemos de tu proyecto · Escríbenos ·</textPath></text></svg><b>Hablemos</b></a>
+    <div class="f-rows">
+      <a class="f-r" href="contacto.html"><div><small>Formulario</small><span>Cuéntanos tu proyecto</span></div><i aria-hidden="true">→</i></a>
+      <a class="f-r" href="mailto:info@launchstudiogroup.com"><div><small>Email</small><span>info@launchstudiogroup.com</span></div><i aria-hidden="true">→</i></a>
+      <a class="f-r" href="tel:+34673071256"><div><small>Teléfono</small><span>+34 673 071 256</span></div><i aria-hidden="true">→</i></a></div>
+  </div>
+</section>
+<div class="gap" style="padding-bottom:50vh">Fin de las opciones</div>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,cl=function(x){return Math.max(0,Math.min(1,x))};
+  var single=document.querySelectorAll('[data-scroll]'),lines=document.getElementById('cLines');
+  function onScroll(){
+    single.forEach(function(el){var r=el.getBoundingClientRect();el.style.setProperty('--p',calm?1:cl((innerHeight*.9-r.top)/(innerHeight*.55)).toFixed(3))});
+    var r=lines.getBoundingClientRect(),p=calm?1:cl((innerHeight*.95-r.top)/(innerHeight*.75))*3;
+    [].forEach.call(lines.children,function(l,i){l.style.setProperty('--p',cl(p-i).toFixed(3))});
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
