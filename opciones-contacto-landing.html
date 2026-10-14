@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones contacto (inicio) — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis bloques de contacto para el final de la página de inicio, sin imágenes. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h2,h3,p,ul{margin:0;padding:0}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover,.bar a:focus-visible{background:var(--red);border-color:var(--red);outline:0}
+.gap{padding:100px var(--pad) 24px;background:#e3e2d8;color:var(--grey);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.gap b{display:inline-block;background:var(--ink);color:var(--white);font-weight:400;padding:7px 12px;border-radius:4px;margin-right:10px}
+.blk{position:relative;overflow:hidden;padding:clamp(70px,9vw,140px) var(--pad)}
+.dark{background:var(--ink);color:var(--white)}
+.redbg{background:var(--red);color:var(--white)}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.redbg .eyebrow{color:var(--ink)}
+.mono{font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.info{display:flex;flex-wrap:wrap;gap:10px 34px}
+.info a{text-decoration:none}
+.info a:hover{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;border:1.5px solid currentColor;font-weight:500;font-size:15px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+
+/* 1 · Email gigante */
+.a{display:flex;flex-direction:column;gap:clamp(18px,2.4vw,34px)}
+.a-mail{position:relative;display:inline-block;align-self:flex-start;white-space:nowrap;font-weight:300;font-size:clamp(22px,5.6vw,96px);line-height:1.05;letter-spacing:-.045em;text-decoration:none;}
+.a-mail span{background:linear-gradient(var(--red),var(--red)) 0 100%/0% .08em no-repeat;transition:background-size .7s var(--ease),color .4s}
+.a-mail:hover span,.a-mail:focus-visible span{background-size:100% .08em;color:var(--red)}
+.a-mail i{display:inline-block;font-style:normal;transition:transform .5s var(--ease)}
+.a-mail:hover i{transform:translate(.12em,-.12em) rotate(-45deg)}
+.a-foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-top:1px solid var(--line);padding-top:22px}
+.a-foot .btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+/* 2 · Bola que sigue al cursor */
+.b{min-height:min(84vh,760px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;cursor:none}
+.b h2{font-weight:300;font-size:clamp(64px,15vw,260px);line-height:.88;letter-spacing:-.06em}
+.b h2 em{font-style:normal;color:var(--red)}
+.b-ball{position:absolute;left:0;top:0;width:clamp(120px,12vw,170px);aspect-ratio:1;border-radius:50%;background:var(--red);color:var(--white);display:grid;place-items:center;text-align:center;font-weight:500;font-size:15px;line-height:1.2;text-decoration:none;transform:translate(var(--x,70vw),var(--y,30%)) translate(-50%,-50%) scale(var(--s,1));transition:scale .3s;z-index:3}
+.b-ball:hover{--s:1.12}
+.b .info{color:rgba(241,240,232,.7)}
+@media (hover:none){.b{cursor:auto}.b-ball{position:relative;transform:none;left:auto;top:auto}}
+
+/* 3 · Formulario en una frase */
+.c-form{font-weight:300;font-size:clamp(24px,3.4vw,52px);line-height:1.55;letter-spacing:-.025em;max-width:22em}
+.c-form input,.c-form select{border:0;border-bottom:2px solid var(--ink);background:transparent;padding:0 .1em;font-size:inherit;letter-spacing:inherit;font-weight:400;color:var(--red);border-radius:0;outline:0;transition:border-color .3s}
+.c-form input{width:7.5em}.c-form input.sm{width:5.5em}
+.c-form input::placeholder{color:rgba(11,11,11,.28);font-weight:300}
+.c-form input:focus,.c-form select:focus{border-color:var(--red)}
+.c-form select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:.2em}
+.c-send{margin-top:clamp(26px,3vw,44px);display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.c-send button{background:var(--ink);color:var(--white);border:0;border-radius:999px;padding:16px 30px;font-weight:500;font-size:16px;cursor:pointer;transition:background .3s}
+.c-send button:hover{background:var(--red)}
+.c-send .info{color:var(--grey);font-size:15px}
+
+/* 4 · Palabra que se rellena con el scroll */
+.d{padding-bottom:clamp(60px,7vw,100px)}
+.d-word{position:relative;font-weight:800;font-size:clamp(70px,17vw,300px);line-height:.9;letter-spacing:-.06em;white-space:nowrap;margin:18px 0 clamp(30px,4vw,60px)}
+.d-word .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.d-word .f{position:absolute;inset:0;color:var(--red);clip-path:inset(0 calc(100% - var(--p,0)*100%) 0 0)}
+.d-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px}
+.d-row p{font-size:clamp(18px,1.8vw,26px);max-width:22em;line-height:1.35}
+.d-row .btn{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.d-row .btn:hover{background:var(--red);border-color:var(--red)}
+
+/* 5 · Dos mitades */
+.e{padding:0;display:flex;min-height:min(70vh,620px)}
+.e-h{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(30px,4.4vw,70px) var(--pad);text-decoration:none;transition:flex .8s var(--ease)}
+.e-h:hover{flex:1.6}
+.e-h:first-child{background:var(--ink);color:var(--white)}
+.e-h:last-child{background:var(--red);color:var(--white)}
+.e-h h2{font-weight:300;font-size:clamp(34px,4.6vw,76px);line-height:1;letter-spacing:-.04em;max-width:8em}
+.e-h .arr{width:clamp(56px,6vw,84px);aspect-ratio:1;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:26px;transition:transform .6s var(--ease),background .4s,color .4s}
+.e-h:hover .arr{transform:rotate(-45deg);background:var(--white);color:var(--ink)}
+.e-h ul{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:clamp(17px,1.6vw,22px)}
+.e-h .eyebrow{color:inherit;opacity:.7}
+
+/* 6 · Botón redondo con texto girando */
+.f{text-align:center;display:flex;flex-direction:column;align-items:center;gap:30px;padding-block:clamp(80px,10vw,150px)}
+.f-band{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%) rotate(-4deg);display:flex;white-space:nowrap;pointer-events:none}
+.f-band span{flex:none;font-weight:800;font-size:clamp(80px,12vw,200px);letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(241,240,232,.18);padding-right:.3em;animation:marq 45s linear infinite}
+@keyframes marq{to{transform:translateX(-100%)}}
+.f-btn{position:relative;width:clamp(200px,20vw,280px);aspect-ratio:1;border-radius:50%;background:var(--red);color:var(--white);display:grid;place-items:center;text-decoration:none;transition:transform .5s var(--ease),background .4s}
+.f-btn:hover{transform:scale(1.07);background:var(--white);color:var(--ink)}
+.f-btn svg{position:absolute;inset:8%;width:84%;height:84%;animation:spin 18s linear infinite}
+.f-btn:hover svg{animation-duration:6s}
+.f-btn text{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;fill:currentColor}
+.f-btn b{font-weight:300;font-size:clamp(24px,2.3vw,34px);letter-spacing:-.03em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.f .info{position:relative;justify-content:center;color:rgba(241,240,232,.75)}
+.f .eyebrow{position:relative}
+
+@media (max-width:760px){
+  .e{flex-direction:column}.e-h{min-height:320px}.e-h:hover{flex:1}
+  .c-form input,.c-form input.sm{width:100%}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01s!important;animation:none!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Contacto en el inicio · seis opciones</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a><a href="#f">6</a></nav>
+
+<div class="gap"><b>Opción 1</b>El email en grande</div>
+<section class="blk a" id="a">
+  <p class="eyebrow">Contacto · ¿Tienes un proyecto?</p>
+  <a class="a-mail" href="mailto:info@launchstudiogroup.com"><span>info@launchstudiogroup.com</span> <i aria-hidden="true">→</i></a>
+  <div class="a-foot"><div class="info mono"><a href="tel:+34681091085">+34 681 091 085</a><span>Barcelona · Presencia internacional</span></div><a class="btn" href="contacto.html">Cuéntanos tu proyecto →</a></div>
+</section>
+
+<div class="gap"><b>Opción 2</b>Bola roja que sigue al cursor</div>
+<section class="blk b dark" id="b">
+  <p class="eyebrow">Contacto</p>
+  <h2>Hablemos<br>de tu próximo<br><em>proyecto.</em></h2>
+  <div class="info mono"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34681091085">+34 681 091 085</a><span>Barcelona</span></div>
+  <a class="b-ball" id="bBall" href="contacto.html">Escríbenos<br>→</a>
+</section>
+
+<div class="gap"><b>Opción 3</b>Formulario escrito como una frase</div>
+<section class="blk c" id="c">
+  <p class="eyebrow" style="margin-bottom:22px">Contacto</p>
+  <form class="c-form" id="cForm">Hola, soy <input name="nombre" placeholder="tu nombre" aria-label="Nombre" required> de <input class="sm" name="empresa" placeholder="empresa" aria-label="Empresa">, y queremos hablar de
+    <select name="tipo" aria-label="Tipo de proyecto"><option>un stand</option><option>un evento</option><option>una experiencia de marca</option><option>renders e interiorismo</option><option>diseño gráfico</option><option>otra cosa</option></select>.
+    Podéis escribirme a <input name="email" type="email" placeholder="tu email" aria-label="Email" required>.
+    <div class="c-send"><button type="submit">Enviar →</button><div class="info"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34681091085">+34 681 091 085</a></div></div>
+  </form>
+</section>
+
+<div class="gap"><b>Opción 4</b>«Hablemos» se rellena de rojo al bajar</div>
+<section class="blk d" id="d">
+  <p class="eyebrow">Contacto</p>
+  <div class="d-word" id="dWord" aria-label="Hablemos"><span class="o" aria-hidden="true">Hablemos.</span><span class="f" aria-hidden="true">Hablemos.</span></div>
+  <div class="d-row"><p>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia.</p><a class="btn" href="contacto.html">Cuéntanos tu proyecto →</a></div>
+  <div class="info mono" style="margin-top:34px;color:var(--grey)"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34681091085">+34 681 091 085</a><span>Barcelona · Presencia internacional</span></div>
+</section>
+
+<div class="gap"><b>Opción 5</b>Dos mitades que se ensanchan</div>
+<section class="blk e" id="e">
+  <a class="e-h" href="contacto.html"><p class="eyebrow">Contacto</p><h2>Cuéntanos tu proyecto.</h2><span class="arr" aria-hidden="true">→</span></a>
+  <a class="e-h" href="mailto:info@launchstudiogroup.com"><p class="eyebrow">O escríbenos directamente</p><ul><li>info@launchstudiogroup.com</li><li>+34 681 091 085</li><li>Barcelona · Presencia internacional</li></ul><span class="arr" aria-hidden="true">→</span></a>
+</section>
+
+<div class="gap"><b>Opción 6</b>Botón redondo con texto que gira</div>
+<section class="blk f dark" id="f">
+  <div class="f-band" aria-hidden="true"><span>stands eventos experiencias diseño stands eventos experiencias diseño </span><span>stands eventos experiencias diseño stands eventos experiencias diseño </span></div>
+  <p class="eyebrow">¿Empezamos?</p>
+  <a class="f-btn" href="contacto.html" aria-label="Hablemos de tu proyecto">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#circ" textLength="505" lengthAdjust="spacing">Hablemos de tu proyecto · Escríbenos ·</textPath></text></svg>
+    <b>Hablemos</b></a>
+  <div class="info mono"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a><a href="tel:+34681091085">+34 681 091 085</a></div>
+</section>
+<div class="gap" style="padding-bottom:50vh">Fin de las opciones</div>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 2 · la bola sigue al cursor con retraso
+  var bS=document.getElementById('b'),bB=document.getElementById('bBall'),tx=0,ty=0,x=0,y=0,on=false;
+  if(matchMedia('(hover:hover)').matches){
+    var r0=bS.getBoundingClientRect();tx=x=r0.width*.72;ty=y=r0.height*.45;
+    bS.addEventListener('pointermove',function(e){var r=bS.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top});
+    (function loop(){x+=(tx-x)*(calm?1:.12);y+=(ty-y)*(calm?1:.12);bB.style.setProperty('--x',x.toFixed(1)+'px');bB.style.setProperty('--y',y.toFixed(1)+'px');requestAnimationFrame(loop)})();
+  }
+  // 3 · enviar abre el correo con la frase
+  document.getElementById('cForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;
+    var body='Hola, soy '+f.nombre.value+(f.empresa.value?' de '+f.empresa.value:'')+', y queremos hablar de '+f.tipo.value+'.\nMi email es '+f.email.value+'.';
+    location.href='mailto:info@launchstudiogroup.com?subject='+encodeURIComponent('Nuevo proyecto: '+f.tipo.value)+'&body='+encodeURIComponent(body)});
+  // 3 · el desplegable se ajusta al texto elegido
+  var sel=document.querySelector('.c-form select'),meas=document.createElement('span');
+  meas.style.cssText='position:absolute;visibility:hidden;white-space:pre;font-weight:400';sel.parentNode.appendChild(meas);
+  function fit(){meas.textContent=sel.options[sel.selectedIndex].text;sel.style.width=(meas.offsetWidth*1.06+18)+'px'}
+  sel.addEventListener('change',fit);fit();
+  // 4 · la palabra se rellena con el scroll
+  var dW=document.getElementById('dWord');
+  function onScroll(){var r=dW.getBoundingClientRect(),p=calm?1:Math.max(0,Math.min(1,(innerHeight*.9-r.top)/(innerHeight*.6)));dW.style.setProperty('--p',p.toFixed(3))}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
