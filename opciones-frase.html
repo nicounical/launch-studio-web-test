@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones «Made to be remembered» — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;600;800&display=swap">
+<style>
+/* Seis maneras de poner la foto de las grullas con «Made to be remembered»,
+   entre Servicios y Proyectos. Unas con la foto nítida, otras borrosa y otras que pasan de una a otra. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--img:url("assets/img/frase/frase-grullas-luna.jpg")}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+p,h2{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.gap{padding:100px var(--pad) 24px;background:#e3e2d8;color:var(--grey);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.gap b{display:inline-block;background:var(--ink);color:var(--white);font-weight:400;padding:7px 12px;border-radius:4px;margin-right:10px}
+.fake{padding:40px var(--pad);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey);text-align:center;border-bottom:1px dashed rgba(11,11,11,.2)}
+.fake+section+.fake{border-bottom:0;border-top:1px dashed rgba(11,11,11,.2)}
+.blk{position:relative;overflow:hidden;height:min(92vh,860px);display:grid;place-items:center;color:var(--white);background:#2b2b2b}
+.bg{position:absolute;inset:-6%;background:var(--img) 60% 50%/cover no-repeat}
+.ttl{position:relative;z-index:2;font-weight:300;font-size:clamp(46px,8.6vw,150px);line-height:.96;letter-spacing:-.05em;text-align:center}
+.ttl em{font-style:normal;color:var(--red)}
+.tag{position:absolute;left:var(--pad);bottom:28px;z-index:2;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+
+/* 1 · Nítida */
+.a,.c,.d{align-items:start}.a .ttl,.c .ttl,.d .ttl{margin-top:clamp(60px,9vh,110px)}
+.a .bg{transform:translateY(var(--py,0))}
+
+/* 2 · Borrosa */
+.b .bg{filter:blur(14px) brightness(.85);transform:scale(1.08) translateY(var(--py,0))}
+
+/* 3 · Se enfoca al bajar */
+.c .bg{filter:blur(calc((1 - var(--p,0))*18px)) brightness(calc(.75 + var(--p,0)*.25));transform:scale(calc(1.14 - var(--p,0)*.1))}
+.c .ttl{opacity:calc(.25 + var(--p,0)*.75);transform:translateY(calc((1 - var(--p,0))*40px))}
+
+/* 4 · Nítida con la frase en contorno que se rellena */
+.d .bg{filter:brightness(.8)}
+.d .ttl{text-align:left;justify-self:start;padding-left:var(--pad);font-weight:600}
+.d .ttl span{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(241,240,232,.8);background:linear-gradient(90deg,var(--white) 50%,transparent 50%) 100% 0/200% 100% no-repeat;-webkit-background-clip:text;background-clip:text;transition:background-position 1.1s cubic-bezier(.7,0,.2,1)}
+.d .ttl span:last-child{background-image:linear-gradient(90deg,var(--red) 50%,transparent 50%);-webkit-text-stroke-color:var(--red)}
+.d.in .ttl span{background-position:0 0}
+.d.in .ttl span:nth-child(2){transition-delay:.35s}.d.in .ttl span:nth-child(3){transition-delay:.7s}
+
+/* 5 · Borrosa fuera, nítida dentro de las letras */
+.e .bg{filter:blur(16px) brightness(.55);transform:scale(1.08)}
+.e .ttl{font-weight:800;font-size:clamp(54px,11vw,200px);line-height:.88;letter-spacing:-.06em;color:transparent;background:var(--img) 60% 50%/cover no-repeat fixed;-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 1px rgba(241,240,232,.25))}
+
+/* 6 · Nítida con la frase pequeña y una línea */
+.f{align-items:end;justify-items:start}
+.f .bg{transform:translateY(var(--py,0))}
+.f-in{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(14px,2vw,26px);padding:0 var(--pad) clamp(40px,6vw,90px)}
+.f-in i{display:block;width:clamp(40px,8vw,140px);height:1px;background:var(--white);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.7,0,.2,1)}
+.f.in .f-in i{transform:none}
+.f-in p{font-weight:300;font-size:clamp(26px,3.4vw,54px);letter-spacing:-.03em;opacity:0;transform:translateX(-20px);transition:opacity .8s .5s,transform 1s .5s cubic-bezier(.2,.7,.2,1)}
+.f.in .f-in p{opacity:1;transform:none}
+.f-in p em{font-style:normal;color:var(--red)}
+.f .tag{left:auto;right:var(--pad)}
+
+@media (max-width:760px){.bar span{display:none}.bar{justify-content:center}.blk{height:72vh}.e .ttl{background-attachment:scroll}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.c .bg{filter:none}.c .ttl{opacity:1;transform:none}.d .ttl span{background-position:0 0}.f-in i{transform:none}.f-in p{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>«Made to be remembered» · seis opciones</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a><a href="#f">6</a></nav>
+
+<div class="gap"><b>Opción 1</b>Foto nítida, frase centrada</div>
+<div class="fake">… fin del bloque de Servicios …</div>
+<section class="blk a" id="a"><div class="bg" data-par></div><h2 class="ttl">Made to be<br><em>remembered.</em></h2><p class="tag">Launch Studio · Barcelona</p></section>
+<div class="fake">… empieza el bloque de Proyectos …</div>
+
+<div class="gap"><b>Opción 2</b>Foto borrosa, frase nítida encima</div>
+<section class="blk b" id="b"><div class="bg" data-par></div><h2 class="ttl">Made to be<br><em>remembered.</em></h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 3</b>Empieza borrosa y se enfoca al bajar (las dos cosas)</div>
+<section class="blk c" id="c"><div class="bg"></div><h2 class="ttl">Made to be<br><em>remembered.</em></h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 4</b>Nítida, la frase en contorno se rellena línea a línea</div>
+<section class="blk d" id="d"><div class="bg"></div><h2 class="ttl" aria-label="Made to be remembered."><span aria-hidden="true">Made to be</span><span aria-hidden="true">remembered.</span></h2><p class="tag" style="left:auto;right:var(--pad)">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 5</b>Borrosa fuera, nítida dentro de las letras</div>
+<section class="blk e" id="e"><div class="bg"></div><h2 class="ttl">Made to be<br>remembered.</h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 6</b>Nítida y protagonista, la frase pequeña abajo</div>
+<section class="blk f" id="f"><div class="bg" data-par></div><div class="f-in"><i></i><p>Made to be <em>remembered.</em></p></div><p class="tag">Launch Studio · Barcelona</p></section>
+<div class="gap" style="padding-bottom:50vh">Fin de las opciones</div>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,cl=function(x){return Math.max(0,Math.min(1,x))};
+  var par=document.querySelectorAll('[data-par]'),c=document.getElementById('c');
+  function onScroll(){
+    if(calm)return;
+    par.forEach(function(b){var r=b.parentNode.getBoundingClientRect();b.style.setProperty('--py',((r.top+r.height/2-innerHeight/2)*-.08).toFixed(1)+'px')});
+    var r=c.getBoundingClientRect();c.style.setProperty('--p',cl((innerHeight*.95-r.top)/(innerHeight*.75)).toFixed(3));
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+  if(calm)c.style.setProperty('--p',1);
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.45});
+  ['d','f'].forEach(function(id){io.observe(document.getElementById(id))});
+})();
+</script>
+</body>
+</html>
