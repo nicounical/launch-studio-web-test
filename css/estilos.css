@@ -276,3 +276,21 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .met__col p{margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.85)}
 @media (max-width:860px){.met__cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.met__col p{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.met__col::after{transform:none}}
+
+/* ---------- Servicios en el inicio: índice con barras de progreso ---------- */
+.sidx{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(24px,5vw,90px)}
+.sidx__nav{position:sticky;top:100px;align-self:start;display:flex;flex-direction:column}
+.sidx__nav a{display:block;text-decoration:none;padding:16px 0 14px;font-weight:300;font-size:clamp(20px,2.2vw,34px);line-height:1.15;letter-spacing:-.02em;color:rgba(11,11,11,.3);transition:color .3s}
+.sidx__nav a.on,.sidx__nav a:hover{color:var(--ink)}
+.sidx__n{display:block;margin-bottom:6px;font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;color:var(--red)}
+.sidx__nav a i{display:block;height:2px;margin-top:14px;background:rgba(11,11,11,.16)}
+.sidx__nav a i::after{content:"";display:block;height:100%;background:var(--red);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.sidx__item{padding-bottom:clamp(60px,8vw,120px);scroll-margin-top:100px}
+.sidx__img{position:relative;aspect-ratio:16/10;overflow:hidden;background:#dddbd0;margin-bottom:22px}
+.sidx__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.sidx__item.seen .sidx__img img{transform:none}
+.sidx__big{position:absolute;right:16px;bottom:-.18em;font-weight:800;font-size:clamp(90px,12vw,200px);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(241,240,232,.85);pointer-events:none}
+.sidx__item h3{font-weight:400;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.02em;margin:0 0 10px}
+.sidx__item p{font-size:clamp(16px,1.45vw,20px);line-height:1.5;color:#5f5d56;max-width:28em;margin:0}
+@media (max-width:760px){.sidx{grid-template-columns:1fr}.sidx__nav{display:none}.sidx__item{padding-bottom:50px}}
+.sec:has(.sidx){overflow:visible}

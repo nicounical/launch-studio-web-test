@@ -99,3 +99,12 @@
   if(!('IntersectionObserver' in window)){m.classList.add('in');return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){m.classList.add('in');io.disconnect()}})},{threshold:.35});io.observe(m);
 })();
+
+// Inicio · servicios: barras de progreso del índice
+(function(){
+  var nav=document.getElementById('sidx-nav'),list=document.getElementById('sidx-list');if(!nav||!list)return;
+  var A=nav.children,I=list.children,tick=false;
+  function f(){tick=false;var mid=innerHeight*.5;for(var i=0;i<I.length;i++){var r=I[i].getBoundingClientRect(),p=Math.max(0,Math.min(1,(mid-r.top)/r.height));
+    A[i].style.setProperty('--p',p.toFixed(3));A[i].classList.toggle('on',p>0&&p<1);if(r.top<innerHeight*.85)I[i].classList.add('seen')}}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
+})();
