@@ -108,3 +108,12 @@
     A[i].style.setProperty('--p',p.toFixed(3));A[i].classList.toggle('on',p>0&&p<1);if(r.top<innerHeight*.85)I[i].classList.add('seen')}}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
 })();
+
+// «Made to be remembered»: la palabra crece y al final queda la foto nítida
+(function(){
+  var sc=document.getElementById('mtbr');if(!sc)return;
+  var pin=sc.firstElementChild,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,tick=false;
+  function f(){tick=false;var r=sc.getBoundingClientRect(),p=calm?1:Math.max(0,Math.min(1,-r.top/(r.height-innerHeight)));
+    pin.style.setProperty('--fs',(12+Math.pow(p,2.2)*130).toFixed(2)+'vw');pin.style.setProperty('--o',Math.max(0,Math.min(1,(p-.7)/.3)).toFixed(3))}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
+})();
