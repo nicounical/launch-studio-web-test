@@ -337,3 +337,6 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .mtbr__tag{position:absolute;left:var(--pad);bottom:28px;z-index:3;margin:0;font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
 @media (max-width:760px){.mtbr__lay,.mtbr__big{background-attachment:scroll}.mtbr__sc{height:220vh}}
 @media (prefers-reduced-motion:reduce){.mtbr__sc{height:auto}.mtbr__pin{position:relative}.mtbr__lay--sharp{opacity:1}.mtbr__w{display:none}}
+
+.sidx__lab{font:400 12px "DM Mono",ui-monospace,monospace!important;letter-spacing:.06em;text-transform:uppercase;color:var(--red)!important;margin:0 0 10px!important}
+.sidx__item h3.sidx__tag{text-transform:uppercase;font-weight:600;font-size:clamp(28px,3.2vw,50px);line-height:1;letter-spacing:-.025em;margin:0 0 14px}
