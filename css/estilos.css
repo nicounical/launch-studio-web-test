@@ -296,12 +296,12 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .sec:has(.sidx){overflow:visible}
 
 /* ---------- Contacto en el inicio: dos botones redondos sobre rojo ---------- */
-.ctx{background:var(--red);color:var(--white);padding-block:clamp(70px,9vw,130px);text-align:center}
+.ctx{background:var(--red);color:var(--white);padding-block:clamp(40px,4.4vw,64px);text-align:center}
 .ctx .eyebrow{color:var(--ink)}
-.ctx h2{margin:14px 0 clamp(34px,4.4vw,60px);font-weight:300;font-size:clamp(34px,4.6vw,76px);line-height:1;letter-spacing:-.04em}
+.ctx h2{margin:10px 0 clamp(22px,2.6vw,36px);font-weight:300;font-size:clamp(34px,4.6vw,76px);line-height:1;letter-spacing:-.04em}
 .ctx__pair{display:flex;justify-content:center;align-items:flex-start;gap:clamp(30px,7vw,120px);flex-wrap:wrap}
 .ctx__it{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;color:var(--white)}
-.ctx__rb{position:relative;width:clamp(170px,17vw,240px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;transition:transform .5s cubic-bezier(.7,0,.2,1),background .4s,color .4s}
+.ctx__rb{position:relative;width:clamp(150px,14vw,200px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;transition:transform .5s cubic-bezier(.7,0,.2,1),background .4s,color .4s}
 .ctx__it--w .ctx__rb{background:var(--white);color:var(--ink)}
 .ctx__it--b .ctx__rb{background:var(--ink);color:var(--white)}
 .ctx__it--w:hover .ctx__rb{transform:scale(1.07) rotate(-8deg);background:var(--ink);color:var(--white)}
@@ -316,7 +316,7 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .ctx__mail{font-size:15px;font-weight:400}
 .ctx__it:hover .ctx__mail,.ctx__it:hover .ctx__k{text-decoration:underline;text-underline-offset:4px}
 .ctx__or{align-self:center;font-weight:300;font-size:clamp(22px,2.2vw,32px);color:rgba(255,255,255,.7)}
-.ctx__mailto{margin:clamp(34px,4vw,56px) 0 10px;font-size:clamp(17px,1.5vw,21px);font-weight:400}
+.ctx__mailto{margin:clamp(22px,2.4vw,34px) 0 8px;font-size:clamp(17px,1.5vw,21px);font-weight:400}
 .ctx__mailto a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px;transition:color .3s,border-color .3s}
 .ctx__mailto a:hover{color:var(--ink);border-color:var(--ink)}
 .ctx__tel{margin:0;font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase}
