@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Más opciones «Made to be remembered» — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;600;800&display=swap">
+<style>
+/* Seis variaciones de la opción 5: la foto borrosa (o un fondo liso) y la foto nítida asomando
+   dentro de las letras o por una ventana. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--img:url("assets/img/frase/frase-grullas-luna.jpg")}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+p,h2{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar a{color:var(--white);text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.gap{padding:100px var(--pad) 24px;background:#e3e2d8;color:var(--grey);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.gap b{display:inline-block;background:var(--ink);color:var(--white);font-weight:400;padding:7px 12px;border-radius:4px;margin-right:10px}
+.blk{position:relative;overflow:hidden;height:min(92vh,860px);display:grid;place-items:center;color:var(--white);background:#2b2b2b}
+.lay{position:absolute;inset:-30px;background:var(--img) 60% 50%/cover no-repeat}
+.blur{filter:blur(16px) brightness(.55)}
+.tag{position:absolute;left:var(--pad);bottom:28px;z-index:3;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+/* letras rellenas con la foto nítida, alineada con la ventana */
+.ko{color:transparent;background:var(--img) 60% 50%/cover no-repeat fixed;-webkit-background-clip:text;background-clip:text}
+.big{position:relative;z-index:2;font-weight:800;line-height:.88;letter-spacing:-.06em;text-align:center}
+
+/* 1 · La palabra crece hasta llenar la pantalla y la foto se enfoca */
+.a{height:auto;display:block;background:none}
+.a-sc{height:260vh}
+.a-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;background:#2b2b2b;color:var(--white)}
+.a .lay{background-attachment:fixed}
+.a .lay.sharp{opacity:var(--o,0)}
+.a-w{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.a-w small{font:400 clamp(13px,1.2vw,16px) var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;opacity:calc(1 - var(--o,0)*2)}
+.a-w .big{font-size:var(--fs,12vw);white-space:nowrap;opacity:calc(1 - var(--o,0))}
+
+/* 2 · Lupa que sigue al cursor */
+.b{cursor:none}
+.b .sharp{clip-path:circle(var(--r,140px) at var(--x,62%) var(--y,52%))}
+.b-t{position:relative;z-index:2;font-weight:300;font-size:clamp(46px,8vw,140px);line-height:.96;letter-spacing:-.05em;text-align:center;pointer-events:none;mix-blend-mode:difference}
+.b-ring{position:absolute;z-index:3;left:0;top:0;width:calc(var(--r,140px)*2);aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(241,240,232,.7);transform:translate(calc(var(--px,0px) - 50%),calc(var(--py,0px) - 50%));pointer-events:none}
+
+/* 3 · Fondo crema, las letras son la foto */
+.c{background:var(--white);color:var(--ink);place-items:center start;padding-inline:var(--pad)}
+.c .big{font-size:clamp(64px,13vw,236px);text-align:left;background-attachment:scroll;background-size:cover;background-position:60% 50%}
+.c .big b{font-weight:800;color:var(--red);-webkit-text-fill-color:var(--red)}
+.c .tag{left:auto;right:var(--pad);opacity:.6}
+
+/* 4 · «Made to be» con la foto y «remembered.» en rojo */
+.d .big{font-size:clamp(56px,11vw,200px)}
+.d .big span{display:block}
+.d .big .r{color:var(--red);background:none;-webkit-background-clip:border-box;background-clip:border-box}
+
+/* 5 · Franja nítida que se abre al bajar */
+.e .sharp{clip-path:inset(calc(50% - var(--h,6%)) 0 calc(50% - var(--h,6%)) 0)}
+.e-t{position:relative;z-index:2;font-weight:300;font-size:clamp(40px,7vw,124px);line-height:1;letter-spacing:-.05em;text-align:center}
+.e-t em{font-style:normal;color:var(--red)}
+.e-lines{position:absolute;left:0;right:0;top:calc(50% - var(--h,6%));bottom:calc(50% - var(--h,6%));z-index:2;border-block:1px solid rgba(241,240,232,.55);pointer-events:none}
+
+/* 6 · Negro, los pájaros cruzan dentro de las letras */
+.f{background:var(--ink)}
+.f .big{font-size:clamp(58px,12.4vw,224px);background-attachment:scroll;background-size:180% auto;background-position:var(--bx,30%) 46%}
+.f .tag{color:var(--white)}
+.f-sub{position:absolute;z-index:2;right:var(--pad);top:clamp(30px,5vw,60px);font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+
+@media (max-width:760px){.bar span{display:none}.bar{justify-content:center}.blk{height:72vh}.ko,.a .lay{background-attachment:scroll}.b{cursor:auto}}
+@media (prefers-reduced-motion:reduce){.a .lay.sharp{opacity:1}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>«Made to be remembered» · seis más como la 5</span><a href="#a">1</a><a href="#b">2</a><a href="#c">3</a><a href="#d">4</a><a href="#e">5</a><a href="#f">6</a><a href="opciones-frase.html">Ver las anteriores</a></nav>
+
+<div class="gap"><b>Opción 1</b>«remembered.» crece hasta llenar la pantalla y la foto se enfoca</div>
+<section class="a" id="a"><div class="a-sc" id="aSc"><div class="a-pin" id="aPin">
+  <div class="lay blur"></div><div class="lay sharp"></div>
+  <div class="a-w"><small>Made to be</small><h2 class="big ko" aria-label="Made to be remembered.">remembered.</h2></div>
+  <p class="tag">Launch Studio · Barcelona</p></div></div></section>
+
+<div class="gap"><b>Opción 2</b>Lupa nítida que sigue al cursor (en el móvil se mueve sola)</div>
+<section class="blk b" id="b"><div class="lay blur"></div><div class="lay sharp"></div><span class="b-ring" aria-hidden="true"></span>
+  <h2 class="b-t">Made to be<br>remembered.</h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 3</b>Fondo crema, las letras son la foto</div>
+<section class="blk c" id="c"><h2 class="big ko">Made to be<br>remembered<b>.</b></h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 4</b>«Made to be» con la foto dentro, «remembered.» en rojo</div>
+<section class="blk d" id="d"><div class="lay blur"></div><h2 class="big"><span class="ko">Made to be</span><span class="r">remembered.</span></h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 5</b>Franja nítida que se abre al bajar</div>
+<section class="blk e" id="e"><div class="lay blur"></div><div class="lay sharp"></div><span class="e-lines" aria-hidden="true"></span>
+  <h2 class="e-t">Made to be <em>remembered.</em></h2><p class="tag">Launch Studio · Barcelona</p></section>
+
+<div class="gap"><b>Opción 6</b>Fondo negro, los pájaros cruzan dentro de las letras al bajar</div>
+<section class="blk f" id="f"><p class="f-sub">Launch Studio</p><h2 class="big ko">Made to be<br>remembered.</h2><p class="tag">Barcelona · Presencia internacional</p></section>
+<div class="gap" style="padding-bottom:50vh">Fin de las opciones</div>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches,cl=function(x){return Math.max(0,Math.min(1,x))};
+  var $=function(id){return document.getElementById(id)};
+  var aSc=$('aSc'),aPin=$('aPin'),e=$('e'),f=$('f');
+  function onScroll(){
+    // 1
+    var r=aSc.getBoundingClientRect(),p=calm?1:cl(-r.top/(r.height-innerHeight));
+    var fs=12+Math.pow(p,2.2)*130;aPin.style.setProperty('--fs',fs.toFixed(2)+'vw');aPin.style.setProperty('--o',cl((p-.7)/.3).toFixed(3));
+    // 5
+    var re=e.getBoundingClientRect(),pe=calm?1:cl((innerHeight*.95-re.top)/(innerHeight*.8));e.style.setProperty('--h',(6+pe*44).toFixed(2)+'%');
+    // 6
+    var rf=f.getBoundingClientRect(),pf=cl((innerHeight-rf.top)/(innerHeight+rf.height));f.style.setProperty('--bx',(10+pf*70).toFixed(1)+'%');
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+
+  // 2 · lupa
+  var b=$('b'),tx=.62,ty=.52,x=tx,y=ty,hover=false;
+  b.addEventListener('pointermove',function(ev){var r=b.getBoundingClientRect();tx=(ev.clientX-r.left)/r.width;ty=(ev.clientY-r.top)/r.height;hover=true});
+  b.addEventListener('pointerleave',function(){hover=false});
+  (function loop(t){if(!hover&&!calm){tx=.5+Math.cos(t/2600)*.28;ty=.5+Math.sin(t/1900)*.22}
+    x+=(tx-x)*.12;y+=(ty-y)*.12;var r=b.getBoundingClientRect();
+    var rad=Math.max(90,Math.min(r.width,r.height)*.22);
+    b.style.setProperty('--r',rad.toFixed(0)+'px');
+    b.style.setProperty('--x',(x*r.width+30).toFixed(1)+'px');b.style.setProperty('--y',(y*r.height+30).toFixed(1)+'px');
+    b.style.setProperty('--px',(x*r.width).toFixed(1)+'px');b.style.setProperty('--py',(y*r.height).toFixed(1)+'px');
+    requestAnimationFrame(loop)})(0);
+})();
+</script>
+</body>
+</html>
