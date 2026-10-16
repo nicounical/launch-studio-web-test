@@ -316,7 +316,10 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .ctx__mail{font-size:15px;font-weight:400}
 .ctx__it:hover .ctx__mail,.ctx__it:hover .ctx__k{text-decoration:underline;text-underline-offset:4px}
 .ctx__or{align-self:center;font-weight:300;font-size:clamp(22px,2.2vw,32px);color:rgba(255,255,255,.7)}
-.ctx__tel{margin:clamp(34px,4vw,56px) 0 0;font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase}
+.ctx__mailto{margin:clamp(34px,4vw,56px) 0 10px;font-size:clamp(17px,1.5vw,21px);font-weight:400}
+.ctx__mailto a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px;transition:color .3s,border-color .3s}
+.ctx__mailto a:hover{color:var(--ink);border-color:var(--ink)}
+.ctx__tel{margin:0;font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase}
 .ctx__tel a{text-decoration:none}.ctx__tel a:hover{color:var(--ink)}
 @media (max-width:560px){.ctx__or{width:100%}}
 @media (prefers-reduced-motion:reduce){.ctx__rb svg{animation:none}}
