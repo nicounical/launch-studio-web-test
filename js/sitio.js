@@ -129,3 +129,11 @@
     st.style.setProperty('--x',(x*r.width+30).toFixed(0)+'px');st.style.setProperty('--y',(y*r.height+30).toFixed(0)+'px');st.style.setProperty('--rr',Math.max(90,r.height*.18).toFixed(0)+'px');
     requestAnimationFrame(loop)})(0);
 })();
+
+// Nosotros: la foto se abre desde una redonda al bajar
+(function(){
+  var sc=document.getElementById('nab'),pin=document.getElementById('nab-pin');if(!sc)return;
+  var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,tick=false;
+  function f(){tick=false;var r=sc.getBoundingClientRect(),k=calm?0:1-Math.max(0,Math.min(1,-r.top/(r.height-innerHeight)));pin.style.setProperty('--k',k.toFixed(3))}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
+})();

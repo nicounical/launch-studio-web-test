@@ -377,3 +377,28 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .cpage__data a{text-decoration:none;font-size:clamp(16px,1.4vw,19px);font-weight:400;transition:color .3s}
 .cpage__data a:hover{color:var(--red)}
 @media (max-width:860px){.cpage{grid-template-columns:minmax(0,1fr);padding-top:110px}.cform{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Nosotros: la foto se abre desde una redonda y el texto en columna de lectura ---------- */
+.nab__wrapfix{}
+.nab{height:230vh;position:relative}
+.nab__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;background:var(--white);padding-top:60px}
+.nab__ttl{position:relative;text-align:center;padding-inline:var(--pad)}
+.nab__ttl .eyebrow{margin-bottom:16px}
+.nab h1,.nab__h{margin:0;font-weight:300;font-size:clamp(40px,7.4vw,128px);line-height:.98;letter-spacing:-.045em;color:var(--ink)}
+.nab h1 em,.nab__h em{font-style:normal;font-weight:600}
+.nab__mask{position:absolute;inset:0;clip-path:circle(calc(24vmin + (1 - var(--k,1))*(1 - var(--k,1))*70vmax) at 50% calc(50% + 30px))}
+.nab__bg{position:absolute;inset:0;background:url("../assets/img/nosotros/nosotros-gradas.jpg") 50% 50%/cover no-repeat;filter:brightness(calc(1 - (1 - var(--k,1))*.45))}
+.nab__ttl--in{position:absolute;inset:0;display:grid;place-items:center;padding-top:60px}
+.nab__ttl--in .nab__h{color:var(--white)}
+.nab__ttl--in .eyebrow{color:var(--white);opacity:.8}
+.nab__read{max-width:760px;margin-inline:auto;padding:clamp(60px,8vw,120px) var(--pad)}
+.nab__lead{margin:0 0 clamp(40px,5vw,70px);font-weight:400;font-size:clamp(20px,2vw,30px);line-height:1.3;letter-spacing:-.02em}
+.nab__t{margin:0;font-size:clamp(17px,1.45vw,20px);line-height:1.7;color:#5f5d56}
+.nab__t+.nab__t{margin-top:1.2em}
+.nab__quote{margin:clamp(40px,5vw,70px) 0;padding-left:clamp(18px,3vw,40px);border-left:3px solid var(--red);font-weight:300;font-size:clamp(26px,3vw,46px);line-height:1.15;letter-spacing:-.03em}
+.nab__end{background:var(--red);color:var(--white);padding-block:clamp(60px,8vw,120px)}
+.nab__end .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+.nab__end p{margin:0;font-weight:300;font-size:clamp(28px,3.8vw,62px);line-height:1.08;letter-spacing:-.035em;max-width:16em}
+.nab__end b{font-weight:600}
+@media (max-width:760px){.nab{height:170vh}}
+@media (prefers-reduced-motion:reduce){.nab{height:auto}.nab__pin{position:relative}}
