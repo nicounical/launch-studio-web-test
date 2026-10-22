@@ -350,3 +350,30 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 #proyectos{padding-block:clamp(56px,7vw,100px)}
 #proyectos .sec__head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:clamp(24px,3vw,40px)}
 #proyectos .sec__head h2{font-size:clamp(30px,4vw,58px)}
+
+/* ---------- Página de contacto: foto borrosa con ventana nítida y tarjeta del formulario ---------- */
+.cpage{--img:url("../assets/img/contacto/contacto-pedestal.jpg");position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(30px,5vw,90px);align-items:center;padding:clamp(120px,13vw,170px) var(--pad) clamp(50px,7vw,100px);overflow:hidden;background:#2a2926;color:var(--white)}
+.cpage__lay{position:absolute;inset:-30px;background:var(--img) 50% 50%/cover no-repeat}
+.cpage__lay--blur{filter:blur(14px) brightness(.5)}
+.cpage__lay--sharp{clip-path:circle(var(--rr,130px) at var(--x,30%) var(--y,60%));filter:brightness(.82)}
+.cpage__copy{position:relative;z-index:2}
+.cpage__copy .eyebrow{color:var(--white);opacity:.8}
+.cpage h1{margin:14px 0 24px;font-weight:800;font-size:clamp(56px,8.4vw,150px);line-height:.86;letter-spacing:-.065em;color:var(--white)}
+.cpage h1 em{font-style:normal;color:var(--red)}
+.cpage__lead{max-width:24em;font-size:clamp(16px,1.4vw,19px);line-height:1.5;opacity:.9}
+.cpage__card{position:relative;z-index:2;background:var(--white);color:var(--ink);padding:clamp(24px,3vw,44px);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.cform{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.cform label{display:flex;flex-direction:column;gap:6px;font:400 11px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#6f6d66}
+.cform__full{grid-column:1/-1}
+.cform input,.cform textarea{border:0;border-bottom:1.5px solid var(--ink);background:transparent;padding:9px 0;font:300 17px var(--font);letter-spacing:0;text-transform:none;color:var(--ink);outline:0;border-radius:0;resize:vertical;width:100%}
+.cform input:focus,.cform textarea:focus{border-color:var(--red)}
+.cform__send{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.cform button{background:var(--ink);color:var(--white);border:0;border-radius:999px;padding:16px 30px;font:500 15px var(--font);cursor:pointer;transition:background .3s}
+.cform button:hover{background:var(--red)}
+.cform .form__msg{margin:0;font-size:14px}
+.cpage__data{margin:26px 0 0;padding-top:20px;border-top:1px solid rgba(11,11,11,.18);display:grid;grid-template-columns:auto 1fr;gap:10px 24px;align-items:baseline}
+.cpage__data dt{font:400 12px "DM Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#6f6d66}
+.cpage__data dd{margin:0}
+.cpage__data a{text-decoration:none;font-size:clamp(16px,1.4vw,19px);font-weight:400;transition:color .3s}
+.cpage__data a:hover{color:var(--red)}
+@media (max-width:860px){.cpage{grid-template-columns:minmax(0,1fr);padding-top:110px}.cform{grid-template-columns:minmax(0,1fr)}}

@@ -117,3 +117,15 @@
     pin.style.setProperty('--fs',(12+Math.pow(p,2.2)*130).toFixed(2)+'vw');pin.style.setProperty('--o',Math.max(0,Math.min(1,(p-.7)/.3)).toFixed(3))}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
 })();
+
+// Contacto: ventana nítida que sigue al cursor sobre la foto borrosa
+(function(){
+  var st=document.getElementById('cpage');if(!st)return;
+  var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=.3,ty=.6,x=tx,y=ty,hov=false;
+  st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;hov=true});
+  st.addEventListener('pointerleave',function(){hov=false});
+  (function loop(t){if(!hov&&!calm){tx=.3+Math.cos(t/2800)*.16;ty=.55+Math.sin(t/2100)*.2}
+    x+=(tx-x)*.1;y+=(ty-y)*.1;var r=st.getBoundingClientRect();
+    st.style.setProperty('--x',(x*r.width+30).toFixed(0)+'px');st.style.setProperty('--y',(y*r.height+30).toFixed(0)+'px');st.style.setProperty('--rr',Math.max(90,r.height*.18).toFixed(0)+'px');
+    requestAnimationFrame(loop)})(0);
+})();
