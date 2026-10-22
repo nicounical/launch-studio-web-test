@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones página Contacto — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis páginas de Contacto completas con imagen y «Ready to launch?».
+   Arriba se elige la opción; cada una es la página entera. La foto es provisional. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--line:rgba(11,11,11,.18);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.7,0,.2,1);--img:url("assets/img/servicios/servicio-stands-truphone.jpg")}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,p,dl,dd{margin:0}
+a{color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;background:none;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.bar button:hover{background:var(--red);border-color:var(--red)}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+/* navegación de la web (maqueta) */
+.nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);border-bottom:1px solid var(--line);background:var(--white);color:var(--ink)}
+.nav b{font-weight:500;letter-spacing:.24em;font-size:13px}
+.nav nav{display:flex;gap:clamp(14px,2.4vw,34px);font-size:14px}
+.nav nav a{text-decoration:none}.nav nav a.on{border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.page{display:none;padding-top:44px}.page.on{display:block}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.ttl{font-weight:300;font-size:clamp(52px,9vw,160px);line-height:.92;letter-spacing:-.055em}
+.ttl em{font-style:normal;color:var(--red)}
+.k{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.data{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;align-items:baseline}
+.data dt{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.data dd a{text-decoration:none;font-size:clamp(17px,1.5vw,21px);font-weight:400;border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+.data dd a:hover{color:var(--red);border-color:var(--red)}
+/* formulario */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.form label{display:flex;flex-direction:column;gap:6px;font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.form .full{grid-column:1/-1}
+.form input,.form textarea,.form select{border:0;border-bottom:1.5px solid currentColor;background:transparent;padding:9px 0;font-size:17px;font-weight:300;letter-spacing:0;text-transform:none;color:inherit;outline:0;border-radius:0;resize:vertical}
+.form input:focus,.form textarea:focus,.form select:focus{border-color:var(--red)}
+.form .send{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.form button{background:var(--ink);color:var(--white);border:0;border-radius:999px;padding:16px 30px;font-weight:500;font-size:15px;cursor:pointer;transition:background .3s,color .3s}
+.form button:hover{background:var(--red)}
+.form .ok{font-size:14px;color:var(--grey)}
+.chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.chips label{flex-direction:row;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:9px 16px;border:1.5px solid currentColor;border-radius:999px;font:500 13px var(--font);letter-spacing:0;text-transform:none;color:var(--ink);transition:background .3s,color .3s}
+.chips input:checked+span{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.foot{padding:22px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+
+/* 1 · Pantalla partida: foto a la izquierda con el título encima */
+.p1 .split{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 100px)}
+.p1 .pic{position:sticky;top:44px;align-self:start;height:calc(100vh - 44px);overflow:hidden;background:#1d1c1a;color:var(--white);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,4vw,60px)}
+.p1 .pic img{position:absolute;inset:0;filter:brightness(.62);transform:scale(1.08);animation:zoomout 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+.p1 .pic>*:not(img){position:relative}
+.p1 .pic .eyebrow{color:var(--white);opacity:.8;margin-bottom:14px}
+.p1 .side{padding:clamp(36px,5vw,80px) var(--pad);display:flex;flex-direction:column;gap:clamp(34px,4vw,56px)}
+.p1 .side h2{font-weight:300;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.025em;line-height:1.15;max-width:16em}
+@keyframes zoomout{to{transform:none}}
+
+/* 2 · Foto a todo el ancho y el formulario debajo */
+.p2 .hero{position:relative;height:min(78vh,720px);overflow:hidden;display:grid;place-items:end start;padding:clamp(28px,4vw,64px) var(--pad);color:var(--white)}
+.p2 .hero .bg{position:absolute;inset:-6%;background:var(--img) 50% 50%/cover no-repeat;filter:brightness(.6);transform:translateY(var(--py,0))}
+.p2 .hero .ttl{position:relative;font-size:clamp(60px,12vw,220px)}
+.p2 .hero .ttl em{color:var(--white);-webkit-text-stroke:0}
+.p2 .hero .k{position:absolute;right:var(--pad);top:clamp(24px,3vw,44px);opacity:.8}
+.p2 .body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,110px);padding:clamp(50px,7vw,110px) var(--pad)}
+.p2 .body h2{font-weight:300;font-size:clamp(26px,2.8vw,42px);letter-spacing:-.025em;line-height:1.12;margin:12px 0 30px}
+
+/* 3 · Rojo con la foto en un círculo que crece */
+.p3{background:var(--red);color:var(--white)}
+.p3 .eyebrow{color:var(--ink)}
+.p3 .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:center;padding:clamp(50px,7vw,110px) var(--pad);min-height:calc(100vh - 100px)}
+.p3 .circ{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;clip-path:circle(var(--r,30%) at 50% 50%);transition:clip-path 1.6s var(--ease)}
+.p3.go .circ{--r:50%}
+.p3 .circ img{transform:scale(1.15);transition:transform 1.8s var(--ease)}
+.p3.go .circ img{transform:none}
+.p3 .ttl{font-size:clamp(50px,7.4vw,128px);margin:14px 0 clamp(28px,3vw,44px)}
+.p3 .ttl em{color:var(--ink)}
+.p3 .form{color:var(--white)}
+.p3 .form label{color:rgba(255,255,255,.8)}
+.p3 .form button{background:var(--white);color:var(--ink)}.p3 .form button:hover{background:var(--ink);color:var(--white)}
+.p3 .form .ok{color:rgba(255,255,255,.85)}
+.p3 .data dt{color:rgba(255,255,255,.75)}.p3 .data dd a:hover{color:var(--ink);border-color:var(--ink)}
+.p3 .chips span{color:var(--white)}.p3 .chips input:checked+span{background:var(--white);color:var(--red);border-color:var(--white)}
+
+/* 4 · Foto fija a la derecha, formulario a la izquierda */
+.p4 .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.p4 .left{padding:clamp(50px,7vw,110px) var(--pad);display:flex;flex-direction:column;gap:clamp(36px,4.4vw,64px)}
+.p4 .ttl .ln{display:block;position:relative;font-weight:800;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.6px var(--ink)}
+.p4 .ttl .ln::after{content:attr(data-t);position:absolute;inset:0;color:var(--red);-webkit-text-stroke:0;clip-path:inset(-20% 100% -20% 0);animation:fill 1.4s .3s var(--ease) forwards}
+.p4 .ttl .ln:nth-child(2)::after{animation-delay:.75s;color:var(--ink)}
+@keyframes fill{to{clip-path:inset(-20% 0 -20% 0)}}
+.p4 .right{position:relative}
+.p4 .stick{position:sticky;top:44px;height:calc(100vh - 44px);overflow:hidden}
+.p4 .stick img{transform:scale(1.1);transition:transform .2s linear}
+.p4 .stick .k{position:absolute;left:24px;bottom:22px;color:var(--white)}
+
+/* 5 · Foto borrosa de fondo y tarjeta del formulario encima */
+.p5 .stage{position:relative;min-height:calc(100vh - 100px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(30px,5vw,90px);align-items:center;padding:clamp(50px,7vw,110px) var(--pad);color:var(--white);overflow:hidden;background:#222}
+.p5 .bg{position:absolute;inset:-30px;background:var(--img) 50% 50%/cover no-repeat;filter:blur(14px) brightness(.5)}
+.p5 .sharp{position:absolute;inset:-30px;background:var(--img) 50% 50%/cover no-repeat;clip-path:circle(var(--rr,120px) at var(--x,30%) var(--y,60%));filter:brightness(.8)}
+.p5 .copy{position:relative}
+.p5 .copy .eyebrow{color:var(--white);opacity:.8}
+.p5 .ttl{margin:14px 0 26px}
+.p5 .copy p{max-width:24em;font-size:clamp(16px,1.4vw,19px);line-height:1.5;opacity:.85}
+.p5 .card{position:relative;background:var(--white);color:var(--ink);padding:clamp(24px,3vw,44px);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.p5 .card .data{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+
+/* 6 · Texto gigante con la foto dentro de las letras */
+.p6 .top{padding:clamp(40px,6vw,90px) var(--pad) 0}
+.p6 .knock{font-weight:800;font-size:clamp(70px,15.5vw,290px);line-height:.86;letter-spacing:-.065em;color:transparent;background:var(--img) 50% 40%/cover no-repeat;-webkit-background-clip:text;background-clip:text;margin-top:10px}
+.p6 .knock em{font-style:normal;color:var(--red);-webkit-text-fill-color:var(--red)}
+.p6 .strip{height:clamp(200px,32vh,320px);margin:clamp(30px,4vw,56px) var(--pad) 0;overflow:hidden}
+.p6 .strip img{object-position:50% 45%;transform:translateY(var(--py,0)) scale(1.2)}
+.p6 .body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,110px);padding:clamp(50px,7vw,100px) var(--pad)}
+.p6 .body h2{font-weight:300;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.025em;line-height:1.15;margin:12px 0 28px}
+
+@media (max-width:800px){
+  .nav nav{display:none}
+  .p1 .split,.p2 .body,.p3 .wrap,.p4 .grid,.p5 .stage,.p6 .body{grid-template-columns:1fr}
+  .p1 .pic{position:relative;top:0;height:60vh}
+  .p3 .circ{max-width:340px;justify-self:center;width:100%}
+  .p4 .right{order:-1}.p4 .stick{position:relative;top:0;height:44vh}
+  .form{grid-template-columns:1fr}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.p4 .ttl .ln::after{clip-path:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Página Contacto · seis opciones</span>
+  <button data-p="1" aria-pressed="true">1 · Partida</button><button data-p="2" aria-pressed="false">2 · Foto ancha</button><button data-p="3" aria-pressed="false">3 · Círculo</button><button data-p="4" aria-pressed="false">4 · Foto fija</button><button data-p="5" aria-pressed="false">5 · Tarjeta</button><button data-p="6" aria-pressed="false">6 · Letras</button></nav>
+
+<template id="tpl-form">
+  <form class="form" novalidate>
+    <div class="chips full" role="group" aria-label="¿Qué necesitas?"><label><input type="radio" name="tipo" value="Stand" checked><span>Stand</span></label><label><input type="radio" name="tipo" value="Evento corporativo"><span>Evento corporativo</span></label><label><input type="radio" name="tipo" value="Experiencia de marca"><span>Experiencia de marca</span></label><label><input type="radio" name="tipo" value="Renders e interiorismo"><span>Renders e interiorismo</span></label><label><input type="radio" name="tipo" value="Diseño gráfico"><span>Diseño gráfico</span></label></div>
+    <label>Nombre y apellido<input name="nombre" autocomplete="name" required></label>
+    <label>Empresa (opcional)<input name="empresa" autocomplete="organization"></label>
+    <label class="full">Email<input name="email" type="email" autocomplete="email" required></label>
+    <label class="full">Cuéntanos tu proyecto<textarea name="mensaje" rows="4" required></textarea></label>
+    <div class="send"><button type="submit">Send it →</button><p class="ok" role="status"></p></div>
+  </form>
+</template>
+<template id="tpl-data">
+  <dl class="data"><dt>Email</dt><dd><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></dd><dt>Teléfono</dt><dd><a href="tel:+34673071256">+34 673 071 256</a></dd><dt>Estudio</dt><dd>Barcelona · Presencia internacional</dd></dl>
+</template>
+<template id="tpl-nav"><header class="nav"><b>L LAUNCH STUDIO</b><nav><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html">Nosotros</a><a class="on" href="contacto.html">Contacto</a></nav></header></template>
+<template id="tpl-foot"><div class="foot"><span>© 2026 Launch Studio</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div></template>
+
+<!-- 1 -->
+<main class="page p1 on" id="p1"><div data-nav></div>
+  <div class="split">
+    <div class="pic"><img src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""><p class="eyebrow">Contacto</p><h1 class="ttl">Ready to<br><em>launch?</em></h1></div>
+    <div class="side"><h2>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia.</h2><div data-form></div><div data-data></div></div>
+  </div><div data-foot></div></main>
+
+<!-- 2 -->
+<main class="page p2" id="p2"><div data-nav></div>
+  <section class="hero"><div class="bg" id="p2bg"></div><p class="k">Contacto · Barcelona</p><h1 class="ttl">Ready to<br><em>launch?</em></h1></section>
+  <div class="body"><div><p class="eyebrow">Hablemos</p><h2>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia.</h2><div data-data></div></div><div data-form></div></div>
+  <div data-foot></div></main>
+
+<!-- 3 -->
+<main class="page p3" id="p3"><div data-nav></div>
+  <div class="wrap"><div class="circ"><img src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""></div>
+    <div><p class="eyebrow">Contacto</p><h1 class="ttl">Ready to <em>launch?</em></h1><div data-form></div><div data-data style="margin-top:34px"></div></div></div>
+  <div data-foot></div></main>
+
+<!-- 4 -->
+<main class="page p4" id="p4"><div data-nav></div>
+  <div class="grid"><div class="left"><div><p class="eyebrow">Contacto</p><h1 class="ttl" aria-label="Ready to launch?" style="margin-top:14px"><span class="ln" data-t="Ready to" aria-hidden="true">Ready to</span><span class="ln" data-t="launch?" aria-hidden="true">launch?</span></h1></div>
+      <div data-form></div><div data-data></div></div>
+    <div class="right"><div class="stick"><img id="p4img" src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""><p class="k">Stand para Truphone</p></div></div></div>
+  <div data-foot></div></main>
+
+<!-- 5 -->
+<main class="page p5" id="p5"><div data-nav></div>
+  <section class="stage" id="p5st"><div class="bg"></div><div class="sharp"></div>
+    <div class="copy"><p class="eyebrow">Contacto</p><h1 class="ttl">Ready to<br><em>launch?</em></h1><p>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia, en cualquier punto de Europa.</p></div>
+    <div class="card"><div data-form></div><div data-data></div></div></section>
+  <div data-foot></div></main>
+
+<!-- 6 -->
+<main class="page p6" id="p6"><div data-nav></div>
+  <div class="top"><p class="eyebrow">Contacto</p><h1 class="knock">Ready to<br>launch<em>?</em></h1></div>
+  <div class="strip"><img id="p6img" src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""></div>
+  <div class="body"><div><p class="eyebrow">Hablemos</p><h2>Cuéntanos tu idea y te ayudamos a convertirla en una experiencia.</h2><div data-data></div></div><div data-form></div></div>
+  <div data-foot></div></main>
+
+<script>
+(function(){
+  var T=function(id){return document.getElementById(id).innerHTML};
+  [['[data-form]','tpl-form'],['[data-data]','tpl-data'],['[data-nav]','tpl-nav'],['[data-foot]','tpl-foot']].forEach(function(x){document.querySelectorAll(x[0]).forEach(function(el){el.innerHTML=T(x[1])})});
+  // radios con nombre propio por formulario
+  document.querySelectorAll('.form').forEach(function(f,i){f.querySelectorAll('input[name="tipo"]').forEach(function(r){r.name='tipo'+i})});
+  // enviar: abre el correo con los datos
+  document.querySelectorAll('.form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();
+    var ok=f.querySelector('.ok'),req=f.querySelectorAll('[required]'),bad=[].some.call(req,function(i){return !i.value.trim()});
+    if(bad){ok.textContent='Rellena nombre, email y proyecto.';return}
+    var tipo=(f.querySelector('input[type=radio]:checked')||{}).value||'';
+    var body=f.mensaje.value+'\n\n'+f.nombre.value+(f.empresa.value?' · '+f.empresa.value:'')+'\n'+f.email.value;
+    location.href='mailto:info@launchstudiogroup.com?subject='+encodeURIComponent('Nuevo proyecto · '+tipo)+'&body='+encodeURIComponent(body);
+    ok.textContent='Se abrirá tu programa de correo con el mensaje.'})});
+  // cambiar de opción
+  var pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('[data-p]');
+  function show(n){pages.forEach(function(p){p.classList.toggle('on',p.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);
+    var p3=document.getElementById('p3');p3.classList.remove('go');if(n==3)setTimeout(function(){p3.classList.add('go')},120);onScroll()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // movimientos al bajar
+  var p2=document.getElementById('p2bg'),p4=document.getElementById('p4img'),p6=document.getElementById('p6img');
+  function onScroll(){if(calm)return;var y=scrollY;
+    p2.style.setProperty('--py',(y*.18).toFixed(1)+'px');
+    p4.style.transform='scale('+(1.1-Math.min(.1,y/4000)).toFixed(4)+')';
+    var r=p6.parentNode.getBoundingClientRect();p6.style.setProperty('--py',((r.top+r.height/2-innerHeight/2)*-.12).toFixed(1)+'px')}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  // 5 · ventana nítida que sigue al cursor
+  var st=document.getElementById('p5st'),tx=.3,ty=.6,x=tx,y=ty,hov=false;
+  st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;hov=true});
+  st.addEventListener('pointerleave',function(){hov=false});
+  (function loop(t){if(!hov&&!calm){tx=.28+Math.cos(t/2800)*.16;ty=.55+Math.sin(t/2100)*.2}x+=(tx-x)*.1;y+=(ty-y)*.1;var r=st.getBoundingClientRect();
+    st.style.setProperty('--x',(x*r.width+30).toFixed(0)+'px');st.style.setProperty('--y',(y*r.height+30).toFixed(0)+'px');st.style.setProperty('--rr',Math.max(90,r.height*.2).toFixed(0)+'px');requestAnimationFrame(loop)})(0);
+})();
+</script>
+</body>
+</html>
