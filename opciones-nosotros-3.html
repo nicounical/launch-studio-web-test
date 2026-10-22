@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones página Nosotros (texto nuevo) — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis páginas «Nosotros» con el texto nuevo. Arriba se elige la opción; cada una es la página entera.
+   Las fotos son provisionales (las que ya hay en la web). */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;background:none;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.bar button:hover{background:var(--red);border-color:var(--red)}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.page{display:none;padding-top:44px}.page.on{display:block}
+.wrap{padding-inline:var(--pad);max-width:1440px;margin-inline:auto}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.k{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.big{font-weight:300;font-size:clamp(44px,7.4vw,128px);line-height:.98;letter-spacing:-.045em}
+.big em{font-style:normal;color:var(--red)}
+.lead{font-weight:400;font-size:clamp(20px,2vw,30px);line-height:1.3;letter-spacing:-.02em;max-width:24em}
+.txt p{font-size:clamp(16px,1.35vw,19px);line-height:1.65;color:var(--grey);max-width:34em}
+.txt p+p{margin-top:1.1em}
+.ph{overflow:hidden;background:#dddbd0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1.5px solid currentColor;border-radius:999px;font-weight:500;font-size:15px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.end{background:var(--red);color:var(--white);padding:clamp(60px,8vw,120px) 0}
+.end .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+.end p{font-weight:300;font-size:clamp(28px,3.8vw,62px);line-height:1.08;letter-spacing:-.035em;max-width:16em}
+.end b{font-weight:600}
+.end .btn:hover{background:var(--white);color:var(--red);border-color:var(--white)}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* 1 · Editorial: foto fija y párrafos que se encienden */
+.p1 .top{padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(30px,5vw,90px);align-items:end}
+.p1 .body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(30px,6vw,110px);padding-block:clamp(40px,6vw,90px) clamp(70px,9vw,140px)}
+.p1 .stick{position:sticky;top:80px;align-self:start;height:calc(100vh - 140px)}
+.p1 .stick .ph{height:100%;border-radius:999px 999px 0 0}
+.p1 .paras p{font-size:clamp(19px,1.8vw,27px);line-height:1.45;letter-spacing:-.015em;color:rgba(11,11,11,.22);transition:color .5s;padding-block:clamp(26px,4vh,46px);border-top:1px solid var(--line)}
+.p1 .paras p.on{color:var(--ink)}
+.p1 .paras p .k{display:block;margin-bottom:12px;color:var(--red);opacity:.4;transition:opacity .5s}
+.p1 .paras p.on .k{opacity:1}
+
+/* 2 · El titular se enciende y cuatro capítulos */
+.p2 .top{padding-block:clamp(70px,9vw,130px) clamp(30px,4vw,60px)}
+.p2 .lit{font-weight:300;font-size:clamp(40px,6.4vw,112px);line-height:1;letter-spacing:-.045em;margin-top:18px}
+.p2 .lit span{color:rgba(11,11,11,.14);transition:color .4s}
+.p2 .lit span.on{color:var(--ink)}.p2 .lit span.r.on{color:var(--red)}
+.p2 .lead{margin-top:clamp(26px,3vw,44px)}
+.p2 .strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;height:min(54vh,480px);margin-block:clamp(40px,6vw,80px)}
+.p2 .chap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,60px) clamp(30px,6vw,110px);padding-bottom:clamp(70px,9vw,130px)}
+.p2 .chap article{border-top:2px solid var(--ink);padding-top:18px}
+.p2 .chap h3{font-weight:400;font-size:clamp(22px,2vw,30px);letter-spacing:-.02em;margin:10px 0 12px}
+.p2 .chap p{font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--grey)}
+
+/* 3 · Paneles horizontales */
+.p3 .top{padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px)}
+.p3 .top .lead{margin-top:clamp(24px,3vw,40px)}
+.p3 .hsc{height:420vh}
+.p3 .pin{position:sticky;top:44px;height:calc(100vh - 44px);overflow:hidden;display:flex;align-items:center}
+.p3 .track{display:flex;gap:clamp(30px,4vw,60px);padding-inline:var(--pad);will-change:transform}
+.p3 .panel{flex:none;width:min(84vw,1000px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:center}
+.p3 .panel .ph{aspect-ratio:4/5;max-height:70vh}
+.p3 .panel .n{font-weight:800;font-size:clamp(70px,9vw,150px);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--red)}
+.p3 .panel h3{font-weight:400;font-size:clamp(22px,2vw,30px);margin:10px 0 14px;letter-spacing:-.02em}
+.p3 .panel p{font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:var(--grey);max-width:30em}
+.p3 .prog{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;height:2px;background:var(--line)}
+.p3 .prog i{position:absolute;inset:0;background:var(--red);transform:scaleX(var(--p,0));transform-origin:0 50%}
+
+/* 4 · Foto a pantalla completa y lectura en una columna */
+.p4 .hero{position:relative;height:calc(100vh - 44px);display:grid;place-items:end start;padding:clamp(30px,5vw,80px) var(--pad);color:var(--white);overflow:hidden}
+.p4 .hero .bg{position:absolute;inset:-6%;background:url("assets/img/nosotros/nosotros-gradas.jpg") 50% 50%/cover no-repeat;filter:brightness(.55);transform:translateY(var(--py,0))}
+.p4 .hero .big{position:relative;max-width:12em}
+.p4 .hero .big em{color:var(--white);-webkit-text-stroke:0;font-weight:600}
+.p4 .read{max-width:760px;margin-inline:auto;padding:clamp(60px,8vw,120px) var(--pad)}
+.p4 .read .lead{margin-bottom:clamp(40px,5vw,70px)}
+.p4 .read p.t{font-size:clamp(17px,1.45vw,20px);line-height:1.7;color:var(--grey)}
+.p4 .read p.t+p.t{margin-top:1.2em}
+.p4 .quote{margin:clamp(40px,5vw,70px) calc(-1*clamp(0px,8vw,140px));padding-left:clamp(0px,8vw,140px);border-left:3px solid var(--red);font-weight:300;font-size:clamp(26px,3vw,46px);line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
+.p4 .duo{display:grid;grid-template-columns:1fr 1fr;gap:6px;height:min(60vh,520px)}
+
+/* 5 · Cartas que se apilan */
+.p5 .top{padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(30px,5vw,90px);align-items:end}
+.p5 .stack{padding-bottom:clamp(60px,8vw,110px)}
+.p5 .card{position:sticky;top:calc(70px + var(--i)*16px);height:min(72vh,620px);margin-bottom:5vh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);overflow:hidden;transform-origin:50% 0}
+.p5 .card:nth-child(4n+1){background:#e6e5db}
+.p5 .card:nth-child(4n+2){background:var(--ink);color:var(--white)}
+.p5 .card:nth-child(4n+3){background:var(--red);color:var(--white)}
+.p5 .card:nth-child(4n){background:var(--white);border:1px solid var(--line)}
+.p5 .card .in{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3.4vw,56px)}
+.p5 .card h3{font-weight:300;font-size:clamp(32px,4.2vw,70px);line-height:1;letter-spacing:-.04em}
+.p5 .card p{font-size:clamp(16px,1.35vw,19px);line-height:1.6;max-width:30em;opacity:.85}
+.p5 .card:nth-child(4n+3) .k{color:var(--ink)}
+
+/* 6 · Índice fijo de palabras y tira de fotos */
+.p6 .top{padding-block:clamp(70px,9vw,130px) clamp(40px,5vw,70px);text-align:center}
+.p6 .top .big{max-width:14em;margin:16px auto 0}
+.p6 .top .lead{margin:clamp(24px,3vw,40px) auto 0}
+.p6 .marq{display:flex;gap:8px;overflow:hidden;padding-block:clamp(20px,3vw,40px)}
+.p6 .marq div{display:flex;gap:8px;flex:none;animation:mq 50s linear infinite}
+.p6 .marq .ph{flex:none;width:clamp(200px,22vw,320px);aspect-ratio:4/5}
+.p6 .marq .ph:nth-child(even){aspect-ratio:1;align-self:center}
+@keyframes mq{to{transform:translateX(calc(-100% - 8px))}}
+.p6 .body{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(30px,6vw,110px);padding-block:clamp(50px,7vw,110px)}
+.p6 .idx{position:sticky;top:90px;align-self:start;list-style:none;margin:0;padding:0}
+.p6 .idx li{font-weight:600;font-size:clamp(34px,4.6vw,80px);line-height:1.02;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.2px rgba(11,11,11,.3);transition:color .4s,-webkit-text-stroke-color .4s}
+.p6 .idx li.on{color:var(--ink);-webkit-text-stroke-color:var(--ink)}
+.p6 .idx li.on:last-child{color:var(--red);-webkit-text-stroke-color:var(--red)}
+.p6 .secs section{min-height:46vh;display:flex;flex-direction:column;justify-content:center;border-top:1px solid var(--line);padding-block:30px}
+.p6 .secs p{font-size:clamp(18px,1.6vw,23px);line-height:1.55;letter-spacing:-.01em;max-width:30em}
+
+@media (max-width:820px){
+  .p1 .top,.p1 .body,.p5 .top,.p6 .body,.p2 .chap,.p3 .panel{grid-template-columns:1fr}
+  .p1 .stick{position:relative;top:0;height:50vh}.p1 .paras p{color:var(--ink)}
+  .p2 .strip{grid-template-columns:1fr 1fr;height:auto}.p2 .strip .ph{aspect-ratio:1}.p2 .strip .ph:first-child{grid-column:span 2;aspect-ratio:16/10}
+  .p3 .hsc{height:auto}.p3 .pin{position:static;height:auto}.p3 .track{flex-direction:column;transform:none!important}.p3 .panel{width:auto}.p3 .prog{display:none}
+  .p5 .card{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);height:min(84vh,680px)}
+  .p6 .idx{position:static;display:flex;flex-wrap:wrap;gap:4px 14px}.p6 .idx li{font-size:30px}
+  .p4 .quote{margin-inline:0;padding-left:18px}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Nosotros · texto nuevo</span>
+  <button data-p="1" aria-pressed="true">1 · Editorial</button><button data-p="2" aria-pressed="false">2 · Capítulos</button><button data-p="3" aria-pressed="false">3 · Horizontal</button><button data-p="4" aria-pressed="false">4 · Lectura</button><button data-p="5" aria-pressed="false">5 · Cartas</button><button data-p="6" aria-pressed="false">6 · Índice</button></nav>
+
+<!-- 1 · Editorial -->
+<main class="page p1 on" id="p1">
+  <div class="wrap top"><div class="rv"><p class="eyebrow">Nosotros</p><h1 class="big" style="margin-top:16px">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div>
+    <p class="lead rv">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p></div>
+  <div class="wrap body">
+    <div class="stick"><div class="ph"><img src="assets/img/nosotros/nosotros-gradas.jpg" alt=""></div></div>
+    <div class="paras" id="p1paras">
+      <p><span class="k">01 · Quiénes somos</span>Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p>
+      <p><span class="k">02 · Cómo pensamos</span>Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p>
+      <p><span class="k">03 · Cómo trabajamos</span>Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p>
+      <p><span class="k">04 · Dónde llegamos</span>Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p>
+    </div>
+  </div>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<!-- 2 · Capítulos -->
+<main class="page p2" id="p2">
+  <div class="wrap top"><p class="eyebrow">Nosotros</p>
+    <h1 class="lit" id="p2lit" aria-label="Las ideas cobran vida. Las marcas, experiencias.">Las ideas cobran vida. Las marcas, experiencias.</h1>
+    <p class="lead rv">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p></div>
+  <div class="wrap"><div class="strip"><div class="ph rv"><img src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""></div><div class="ph rv"><img src="assets/img/servicios/servicio-experiencias-cursa-base4.jpg" alt=""></div><div class="ph rv"><img src="assets/img/servicios/servicio-diseno-grafico-ceramica.jpg" alt=""></div></div></div>
+  <div class="wrap chap">
+    <article class="rv"><span class="k">01</span><h3>Quiénes somos</h3><p>Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p></article>
+    <article class="rv"><span class="k">02</span><h3>Cómo pensamos</h3><p>Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p></article>
+    <article class="rv"><span class="k">03</span><h3>Cómo trabajamos</h3><p>Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p></article>
+    <article class="rv"><span class="k">04</span><h3>Dónde llegamos</h3><p>Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p></article>
+  </div>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<!-- 3 · Horizontal -->
+<main class="page p3" id="p3">
+  <div class="wrap top"><p class="eyebrow">Nosotros</p><h1 class="big" style="margin-top:16px">Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></h1>
+    <p class="lead">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p></div>
+  <section class="hsc" id="p3sc"><div class="pin"><div class="track" id="p3tr">
+    <article class="panel"><div class="ph"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt=""></div><div><span class="n">01</span><h3>Quiénes somos</h3><p>Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p></div></article>
+    <article class="panel"><div class="ph"><img src="assets/img/contacto/contacto-pedestal.jpg" alt=""></div><div><span class="n">02</span><h3>Cómo pensamos</h3><p>Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p></div></article>
+    <article class="panel"><div class="ph"><img src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""></div><div><span class="n">03</span><h3>Cómo trabajamos</h3><p>Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p></div></article>
+    <article class="panel"><div class="ph"><img src="assets/img/frase/frase-grullas-luna.jpg" alt=""></div><div><span class="n">04</span><h3>Dónde llegamos</h3><p>Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p></div></article>
+  </div><div class="prog"><i id="p3pr"></i></div></div></section>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<!-- 4 · Lectura -->
+<main class="page p4" id="p4">
+  <section class="hero"><div class="bg" id="p4bg"></div><div style="position:relative"><p class="eyebrow" style="color:var(--white);opacity:.8;margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div></section>
+  <div class="read">
+    <p class="lead rv">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p>
+    <p class="t rv">Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p>
+    <p class="t rv">Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p>
+    <p class="quote rv">Un equipo que resuelve, desde la primera idea hasta el montaje final.</p>
+    <p class="t rv">Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p>
+    <p class="t rv">Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p>
+  </div>
+  <div class="wrap" style="padding-bottom:clamp(60px,8vw,110px)"><div class="duo"><div class="ph rv"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt=""></div><div class="ph rv"><img src="assets/img/servicios/servicio-experiencias-cursa-base4.jpg" alt=""></div></div></div>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<!-- 5 · Cartas -->
+<main class="page p5" id="p5">
+  <div class="wrap top"><div class="rv"><p class="eyebrow">Nosotros</p><h1 class="big" style="margin-top:16px">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div>
+    <p class="lead rv">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p></div>
+  <div class="wrap stack" id="p5st">
+    <article class="card" style="--i:0"><div class="in"><span class="k">01</span><div><h3>Quiénes somos</h3><p style="margin-top:18px">Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p></div></div><div class="ph"><img src="assets/img/nosotros/nosotros-gradas.jpg" alt=""></div></article>
+    <article class="card" style="--i:1"><div class="in"><span class="k">02</span><div><h3>Cómo pensamos</h3><p style="margin-top:18px">Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p></div></div><div class="ph"><img src="assets/img/contacto/contacto-pedestal.jpg" alt=""></div></article>
+    <article class="card" style="--i:2"><div class="in"><span class="k">03</span><div><h3>Cómo trabajamos</h3><p style="margin-top:18px">Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p></div></div><div class="ph"><img src="assets/img/servicios/servicio-stands-truphone.jpg" alt=""></div></article>
+    <article class="card" style="--i:3"><div class="in"><span class="k">04</span><div><h3>Dónde llegamos</h3><p style="margin-top:18px">Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p></div></div><div class="ph"><img src="assets/img/frase/frase-grullas-luna.jpg" alt=""></div></article>
+  </div>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<!-- 6 · Índice -->
+<main class="page p6" id="p6">
+  <div class="wrap top"><p class="eyebrow">Nosotros</p><h1 class="big">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1>
+    <p class="lead">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p></div>
+  <div class="marq" aria-hidden="true"><div id="p6m"></div></div>
+  <div class="wrap body">
+    <ol class="idx" id="p6idx"><li>Diseño</li><li>Producción</li><li>Gestión</li><li>Europa</li></ol>
+    <div class="secs" id="p6secs">
+      <section><p>Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p></section>
+      <section><p>Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p></section>
+      <section><p>Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p></section>
+      <section><p>Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p></section>
+    </div>
+  </div>
+  <section class="end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>
+</main>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)},each=function(l,f){[].forEach.call(l,f)},cl=function(x){return Math.max(0,Math.min(1,x))};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 2 · titular palabra a palabra
+  var lit=$('p2lit'),words=lit.textContent.trim().split(/\s+/),half=4;
+  lit.innerHTML=words.map(function(w,i){return '<span aria-hidden="true"'+(i>=half?' class="r"':'')+'>'+w+'</span>'}).join(' ');
+  var ls=lit.children;
+  // 6 · tira de fotos
+  var IM=['servicio-stands-truphone','servicio-experiencias-cursa-base4','servicio-renders-interiorismo','servicio-diseno-grafico-ceramica'];
+  var row=IM.map(function(n){return '<div class="ph"><img src="assets/img/servicios/'+n+'.jpg" alt=""></div>'}).join('')+'<div class="ph"><img src="assets/img/contacto/contacto-pedestal.jpg" alt=""></div><div class="ph"><img src="assets/img/nosotros/nosotros-gradas.jpg" alt=""></div>';
+  $('p6m').innerHTML=row;$('p6m').insertAdjacentHTML('afterend','<div>'+row+'</div>');
+  // cambiar de opción
+  var pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('[data-p]');
+  function show(n){pages.forEach(function(p){p.classList.toggle('on',p.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);reveal();onScroll()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  // aparición
+  var io;if(!calm&&'IntersectionObserver' in window){document.documentElement.classList.add('js');io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'})}
+  function reveal(){if(io)each(document.querySelectorAll('.page.on .rv:not(.in)'),function(el){io.observe(el)})}
+  reveal();
+  function onScroll(){var vh=innerHeight;
+    // 1
+    if($('p1').classList.contains('on'))each($('p1paras').children,function(p){var r=p.getBoundingClientRect();p.classList.toggle('on',calm||(r.top<vh*.62&&r.bottom>vh*.25))});
+    // 2
+    if($('p2').classList.contains('on')){var r=lit.getBoundingClientRect(),q=calm?1:cl((vh*.85-r.top)/(vh*.5)),n=Math.round(q*ls.length);for(var i=0;i<ls.length;i++)ls[i].classList.toggle('on',i<Math.max(n,2))}
+    // 3
+    if($('p3').classList.contains('on')&&innerWidth>820){var s=$('p3sc').getBoundingClientRect(),p=cl(-s.top/(s.height-vh)),tr=$('p3tr'),max=tr.scrollWidth-innerWidth;tr.style.transform='translateX('+(-p*max).toFixed(1)+'px)';$('p3pr').style.setProperty('--p',p.toFixed(3))}
+    // 4
+    if($('p4').classList.contains('on')&&!calm)$('p4bg').style.setProperty('--py',(scrollY*.2).toFixed(1)+'px');
+    // 5
+    if($('p5').classList.contains('on')){var c=$('p5st').children;for(var j=0;j<c.length-1;j++){var a=c[j].getBoundingClientRect(),b=c[j+1].getBoundingClientRect(),t=cl(1-(b.top-a.top)/a.height);c[j].style.transform='scale('+(1-.05*t).toFixed(4)+')';c[j].style.filter='brightness('+(1-.25*t).toFixed(3)+')'}}
+    // 6
+    if($('p6').classList.contains('on')){var sec=$('p6secs').children,best=0,bd=1e9;for(var k=0;k<sec.length;k++){var rr=sec[k].getBoundingClientRect(),d=Math.abs(rr.top+rr.height/2-vh/2);if(d<bd){bd=d;best=k}}each($('p6idx').children,function(li,k){li.classList.toggle('on',k<=best)})}
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
