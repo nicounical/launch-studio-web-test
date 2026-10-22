@@ -52,7 +52,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 /* 2 · La foto se abre desde un arco hasta ocupar la pantalla */
 .p2 .sc{height:230vh}
 .p2 .pin{position:sticky;top:44px;height:calc(100vh - 44px);overflow:hidden;display:grid;place-items:center;background:var(--white)}
-.p2 .mask{position:absolute;inset:0;clip-path:inset(calc(var(--k,1)*22%) calc(var(--k,1)*32%) 0 calc(var(--k,1)*32%) round calc(var(--k,1)*40vw) calc(var(--k,1)*40vw) 0 0)}
+.p2 .mask{position:absolute;inset:0;clip-path:circle(calc(24vmin + (1 - var(--k,1))*(1 - var(--k,1))*70vmax) at 50% 50%)}
 .p2 .mask .bg{position:absolute;inset:0;background:url("assets/img/nosotros/nosotros-gradas.jpg") 50% 50%/cover no-repeat;filter:brightness(calc(1 - (1 - var(--k,1))*.45))}
 .p2 .ttl{position:relative;text-align:center}
 .p2 .ttl .big{color:var(--ink)}
@@ -121,7 +121,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 </head>
 <body>
 <nav class="bar" aria-label="Opciones"><span>Nosotros · como la opción 4</span>
-  <button data-p="1" aria-pressed="true">1 · La 4</button><button data-p="2" aria-pressed="false">2 · Arco</button><button data-p="3" aria-pressed="false">3 · Márgenes</button><button data-p="4" aria-pressed="false">4 · Cabalga</button><button data-p="5" aria-pressed="false">5 · Foto fija</button><button data-p="6" aria-pressed="false">6 · Oscura</button></nav>
+  <button data-p="1" aria-pressed="true">1 · La 4</button><button data-p="2" aria-pressed="false">2 · Redonda</button><button data-p="3" aria-pressed="false">3 · Márgenes</button><button data-p="4" aria-pressed="false">4 · Cabalga</button><button data-p="5" aria-pressed="false">5 · Foto fija</button><button data-p="6" aria-pressed="false">6 · Oscura</button></nav>
 
 <main class="page p1 on" id="p1">
   <section class="hero"><div class="bg" data-par></div><div><p class="eyebrow" style="color:var(--white);opacity:.8;margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div></section>
