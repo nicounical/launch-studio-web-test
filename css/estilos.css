@@ -340,3 +340,13 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 
 .sidx__lab{font:400 12px "DM Mono",ui-monospace,monospace!important;letter-spacing:.06em;text-transform:uppercase;color:var(--red)!important;margin:0 0 10px!important}
 .sidx__item h3.sidx__tag{text-transform:uppercase;font-weight:600;font-size:clamp(28px,3.2vw,50px);line-height:1;letter-spacing:-.025em;margin:0 0 14px}
+
+/* ---------- Proyectos en el inicio: tres en fila ---------- */
+.p3grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,30px)}
+.p3grid .pcard__img{margin-bottom:14px}
+.p3grid .pcard h3{font-size:clamp(17px,1.5vw,22px)}
+.p3grid .pcard__cat{font-size:clamp(14px,1.2vw,17px)}
+@media (max-width:760px){.p3grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.p3grid .pcard:nth-child(3){grid-column:1/-1}}
+#proyectos{padding-block:clamp(56px,7vw,100px)}
+#proyectos .sec__head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:clamp(24px,3vw,40px)}
+#proyectos .sec__head h2{font-size:clamp(30px,4vw,58px)}
