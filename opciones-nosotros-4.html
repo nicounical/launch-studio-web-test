@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nosotros · más opciones de lectura — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Variaciones de la opción 4 de Nosotros: foto grande arriba con el título y el texto
+   en una columna cómoda de leer, con una frase destacada y fotos. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;background:none;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.bar button:hover{background:var(--red);border-color:var(--red)}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.page{display:none;padding-top:44px}.page.on{display:block}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.big{font-weight:300;font-size:clamp(44px,7.4vw,128px);line-height:.98;letter-spacing:-.045em}
+.big em{font-style:normal;font-weight:600}
+.lead{font-weight:400;font-size:clamp(20px,2vw,30px);line-height:1.3;letter-spacing:-.02em}
+.read{max-width:760px;margin-inline:auto;padding:clamp(60px,8vw,120px) var(--pad)}
+.read .lead{margin-bottom:clamp(40px,5vw,70px)}
+.t{font-size:clamp(17px,1.45vw,20px);line-height:1.7;color:var(--grey)}
+.t+.t{margin-top:1.2em}
+.quote{margin:clamp(40px,5vw,70px) 0;padding-left:clamp(18px,3vw,40px);border-left:3px solid var(--red);font-weight:300;font-size:clamp(26px,3vw,46px);line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
+.ph{overflow:hidden;background:#dddbd0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1.5px solid currentColor;border-radius:999px;font-weight:500;font-size:15px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.end{background:var(--red);color:var(--white);padding:clamp(60px,8vw,120px) var(--pad)}
+.end>div{max-width:1440px;margin:auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+.end p{font-weight:300;font-size:clamp(28px,3.8vw,62px);line-height:1.08;letter-spacing:-.035em;max-width:16em}
+.end b{font-weight:600}
+.end .btn:hover{background:var(--white);color:var(--red);border-color:var(--white)}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* 1 · La opción 4 tal cual */
+.p1 .hero{position:relative;height:calc(100vh - 44px);display:grid;place-items:end start;padding:clamp(30px,5vw,80px) var(--pad);color:var(--white);overflow:hidden}
+.p1 .hero .bg{position:absolute;inset:-6%;background:url("assets/img/nosotros/nosotros-gradas.jpg") 50% 50%/cover no-repeat;filter:brightness(.55);transform:translateY(var(--py,0))}
+.p1 .hero>div{position:relative}
+.p1 .duo{display:grid;grid-template-columns:1fr 1fr;gap:6px;height:min(60vh,520px);padding:0 var(--pad) clamp(60px,8vw,110px)}
+
+/* 2 · La foto se abre desde un arco hasta ocupar la pantalla */
+.p2 .sc{height:230vh}
+.p2 .pin{position:sticky;top:44px;height:calc(100vh - 44px);overflow:hidden;display:grid;place-items:center;background:var(--white)}
+.p2 .mask{position:absolute;inset:0;clip-path:inset(calc(var(--k,1)*22%) calc(var(--k,1)*32%) 0 calc(var(--k,1)*32%) round calc(var(--k,1)*40vw) calc(var(--k,1)*40vw) 0 0)}
+.p2 .mask .bg{position:absolute;inset:0;background:url("assets/img/nosotros/nosotros-gradas.jpg") 50% 50%/cover no-repeat;filter:brightness(calc(1 - (1 - var(--k,1))*.45))}
+.p2 .ttl{position:relative;text-align:center}
+.p2 .ttl .big{color:var(--ink)}
+.p2 .ttl2{position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:1}
+.p2 .ttl2 .big{color:var(--white)}
+.p2 .ttl2 .eyebrow{color:var(--white);opacity:.8}
+.p2 .ttl .eyebrow{margin-bottom:16px}
+
+/* 3 · Título a la izquierda, foto alta a la derecha; fotos que asoman en los márgenes */
+.p3 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);min-height:calc(100vh - 44px)}
+.p3 .hero .l{display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(40px,6vw,90px) var(--pad)}
+.p3 .hero .ph{height:100%}
+.p3 .hero .ph img{transform:scale(var(--s,1.12))}
+.p3 .read{position:relative;max-width:1380px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,640px) minmax(0,1fr);gap:clamp(20px,3vw,50px)}
+.p3 .read>*{grid-column:2}
+.p3 .read .side{grid-column:3;grid-row:span 2;align-self:start;aspect-ratio:3/4;margin-top:8px}
+.p3 .read .side.l{grid-column:1}
+.p3 .t:first-of-type::first-letter{float:left;font-weight:600;font-size:4.2em;line-height:.85;margin:.06em .1em 0 0;color:var(--red)}
+
+/* 4 · El título cabalga entre la foto y el fondo */
+.p4 .hero{position:relative;height:min(78vh,720px);overflow:hidden}
+.p4 .hero .bg{position:absolute;inset:-6%;background:url("assets/img/nosotros/nosotros-gradas.jpg") 50% 60%/cover no-repeat;transform:translateY(var(--py,0))}
+.p4 .ride{position:relative;z-index:2;margin-top:calc(-1*clamp(48px,7.4vw,126px));padding-inline:var(--pad)}
+.p4 .ride .big{font-weight:600;font-size:clamp(48px,8vw,140px);letter-spacing:-.055em}
+.p4 .ride .big span{display:block}
+.p4 .ride .big span:first-child{color:var(--white);mix-blend-mode:difference}
+.p4 .ride .big span:last-child{color:var(--red)}
+.p4 .band{background:var(--ink);color:var(--white);padding:clamp(50px,7vw,100px) var(--pad);text-align:center}
+.p4 .band p{max-width:20em;margin:auto;font-weight:300;font-size:clamp(28px,3.6vw,58px);line-height:1.12;letter-spacing:-.035em}
+.p4 .band p em{font-style:normal;color:var(--red)}
+
+/* 5 · Columna de lectura con una foto fija al lado que cambia */
+.p5 .hero{position:relative;height:calc(100vh - 44px);display:grid;place-items:center;text-align:center;color:var(--white);overflow:hidden;padding:0 var(--pad)}
+.p5 .hero .bg{position:absolute;inset:-6%;background:url("assets/img/contacto/contacto-pedestal.jpg") 50% 50%/cover no-repeat;filter:brightness(.5);transform:scale(var(--z,1.15))}
+.p5 .hero>div{position:relative}
+.p5 .hero .big em{color:var(--white)}
+.p5 .two{max-width:1240px;margin:auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,110px);padding:clamp(60px,8vw,120px) var(--pad)}
+.p5 .frame{position:sticky;top:90px;align-self:start;height:calc(100vh - 150px);overflow:hidden;background:#dddbd0}
+.p5 .frame .ph{position:absolute;inset:0;opacity:0;transition:opacity .8s}
+.p5 .frame .ph.on{opacity:1}
+.p5 .frame .ph img{transform:scale(1.06);transition:transform 4s linear}
+.p5 .frame .ph.on img{transform:none}
+.p5 .two .read{padding:0;max-width:none}
+.p5 .t{min-height:0}
+
+/* 6 · Versión oscura con fotos a todo el ancho entre párrafos */
+.p6{background:var(--ink);color:var(--white);overflow-x:clip}
+.p6 .hero{position:relative;height:calc(100vh - 44px);display:grid;place-items:end start;padding:clamp(30px,5vw,80px) var(--pad);overflow:hidden}
+.p6 .hero .bg{position:absolute;inset:-6%;background:url("assets/img/servicios/servicio-renders-interiorismo.jpg") 50% 60%/cover no-repeat;filter:brightness(.5);transform:translateY(var(--py,0))}
+.p6 .hero>div{position:relative}
+.p6 .hero .big em{color:var(--red)}
+.p6 .t{color:rgba(241,240,232,.72)}
+.p6 .lead,.p6 .quote{color:var(--white)}
+.p6 .wide{height:min(70vh,640px);overflow:hidden;margin:clamp(40px,5vw,80px) calc(50% - 50vw)}
+.p6 .wide img{height:130%;transform:translateY(var(--py,-10%))}
+
+@media (max-width:820px){
+  .p1 .duo{grid-template-columns:1fr;height:auto}.p1 .duo .ph{aspect-ratio:4/3}
+  .p3 .hero{grid-template-columns:1fr}.p3 .hero .ph{height:50vh}.p3 .read{grid-template-columns:1fr}.p3 .read>*,.p3 .read .side,.p3 .read .side.l{grid-column:1;grid-row:auto}.p3 .read .side{aspect-ratio:4/3}
+  .p5 .two{grid-template-columns:1fr}.p5 .frame{position:relative;top:0;height:50vh}
+  .p2 .sc{height:160vh}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Nosotros · como la opción 4</span>
+  <button data-p="1" aria-pressed="true">1 · La 4</button><button data-p="2" aria-pressed="false">2 · Arco</button><button data-p="3" aria-pressed="false">3 · Márgenes</button><button data-p="4" aria-pressed="false">4 · Cabalga</button><button data-p="5" aria-pressed="false">5 · Foto fija</button><button data-p="6" aria-pressed="false">6 · Oscura</button></nav>
+
+<main class="page p1 on" id="p1">
+  <section class="hero"><div class="bg" data-par></div><div><p class="eyebrow" style="color:var(--white);opacity:.8;margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div></section>
+  <div class="read" data-read="quote"></div>
+  <div class="duo"><div class="ph rv"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt=""></div><div class="ph rv"><img src="assets/img/servicios/servicio-experiencias-cursa-base4.jpg" alt=""></div></div>
+  <div data-end></div></main>
+
+<main class="page p2" id="p2">
+  <section class="sc" id="p2sc"><div class="pin" id="p2pin"><div class="ttl"><p class="eyebrow">Nosotros</p><h1 class="big">Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></h1></div>
+    <div class="mask"><div class="bg"></div><div class="ttl2" aria-hidden="true"><div><p class="eyebrow" style="margin-bottom:16px">Nosotros</p><p class="big">Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></p></div></div></div></div></section>
+  <div class="read" data-read="quote"></div>
+  <div data-end></div></main>
+
+<main class="page p3" id="p3">
+  <section class="hero"><div class="l"><p class="eyebrow" style="margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida. <em style="color:var(--red)">Las marcas, experiencias.</em></h1></div><div class="ph"><img id="p3img" src="assets/img/nosotros/nosotros-gradas.jpg" alt=""></div></section>
+  <div class="read" data-read="margins"></div>
+  <div data-end></div></main>
+
+<main class="page p4" id="p4">
+  <section class="hero"><div class="bg" data-par></div></section>
+  <div class="ride"><p class="eyebrow" style="position:absolute;top:calc(-1*clamp(48px,7.4vw,126px) - 30px);color:var(--white)">Nosotros</p><h1 class="big"><span>Las ideas cobran vida.</span><span>Las marcas, experiencias.</span></h1></div>
+  <div class="read" data-read="plain"></div>
+  <section class="band"><p>Un equipo que resuelve, <em>desde la primera idea hasta el montaje final.</em></p></section>
+  <div data-end></div></main>
+
+<main class="page p5" id="p5">
+  <section class="hero" id="p5hero"><div class="bg"></div><div><p class="eyebrow" style="color:var(--white);opacity:.8;margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></h1></div></section>
+  <div class="two"><div class="frame" id="p5frame"></div><div class="read" data-read="quote"></div></div>
+  <div data-end></div></main>
+
+<main class="page p6" id="p6">
+  <section class="hero"><div class="bg" data-par></div><div><p class="eyebrow" style="margin-bottom:16px">Nosotros</p><h1 class="big">Las ideas cobran vida. <em>Las marcas, experiencias.</em></h1></div></section>
+  <div class="read" data-read="wide"></div>
+  <div data-end></div></main>
+
+<script>
+(function(){
+  var LEAD='En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.';
+  var T=['Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.',
+    'Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.',
+    'Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.',
+    'Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.'];
+  var Q='Un equipo que resuelve, desde la primera idea hasta el montaje final.';
+  var IMG=['assets/img/servicios/servicio-stands-truphone.jpg','assets/img/contacto/contacto-pedestal.jpg','assets/img/servicios/servicio-experiencias-cursa-base4.jpg','assets/img/frase/frase-grullas-luna.jpg'];
+  var p=function(t){return '<p class="t rv">'+t+'</p>'},ph=function(src,c){return '<div class="ph rv '+(c||'')+'"><img src="'+src+'" alt=""></div>'};
+  var L='<p class="lead rv">'+LEAD+'</p>';
+  var mk={
+    quote:L+p(T[0])+p(T[1])+'<p class="quote rv">'+Q+'</p>'+p(T[2])+p(T[3]),
+    plain:L+p(T[0])+p(T[1])+p(T[2])+p(T[3]),
+    margins:L+ph(IMG[0],'side')+p(T[0])+p(T[1])+'<p class="quote rv">'+Q+'</p>'+ph(IMG[2],'side l')+p(T[2])+p(T[3]),
+    wide:L+p(T[0])+p(T[1])+'<div class="wide"><img data-wp src="'+IMG[0]+'" alt=""></div>'+'<p class="quote rv">'+Q+'</p>'+p(T[2])+'<div class="wide"><img data-wp src="'+IMG[3]+'" alt=""></div>'+p(T[3])};
+  document.querySelectorAll('[data-read]').forEach(function(el){el.innerHTML=mk[el.dataset.read]});
+  document.querySelectorAll('[data-end]').forEach(function(el){el.outerHTML='<section class="end"><div><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn" href="contacto.html">Hablemos →</a></div></section>'});
+  // 5 · fotos de la columna fija
+  var fr=document.getElementById('p5frame');fr.innerHTML=['assets/img/nosotros/nosotros-gradas.jpg'].concat(IMG).map(function(s,i){return '<div class="ph'+(i?'':' on')+'"><img src="'+s+'" alt=""></div>'}).join('');
+  var $=function(id){return document.getElementById(id)},cl=function(x){return Math.max(0,Math.min(1,x))},calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('[data-p]');
+  function show(n){pages.forEach(function(pg){pg.classList.toggle('on',pg.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);reveal();onScroll()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  var io;if(!calm&&'IntersectionObserver' in window){document.documentElement.classList.add('js');io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'})}
+  function reveal(){if(io)document.querySelectorAll('.page.on .rv:not(.in)').forEach(function(el){io.observe(el)})}
+  reveal();
+  function onScroll(){var vh=innerHeight,y=scrollY,on=document.querySelector('.page.on');if(calm)return;
+    on.querySelectorAll('[data-par]').forEach(function(b){b.style.setProperty('--py',(y*.2).toFixed(1)+'px')});
+    if(on.id==='p2'){var r=$('p2sc').getBoundingClientRect(),k=1-cl(-r.top/(r.height-vh));$('p2pin').style.setProperty('--k',k.toFixed(3));$('p2pin').classList.toggle('dark',k<.45)}
+    if(on.id==='p3')$('p3img').style.setProperty('--s',(1.12-Math.min(.12,y/3000)).toFixed(4));
+    if(on.id==='p5'){$('p5hero').querySelector('.bg').style.setProperty('--z',(1.15-Math.min(.15,y/3000)).toFixed(4));
+      var ps=on.querySelectorAll('.read .t'),best=0;ps.forEach(function(el,i){if(el.getBoundingClientRect().top<vh*.55)best=i+1});best=Math.min(best,fr.children.length-1);
+      [].forEach.call(fr.children,function(c,i){c.classList.toggle('on',i===best)})}
+    if(on.id==='p6')on.querySelectorAll('[data-wp]').forEach(function(im){var r=im.parentNode.getBoundingClientRect(),q=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(-10+q*-14).toFixed(1)+'%')});
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
