@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opciones página Contacto 2 — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* La opción 5 de Contacto (foto de fondo y tarjeta con el formulario) y cinco variaciones,
+   con la foto del pedestal y el formulario directo, sin botones de tipo de servicio. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#6f6d66;--line:rgba(11,11,11,.18);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.7,0,.2,1);--img:url("assets/img/contacto/contacto-pedestal.jpg")}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,p,dl,dd{margin:0}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;background:none;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.bar button:hover{background:var(--red);border-color:var(--red)}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);border-bottom:1px solid var(--line);background:var(--white);color:var(--ink)}
+.nav b{font-weight:500;letter-spacing:.24em;font-size:13px}
+.nav nav{display:flex;gap:clamp(14px,2.4vw,34px);font-size:14px}
+.nav nav a{text-decoration:none}.nav nav a.on{border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.page{display:none;padding-top:44px}.page.on{display:block}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.ttl{font-weight:300;font-size:clamp(52px,8.4vw,150px);line-height:.92;letter-spacing:-.055em}
+.ttl em{font-style:normal;color:var(--red)}
+.lead{max-width:24em;font-size:clamp(16px,1.4vw,19px);line-height:1.5}
+.data{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;align-items:baseline}
+.data dt{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.data dd a{text-decoration:none;font-size:clamp(16px,1.4vw,19px);font-weight:400;transition:color .3s}
+.data dd a:hover{color:var(--red)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.form label{display:flex;flex-direction:column;gap:6px;font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.form .full{grid-column:1/-1}
+.form input,.form textarea{border:0;border-bottom:1.5px solid currentColor;background:transparent;padding:9px 0;font-size:17px;font-weight:300;letter-spacing:0;text-transform:none;color:var(--ink);outline:0;border-radius:0;resize:vertical}
+.form input:focus,.form textarea:focus{border-color:var(--red)}
+.form .send{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.form button{background:var(--ink);color:var(--white);border:0;border-radius:999px;padding:16px 30px;font-weight:500;font-size:15px;cursor:pointer;transition:background .3s}
+.form button:hover{background:var(--red)}
+.form .ok{font-size:14px;color:var(--grey)}
+.card{position:relative;background:var(--white);color:var(--ink);padding:clamp(24px,3vw,44px);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.card .data{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.foot{padding:22px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.stage{position:relative;min-height:calc(100vh - 100px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(30px,5vw,90px);align-items:center;padding:clamp(50px,7vw,110px) var(--pad);overflow:hidden}
+.copy{position:relative;z-index:2}
+.copy .ttl{margin:14px 0 24px}
+.lay{position:absolute;inset:-30px;background:var(--img) 50% 50%/cover no-repeat}
+
+/* 1 · La original: borrosa con ventana nítida que sigue al cursor */
+.p1 .stage{color:var(--white);background:#2a2926}
+.p1 .blur{filter:blur(14px) brightness(.5)}
+.p1 .sharp{clip-path:circle(var(--rr,130px) at var(--x,30%) var(--y,60%));filter:brightness(.82)}
+.p1 .copy .eyebrow{color:var(--white);opacity:.8}
+
+/* 2 · Clara: la foto suave y el texto en negro */
+.p2 .stage{background:#e8e4da}
+.p2 .lay{filter:blur(10px) saturate(.9);opacity:.75}
+.p2 .sharp{clip-path:circle(var(--rr,130px) at var(--x,30%) var(--y,60%));filter:none;opacity:1}
+.p2 .card{background:var(--ink);color:var(--white);box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.p2 .card .form input,.p2 .card .form textarea{color:var(--white)}
+.p2 .card .form label,.p2 .card .data dt{color:rgba(241,240,232,.6)}
+.p2 .card .form button{background:var(--red)}.p2 .card .form button:hover{background:var(--white);color:var(--ink)}
+.p2 .card .data{border-color:rgba(241,240,232,.2)}
+
+/* 3 · Se enfoca al bajar */
+.p3 .stage{color:var(--white);background:#2a2926}
+.p3 .lay{filter:blur(calc((1 - var(--p,0))*16px)) brightness(calc(.48 + var(--p,0)*.14));transform:scale(calc(1.08 - var(--p,0)*.06))}
+.p3 .copy .eyebrow{color:var(--white);opacity:.8}
+
+/* 4 · Nítida de fondo y tarjeta de cristal esmerilado */
+.p4 .stage{color:var(--ink);background:#e8e4da}
+.p4 .lay{filter:brightness(.95)}
+.p4 .card{background:rgba(241,240,232,.55);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);border:1px solid rgba(255,255,255,.6);box-shadow:0 30px 80px rgba(0,0,0,.18)}
+.p4 .copy{background:rgba(241,240,232,.55);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);padding:clamp(22px,2.6vw,40px);border-radius:4px;border:1px solid rgba(255,255,255,.6)}
+
+/* 5 · El título con la foto nítida dentro, fondo borroso */
+.p5 .stage{color:var(--white);background:#2a2926}
+.p5 .blur{filter:blur(16px) brightness(.45)}
+.p5 .ko{font-weight:800;letter-spacing:-.065em;line-height:.86;color:transparent;background:var(--img) 50% 50%/cover no-repeat fixed;-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 1px rgba(255,255,255,.4))}
+.p5 .ko em{color:var(--red);-webkit-text-fill-color:var(--red);background:none}
+.p5 .copy .eyebrow{color:var(--white);opacity:.8}
+
+/* 6 · Foto nítida en un marco a la izquierda y borrosa alrededor */
+.p6 .stage{grid-template-columns:minmax(0,.9fr) minmax(0,1fr);color:var(--white);background:#2a2926}
+.p6 .blur{filter:blur(18px) brightness(.42)}
+.p6 .frame{position:relative;z-index:2;height:min(70vh,640px);overflow:hidden;border-radius:999px 999px 0 0;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.p6 .frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(1.08);animation:zo 2s cubic-bezier(.2,.7,.2,1) forwards}
+.p6 .frame::after{content:"";position:absolute;inset:45% 0 0 0;background:linear-gradient(transparent,rgba(11,11,11,.6))}
+.p6 .frame .ttl{z-index:2;position:absolute;left:24px;bottom:22px;font-size:clamp(40px,4.8vw,84px);color:var(--white);text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.p6 .side{position:relative;z-index:2;display:flex;flex-direction:column;gap:22px}
+.p6 .side .eyebrow{color:var(--white);opacity:.8}
+@keyframes zo{to{transform:none}}
+
+@media (max-width:860px){
+  .nav nav{display:none}
+  .stage,.p6 .stage{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .p5 .ko{background-attachment:scroll}
+  .p6 .frame{max-width:380px;width:100%;justify-self:center;height:56vh}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Página Contacto · opción 5 y parecidas</span>
+  <button data-p="1" aria-pressed="true">1 · La 5</button><button data-p="2" aria-pressed="false">2 · Clara</button><button data-p="3" aria-pressed="false">3 · Se enfoca</button><button data-p="4" aria-pressed="false">4 · Cristal</button><button data-p="5" aria-pressed="false">5 · Letras</button><button data-p="6" aria-pressed="false">6 · Marco</button></nav>
+
+<template id="tpl-form">
+  <form class="form" novalidate>
+    <label>Nombre y apellido<input name="nombre" autocomplete="name" required></label>
+    <label>Empresa (opcional)<input name="empresa" autocomplete="organization"></label>
+    <label class="full">Email<input name="email" type="email" autocomplete="email" required></label>
+    <label class="full">Cuéntanos tu proyecto<textarea name="mensaje" rows="4" required></textarea></label>
+    <div class="send"><button type="submit">Send it →</button><p class="ok" role="status"></p></div>
+  </form>
+</template>
+<template id="tpl-data"><dl class="data"><dt>Email</dt><dd><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></dd><dt>Teléfono</dt><dd><a href="tel:+34673071256">+34 673 071 256</a></dd></dl></template>
+<template id="tpl-nav"><header class="nav"><b>L LAUNCH STUDIO</b><nav><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html">Nosotros</a><a class="on" href="contacto.html">Contacto</a></nav></header></template>
+<template id="tpl-foot"><div class="foot"><span>© 2026 Launch Studio</span><span>Barcelona · Presencia internacional</span></div></template>
+<template id="tpl-copy"><p class="eyebrow">Contacto</p><h1 class="ttl">Ready to<br><em>launch?</em></h1><p class="lead">Cuéntanos tu idea y te ayudamos a convertirla en una experiencia, en cualquier punto de Europa.</p></template>
+
+<main class="page p1 on" id="p1"><div data-nav></div>
+  <section class="stage" data-lens><div class="lay blur"></div><div class="lay sharp"></div><div class="copy" data-copy></div><div class="card"><div data-form></div><div data-data></div></div></section><div data-foot></div></main>
+
+<main class="page p2" id="p2"><div data-nav></div>
+  <section class="stage" data-lens><div class="lay blur"></div><div class="lay sharp"></div><div class="copy" data-copy></div><div class="card"><div data-form></div><div data-data></div></div></section><div data-foot></div></main>
+
+<main class="page p3" id="p3"><div data-nav></div>
+  <section class="stage" id="p3st"><div class="lay"></div><div class="copy" data-copy></div><div class="card"><div data-form></div><div data-data></div></div></section><div data-foot></div></main>
+
+<main class="page p4" id="p4"><div data-nav></div>
+  <section class="stage"><div class="lay"></div><div class="copy" data-copy></div><div class="card"><div data-form></div><div data-data></div></div></section><div data-foot></div></main>
+
+<main class="page p5" id="p5"><div data-nav></div>
+  <section class="stage"><div class="lay blur"></div>
+    <div class="copy"><p class="eyebrow">Contacto</p><h1 class="ttl ko" style="margin:14px 0 24px">Ready to<br>launch<em>?</em></h1><p class="lead">Cuéntanos tu idea y te ayudamos a convertirla en una experiencia, en cualquier punto de Europa.</p></div>
+    <div class="card"><div data-form></div><div data-data></div></div></section><div data-foot></div></main>
+
+<main class="page p6" id="p6"><div data-nav></div>
+  <section class="stage"><div class="lay blur"></div>
+    <div class="frame"><img src="assets/img/contacto/contacto-pedestal.jpg" alt="Pedestal blanco frente a una tela pintada a mano"><h1 class="ttl">Ready to<br><em>launch?</em></h1></div>
+    <div class="side"><p class="eyebrow">Contacto</p><p class="lead">Cuéntanos tu idea y te ayudamos a convertirla en una experiencia, en cualquier punto de Europa.</p><div class="card"><div data-form></div><div data-data></div></div></div></section><div data-foot></div></main>
+
+<script>
+(function(){
+  var T=function(id){return document.getElementById(id).innerHTML};
+  [['[data-form]','tpl-form'],['[data-data]','tpl-data'],['[data-nav]','tpl-nav'],['[data-foot]','tpl-foot'],['[data-copy]','tpl-copy']].forEach(function(x){document.querySelectorAll(x[0]).forEach(function(el){el.innerHTML=T(x[1])})});
+  // enviar: abre el correo con los datos
+  document.querySelectorAll('.form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();
+    var ok=f.querySelector('.ok'),bad=[].some.call(f.querySelectorAll('[required]'),function(i){return !i.value.trim()});
+    if(bad){ok.textContent='Rellena nombre, email y proyecto.';return}
+    var body=f.mensaje.value+'\n\n'+f.nombre.value+(f.empresa.value?' · '+f.empresa.value:'')+'\n'+f.email.value;
+    location.href='mailto:info@launchstudiogroup.com?subject='+encodeURIComponent('Nuevo proyecto · '+f.nombre.value)+'&body='+encodeURIComponent(body);
+    ok.textContent='Se abrirá tu programa de correo con el mensaje.'})});
+  var t0=0,pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('[data-p]');
+  function show(n){t0=performance.now();pages.forEach(function(p){p.classList.toggle('on',p.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);onScroll()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 3 · se enfoca al bajar (y al entrar, poco a poco)
+  var st3=document.getElementById('p3st');t0=performance.now();
+  function onScroll(){var p=calm?1:Math.min(1,Math.max(scrollY/(innerHeight*.5),Math.min(.6,(performance.now()-t0)/2500*.6)));st3.style.setProperty('--p',p.toFixed(3))}
+  addEventListener('scroll',onScroll,{passive:true});(function tick(){if(st3.offsetParent)onScroll();requestAnimationFrame(tick)})();
+  // 1 y 2 · ventana nítida que sigue al cursor
+  document.querySelectorAll('[data-lens]').forEach(function(st){var tx=.3,ty=.6,x=tx,y=ty,hov=false;
+    st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;hov=true});
+    st.addEventListener('pointerleave',function(){hov=false});
+    (function loop(t){if(st.offsetParent){if(!hov&&!calm){tx=.3+Math.cos(t/2800)*.16;ty=.55+Math.sin(t/2100)*.2}x+=(tx-x)*.1;y+=(ty-y)*.1;var r=st.getBoundingClientRect();
+      st.style.setProperty('--x',(x*r.width+30).toFixed(0)+'px');st.style.setProperty('--y',(y*r.height+30).toFixed(0)+'px');st.style.setProperty('--rr',Math.max(90,r.height*.2).toFixed(0)+'px')}requestAnimationFrame(loop)})(0)});
+})();
+</script>
+</body>
+</html>
