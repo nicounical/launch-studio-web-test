@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stands: del plano al stand — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Subpágina de Stands: el stand se dibuja en plano, se levanta en 3D, se construye y se ve la foto real.
+   Todo está hecho con HTML y CSS 3D (sin vídeo), así carga rápido y se ve nítido en cualquier pantalla. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.7,0,.2,1);--bh:48px}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,figure{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit}
+.bar button:hover{background:var(--red);border-color:var(--red)}
+.bar button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+#app{padding-top:var(--bh)}
+.wrap{padding-inline:var(--pad);max-width:1440px;margin-inline:auto}
+.k{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.crumb{display:flex;gap:10px;align-items:center;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.crumb a{opacity:.6}.crumb a:hover{opacity:1;color:var(--red)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden}
+
+/* ───────── El stand en 3D ───────── */
+.sg{position:absolute;inset:0;perspective:2800px;perspective-origin:50% 35%;overflow:hidden}
+.world{position:absolute;left:var(--wx,50%);top:var(--wy,52%);width:700px;height:490px;margin:-245px 0 0 -350px;transform-style:preserve-3d;will-change:transform}
+.world *{transform-style:preserve-3d}
+.gridp{position:absolute;left:-840px;top:-700px;width:2380px;height:1890px;background-image:linear-gradient(rgba(11,11,11,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(11,11,11,.08) 1px,transparent 1px);background-size:35px 35px;background-position:0 0;-webkit-mask:radial-gradient(closest-side,#000 35%,transparent);mask:radial-gradient(closest-side,#000 35%,transparent);opacity:var(--grid,1)}
+.floor{position:absolute;inset:0;background:rgb(226 224 214 / var(--fill,0));outline:1.5px solid rgb(11 11 11 / calc(var(--bd,1)*.5))}
+.floor::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 34px,rgb(11 11 11 / calc(var(--fill,0)*.05)) 34px 35px)}
+.plan{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.plan .ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.plan .wl{fill:none;stroke:var(--ink);stroke-width:2.6}
+.plan .dm{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.plan text{font:400 15px var(--mono);letter-spacing:.04em;fill:var(--red);opacity:var(--t,0)}
+.plan .big{font:800 46px var(--font);letter-spacing:-.04em;fill:var(--ink)}
+.plan .lab{font:400 11px var(--mono);fill:var(--grey);letter-spacing:.06em}
+.plan .hide{opacity:calc(1 - var(--rise,0))}
+.bx{position:absolute;opacity:var(--bxo,0)}
+.fw{position:absolute;width:0;height:0}
+.f{position:absolute;left:0;bottom:0;transform-origin:50% 100%;transform:rotateX(-90deg) scaleY(var(--g,0));border:1.4px solid rgb(11 11 11 / var(--bd,1));background:rgb(var(--c,255 255 255) / var(--fill,0));overflow:hidden}
+.f.sd{--c:233 232 224}.f.bk{--c:222 221 212}
+.tp{position:absolute;left:0;top:0;transform:translateZ(calc(var(--h)*var(--g,0)*1px));border:1.4px solid rgb(11 11 11 / var(--bd,1));background:rgb(250 249 245 / var(--fill,0))}
+.gx{position:absolute;inset:0;opacity:var(--gfx,0)}
+.gx .red{position:absolute;background:var(--red);color:#fff}
+.gx .scr{position:absolute;background:#141414;box-shadow:inset 0 0 0 4px #2b2b2b}
+.gx .scr::after{content:"";position:absolute;inset:18% 22%;background:radial-gradient(circle at 30% 40%,rgba(217,51,51,.9),transparent 60%),radial-gradient(circle at 70% 60%,rgba(241,240,232,.35),transparent 55%)}
+.gx .logo{position:absolute;font:800 26px var(--font);letter-spacing:-.05em;line-height:.9;color:#fff;white-space:nowrap}
+.gx .logo small{display:block;font:400 9px var(--mono);letter-spacing:.12em;margin-top:6px;text-transform:uppercase}
+.gx .door{position:absolute;left:22%;bottom:0;width:30%;height:82%;border:2px solid rgba(11,11,11,.35)}
+.gx .door::after{content:"";position:absolute;right:10%;top:50%;width:6px;height:6px;border-radius:50%;background:rgba(11,11,11,.5)}
+.banner .f{--c:217 51 51;transform:rotateX(-90deg) scaleY(1)}
+.banner .f .logo{position:absolute;inset:0;display:grid;place-items:center;font-size:24px;opacity:var(--fill,0)}
+.banner{transform:translateZ(calc(var(--bz,600)*1px));opacity:var(--bo,0)}
+.cable{position:absolute;width:0;height:0}
+.cable i{position:absolute;left:0;bottom:0;width:1px;height:400px;background:rgba(11,11,11,.5);transform-origin:50% 100%;transform:rotateX(-90deg)}
+/* modo líneas (plano técnico) */
+.lines .f,.lines .tp{background:transparent!important}
+.lines .gx{opacity:calc(var(--gfx,0)*.9)}
+.lines .gx .red,.lines .gx .scr{background:transparent!important;box-shadow:none;border:1.4px dashed var(--red)}
+.lines .gx .scr::after{display:none}
+.lines .gx .logo{color:var(--red)}
+.lines .banner .f{background:transparent;border-color:var(--red)}
+.lines .floor{background:transparent}.lines .floor::after{display:none}
+
+/* Capa de la foto real */
+.res{position:absolute;inset:0;z-index:4;clip-path:circle(calc(var(--r,0)*80%) at 50% 52%);pointer-events:none}
+.res img{transform:scale(calc(1.15 - var(--r,0)*.15))}
+.res .cap{position:absolute;left:var(--pad);bottom:clamp(90px,10vw,130px);color:#fff;opacity:calc((var(--r,0) - .7)*3.3)}
+.res .cap .k{color:#fff;opacity:.8}
+.res .cap h3{font-weight:800;font-size:clamp(34px,4.6vw,78px);line-height:.9;letter-spacing:-.06em;margin-top:8px}
+.res::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 45%)}
+.res .cap{z-index:2}
+
+/* Rótulos comunes sobre el escenario */
+.ttl{position:absolute;left:var(--pad);top:clamp(22px,3vw,40px);z-index:5;transition:opacity .4s}.ttl.on-photo{opacity:0}
+.ttl h1{font-weight:800;font-size:clamp(38px,5vw,86px);line-height:.88;letter-spacing:-.065em;margin-top:16px}
+.ttl h1 span{color:var(--red)}
+.step{position:absolute;left:var(--pad);bottom:clamp(80px,9vw,120px);z-index:5;display:flex;gap:18px;align-items:flex-end;max-width:min(560px,80vw);transition:color .4s}
+.step .n{font-weight:800;font-size:clamp(64px,8vw,130px);line-height:.78;letter-spacing:-.07em;color:transparent;-webkit-text-stroke:1.6px var(--st,var(--ink))}
+.step h3{font-weight:600;font-size:clamp(18px,1.6vw,24px);letter-spacing:-.02em}
+.step p{font-size:clamp(14px,1.1vw,16px);line-height:1.5;color:var(--grey);margin-top:4px;max-width:26em}
+.step{transition:opacity .4s}.step.on-photo{opacity:0}
+.step .sw{animation:sw .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sw{from{opacity:0;transform:translateY(12px)}}
+.prog{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(24px,3vw,40px);z-index:5;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.prog div{font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.prog div i{display:block;height:2px;background:var(--line);margin-bottom:9px;position:relative;overflow:hidden}
+.prog div i::after{content:"";position:absolute;inset:0;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.prog div.on{color:var(--ink)}
+.prog.on-photo div{color:rgba(255,255,255,.75)}.prog.on-photo div i{background:rgba(255,255,255,.3)}
+.hint{position:absolute;right:var(--pad);top:clamp(26px,3vw,44px);z-index:5;font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey);opacity:var(--ho,1)}
+
+/* ───────── A · Pantalla completa ───────── */
+.oa .pin{background:var(--white)}
+
+/* ───────── B · Texto al lado ───────── */
+.ob .split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.ob .steps{padding:0 var(--pad)}
+.ob .steps .hd{min-height:calc(70vh - var(--bh));display:flex;flex-direction:column;justify-content:center}
+.ob .steps .hd h1{font-weight:800;font-size:clamp(40px,4.8vw,84px);line-height:.88;letter-spacing:-.065em;margin-top:18px}
+.ob .steps .hd h1 span{color:var(--red)}
+.ob .steps .hd p{color:var(--grey);margin-top:20px;max-width:24em;line-height:1.6}
+.ob .st{min-height:90vh;display:flex;flex-direction:column;justify-content:center;opacity:.25;transition:opacity .5s}
+.ob .st.on{opacity:1}
+.ob .st .n{font-weight:800;font-size:clamp(70px,7vw,120px);line-height:.8;letter-spacing:-.07em;color:var(--red)}
+.ob .st h2{font-weight:400;font-size:clamp(28px,2.8vw,46px);letter-spacing:-.035em;margin:18px 0 12px}
+.ob .st p{color:var(--grey);font-size:17px;line-height:1.65;max-width:26em}
+.ob .side .pin{border-left:1px solid var(--line);background:var(--white)}
+.ob .side .prog{grid-template-columns:repeat(5,1fr)}
+
+/* ───────── C · Plano técnico ───────── */
+.oc .pin{background:#fbfaf6}
+.oc .sheet{position:absolute;inset:clamp(12px,1.6vw,22px);border:1.5px solid var(--ink);z-index:3;pointer-events:none}
+.oc .cart{position:absolute;right:clamp(12px,1.6vw,22px);bottom:clamp(12px,1.6vw,22px);z-index:6;display:grid;grid-template-columns:auto auto;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);background:#fbfaf6;font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.oc .cart span{padding:8px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.oc .cart b{font-weight:400;color:var(--red)}
+.oc .ttl h1{font-weight:300;font-size:clamp(34px,4vw,68px);letter-spacing:-.05em}
+.oc .ttl h1 span{font-weight:800}
+.oc .prog{right:calc(var(--pad) + 280px)}
+.cmp{position:absolute;inset:0;z-index:4;clip-path:inset(0 0 0 calc(var(--x,100)*1%));pointer-events:none}
+.cmp-h{position:absolute;top:0;bottom:0;z-index:7;left:calc(var(--x,100)*1%);width:0;opacity:var(--ho2,0);pointer-events:auto;cursor:ew-resize}
+.cmp-h::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.cmp-h i{position:absolute;top:50%;left:-30px;width:60px;height:60px;margin-top:-30px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-style:normal;font-size:16px;letter-spacing:-.1em}
+.cmp-l{position:absolute;top:clamp(26px,3vw,44px);z-index:6;font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;opacity:var(--ho2,0)}
+.cmp-l.a{right:calc(100% - var(--x,100)*1% + 46px);background:var(--ink);color:#fff;top:calc(50% - 14px)}
+.cmp-l.b{left:calc(var(--x,100)*1% + 46px);background:#fff;color:var(--ink);top:calc(50% - 14px)}
+
+/* ───────── D · Automática ───────── */
+.od .hero{position:relative;height:calc(100vh - var(--bh));min-height:600px;overflow:hidden}
+.od .chips{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(24px,3vw,40px);z-index:6;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.od .chips button{padding:10px 18px;border:1.5px solid var(--ink);border-radius:999px;font-weight:500;font-size:14px;position:relative;overflow:hidden;background:var(--white);transition:color .3s}
+.od .chips button i{position:absolute;inset:0;background:var(--ink);transform-origin:0 50%;transform:scaleX(var(--p,0));z-index:0}
+.od .chips button span{position:relative;z-index:1;mix-blend-mode:difference;color:#fff}
+.od .chips .pp{width:44px;height:44px;padding:0;display:grid;place-items:center;background:var(--red);border-color:var(--red);color:#fff;margin-left:auto}
+.od .step{bottom:clamp(90px,10vw,130px)}
+
+/* Contenido que sigue a la animación */
+.more{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,110px);padding-block:clamp(60px,8vw,120px);border-top:1px solid var(--line)}
+.more h2{font-weight:400;font-size:clamp(28px,3vw,50px);line-height:1.06;letter-spacing:-.035em;margin-top:12px}
+.body p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--grey);max-width:36em}
+.body p+p{margin-top:1.1em}
+.body p.goal{margin-top:1.6em;padding-left:clamp(16px,2vw,26px);border-left:3px solid var(--red);font-weight:400;font-size:clamp(19px,1.6vw,24px);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.body p.goal b{font-weight:600;color:var(--red)}
+.end{background:var(--red);color:var(--white);padding:clamp(60px,8vw,110px) 0}
+.end .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+.end p{font-weight:300;font-size:clamp(28px,3.8vw,62px);line-height:1.05;letter-spacing:-.035em}
+.end a{display:inline-flex;padding:14px 26px;border:1.5px solid currentColor;border-radius:999px;font-weight:500;transition:background .3s,color .3s}
+.end a:hover{background:var(--white);color:var(--red)}
+
+@media (max-width:820px){
+  .ob .split{grid-template-columns:1fr}.ob .side{order:-1;position:sticky;top:var(--bh);height:56vh;z-index:2}.ob .side .pin{height:56vh;border:0;border-bottom:1px solid var(--line)}
+  .ob .st{min-height:70vh}.ob .steps .hd{min-height:50vh}
+  .prog div{font-size:0}.prog{gap:4px}
+  .oc .cart{display:none}.oc .prog{right:var(--pad)}
+  .more{grid-template-columns:1fr}
+  .step{max-width:86vw}.step .n{font-size:56px}
+  .hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="bar" id="bar" aria-label="Opciones"><b>Subpágina Stands</b>
+  <button data-o="A">A · Pantalla completa</button><button data-o="B">B · Texto al lado</button><button data-o="C">C · Plano técnico</button><button data-o="D">D · Automática</button>
+</nav>
+<div id="app"></div>
+
+<script>
+(function(){
+  var PHOTO='assets/img/servicios/servicio-stands-truphone.jpg';
+  var STEPS=[
+    {t:'Plano',h:'Escuchamos y dibujamos',p:'Entendemos qué quieres conseguir y dibujamos la distribución del espacio sobre los metros de tu feria.'},
+    {t:'Diseño 3D',h:'Lo levantamos en 3D',p:'Diseñamos tu stand a medida para que lo veas antes de construirlo. Nos encargamos de la aprobación de planos con la feria.'},
+    {t:'Producción',h:'Fabricamos cada pieza',p:'Estructura, gráficas, pantallas y mobiliario. Contratamos los servicios y lo dejamos todo preparado.'},
+    {t:'Montaje',h:'Lo montamos en la feria',p:'Coordinamos el montaje para que el día antes de la feria tengas tu stand terminado. Llave en mano.'},
+    {t:'Resultado',h:'Listo para recibirte',p:'Tú céntrate en tu marca. Nosotros nos encargamos del espacio.'}];
+  var TXT={h:'Stands que hacen que tu marca destaque',p:['En Launch Studio diseñamos stands que llaman la atención, transmiten quién eres y hacen que la gente quiera acercarse. Creamos espacios con personalidad, pensados para que tu marca destaque, conecte con las personas y deje huella.',
+    'Cada proyecto empieza por escucharte y entender qué quieres conseguir. Diseñamos tu stand a medida y nos encargamos de todo el proceso: desde los trámites con la feria y la aprobación de planos hasta la contratación de servicios y la coordinación del montaje.',
+    '¿El objetivo? Que el día antes de la feria tengas tu stand terminado y listo para recibirte. Una entrega llave en mano, sin complicaciones ni sorpresas de última hora. Tú céntrate en tu marca. Nosotros nos encargamos del espacio.']};
+  var cl=function(x){return Math.max(0,Math.min(1,x))},ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},n2=function(i){return '0'+(i+1)};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Maqueta del stand: 10 × 7 m (1 m = 70 px) ── */
+  var W=700,D=490,H=220;
+  function box(o){
+    var g=o.gx||{},f=function(sx,sy,ang,len,cls,html){return '<div class="fw" style="left:'+sx+'px;top:'+sy+'px;transform:rotateZ('+ang+'deg)"><div class="f '+cls+'" style="width:'+len+'px;height:'+o.h+'px">'+(html?'<div class="gx">'+html+'</div>':'')+'</div></div>'};
+    return '<div class="bx '+(o.c||'')+'" style="left:'+o.x+'px;top:'+o.y+'px;width:'+o.w+'px;height:'+o.d+'px">'+
+      f(o.w,0,180,o.w,'bk',g.back)+f(0,0,90,o.d,'sd',g.left)+f(o.w,o.d,-90,o.d,'sd',g.right)+f(0,o.d,0,o.w,'fr',g.front)+
+      (o.notop?'':'<div class="tp" style="width:'+o.w+'px;height:'+o.d+'px;--h:'+o.h+'"></div>')+'</div>'}
+  var BX=[
+    {x:0,y:0,w:W,d:12,h:H,gx:{front:'<div class="red" style="left:12%;top:9%;width:26%;height:78%"></div><div class="logo" style="left:15%;top:24%">Launch<br>Studio<small>Build to stand out</small></div><div class="scr" style="left:44%;top:14%;width:28%;height:52%"></div>'}},
+    {x:0,y:12,w:12,d:330,h:H,gx:{right:'<div class="red" style="left:8%;top:62%;width:84%;height:10%"></div>'}},
+    {x:W-180,y:12,w:168,d:150,h:H-20,gx:{front:'<div class="door"></div>',left:'<div class="red" style="left:12%;top:16%;width:76%;height:34%"></div><div class="logo" style="left:20%;top:24%;font-size:18px">Launch</div>'}},
+    {x:W-300,y:D-118,w:220,d:58,h:78,gx:{front:'<div class="red" style="inset:0"></div><div class="logo" style="left:50%;top:50%;transform:translate(-50%,-50%);font-size:24px">Launch</div>'}},
+    {x:36,y:D-96,w:54,d:54,h:190,gx:{front:'<div class="red" style="inset:0"></div><div class="logo" style="left:50%;top:52%;transform:translate(-50%,-50%) rotate(-90deg);font-size:22px">Launch</div>',right:'<div class="red" style="inset:0;opacity:.85"></div>'}},
+    {x:150,y:190,w:62,d:62,h:34},{x:290,y:190,w:62,d:62,h:34},{x:205,y:290,w:92,d:56,h:26},
+    {x:W-60,y:D-60,w:34,d:34,h:60}];
+  var BAN={x:180,y:110,w:340,d:230,h:46,c:'banner',notop:1,gx:{front:'<div class="logo">Launch Studio</div>',left:'<div class="logo">Launch</div>'}};
+  function planSVG(){
+    var r=function(o,k){var d=k*.07;return '<rect class="ln" pathLength="1" style="--d:var(--d'+k+',0)" x="'+o.x+'" y="'+o.y+'" width="'+o.w+'" height="'+o.d+'"/>'};
+    var s='<svg class="plan" viewBox="0 0 '+W+' '+D+'" aria-hidden="true">';
+    BX.forEach(function(o,k){s+=r(o,k)});
+    s+='<path class="ln" pathLength="1" style="--d:var(--d3,0)" d="M'+(W-180+40)+' 162 a 50 50 0 0 1 50 50"/>';
+    s+='<path class="dm" pathLength="1" style="--d:var(--dd,0)" d="M0 -40 H'+W+' M0 -50 V-30 M'+W+' -50 V-30"/>';
+    s+='<path class="dm" pathLength="1" style="--d:var(--dd,0)" d="M'+(W+40)+' 0 V'+D+' M'+(W+30)+' 0 H'+(W+50)+' M'+(W+30)+' '+D+' H'+(W+50)+'"/>';
+    s+='<text x="'+(W/2)+'" y="-52" text-anchor="middle" style="--t:var(--dd,0)">10 m</text><text x="'+(W+58)+'" y="'+(D/2)+'" style="--t:var(--dd,0)">7 m</text>';
+    s+='<g class="hide"><text class="big" x="'+(W/2+40)+'" y="'+(D/2+60)+'" text-anchor="middle" style="--t:var(--dd,0)">70 m²</text>';
+    s+='<text class="lab" x="'+(W-170)+'" y="100" style="--t:var(--dd,0)">ALMACÉN</text><text class="lab" x="'+(W-280)+'" y="'+(D-130)+'" style="--t:var(--dd,0)">MOSTRADOR</text><text class="lab" x="160" y="178" style="--t:var(--dd,0)">ZONA REUNIÓN</text><text class="lab" x="30" y="'+(D-104)+'" style="--t:var(--dd,0)">TÓTEM</text><text class="lab" x="'+(W*.3)+'" y="34" style="--t:var(--dd,0)">PARED GRÁFICA + PANTALLA</text></g>';
+    return s+'</svg>'}
+  function Stand(root,lines){
+    root.innerHTML='<div class="sg'+(lines?' lines':'')+'"><div class="world"><div class="gridp"></div><div class="floor"></div>'+planSVG()+BX.map(box).join('')+box(BAN)+'</div></div>';
+    var w=root.querySelector('.world'),sg=root.querySelector('.sg');
+    function set(p){
+      var v=w.style,plan=cl(p/.24),tilt=ez(cl((p-.24)/.2)),rise=ez(cl((p-.3)/.24)),fill=lines?0:cl((p-.54)/.14),gfx=cl((p-.62)/.12),ban=ez(cl((p-.72)/.22));
+      BX.forEach(function(o,k){v.setProperty('--d'+k,cl(plan*1.5-k*.07).toFixed(3))});
+      v.setProperty('--dd',cl((plan-.55)/.4).toFixed(3));
+      v.setProperty('--rise',rise.toFixed(3));v.setProperty('--g',rise.toFixed(4));v.setProperty('--bxo',rise>0.005?1:0);
+      v.setProperty('--fill',fill.toFixed(3));v.setProperty('--bd',(lines?1:1-.75*fill).toFixed(3));v.setProperty('--gfx',gfx.toFixed(3));
+      v.setProperty('--grid',(1-.6*fill).toFixed(3));
+      v.setProperty('--bz',(H+70+(1-ban)*520).toFixed(1));v.setProperty('--bo',cl(ban*3).toFixed(3));
+      var cw=sg.clientWidth,ch=sg.clientHeight,base=Math.min(cw/1000,ch/720)*(cw<700?1.18:1);
+      var mob=cw<700,a=58*tilt,b=-34*tilt-8*ban,s=base*(mob?1:.74+.18*tilt+.04*ban);
+      v.transform='scale('+s.toFixed(4)+') rotateX('+a.toFixed(2)+'deg) rotateZ('+b.toFixed(2)+'deg)';
+      v.setProperty('--wy',(mob?50+6*tilt:56+2*tilt)+'%');v.setProperty('--wx',(mob?50:58-1*tilt)+'%');
+      return p<.3?0:p<.56?1:p<.72?2:3}
+    return {set:set}}
+
+  /* ── Piezas comunes ── */
+  var crumb='<nav class="crumb"><a href="#">← Servicios</a><span>/</span><span>Stands</span></nav>';
+  var title='<div class="ttl">'+crumb+'<h1>Del plano<br><span>al stand.</span></h1></div>';
+  var prog='<div class="prog">'+STEPS.map(function(s){return '<div><i></i>'+s.t+'</div>'}).join('')+'</div>';
+  var res='<div class="res"><img src="'+PHOTO+'" alt="Stand terminado"><div class="cap"><span class="k">El resultado · Stand para Truphone</span><h3>Listo para<br>recibirte.</h3></div></div>';
+  var body=function(){return '<div class="body">'+TXT.p.map(function(t){return t.indexOf('¿El objetivo?')===0?'<p class="goal"><b>¿El objetivo?</b>'+t.slice(13)+'</p>':'<p>'+t+'</p>'}).join('')+'</div>'};
+  var more='<div class="wrap more"><div><span class="k">01 · Stands · Build to stand out</span><h2>'+TXT.h+'</h2></div>'+body()+'</div><section class="end"><div class="wrap"><p>¿Tienes una feria a la vista?</p><a href="contacto.html">Hablemos →</a></div></section>';
+  function stepHTML(i){var s=STEPS[i];return '<div class="sw" style="display:flex;gap:18px;align-items:flex-end"><span class="n">'+n2(i)+'</span><div><h3>'+s.h+'</h3><p>'+s.p+'</p></div></div>'}
+  function progSet(root,k,within){root.querySelectorAll('.prog div').forEach(function(d,j){d.classList.toggle('on',j===k);d.querySelector('i').style.setProperty('--p',j<k?1:j===k?within.toFixed(3):0)})}
+  function scrollP(sec){var r=sec.getBoundingClientRect(),bh=document.getElementById('bar').offsetHeight,h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0}
+  // tramos de cada paso dentro del progreso total (la foto ocupa el último tramo)
+  var SEG=[[0,.24],[.24,.45],[.45,.58],[.58,.74],[.78,1]];
+  function stepOf(P){for(var i=SEG.length-1;i>=0;i--)if(P>=SEG[i][0])return i;return 0}
+  function within(P,i){return cl((P-SEG[i][0])/(SEG[i][1]-SEG[i][0]))}
+  var BUILD=.78; // hasta aquí se construye; después aparece la foto
+
+  var O={
+    A:function(){return '<div class="oa"><section class="sc" style="height:620vh"><div class="pin">'+title+'<span class="hint">Desliza para construir ↓</span><div class="stage" style="position:absolute;inset:0"></div>'+res+'<div class="step"></div>'+prog+'</div></section>'+more+'</div>'},
+    B:function(){return '<div class="ob"><section class="split sc"><div class="steps"><div class="hd">'+crumb+'<h1>Del plano<br><span>al stand.</span></h1><p>Así trabajamos un stand, del primer trazo al día de la feria. Baja y míralo construirse.</p></div>'+STEPS.map(function(s,i){return '<article class="st"><span class="n">'+n2(i)+'</span><h2>'+s.h+'</h2><p>'+s.p+'</p></article>'}).join('')+'<div style="height:30vh"></div></div><div class="side"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+res+prog+'</div></div></section>'+more+'</div>'},
+    C:function(){return '<div class="oc"><section class="sc" style="height:620vh"><div class="pin"><div class="sheet"></div><div class="ttl">'+crumb+'<h1>Del <span>plano</span><br>al stand.</h1></div><span class="hint">Desliza para construir ↓</span><div class="stage" style="position:absolute;inset:0"></div><div class="cmp"><img src="'+PHOTO+'" alt="Stand terminado"></div><span class="cmp-l a">Plano</span><span class="cmp-l b">Stand real</span><div class="cmp-h" role="slider" aria-label="Comparar plano y stand real" tabindex="0"><i>‹ ›</i></div><div class="step"></div>'+prog+'<div class="cart"><span>Proyecto</span><span><b>Stand · Launch Studio</b></span><span>Superficie</span><span>70 m² · 10 × 7 m</span><span>Escala</span><span>1:100</span><span>Lámina</span><span class="lam">01 / 05</span></div></div></section>'+more+'</div>'},
+    D:function(){return '<div class="od"><section class="hero">'+title+'<div class="stage" style="position:absolute;inset:0"></div>'+res+'<div class="step"></div><div class="chips">'+STEPS.map(function(s,i){return '<button data-i="'+i+'"><i></i><span>'+n2(i)+' · '+s.t+'</span></button>'}).join('')+'<button class="pp" aria-label="Pausa">❚❚</button></div></section>'+more+'</div>'}
+  };
+
+  var app=document.getElementById('app'),stop=null,tickF=null;
+  function render(o){
+    if(stop)stop();stop=null;tickF=null;
+    app.innerHTML=O[o]();scrollTo(0,0);
+    document.querySelectorAll('#bar [data-o]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.o===o)});
+    var stage=app.querySelector('.stage'),st=Stand(stage,o==='C'),stepEl=app.querySelector('.step'),rs=app.querySelector('.res'),pg=app.querySelector('.prog'),cur=-1;
+    function show(P){
+      var k=stepOf(P),bp=cl(P/BUILD);st.set(bp);
+      if(rs){var r=ez(cl((P-.8)/.17));rs.style.setProperty('--r',r.toFixed(4));var ph=r>.5;if(stepEl)stepEl.classList.toggle('on-photo',ph);var tt=app.querySelector('.ttl');if(tt)tt.classList.toggle('on-photo',ph);if(pg)pg.classList.toggle('on-photo',ph)}
+      if(pg)progSet(app,k,within(P,k));
+      if(stepEl&&k!==cur){cur=k;stepEl.innerHTML=stepHTML(k)}
+      var h=app.querySelector('.hint');if(h)h.style.setProperty('--ho',P>.03?0:1);
+      return k}
+    if(o==='A'||o==='C'){
+      var sec=app.querySelector('.sc');
+      if(o==='C'){
+        var cmp=app.querySelector('.pin'),dragged=null,lam=app.querySelector('.cart .lam');
+        var setX=function(x){cmp.style.setProperty('--x',x.toFixed(2))};
+        tickF=function(){var P=scrollP(sec),k=show(P),r=ez(cl((P-.8)/.17));cmp.style.setProperty('--ho2',cl((r-.6)*2.5).toFixed(3));if(dragged===null)setX(100-50*r);stepEl.classList.toggle('on-photo',r>.5);lam.textContent=n2(k)+' / 05'};
+        var hd=app.querySelector('.cmp-h'),drag=function(e){var b=cmp.getBoundingClientRect();dragged=cl((e.clientX-b.left)/b.width)*100;setX(dragged)};
+        hd.addEventListener('pointerdown',function(e){hd.setPointerCapture(e.pointerId);drag(e);hd.onpointermove=drag});
+        hd.addEventListener('pointerup',function(){hd.onpointermove=null});
+        hd.addEventListener('keydown',function(e){var x=dragged===null?50:dragged;if(e.key==='ArrowLeft')x-=5;if(e.key==='ArrowRight')x+=5;dragged=cl(x/100)*100;setX(dragged)});
+      } else tickF=function(){show(scrollP(sec))};
+    }
+    if(o==='B'){
+      var sec2=app.querySelector('.sc'),arts=app.querySelectorAll('.ob .st');
+      tickF=function(){var P=scrollP(sec2),k=show(P);arts.forEach(function(a,j){a.classList.toggle('on',j===k)})};
+    }
+    if(o==='D'){
+      var T=11000,t0=performance.now(),off=0,run=!calm,raf,btns=app.querySelectorAll('.chips [data-i]'),pp=app.querySelector('.pp'),hold=0;
+      var loop=function(now){var P=((now-t0)%(T+1800))/T;if(P>1)P=1;var k=show(P);btns.forEach(function(b,j){b.querySelector('i').style.setProperty('--p',j<k?1:j===k?within(P,k).toFixed(3):0)});if(run)raf=requestAnimationFrame(loop)};
+      var jump=function(P){t0=performance.now()-P*T};
+      btns.forEach(function(b,j){b.addEventListener('click',function(){jump(SEG[j][0]+.001);if(!run){run=true;pp.textContent='❚❚';raf=requestAnimationFrame(loop)}})});
+      pp.addEventListener('click',function(){run=!run;pp.textContent=run?'❚❚':'▶';pp.setAttribute('aria-label',run?'Pausa':'Reproducir');if(run){jump(((performance.now()-t0)%(T+1800))/T>1?0:lastP);raf=requestAnimationFrame(loop)}});
+      var lastP=0;var _show=show;show=function(P){lastP=P;return _show(P)};
+      if(calm)show(.9);else raf=requestAnimationFrame(loop);
+      stop=function(){run=false;cancelAnimationFrame(raf)};
+    }
+    if(tickF)tickF();
+  }
+  var rq=0;addEventListener('scroll',function(){if(tickF&&!rq)rq=requestAnimationFrame(function(){rq=0;tickF&&tickF()})},{passive:true});
+  addEventListener('resize',function(){if(tickF)tickF()});
+  function setBh(){document.documentElement.style.setProperty('--bh',document.getElementById('bar').offsetHeight+'px')}addEventListener('resize',setBh);setBh();
+  document.querySelectorAll('#bar [data-o]').forEach(function(b){b.addEventListener('click',function(){render(b.dataset.o)})});
+  render('A');
+})();
+</script>
+</body>
+</html>
