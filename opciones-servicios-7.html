@@ -65,13 +65,12 @@ a:hover .go i,.go:hover i{transform:rotate(-45deg)}
 /* 1 · Tarjetas que se apilan */
 .l1 .cd{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,70px);align-items:center;padding:clamp(24px,4vw,60px) var(--pad);transform-origin:50% 0;border-radius:18px 18px 0 0;box-shadow:0 -20px 40px rgba(0,0,0,.08)}
 .l1 .cd.t0{background:var(--white);border-top:1px solid var(--line)}
-.l1 .cd.t1{background:var(--red);color:var(--white)}
-.l1 .cd.t2{background:var(--ink);color:var(--white)}
+.l1 .cd.t1,.l1 .cd.t2{background:var(--white);border-top:1px solid var(--line)}
+.l1 .cd .n{color:var(--red)}
 .l1 .cd .n{font:400 13px var(--mono);letter-spacing:.06em}
 .l1 .cd h2{font-weight:800;font-size:clamp(44px,6.4vw,112px);line-height:.9;letter-spacing:-.06em;margin:18px 0 14px}
 .l1 .cd .tg{font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75}
 .l1 .cd .d{font-size:clamp(16px,1.3vw,19px);line-height:1.55;max-width:24em;margin:20px 0 30px;opacity:.85}
-.l1 .cd.t1 .go i{background:var(--white);color:var(--red)}
 .l1 .cd .im{height:100%;border-radius:10px}
 .l1 .cd .im img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .l1 .cd:hover .im img{transform:scale(1.05)}
