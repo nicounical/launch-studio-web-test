@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Servicios con los textos largos — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Seis maneras de montar la página de Servicios con los textos largos de cada servicio.
+   El párrafo que empieza por «¿El objetivo?» va destacado. Cada opción es la página entera. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.16);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px var(--pad);background:rgba(11,11,11,.92);color:var(--white);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar span{margin-right:auto}
+.bar>button{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:6px 14px;color:var(--white);font:inherit;letter-spacing:inherit;text-transform:inherit}
+.bar>button:hover{background:var(--red);border-color:var(--red)}
+.bar>button[aria-pressed="true"]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.page{display:none;padding-top:44px}.page.on{display:block}
+.wrap{padding-inline:var(--pad);max-width:1440px;margin-inline:auto}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--red)}
+.k{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.top{padding-block:clamp(70px,9vw,120px) clamp(30px,4vw,56px)}
+.top h1{font-weight:300;font-size:clamp(44px,7vw,120px);line-height:.98;letter-spacing:-.045em;margin-top:14px}
+.top h1 em{font-style:normal;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(24px,3vw,40px)}
+.chips a{padding:10px 18px;border:1.5px solid var(--ink);border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;transition:background .3s,color .3s}
+.chips a:hover,.chips a.on{background:var(--ink);color:var(--white)}
+.h{font-weight:300;font-size:clamp(32px,3.8vw,62px);line-height:1.04;letter-spacing:-.035em}
+.body p{font-size:clamp(16px,1.35vw,19px);line-height:1.7;color:var(--grey);max-width:36em}
+.body p+p{margin-top:1.1em}
+.body p.goal{margin-top:1.6em;padding-left:clamp(16px,2vw,26px);border-left:3px solid var(--red);font-weight:400;font-size:clamp(19px,1.7vw,25px);line-height:1.4;letter-spacing:-.015em;color:var(--ink)}
+.body p.goal b{font-weight:600;color:var(--red)}
+.ph{overflow:hidden;background:#dddbd0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1.5px solid currentColor;border-radius:999px;font-weight:500;font-size:15px;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.end{background:var(--red);color:var(--white);padding:clamp(60px,8vw,110px) 0}
+.end .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+.end p{font-weight:300;font-size:clamp(28px,3.8vw,62px);line-height:1.05;letter-spacing:-.035em}
+.end .btn:hover{background:var(--white);color:var(--red);border-color:var(--white)}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* 1 · Índice fijo a la izquierda y el servicio a la derecha */
+.p1 .grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(30px,6vw,110px);padding-bottom:clamp(60px,8vw,110px)}
+.p1 .nav{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column}
+.p1 .nav a{display:block;text-decoration:none;padding:14px 0 12px;font-weight:300;font-size:clamp(19px,2vw,30px);line-height:1.15;letter-spacing:-.02em;color:rgba(11,11,11,.3);transition:color .3s}
+.p1 .nav a.on,.p1 .nav a:hover{color:var(--ink)}
+.p1 .nav a .k{display:block;margin-bottom:6px}
+.p1 .nav a i{display:block;height:2px;margin-top:12px;background:var(--line)}
+.p1 .nav a i::after{content:"";display:block;height:100%;background:var(--red);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.p1 .svc{padding-bottom:clamp(70px,9vw,140px);scroll-margin-top:90px}
+.p1 .svc .ph{aspect-ratio:16/9;margin-bottom:clamp(24px,3vw,40px)}
+.p1 .svc .h{margin:10px 0 clamp(18px,2vw,28px)}
+
+/* 2 · Foto a todo el ancho con el título encima y el texto en columna de lectura */
+.p2 .svc{scroll-margin-top:44px}
+.p2 .hero{position:relative;height:min(78vh,720px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(30px,5vw,70px) var(--pad);color:var(--white);overflow:hidden}
+.p2 .hero .ph{position:absolute;inset:-6%;background:#1d1c1a}
+.p2 .hero .ph img{filter:brightness(.5);transform:translateY(var(--py,0))}
+.p2 .hero>*:not(.ph){position:relative}
+.p2 .hero .k{color:var(--white);opacity:.85}
+.p2 .hero .h{font-size:clamp(38px,5.6vw,96px);max-width:13em;margin-top:12px}
+.p2 .read{max-width:780px;margin-inline:auto;padding:clamp(50px,7vw,100px) var(--pad)}
+
+/* 3 · Foto fija a un lado y texto al otro, alternando */
+.p3 .svc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line);scroll-margin-top:44px}
+.p3 .svc:nth-child(even) .side{order:2}
+.p3 .side{position:relative}
+.p3 .side .ph{position:sticky;top:44px;height:calc(100vh - 44px)}
+.p3 .side .n{position:absolute;left:24px;bottom:20px;font-weight:800;font-size:clamp(70px,9vw,150px);line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(241,240,232,.9)}
+.p3 .txt{padding:clamp(60px,8vw,120px) var(--pad);display:flex;flex-direction:column;justify-content:center;min-height:calc(100vh - 44px)}
+.p3 .txt .h{margin:12px 0 clamp(20px,2.4vw,34px)}
+
+/* 4 · Pestañas: un servicio cada vez */
+.p4 .tabs{position:sticky;top:44px;z-index:5;background:var(--white);border-bottom:1px solid var(--line);padding-block:14px}
+.p4 .tabs .wrap{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.p4 .tabs button{flex:none;padding:10px 18px;border:1.5px solid var(--ink);border-radius:999px;font-weight:500;font-size:14px;transition:background .3s,color .3s}
+.p4 .tabs button[aria-selected="true"],.p4 .tabs button:hover{background:var(--ink);color:var(--white)}
+.p4 .panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(30px,5vw,90px);padding-block:clamp(40px,6vw,80px) clamp(60px,8vw,110px);align-items:start}
+.p4 .panel .ph{aspect-ratio:4/5;position:sticky;top:120px}
+.p4 .panel .ph img{animation:zin 1.2s cubic-bezier(.2,.7,.2,1) both}
+.p4 .panel .h{margin:10px 0 clamp(18px,2vw,28px)}
+.p4 .panel .anim>*{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+.p4 .panel .anim>*:nth-child(2){animation-delay:.05s}.p4 .panel .anim>*:nth-child(3){animation-delay:.1s}
+@keyframes up{from{opacity:0;transform:translateY(20px)}}
+@keyframes zin{from{transform:scale(1.12);opacity:.3}}
+
+/* 5 · Acordeón */
+.p5 .acc{border-top:1px solid var(--line);margin-bottom:clamp(60px,8vw,110px)}
+.p5 .it{border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.p5 .hd{width:100%;display:grid;grid-template-columns:3em minmax(0,1fr) auto;align-items:center;gap:clamp(12px,2vw,30px);padding:clamp(20px,2.6vw,34px) 0}
+.p5 .hd .h{font-size:clamp(24px,3vw,46px);transition:color .3s}
+.p5 .hd:hover .h,.p5 .it.open .h{color:var(--red)}
+.p5 .hd i{width:46px;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-style:normal;font-size:20px;transition:transform .5s var(--ease),background .3s,color .3s}
+.p5 .it.open .hd i{transform:rotate(45deg);background:var(--ink);color:var(--white)}
+.p5 .bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
+.p5 .it.open .bd{grid-template-rows:1fr}
+.p5 .bd>div{overflow:hidden}
+.p5 .bd .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,4vw,70px);padding:0 0 clamp(30px,4vw,60px) calc(3em + clamp(12px,2vw,30px));align-items:start}
+.p5 .bd .ph{aspect-ratio:4/5}
+
+/* 6 · Secciones de color alternas con el texto en dos columnas */
+.p6 .svc{padding:clamp(70px,9vw,130px) 0;scroll-margin-top:44px}
+.p6 .svc:nth-child(3n+2){background:var(--ink);color:var(--white)}
+.p6 .svc:nth-child(3n+3){background:#e6e5db}
+.p6 .svc:nth-child(3n+2) .body p{color:rgba(241,240,232,.75)}
+.p6 .svc:nth-child(3n+2) .body p.goal{color:var(--white)}
+.p6 .head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,50px);align-items:end;margin-bottom:clamp(30px,4vw,60px)}
+.p6 .head .n{font-weight:800;font-size:clamp(80px,11vw,190px);line-height:.8;letter-spacing:-.06em;color:var(--red)}
+.p6 .head .h{font-size:clamp(34px,4.6vw,78px)}
+.p6 .wide{height:min(56vh,520px);margin-bottom:clamp(30px,4vw,60px)}
+.p6 .wide img{transform:translateY(var(--py,0)) scale(1.15)}
+.p6 .body{columns:2;column-gap:clamp(30px,5vw,90px)}
+.p6 .body p{max-width:none;break-inside:avoid}
+.p6 .body p.goal{column-span:all;max-width:34em}
+
+@media (max-width:820px){
+  .p1 .grid{grid-template-columns:1fr}.p1 .nav{display:none}
+  .p3 .svc{grid-template-columns:1fr}.p3 .svc:nth-child(even) .side{order:0}.p3 .side .ph{position:relative;top:0;height:50vh}.p3 .txt{min-height:0}
+  .p4 .panel{grid-template-columns:1fr}.p4 .panel .ph{position:relative;top:0;aspect-ratio:4/3}
+  .p5 .bd .in{grid-template-columns:1fr;padding-left:0}.p5 .bd .ph{aspect-ratio:4/3}
+  .p6 .body{columns:1}.p6 .head{grid-template-columns:1fr}
+  .bar span{display:none}.bar{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><span>Servicios · textos largos</span>
+  <button data-p="1" aria-pressed="true">1 · Índice</button><button data-p="2" aria-pressed="false">2 · Foto y lectura</button><button data-p="3" aria-pressed="false">3 · Foto fija</button><button data-p="4" aria-pressed="false">4 · Pestañas</button><button data-p="5" aria-pressed="false">5 · Acordeón</button><button data-p="6" aria-pressed="false">6 · Colores</button></nav>
+
+<main class="page p1 on" id="p1"><div data-top></div><div class="wrap grid"><nav class="nav" id="p1nav" aria-label="Servicios"></nav><div id="p1l"></div></div><div data-end></div></main>
+<main class="page p2" id="p2"><div data-top></div><div id="p2l"></div><div data-end></div></main>
+<main class="page p3" id="p3"><div data-top></div><div id="p3l"></div><div data-end></div></main>
+<main class="page p4" id="p4"><div class="wrap top"><p class="eyebrow">Servicios</p><h1>Lo que <em>hacemos.</em></h1></div><div class="tabs"><div class="wrap" id="p4t" role="tablist"></div></div><div class="wrap" id="p4p"></div><div data-end></div></main>
+<main class="page p5" id="p5"><div data-top></div><div class="wrap"><div class="acc" id="p5l"></div></div><div data-end></div></main>
+<main class="page p6" id="p6"><div data-top></div><div id="p6l"></div><div data-end></div></main>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  var S=[
+   {id:'stands',n:'Stands',i:'assets/img/servicios/servicio-stands-truphone.jpg',
+    h:'Stands que hacen que tu marca destaque',
+    p:['En Launch Studio diseñamos stands que llaman la atención, transmiten quién eres y hacen que la gente quiera acercarse. Creamos espacios con personalidad, pensados para que tu marca destaque, conecte con las personas y deje huella.',
+       'Cada proyecto empieza por escucharte y entender qué quieres conseguir. Diseñamos tu stand a medida y nos encargamos de todo el proceso: desde los trámites con la feria y la aprobación de planos hasta la contratación de servicios y la coordinación del montaje.',
+       '¿El objetivo? Que el día antes de la feria tengas tu stand terminado y listo para recibirte. Una entrega llave en mano, sin complicaciones ni sorpresas de última hora. Tú céntrate en tu marca. Nosotros nos encargamos del espacio.']},
+   {id:'eventos',n:'Eventos corporativos',i:'assets/img/proyectos/04-evento-corporativo-ntt-data.jpg',o:'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',
+    h:'Eventos que se viven, se sienten y se recuerdan',
+    p:['En Launch Studio diseñamos eventos corporativos con personalidad, pensados para sorprender, conectar y crear experiencias que dejan huella. Desde presentaciones de producto y eventos de empresa hasta conferencias y celebraciones, damos forma a espacios que reflejan la esencia de tu marca.',
+       'Cuidamos cada detalle, desde la idea creativa hasta la iluminación, el mobiliario y la decoración, para que todo encaje y la experiencia fluya de forma natural.',
+       'Te acompañamos durante el proceso y coordinamos lo necesario para convertir tu idea en realidad. Creamos espacios que conectan con las personas y convierten cada evento en algo especial.']},
+   {id:'experiencias',n:'Experiencias de marca',i:'assets/img/servicios/servicio-experiencias-cursa-base4.jpg',
+    h:'Experiencias de marca que conectan con las personas',
+    p:['En Launch Studio creamos experiencias para que las marcas se acerquen a las personas de una forma diferente. Diseñamos espacios, pop-ups y activaciones que sorprenden, invitan a participar y hacen que tu marca no pase desapercibida.',
+       'Cada proyecto empieza por entender qué quieres transmitir y qué experiencia quieres ofrecer. A partir de ahí, damos forma a la idea y diseñamos cada detalle para que todo tenga sentido y refleje la personalidad de tu marca.',
+       'Nos encargamos de transformar el concepto en un espacio real, desde el diseño inicial hasta el desarrollo de la propuesta, adaptándonos a las necesidades de cada proyecto.',
+       '¿El objetivo? Que las personas no solo vean tu marca, sino que la vivan, interactúen con ella y se lleven un recuerdo que perdure.']},
+   {id:'renders',n:'Renders, interiorismo y planimetría',i:'assets/img/servicios/servicio-renders-interiorismo.jpg',
+    h:'Renders y planos para llevar tus ideas a la realidad',
+    p:['En Launch Studio transformamos tus ideas en imágenes y planos que te permiten visualizar cada espacio antes de hacerlo realidad. Creamos renders realistas y desarrollamos planos técnicos para que puedas ver cómo quedará tu proyecto y entender cada detalle antes de empezar.',
+       'Trabajamos contigo para definir la distribución, los materiales, la iluminación y los acabados, cuidando que cada elemento encaje con lo que tienes en mente. Tanto si necesitas presentar una propuesta a tu cliente como si quieres visualizar tu propio proyecto, adaptamos cada trabajo a tus necesidades.',
+       'Nos encargamos de dar forma a tus ideas, desde las primeras visualizaciones hasta los planos técnicos necesarios para desarrollar el espacio, cuidando tanto el diseño como los detalles.',
+       '¿El objetivo? Que puedas visualizar tu proyecto antes de construirlo y tengas todo lo necesario para presentarlo, desarrollarlo y llevarlo a cabo.']},
+   {id:'grafico',n:'Diseño gráfico',i:'assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',
+    h:'Diseño gráfico que da personalidad a tu marca',
+    p:['En Launch Studio diseñamos piezas gráficas que transmiten la esencia de tu marca y le dan una identidad propia. Creamos diseños cuidados y coherentes, pensados para comunicar lo que quieres transmitir y conectar con las personas a las que te diriges.',
+       'Cada proyecto empieza por entender tus necesidades y lo que quieres conseguir. A partir de ahí, trabajamos la tipografía, los colores, las imágenes y la composición para crear una propuesta visual que encaje con tu marca y con el mensaje que quieres comunicar.',
+       'Diseñamos desde presentaciones, catálogos y papelería corporativa hasta materiales gráficos para stands y eventos, adaptándonos a cada proyecto y cuidando cada detalle para que todo siga una misma línea visual.',
+       '¿El objetivo? Que tu marca tenga una imagen reconocible, transmita lo que quieres y mantenga su personalidad en cada soporte y punto de contacto.']}];
+  var $=function(id){return document.getElementById(id)},each=function(l,f){[].forEach.call(l,f)},n2=function(i){return '0'+(i+1)},cl=function(x){return Math.max(0,Math.min(1,x))};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var img=function(s){return '<img src="'+s.i+'" alt="'+s.n+'" loading="lazy"'+(s.o?' onerror="this.onerror=null;this.src=\''+OLD+s.o+'\'"':'')+'>'};
+  var body=function(s){return '<div class="body">'+s.p.map(function(t){return t.indexOf('¿El objetivo?')===0?'<p class="goal"><b>¿El objetivo?</b>'+t.slice(13)+'</p>':'<p>'+t+'</p>'}).join('')+'</div>'};
+  var chips=function(pre){return '<div class="chips">'+S.map(function(s){return '<a href="#'+pre+s.id+'">'+s.n+'</a>'}).join('')+'</div>'};
+  document.querySelectorAll('[data-top]').forEach(function(el){var pre=el.closest('.page').id+'-';el.outerHTML='<div class="wrap top"><p class="eyebrow">Servicios</p><h1>Lo que <em>hacemos.</em></h1>'+chips(pre)+'</div>'});
+  document.querySelectorAll('[data-end]').forEach(function(el){el.outerHTML='<section class="end"><div class="wrap"><p>¿Tienes un proyecto en mente?</p><a class="btn" href="contacto.html">Hablemos →</a></div></section>'});
+  // 1
+  $('p1nav').innerHTML=S.map(function(s,i){return '<a href="#p1-'+s.id+'"><span class="k">'+n2(i)+'</span>'+s.n+'<i></i></a>'}).join('');
+  $('p1l').innerHTML=S.map(function(s,i){return '<article class="svc" id="p1-'+s.id+'"><div class="ph rv">'+img(s)+'</div><span class="k">'+n2(i)+' · '+s.n+'</span><h2 class="h">'+s.h+'</h2>'+body(s)+'</article>'}).join('');
+  // 2
+  $('p2l').innerHTML=S.map(function(s,i){return '<article class="svc" id="p2-'+s.id+'"><div class="hero"><div class="ph">'+img(s)+'</div><span class="k">'+n2(i)+' · '+s.n+'</span><h2 class="h">'+s.h+'</h2></div><div class="read rv">'+body(s)+'</div></article>'}).join('');
+  // 3
+  $('p3l').innerHTML=S.map(function(s,i){return '<article class="svc" id="p3-'+s.id+'"><div class="side"><div class="ph">'+img(s)+'<span class="n">'+n2(i)+'</span></div></div><div class="txt rv"><span class="k">'+s.n+'</span><h2 class="h">'+s.h+'</h2>'+body(s)+'</div></article>'}).join('');
+  // 4
+  $('p4t').innerHTML=S.map(function(s,i){return '<button role="tab" aria-selected="'+(i===0)+'">'+s.n+'</button>'}).join('');
+  function set4(i){each($('p4t').children,function(b,k){b.setAttribute('aria-selected',k===i)});var s=S[i];
+    $('p4p').innerHTML='<div class="panel"><div class="ph">'+img(s)+'</div><div class="anim"><span class="k">'+n2(i)+' · '+s.n+'</span><h2 class="h">'+s.h+'</h2>'+body(s)+'</div></div>'}
+  each($('p4t').children,function(b,i){b.addEventListener('click',function(){set4(i);var t=$('p4t').parentNode.getBoundingClientRect().top+scrollY-44;if(scrollY>t)scrollTo(0,t)})});set4(0);
+  // 5
+  $('p5l').innerHTML=S.map(function(s,i){return '<div class="it'+(i?'':' open')+'" id="p5-'+s.id+'"><button class="hd" aria-expanded="'+(i===0)+'"><span class="k">'+n2(i)+'</span><span><span class="k" style="color:var(--grey);display:block;margin-bottom:6px">'+s.n+'</span><span class="h">'+s.h+'</span></span><i aria-hidden="true">+</i></button><div class="bd"><div><div class="in"><div class="ph">'+img(s)+'</div>'+body(s)+'</div></div></div></div>'}).join('');
+  function open5(it,force){var o=force||!it.classList.contains('open');each($('p5l').children,function(x){x.classList.remove('open');x.querySelector('.hd').setAttribute('aria-expanded','false')});if(o){it.classList.add('open');it.querySelector('.hd').setAttribute('aria-expanded','true')}}
+  each($('p5l').children,function(it){it.querySelector('.hd').addEventListener('click',function(){open5(it)})});
+  each(document.querySelectorAll('#p5 .chips a'),function(a){a.addEventListener('click',function(){open5($(a.getAttribute('href').slice(1)),true)})});
+  // 6
+  $('p6l').innerHTML=S.map(function(s,i){return '<section class="svc" id="p6-'+s.id+'"><div class="wrap"><div class="head rv"><span class="n">'+n2(i)+'</span><div><span class="k">'+s.n+'</span><h2 class="h" style="margin-top:10px">'+s.h+'</h2></div></div><div class="ph wide">'+img(s)+'</div>'+body(s)+'</div></section>'}).join('');
+
+  var pages=document.querySelectorAll('.page'),btns=document.querySelectorAll('.bar>[data-p]');
+  function show(n){pages.forEach(function(p){p.classList.toggle('on',p.id==='p'+n)});btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===String(n))});scrollTo(0,0);reveal();onScroll()}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+  var io;if(!calm&&'IntersectionObserver' in window){document.documentElement.classList.add('js');io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'})}
+  function reveal(){if(io)each(document.querySelectorAll('.page.on .rv:not(.in)'),function(el){io.observe(el)})}
+  reveal();
+  function onScroll(){var vh=innerHeight,on=document.querySelector('.page.on').id;
+    if(on==='p1'){var A=$('p1nav').children,I=$('p1l').children,mid=vh*.45;for(var i=0;i<I.length;i++){var r=I[i].getBoundingClientRect(),p=cl((mid-r.top)/r.height);A[i].style.setProperty('--p',p.toFixed(3));A[i].classList.toggle('on',p>0&&p<1)}}
+    if(calm)return;
+    if(on==='p2')each(document.querySelectorAll('#p2 .hero img'),function(m){var r=m.closest('.hero').getBoundingClientRect();m.style.setProperty('--py',((r.top)*-.15).toFixed(1)+'px')});
+    if(on==='p6')each(document.querySelectorAll('#p6 .wide img'),function(m){var r=m.parentNode.getBoundingClientRect();m.style.setProperty('--py',((r.top+r.height/2-vh/2)*-.12).toFixed(1)+'px')});
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
