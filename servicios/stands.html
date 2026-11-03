@@ -121,6 +121,9 @@
 .o2 .strip .fc .mood{padding:3px;gap:3px}.o2 .strip .fc .mood .sw{display:none}
 .o2 .res .cap{bottom:clamp(130px,15vh,170px)}
 
+.sv .plab{position:absolute;left:0;top:0;font:400 11px var(--mono);letter-spacing:.08em;color:var(--grey);white-space:nowrap;pointer-events:none}
+.sv .plab.red{color:var(--red);font-size:13px}.sv .plab.big{font:300 clamp(28px,3vw,44px) var(--font);letter-spacing:-.04em;color:var(--ink)}
+.sv .o2 .pin{background:#F4F3EE}
 /* Descripción y fotos */
 .sv .desc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,110px);padding-block:clamp(60px,8vw,120px)}
 .sv .desc h2{font-weight:400;font-size:clamp(30px,3.2vw,54px);line-height:1.04;letter-spacing:-.04em;margin-top:14px}
@@ -130,9 +133,9 @@
 .sv .body p.goal b{font-weight:600;color:var(--red)}
 .sv .galh{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-block:24px}
 .sv .galh h2{font-weight:800;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.06em}
-.sv .gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding-bottom:clamp(60px,8vw,110px)}
-.sv .gal .ph{position:relative;overflow:hidden;border-radius:8px;background:#dddbd0;grid-column:span 4;aspect-ratio:4/5}
-.sv .gal .ph:nth-child(1){grid-column:span 8;aspect-ratio:16/10}.sv .gal .ph:nth-child(2){aspect-ratio:auto}
+.sv .gal{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding-bottom:clamp(60px,8vw,110px);aspect-ratio:2.1/1}
+.sv .gal .ph{position:relative;overflow:hidden;border-radius:8px;background:#dddbd0}
+.sv .gal .ph:nth-child(1){grid-row:span 2}
 .sv .gal .ph img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}.sv .gal .ph:hover img{transform:scale(1.04)}
 .sv .gal .ph.empty{background:repeating-linear-gradient(135deg,#e7e6dc 0 14px,#e1e0d5 14px 28px)}
 .sv .nextsv{display:block;text-decoration:none;color:inherit;border-top:1px solid var(--line);padding-block:clamp(40px,6vw,80px)}
@@ -145,7 +148,7 @@
   .o2 .strip{gap:5px}.o2 .strip .fc span{font-size:0}
   .co{padding:6px 8px}.co span{display:none}.co b{font-size:11px}
   .sv .desc{grid-template-columns:1fr}
-  .sv .gal .ph,.sv .gal .ph:nth-child(1){grid-column:span 12;aspect-ratio:4/3}.sv .gal .ph:nth-child(2){aspect-ratio:4/3}
+  .sv .gal{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.sv .gal .ph,.sv .gal .ph:nth-child(1){grid-row:auto;aspect-ratio:4/3}
 }
 @media (prefers-reduced-motion:reduce){.sv *{animation:none!important;transition:none!important}}
 </style>
@@ -172,9 +175,7 @@
   <div class="gal">
     <figure class="ph"><img src="../assets/img/servicios/stand-launch.jpg" alt="Stand de Launch Studio con estructura negra, pared de madera y zona de reuniones" loading="lazy"></figure>
     <figure class="ph"><img src="../assets/img/servicios/servicio-stands-truphone.jpg" alt="Stand para Truphone" loading="lazy"></figure>
-    <figure class="ph"><img src="https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG" alt="Stand para Janssen Oncology" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()"></figure>
-    <figure class="ph"><img src="https://www.launchstudiogroup.com/JVM.jpeg" alt="Stand para TI-MEDI / JVM" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()"></figure>
-    <figure class="ph"><img src="https://www.launchstudiogroup.com/BIOHORIZONS.JPG" alt="Stand para BioHorizons" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()"></figure>
+    <figure class="ph"><img src="https://www.launchstudiogroup.com/BIOHORIZONS.JPG" alt="Stand para BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></figure>
   </div>
   <a class="nextsv" href="../servicios.html#eventos"><span class="k">Siguiente servicio</span><span class="nm">Eventos corporativos<i>→</i></span></a>
 </div>
@@ -199,138 +200,40 @@
 </footer>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#0b0b0b" stroke-width="1" opacity=".35"/></pattern></defs></svg>
 <script src="../js/sitio.js?v=202610221656"></script>
-<script>
-(function(){
-  var IMG={stand:'../assets/img/servicios/servicio-stands-truphone.jpg',render:'../assets/img/servicios/servicio-renders-interiorismo.jpg',graf:'../assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',sea:'../assets/img/manifiesto/manifiesto-mar-paddle-surf.jpg',run:'../assets/img/servicios/servicio-experiencias-cursa-base4.jpg',gradas:'../assets/img/nosotros/nosotros-gradas.jpg',ped:'../assets/img/contacto/contacto-pedestal.jpg'};
-  var STEPS=[
-    {t:'Plano',w:'Semana 1',h:'Escuchamos y dibujamos',p:'Entendemos qué quieres conseguir y dibujamos la distribución del espacio sobre los metros de tu feria.',lab:'Moodboard',li:[['Entrega','Plano de planta'],['Incluye','Moodboard y paleta']]},
-    {t:'Diseño 3D',w:'Semana 1–2',h:'Lo levantamos en 3D',p:'Diseñamos tu stand a medida para que lo veas antes de construirlo. Nos encargamos de la aprobación de planos con la feria.',lab:'Render',img:IMG.render,li:[['Entrega','Renders y planos'],['Trámites','Aprobación de la feria']]},
-    {t:'Producción',w:'Semana 2–3',h:'Fabricamos cada pieza',p:'Estructura, gráficas, pantallas y mobiliario. Contratamos los servicios y lo dejamos todo preparado.',lab:'Gráfica',img:IMG.graf,li:[['Gráficas','Impresión textil'],['Servicios','Luz, agua, internet']]},
-    {t:'Montaje',w:'Semana 4',h:'Lo montamos en la feria',p:'Coordinamos el montaje para que el día antes de la feria tengas tu stand terminado. Llave en mano.',lab:'Montaje',img:'https://www.launchstudiogroup.com/JVM.jpeg',fb:IMG.ped,li:[['Montaje','1–2 días'],['Entrega','El día antes']]},
-    {t:'Resultado',w:'Día de feria',h:'Listo para recibirte',p:'Tú céntrate en tu marca. Nosotros nos encargamos del espacio.',lab:'Resultado',img:IMG.stand,li:[['Cliente','Truphone'],['Entrega','Llave en mano']]}];
-  var SPEC=[['Superficie','70 m²',0],['Medidas','10 × 7 m',0],['Tipo','Esquina · 2 lados abiertos',0],['Altura','3 m',1],['Gráficas','Textil retroiluminada',2],['Mobiliario','Mostrador, lounge, almacén',2],['Iluminación','LED orientable',3],['Entrega','Llave en mano',4]];
-  var TXT=['En Launch Studio diseñamos stands que llaman la atención, transmiten quién eres y hacen que la gente quiera acercarse. Creamos espacios con personalidad, pensados para que tu marca destaque, conecte con las personas y deje huella.',
-    'Cada proyecto empieza por escucharte y entender qué quieres conseguir. Diseñamos tu stand a medida y nos encargamos de todo el proceso: desde los trámites con la feria y la aprobación de planos hasta la contratación de servicios y la coordinación del montaje.',
-    '¿El objetivo? Que el día antes de la feria tengas tu stand terminado y listo para recibirte. Una entrega llave en mano, sin complicaciones ni sorpresas de última hora. Tú céntrate en tu marca. Nosotros nos encargamos del espacio.'];
-  var cl=function(x){return Math.max(0,Math.min(1,x))},ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},n2=function(i){return '0'+(i+1)};
-  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── Maqueta: 10 × 7 m, 1 m = 70 px ── */
-  var W=700,D=490,H=210;
-  var pic=function(src,css){return '<div class="pic" style="background-image:url('+src+');'+css+'"></div>'};
-  function box(o){
-    var g=o.gx||{},A=o.an||{},f=function(sx,sy,ang,len,cls,key){return '<div class="fw" style="left:'+sx+'px;top:'+sy+'px;transform:rotateZ('+ang+'deg)"><div class="f '+cls+'" style="width:'+len+'px;height:'+o.h+'px">'+(g[key]?'<div class="gx">'+g[key]+'</div>':'')+(A[key]||'')+'</div></div>'};
-    return '<div class="bx '+(o.c||'')+(o.z?' zt':'')+'" style="left:'+o.x+'px;top:'+o.y+'px;width:'+o.w+'px;height:'+o.d+'px'+(o.z?';--z:'+o.z:'')+'">'+
-      f(o.w,0,180,o.w,'bk','back')+f(0,0,90,o.d,'sd','left')+f(o.w,o.d,-90,o.d,'sd','right')+f(0,o.d,0,o.w,'fr','front')+
-      (o.notop?'':'<div class="tp" style="width:'+o.w+'px;height:'+o.d+'px;--h:'+o.h+'">'+(o.topx||'')+'</div>')+'</div>'}
-  var an=function(id,css){return '<i class="an" data-an="'+id+'" style="'+css+'"></i>'};
-  var BX=[
-    {k:'pared',x:0,y:0,w:W,d:12,h:H,plan:1,th:1,
-      gx:{front:pic(IMG.graf,'left:3%;top:7%;width:41%;height:86%')+'<div class="red" style="left:3%;top:72%;width:41%;height:21%"></div><div class="logo" style="left:5.5%;top:76%;font-size:20px">Launch Studio<small>Build to stand out</small></div><div class="scr" style="left:48%;top:16%;width:20%;height:46%"></div><div class="txt" style="left:48%;top:68%">Brand · Space · Experience</div>'},
-      an:{front:an('h','left:30%;top:0')+an('gr','left:22%;top:40%')}},
-    {k:'lateral',x:0,y:12,w:12,d:330,h:H,plan:1,th:1,
-      gx:{right:'<div style="position:absolute;left:10%;width:34%;top:16%;bottom:12%"><div class="shelf" style="top:0"></div><div class="shelf" style="top:33%"></div><div class="shelf" style="top:66%"></div><div class="shelf" style="bottom:0"></div><i class="prod" style="left:12%;height:20px;top:calc(33% - 23px)"></i><i class="prod" style="left:32%;height:14px;top:calc(33% - 17px);background:#0b0b0b"></i><i class="prod" style="left:56%;height:24px;top:calc(66% - 27px)"></i><i class="prod" style="left:76%;height:16px;top:calc(66% - 19px);background:#e2d3b9"></i></div>'+pic(IMG.run,'left:52%;top:16%;width:40%;height:56%')+'<div class="glow" style="left:52%;top:16%;width:40%;height:56%;inset:auto"></div><div class="red" style="left:52%;top:76%;width:40%;height:3%"></div>'}},
-    {k:'almacén',x:W-176,y:12,w:164,d:150,h:H-12,plan:1,
-      gx:{front:'<div class="door"></div><div class="txt" style="left:56%;top:18%;font-size:11px;font-family:var(--mono)">STAFF</div>',left:'<div class="red" style="inset:0"></div><div class="logo" style="left:14%;top:38%;font-size:22px">Launch<small>Studio</small></div>'},
-      an:{front:an('alm','left:70%;top:30%')}},
-    {k:'mostrador',x:W-318,y:D-122,w:232,d:58,h:80,plan:1,topx:'<div style="position:absolute;inset:0;background:rgba(30,30,30,var(--fill,0))"></div>',
-      gx:{front:'<div class="red" style="inset:0"></div><div class="glow"></div><div class="logo" style="left:50%;top:50%;transform:translate(-50%,-50%);font-size:24px">Launch</div>'},
-      an:{front:an('mo','left:50%;top:10%')}},
-    {k:'taburete',x:W-290,y:D-160,w:24,d:24,h:62,c:'dk'},{k:'taburete',x:W-200,y:D-160,w:24,d:24,h:62,c:'dk'},
-    {k:'tótem',x:34,y:D-100,w:56,d:56,h:196,plan:1,
-      gx:{front:'<div class="red" style="inset:0"></div><div class="logo" style="left:50%;top:52%;transform:translate(-50%,-50%) rotate(-90deg);font-size:22px">Launch</div>',right:pic(IMG.sea,'inset:0')}},
-    {k:'sofá',x:118,y:196,w:178,d:14,h:62,plan:1},{x:118,y:210,w:178,d:52,h:28,plan:1},
-    {k:'butaca',x:330,y:228,w:58,d:58,h:32,plan:1},{x:330,y:302,w:58,d:58,h:32,plan:1},
-    {k:'mesa',x:168,y:296,w:96,d:56,h:24,c:'wd',plan:1},
-    {x:70,y:190,w:30,d:30,h:36,c:'dk'},{x:62,y:182,w:46,d:46,h:56,z:36,c:'gn'},
-    {x:W-64,y:D-62,w:34,d:34,h:42,c:'dk',plan:1},{x:W-72,y:D-70,w:50,d:50,h:64,z:42,c:'gn'},
-    {x:120,y:12,w:14,d:30,h:10,z:H-22,c:'dk',an:{front:an('lz','left:50%;top:50%')}},{x:280,y:12,w:14,d:30,h:10,z:H-22,c:'dk'},{x:440,y:12,w:14,d:30,h:10,z:H-22,c:'dk'}];
-  var PLAT={x:-16,y:-16,w:W+32,d:D+32,h:12,z:-12,notop:1};
-  var BAN={x:170,y:112,w:360,d:232,h:44,c:'banner rd',notop:1,gx:{front:'<div class="logo">Launch Studio</div>',left:'<div class="logo">Launch</div>'},an:{front:an('ban','left:20%;top:0')}};
-  var POOLS=[[127-95,60],[287-95,60],[447-95,60]];
-  function planSVG(){
-    var s='<svg class="plan" viewBox="0 0 '+W+' '+D+'" aria-hidden="true">',k=0;
-    BX.forEach(function(o){if(!o.plan)return;s+='<rect class="ln'+(o.th?' th':'')+'" pathLength="1" style="--d:var(--d'+k+',0)" x="'+o.x+'" y="'+o.y+'" width="'+o.w+'" height="'+o.d+'"/>';if(o.th)s+='<rect class="hat" x="'+o.x+'" y="'+o.y+'" width="'+o.w+'" height="'+o.d+'"/>';k++});
-    s+='<path class="ln" pathLength="1" style="--d:var(--d3,0)" d="M'+(W-176+30)+' 162 a 50 50 0 0 1 50 50 M'+(W-176+30)+' 162 v50"/>';
-    s+='<circle class="ln" pathLength="1" style="--d:var(--d9,0)" cx="85" cy="205" r="20"/><circle class="ln" pathLength="1" style="--d:var(--d9,0)" cx="'+(W-47)+'" cy="'+(D-45)+'" r="22"/>';
-    s+='<rect class="dm" pathLength="1" style="--d:var(--dd,0);stroke-dasharray:4 6" x="170" y="112" width="360" height="232" />';
-    var dim=function(d){return '<path class="dm" pathLength="1" style="--d:var(--dd,0)" d="'+d+'"/>'};
-    s+=dim('M0 -44 H'+W+' M0 -54 V-34 M'+W+' -54 V-34')+dim('M'+(W+44)+' 0 V'+D+' M'+(W+34)+' 0 H'+(W+54)+' M'+(W+34)+' '+D+' H'+(W+54))+dim('M-40 12 V342 M-50 12 H-30 M-50 342 H-30');
-    s+='<text x="'+(W/2)+'" y="-56" text-anchor="middle" style="--t:var(--dd,0)">10,00 m</text><text x="'+(W+62)+'" y="'+(D/2)+'" style="--t:var(--dd,0)">7,00 m</text><text x="-58" y="180" text-anchor="end" style="--t:var(--dd,0)">4,70 m</text>';
-    s+='<g class="hide"><text class="big" x="'+(W/2+50)+'" y="'+(D/2+40)+'" text-anchor="middle" style="--t:var(--dd,0)">70 m²</text>';
-    s+='<text class="lab" x="'+(W-160)+'" y="96" style="--t:var(--dd,0)">ALMACÉN 5,4 m²</text><text class="lab" x="'+(W-318)+'" y="'+(D-132)+'" style="--t:var(--dd,0)">MOSTRADOR</text><text class="lab" x="122" y="186" style="--t:var(--dd,0)">LOUNGE</text><text class="lab" x="34" y="'+(D-108)+'" style="--t:var(--dd,0)">TÓTEM</text><text class="lab" x="180" y="128" style="--t:var(--dd,0);fill:var(--red)">ARO COLGANTE (COTA +3,40)</text><text class="lab" x="'+(W*.2)+'" y="34" style="--t:var(--dd,0)">PARED GRÁFICA + PANTALLA</text></g>';
-    return s+'</svg>'}
-  var CO=[
-    {a:'h',r:[.36,.62],t:'Altura 3 m',s:'Paredes autoportantes',dx:-170,dy:-60},
-    {a:'alm',r:[.4,.62],t:'Almacén',s:'2,4 × 2,1 m · con llave',dx:90,dy:-70},
-    {a:'gr',r:[.64,.82],t:'Pared gráfica',s:'Impresión textil · 5,5 × 2,6 m',dx:-200,dy:-40},
-    {a:'mo',r:[.64,.82],t:'Mostrador',s:'Frontal retroiluminado',dx:70,dy:70},
-    {a:'ban',r:[.86,1.1],t:'Aro colgante',s:'5 × 3,3 m · marca a 360°',dx:-210,dy:-50},
-    {a:'lz',r:[.86,1.1],t:'Iluminación',s:'Focos LED orientables',dx:-190,dy:40}];
-
-  function Stand(root,opt){
-    opt=opt||{};
-    var shadows=BX.concat([]).map(function(o){return o.z?'':'<div class="sh" style="left:'+(o.x+8)+'px;top:'+(o.y+10)+'px;width:'+o.w+'px;height:'+o.d+'px"></div>'}).join('');
-    var pools=POOLS.map(function(p){return '<div class="pool" style="left:'+p[0]+'px;top:'+p[1]+'px"></div>'}).join('');
-    root.innerHTML='<div class="sg'+(opt.lines?' lines':'')+'"><div class="world"><div class="gridp"></div><div class="floor">'+shadows+pools+'</div>'+planSVG()+box(PLAT)+BX.map(box).join('')+box(BAN)+'</div></div>'+
-      '<div class="callouts"><svg>'+CO.map(function(c,i){return '<g data-c="'+i+'" style="opacity:0"><line/><circle r="4.5"/></g>'}).join('')+'</svg>'+CO.map(function(c,i){return '<div class="co" data-c="'+i+'" style="opacity:0"><b>'+c.t+'</b><span>'+c.s+'</span></div>'}).join('')+'</div>';
-    var w=root.querySelector('.world'),sg=root.querySelector('.sg'),G=root.querySelectorAll('.callouts g'),L=root.querySelectorAll('.co'),AN={};
-    root.querySelectorAll('.an').forEach(function(a){AN[a.dataset.an]=a});
-    function set(p,cam,hideCo){
-      cam=cam||{};
-      var v=w.style,plan=cl(p/.24),tilt=ez(cl((p-.24)/.2)),rise=ez(cl((p-.3)/.24)),fill=opt.lines?0:cl((p-.52)/.14),gfx=cl((p-.6)/.12),ban=ez(cl((p-.74)/.2)),lit=cl((p-.86)/.1);
-      for(var k=0;k<12;k++)v.setProperty('--d'+k,cl(plan*1.6-k*.06).toFixed(3));
-      v.setProperty('--dd',cl((plan-.5)/.4).toFixed(3));
-      v.setProperty('--rise',rise.toFixed(3));v.setProperty('--g',rise.toFixed(4));v.setProperty('--bxo',rise>0.005?1:0);
-      v.setProperty('--fill',fill.toFixed(3));v.setProperty('--bd',(opt.lines?.9:.9-.72*fill).toFixed(3));v.setProperty('--gfx',gfx.toFixed(3));
-      v.setProperty('--grid',(1-.55*fill).toFixed(3));v.setProperty('--lit',lit.toFixed(3));
-      v.setProperty('--bz',(H+40+(1-ban)*520).toFixed(1));
-      var cw=sg.clientWidth,ch=sg.clientHeight,mob=cw<640,base=Math.min(cw/920,ch/720)*(mob?.88:1);
-      var a=56*tilt+(cam.a||0),b=-34*tilt-10*ban+(cam.b||0),s=base*(mob?1:.78+.16*tilt)*(cam.s||1);
-      v.transform='scale('+s.toFixed(4)+') rotateX('+a.toFixed(2)+'deg) rotateZ('+b.toFixed(2)+'deg)';
-      v.setProperty('--wy',((mob?50+5*tilt:55+2*tilt)+(cam.y||0))+'%');v.setProperty('--wx',((mob?50:52)+(cam.x||0))+'%');
-      // anotaciones
-      var rr=root.getBoundingClientRect(),sc=mob?.55:1;
-      CO.forEach(function(c,i){var on=!hideCo&&p>=c.r[0]&&p<c.r[1]&&AN[c.a];G[i].style.opacity=L[i].style.opacity=on?1:0;if(!on)return;
-        var ab=AN[c.a].getBoundingClientRect(),x=ab.left-rr.left,y=ab.top-rr.top,lx=x+c.dx*sc,ly=y+c.dy*sc,lw=L[i].offsetWidth,lh=L[i].offsetHeight;
-        lx=Math.max(8,Math.min(rr.width-lw-8,lx));ly=Math.max(rr.width<700?150:180,Math.min(rr.height-lh-110,ly));
-        L[i].style.transform='translate('+lx.toFixed(1)+'px,'+ly.toFixed(1)+'px)';
-        var ex=lx+(c.dx<0?lw:0),ey=ly+lh/2,ln=G[i].firstChild,ci=G[i].lastChild;
-        ln.setAttribute('x1',x);ln.setAttribute('y1',y);ln.setAttribute('x2',ex);ln.setAttribute('y2',ey);ci.setAttribute('cx',x);ci.setAttribute('cy',y)});
-      return p}
-    return {set:set}}
-
-  /* ── Piezas comunes ── */
-  var crumb='<nav class="crumb"><a href="#">← Servicios</a><span>/</span><span>Stands</span></nav>';
-  var SEG=[[0,.24],[.24,.45],[.45,.6],[.6,.78],[.8,1]],BUILD=.78;
-  function stepOf(P){for(var i=SEG.length-1;i>=0;i--)if(P>=SEG[i][0])return i;return 0}
-  function within(P,i){return cl((P-SEG[i][0])/(SEG[i][1]-SEG[i][0]))}
-  function scrollP(sec){var r=sec.getBoundingClientRect(),bh=document.getElementById('bar').offsetHeight,h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0}
-  var moodHTML='<div class="mood"><div class="a"><img src="'+IMG.sea+'" alt=""></div><div class="b"><img src="'+IMG.graf+'" alt=""></div><div class="c"><img src="'+IMG.gradas+'" alt=""></div><div class="sw"><i style="background:#D93333"></i><i style="background:#0b0b0b"></i><i style="background:#F1F0E8;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)"></i><i style="background:#e2d3b9"></i></div></div>';
-  var stepImg=function(i){return i===0?moodHTML:'<img src="'+STEPS[i].img+'" alt="'+STEPS[i].lab+'"'+(STEPS[i].fb?' onerror="this.onerror=null;this.src=\''+STEPS[i].fb+'\'"':'')+(i===1?' style="object-position:50% 60%"':'')+'>'};
-  var cardHTML='<div class="card">'+STEPS.map(function(s,i){return '<div class="im'+(i?'':' on')+'">'+stepImg(i)+'</div>'}).join('')+'<span class="lb">Moodboard</span></div>';
-  var res='<div class="res"><img src="'+IMG.stand+'" alt="Stand terminado"><div class="cap"><span class="k">El resultado · Stand para Truphone</span><h3>Listo para<br>recibirte.</h3><p>Del primer trazo al día de la feria, con un solo equipo.</p></div></div>';
-  var body='<div class="body">'+TXT.map(function(t){return t.indexOf('¿El objetivo?')===0?'<p class="goal"><b>¿El objetivo?</b>'+t.slice(13)+'</p>':'<p>'+t+'</p>'}).join('')+'</div>';
-  var more='<div class="wrap more"><div><span class="k">01 · Stands · Build to stand out</span><h2>Stands que hacen que tu marca destaque</h2></div>'+body+'</div><section class="end"><div class="wrap"><p>¿Tienes una feria a la vista?</p><a href="contacto.html">Hablemos →</a></div></section>';
-
-  var crumbS='<nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Stands</span></nav>';
-  var nav=document.getElementById('nav');
-  function nh(){return nav?nav.offsetHeight:0}
-  function setNh(){document.documentElement.style.setProperty('--nh',nh()+'px')}
-  function scrollPN(sec){var r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0}
-  var app=document.getElementById('app');
-  app.innerHTML='<div class="o2"><section class="sc" style="height:660vh" aria-label="Así se construye un stand"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+
-    '<div class="ttl">'+crumbS+'<h1>Del plano<br><span>al stand.</span></h1></div><div class="stp"></div>'+
-    '<div class="strip">'+STEPS.map(function(s,i){return '<div class="fc">'+stepImg(i)+'<i></i><span>'+n2(i)+' · '+s.t+'</span></div>'}).join('')+'</div></div></section></div>';
-  var stage=app.querySelector('.stage'),st=Stand(stage),sec=app.querySelector('.sc'),stp=app.querySelector('.stp'),fc=app.querySelectorAll('.strip .fc'),cur=-1;
-  function tick(){var P=scrollPN(sec),k=stepOf(P),bp=cl(P/BUILD),end=ez(cl((P-.8)/.2));
-    // cámara: se acerca a la pared gráfica en producción, se aleja en el montaje y gira despacio al final
-    var z=Math.sin(Math.PI*cl((bp-.5)/.3));st.set(bp,{s:(1+.12*z)*(1-.06*end),x:2*z,y:6*z,b:6*z-16*end},false);
-    fc.forEach(function(d,j){d.classList.toggle('on',j===k);d.querySelector('i').style.setProperty('--p',j<k?1:j===k?within(P,k).toFixed(3):0)});
-    if(k!==cur){cur=k;var s=STEPS[k];stp.innerHTML='<div class="sw2" style="animation:sw .55s both"><span class="n">'+n2(k)+' / 05 · '+s.w+'</span><h3>'+s.h+'</h3><p>'+s.p+'</p></div>'}}
-  var rq=0;addEventListener('scroll',function(){if(!rq)rq=requestAnimationFrame(function(){rq=0;tick()})},{passive:true});
-  addEventListener('resize',function(){setNh();tick()});setNh();tick();
-})();
+<script type="module">
+import { createStand } from '../assets/js/stand-3d.js?v=202611031300';
+const IMG={stand:'../assets/img/servicios/servicio-stands-truphone.jpg',render:'../assets/img/servicios/servicio-renders-interiorismo.jpg',graf:'../assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',sea:'../assets/img/manifiesto/manifiesto-mar-paddle-surf.jpg',gradas:'../assets/img/nosotros/nosotros-gradas.jpg',ped:'../assets/img/contacto/contacto-pedestal.jpg'};
+const STEPS=[
+  {t:'Plano',w:'Semana 1',h:'Escuchamos y dibujamos',p:'Entendemos qué quieres conseguir y dibujamos la distribución del espacio sobre los metros de tu feria.'},
+  {t:'Diseño 3D',w:'Semana 1–2',h:'Lo levantamos en 3D',p:'Diseñamos tu stand a medida para que lo veas antes de construirlo. Nos encargamos de la aprobación de planos con la feria.',img:IMG.render},
+  {t:'Producción',w:'Semana 2–3',h:'Fabricamos cada pieza',p:'Estructura, gráficas, pantallas y mobiliario. Contratamos los servicios y lo dejamos todo preparado.',img:IMG.graf},
+  {t:'Montaje',w:'Semana 4',h:'Lo montamos en la feria',p:'Coordinamos el montaje para que el día antes de la feria tengas tu stand terminado. Llave en mano.',img:'https://www.launchstudiogroup.com/JVM.jpeg',fb:IMG.ped},
+  {t:'Resultado',w:'Día de feria',h:'Listo para recibirte',p:'Tú céntrate en tu marca. Nosotros nos encargamos del espacio.',img:IMG.stand}];
+const cl=x=>Math.max(0,Math.min(1,x)),ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,n2=i=>'0'+(i+1);
+const SEG=[[0,.24],[.24,.45],[.45,.6],[.6,.78],[.8,1]],BUILD=.78;
+const stepOf=P=>{for(let i=SEG.length-1;i>=0;i--)if(P>=SEG[i][0])return i;return 0};
+const within=(P,i)=>cl((P-SEG[i][0])/(SEG[i][1]-SEG[i][0]));
+const mood='<div class="mood"><div class="a"><img src="'+IMG.sea+'" alt=""></div><div class="b"><img src="'+IMG.graf+'" alt=""></div><div class="c"><img src="'+IMG.gradas+'" alt=""></div><div class="sw"><i style="background:#D93333"></i><i style="background:#0b0b0b"></i><i style="background:#F1F0E8"></i><i style="background:#e2d3b9"></i></div></div>';
+const stepImg=i=>i===0?mood:'<img src="'+STEPS[i].img+'" alt="'+STEPS[i].t+'"'+(STEPS[i].fb?' onerror="this.onerror=null;this.src=\''+STEPS[i].fb+'\'"':'')+'>';
+const nav=document.getElementById('nav'),nh=()=>nav?nav.offsetHeight:0;
+const setNh=()=>document.documentElement.style.setProperty('--nh',nh()+'px');
+const scrollPN=sec=>{const r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0};
+const app=document.getElementById('app');
+app.innerHTML='<div class="o2"><section class="sc" style="height:660vh" aria-label="Así se construye un stand"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+
+  '<div class="ttl"><nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Stands</span></nav><h1>Del plano<br><span>al stand.</span></h1></div><div class="stp"></div>'+
+  '<div class="strip">'+STEPS.map((s,i)=>'<div class="fc">'+stepImg(i)+'<i></i><span>'+n2(i)+' · '+s.t+'</span></div>').join('')+'</div></div></section></div>';
+setNh();
+const sec=app.querySelector('.sc'),stp=app.querySelector('.stp'),fc=app.querySelectorAll('.strip .fc');let cur=-1,st=null;
+function tick(){const P=scrollPN(sec),k=stepOf(P),bp=cl(P/BUILD),end=ez(cl((P-.8)/.2));
+  // cámara: se acerca a la pared gráfica en producción, se aleja en el montaje y gira despacio al final
+  const z=Math.sin(Math.PI*cl((bp-.5)/.3));
+  if(st)st.set(bp,{s:(1+.16*z)*(1-.05*end),x:2*z,y:10*z,b:.12*z-.4*end},false);
+  fc.forEach((d,j)=>{d.classList.toggle('on',j===k);d.querySelector('i').style.setProperty('--p',j<k?1:j===k?within(P,k).toFixed(3):0)});
+  if(k!==cur){cur=k;const s=STEPS[k];stp.innerHTML='<div class="sw2" style="animation:sw .55s both"><span class="n">'+n2(k)+' / 05 · '+s.w+'</span><h3>'+s.h+'</h3><p>'+s.p+'</p></div>'}}
+let rq=0;addEventListener('scroll',()=>{if(!rq)rq=requestAnimationFrame(()=>{rq=0;tick()})},{passive:true});
+addEventListener('resize',()=>{setNh();if(st)st.resize();tick()});
+tick();
+createStand(app.querySelector('.stage')).then(s=>{st=s;tick()}).catch(e=>console.error(e));
 </script>
 </body>
 </html>
