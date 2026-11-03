@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Experiencias de marca — Launch Studio</title>
+<meta name="description" content="Espacios, pop-ups y activaciones que invitan a participar: experiencias de marca que la gente vive y recuerda.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="../css/estilos.css?v=202610221656">
+<style>
+/* Subpágina de Experiencias de marca. Portada: la activación se dibuja, se levanta, se traza el recorrido y la gente lo vive mientras bajas. */
+.sv{--paper:#F7F6F1;--grey:#5f5d56;--line:rgba(11,11,11,.14);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;--ease:cubic-bezier(.7,0,.2,1);--bh:var(--nh,64px)}
+.sv h1,.sv h2,.sv h3,.sv p,.sv figure{margin:0}
+.sv img{display:block;width:100%;height:100%;object-fit:cover}
+.sv .k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.sv .crumb{display:flex;gap:10px;align-items:center;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.sv .crumb a{opacity:.55;text-decoration:none;color:inherit}.sv .crumb a:hover{opacity:1;color:var(--red)}
+.sv .pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden}
+.sv .sc{margin-top:var(--bh)}
+/* ───────── Maqueta 3D ───────── */
+.sg{position:absolute;inset:0;perspective:2600px;perspective-origin:50% 30%;overflow:hidden}
+.world{position:absolute;left:var(--wx,50%);top:var(--wy,52%);width:700px;height:490px;margin:-245px 0 0 -350px;transform-style:preserve-3d;will-change:transform}
+.world *{transform-style:preserve-3d}
+.gridp{position:absolute;left:-910px;top:-770px;width:2520px;height:2030px;background-image:linear-gradient(rgba(11,11,11,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(11,11,11,.07) 1px,transparent 1px),linear-gradient(rgba(11,11,11,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,11,11,.035) 1px,transparent 1px);background-size:70px 70px,70px 70px,14px 14px,14px 14px;-webkit-mask:radial-gradient(closest-side,#000 30%,transparent);mask:radial-gradient(closest-side,#000 30%,transparent);opacity:var(--grid,1)}
+.floor{position:absolute;inset:0;outline:1px solid rgb(11 11 11 / calc(var(--bd,1)*.4))}
+.floor::before{content:"";position:absolute;inset:0;opacity:var(--fill,0);background:linear-gradient(115deg,rgba(255,255,255,.35),transparent 55%),repeating-linear-gradient(90deg,#e6d8c0 0 34px,#dccbae 34px 35px),#e2d3b9}
+.lines .floor::before{display:none}
+.sh{position:absolute;background:rgba(40,30,20,.32);filter:blur(9px);opacity:var(--fill,0);border-radius:6px}
+.pool{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,244,214,.95),rgba(255,236,190,.35) 55%,transparent);opacity:var(--lit,0);mix-blend-mode:screen}
+.plan{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.plan .ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.plan .ln.th{stroke-width:2.6}
+.plan .dm{fill:none;stroke:var(--red);stroke-width:1.1;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.plan .hat{fill:url(#hatch);opacity:calc(var(--dd,0) * (1 - var(--rise,0)))}
+.plan text{font:400 13px var(--mono);letter-spacing:.06em;fill:var(--red);opacity:var(--t,0)}
+.plan .big{font:300 40px var(--font);letter-spacing:-.04em;fill:var(--ink)}
+.plan .lab{font:400 10px var(--mono);fill:var(--grey);letter-spacing:.08em}
+.plan .hide{opacity:calc(1 - var(--rise,0))}
+.bx{position:absolute;opacity:var(--bxo,0)}
+.fw{position:absolute;width:0;height:0}
+.f{position:absolute;left:0;bottom:0;transform-origin:50% 100%;transform:rotateX(-90deg) scaleY(var(--g,0));border:1px solid rgb(11 11 11 / var(--bd,1));background:rgb(var(--c,255 255 255) / var(--fill,0));overflow:hidden}
+.f::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.07),transparent 40%,rgba(255,255,255,.25));opacity:var(--fill,0);pointer-events:none}
+.f.sd{--c:232 231 223}.f.bk{--c:220 219 210}
+.tp{position:absolute;left:0;top:0;transform:translateZ(calc(var(--h)*var(--g,0)*1px));border:1px solid rgb(11 11 11 / var(--bd,1));background:rgb(var(--tc,251 250 246) / var(--fill,0))}
+.dk .f{--c:44 44 44}.dk .f.sd{--c:30 30 30}.dk .tp{--tc:56 56 56}
+.rd .f{--c:217 51 51}.rd .f.sd{--c:190 40 40}.rd .tp{--tc:225 70 70}
+.gn .f{--c:96 128 82}.gn .f.sd{--c:76 106 64}.gn .tp{--tc:112 146 96}
+.wd .tp{--tc:196 160 116}
+.gx{position:absolute;inset:0;opacity:var(--gfx,0)}
+.gx .red{position:absolute;background:var(--red)}
+.gx .pic{position:absolute;background-size:cover;background-position:center}
+.gx .scr{position:absolute;background:#141414;box-shadow:inset 0 0 0 3px #2a2a2a}
+.gx .scr::after{content:"";position:absolute;inset:10%;background:linear-gradient(120deg,rgba(217,51,51,.95),rgba(217,51,51,.2) 45%,rgba(241,240,232,.25));}
+.gx .logo{position:absolute;font:800 24px var(--font);letter-spacing:-.05em;line-height:.9;color:#fff;white-space:nowrap}
+.gx .logo small{display:block;font:400 8px var(--mono);letter-spacing:.14em;margin-top:6px;text-transform:uppercase}
+.gx .txt{position:absolute;font:300 13px var(--font);letter-spacing:.02em;color:var(--ink);white-space:nowrap}
+.gx .door{position:absolute;left:18%;bottom:0;width:30%;height:84%;border:1.5px solid rgba(11,11,11,.3);background:rgba(0,0,0,.03)}
+.gx .door::after{content:"";position:absolute;right:10%;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(11,11,11,.5)}
+.gx .shelf{position:absolute;left:0;right:0;height:3px;background:#c9b48f}
+.gx .prod{position:absolute;bottom:3px;width:10px;background:var(--red);border-radius:1px}
+.gx .glow{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.0),rgba(255,255,255,.25));mix-blend-mode:screen}
+.banner .f .logo{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;opacity:var(--fill,0)}
+.zt{transform:translateZ(calc(var(--z)*1px))}
+.banner{transform:translateZ(calc(var(--bz,600)*1px))}
+.an{position:absolute;width:2px;height:2px}
+/* modo líneas */
+.lines .f,.lines .tp{background:transparent!important}.lines .f::after{display:none}
+.lines .gx{opacity:calc(var(--gfx,0)*.9)}
+.lines .gx .red,.lines .gx .scr,.lines .gx .pic{background:transparent!important;box-shadow:none;border:1px dashed var(--red)}
+.lines .gx .scr::after,.lines .gx .glow{display:none}
+.lines .gx .logo{color:var(--red)}
+.lines .sh,.lines .pool{display:none}
+
+/* Anotaciones técnicas */
+.callouts{position:absolute;inset:0;z-index:4;pointer-events:none}
+.callouts svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.callouts line{stroke:var(--ink);stroke-width:1}
+.callouts circle{fill:var(--white);stroke:var(--red);stroke-width:2}
+.co{position:absolute;padding:9px 12px 10px;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:6px;backdrop-filter:blur(6px);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.co b{display:block;font-weight:600;font-size:13px;letter-spacing:-.01em}
+.co span{display:block;font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-top:3px}
+.co,.callouts g{transition:opacity .35s}
+
+/* Foto real */
+.res{position:absolute;inset:0;z-index:6;clip-path:circle(calc(var(--r,0)*80%) at 50% 52%);pointer-events:none}
+.res img{transform:scale(calc(1.15 - var(--r,0)*.15))}
+.res::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 50%)}
+.res .cap{position:absolute;left:var(--pad);bottom:clamp(100px,11vw,140px);color:#fff;z-index:2;opacity:calc((var(--r,0) - .7)*3.3)}
+.res .cap .k{color:#fff;opacity:.8}
+.res .cap h3{font-weight:800;font-size:clamp(36px,4.8vw,82px);line-height:.88;letter-spacing:-.065em;margin-top:10px}
+.res .cap p{max-width:26em;margin-top:14px;font-size:16px;line-height:1.55;opacity:.85}
+
+/* Tarjeta de imagen por fase */
+.card{position:relative;border-radius:8px;overflow:hidden;background:#e4e3da}
+.card .im{position:absolute;inset:0;opacity:0;transform:scale(1.08);transition:opacity .7s,transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.card .im.on{opacity:1;transform:none}
+.card .lb{position:absolute;left:10px;bottom:10px;z-index:2;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.92);font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.mood{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr auto;gap:5px;padding:5px;background:var(--paper)}
+.mood .a{grid-row:span 2;border-radius:5px;overflow:hidden}.mood .b,.mood .c{border-radius:5px;overflow:hidden}
+.mood .sw{grid-column:span 2;display:flex;gap:5px;height:26px}.mood .sw i{flex:1;border-radius:4px}
+
+/* ───────── 2 · Cinemática ───────── */
+.o2 .pin{background:radial-gradient(120% 90% at 50% 40%,#fbfaf6,#ecebe3)}
+.o2 .ttl{position:absolute;left:var(--pad);top:clamp(22px,3vw,36px);z-index:5}
+.o2 .ttl h1{font-weight:800;font-size:clamp(34px,4vw,70px);line-height:.88;letter-spacing:-.065em;margin-top:14px}
+.o2 .ttl h1 span{color:var(--red)}
+.o2 .stp{position:absolute;right:var(--pad);top:clamp(22px,3vw,36px);z-index:5;width:min(340px,40vw);text-align:right}
+.o2 .stp .n{font:400 11px var(--mono);letter-spacing:.08em;color:var(--red)}
+.o2 .stp h3{font-weight:300;font-size:clamp(24px,2.4vw,40px);line-height:1.02;letter-spacing:-.04em;margin-top:8px}
+.o2 .stp p{font-size:14px;line-height:1.55;color:var(--grey);margin-top:10px}
+.o2 .strip{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(18px,2.4vw,30px);z-index:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.6vw,24px)}
+.o2 .strip .fc{position:relative;padding-top:14px;color:rgba(11,11,11,.35);transition:color .4s}
+.o2 .strip .fc::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(11,11,11,.14)}
+.o2 .strip .fc i{position:absolute;left:0;top:0;height:2px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.o2 .strip .fc b{display:block;font:400 11px var(--mono);letter-spacing:.08em;color:inherit}
+.o2 .strip .fc span{display:block;font-weight:500;font-size:clamp(14px,1.2vw,18px);letter-spacing:-.02em;margin-top:4px}
+.o2 .pin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(120px,18vh,170px);background:linear-gradient(rgba(244,243,238,0),rgba(244,243,238,.94) 70%);z-index:4;pointer-events:none}
+.o2 .strip .fc.on{color:var(--ink)}
+.o2 .pin .ttl,.o2 .pin .stp,.o2 .pin .strip .fc{transition:color .8s}.o2 .pin::after{transition:background .8s}
+.o2 .pin.dark .ttl,.o2 .pin.dark .stp{color:#fff}.o2 .pin.dark .stp p{color:rgba(255,255,255,.75)}.o2 .pin.dark .crumb a{opacity:.8}
+.o2 .pin.dark .strip .fc{color:rgba(255,255,255,.4)}.o2 .pin.dark .strip .fc.on{color:#fff}.o2 .pin.dark .strip .fc::before{background:rgba(255,255,255,.2)}
+.o2 .pin.dark::after{background:linear-gradient(rgba(20,19,18,0),rgba(20,19,18,.9) 70%)}.o2 .strip .fc.on b{color:var(--red)}
+.o2 .res .cap{bottom:clamp(130px,15vh,170px)}
+
+.sv .plab{position:absolute;left:0;top:0;font:400 11px var(--mono);letter-spacing:.08em;color:var(--grey);white-space:nowrap;pointer-events:none}
+.sv .plab.red{color:var(--red);font-size:13px}.sv .plab.big{font:300 clamp(28px,3vw,44px) var(--font);letter-spacing:-.04em;color:var(--ink)}
+.sv .o2 .pin{background:#F4F3EE}
+.sv .zlab{position:absolute;left:0;top:0;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.94);box-shadow:0 8px 24px rgba(0,0,0,.08),0 0 0 1px var(--line);white-space:nowrap;pointer-events:none;text-align:center;margin-top:-10px}
+.sv .zlab span{display:block;font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.sv .zlab b,.sv .zlab em{display:none}.sv .zlab.count b{display:block;font:800 22px var(--font);letter-spacing:-.04em;color:var(--red);margin-top:2px}.sv .zlab.count em{display:block;font:400 9px var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;color:var(--grey)}
+@media (max-width:820px){.sv .zlab{padding:4px 7px}.sv .zlab span{font-size:7px}.sv .zlab.count b{font-size:14px}.sv .zlab.count em{display:none}}
+/* Descripción y fotos */
+.sv .desc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,110px);padding-block:clamp(60px,8vw,120px)}
+.sv .desc h2{font-weight:400;font-size:clamp(30px,3.2vw,54px);line-height:1.04;letter-spacing:-.04em;margin-top:14px}
+.sv .body p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--grey);max-width:36em}
+.sv .body p+p{margin-top:1.1em}
+.sv .body p.goal{margin-top:1.4em;padding-left:clamp(16px,2vw,26px);border-left:3px solid var(--red);font-weight:400;font-size:clamp(19px,1.6vw,24px);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.sv .body p.goal b{font-weight:600;color:var(--red)}
+.sv .galh{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-block:24px}
+.sv .galh h2{font-weight:800;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.06em}
+.sv .gal{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding-bottom:clamp(60px,8vw,110px);aspect-ratio:2.1/1}
+.sv .gal .ph{position:relative;overflow:hidden;border-radius:8px;background:#dddbd0}
+.sv .gal .ph:nth-child(1){grid-row:span 2}
+.sv .gal .ph img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}.sv .gal .ph:hover img{transform:scale(1.04)}
+.sv .gal .ph.empty{background:repeating-linear-gradient(135deg,#e7e6dc 0 14px,#e1e0d5 14px 28px)}
+.sv .nextsv{display:block;text-decoration:none;color:inherit;border-top:1px solid var(--line);padding-block:clamp(40px,6vw,80px)}
+.sv .nextsv .nm{display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:800;font-size:clamp(36px,6vw,104px);line-height:.92;letter-spacing:-.06em;margin-top:12px;transition:color .3s}
+.sv .nextsv:hover .nm{color:var(--red)}
+.sv .nextsv .nm i{flex:none;width:clamp(54px,6vw,96px);aspect-ratio:1;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:300;font-size:.36em;transition:background .3s,transform .5s var(--ease)}
+.sv .nextsv:hover .nm i{background:var(--red);transform:rotate(-45deg)}
+@media (max-width:980px){
+  .o2 .stp{left:var(--pad);right:var(--pad);top:auto;bottom:calc(clamp(64px,8vh,90px) + 40px);width:auto;text-align:left}.o2 .stp p{display:none}
+  .o2 .strip{gap:6px}.o2 .strip .fc span{font-size:11px}.o2 .strip .fc b{font-size:9px}
+  .co{padding:6px 8px}.co span{display:none}.co b{font-size:11px}
+  .sv .desc{grid-template-columns:1fr}
+  .sv .gal{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.sv .gal .ph,.sv .gal .ph:nth-child(1){grid-row:auto;aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion:reduce){.sv *{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="../index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="../index.html">Inicio</a><a href="../proyectos.html">Proyectos</a><a href="../servicios.html" aria-current="page">Servicios</a><a href="../nosotros.html">Nosotros</a><a href="../contacto.html">Contacto</a></nav>
+</header>
+
+<main class="sv">
+<div id="app"></div>
+<div class="wrap desc">
+  <div><span class="k">03 · Make it a feeling</span><h2>Experiencias de marca que conectan con las personas</h2></div>
+  <div class="body">
+    <p>En Launch Studio creamos experiencias para que las marcas se acerquen a las personas de una forma diferente. Diseñamos espacios, pop-ups y activaciones que sorprenden, invitan a participar y hacen que tu marca no pase desapercibida.</p>
+    <p>Cada proyecto empieza por entender qué quieres transmitir y qué experiencia quieres ofrecer. A partir de ahí, damos forma a la idea y diseñamos cada detalle para que todo tenga sentido y refleje la personalidad de tu marca.</p>
+    <p>Nos encargamos de transformar el concepto en un espacio real, desde el diseño inicial hasta el desarrollo de la propuesta, adaptándonos a las necesidades de cada proyecto.</p>
+    <p class="goal"><b>¿El objetivo?</b> Que las personas no solo vean tu marca, sino que la vivan, interactúen con ella y se lleven un recuerdo que perdure.</p>
+  </div>
+</div>
+<div class="wrap">
+  <div class="galh"><h2>Proyectos</h2><span class="k">Ejemplos de experiencias</span></div>
+  <div class="gal">
+    <figure class="ph"><img src="../assets/img/servicios/servicio-experiencias-cursa-base4.jpg" alt="Activación de BASE4 en una carrera popular" loading="lazy"></figure>
+    <figure class="ph"><img src="https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG" alt="Pop-up store para Venca" loading="lazy" onerror="this.onerror=null;this.src='../assets/img/contacto/contacto-pedestal.jpg'"></figure>
+    <figure class="ph"><img src="https://www.launchstudiogroup.com/project-1.JPG" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='../assets/img/nosotros/nosotros-gradas.jpg'"></figure>
+  </div>
+  <a class="nextsv" href="../servicios.html#renders"><span class="k">Siguiente servicio</span><span class="nm">Renders e interiorismo<i>→</i></span></a>
+</div>
+<section class="cta">
+  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
+  <div class="wrap cta__in">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos de tu próximo proyecto.</h2>
+    <a class="btn btn--light" href="../contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="../index.html">Inicio</a></li><li><a href="../proyectos.html">Proyectos</a></li><li><a href="../servicios.html">Servicios</a></li><li><a href="../nosotros.html">Nosotros</a></li><li><a href="../contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="../servicios.html#stands">Stands</a></li><li><a href="../servicios.html#eventos">Eventos corporativos</a></li><li><a href="../servicios.html#experiencias">Experiencias de marca</a></li><li><a href="../servicios.html#pop-up">Pop-up stores</a></li><li><a href="../servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#0b0b0b" stroke-width="1" opacity=".35"/></pattern></defs></svg>
+<script src="../js/sitio.js?v=202610221656"></script>
+<script type="module">
+import { createExperience } from '../assets/js/experiencias-3d.js?v=202611031420';
+const STEPS=[
+  {t:'Idea',w:'La emoción',h:'¿Qué quieres que sientan?',p:'Definimos qué quieres transmitir y dibujamos cada zona de la experiencia.'},
+  {t:'Espacio',w:'Las zonas',h:'Diseñamos cada zona',p:'Entrada, photocall, prueba de producto, zona chill y regalo.'},
+  {t:'Recorrido',w:'El camino',h:'Trazamos el recorrido',p:'Cada paso lleva al siguiente y nada pasa desapercibido.'},
+  {t:'Personas',w:'La gente',h:'La gente lo vive',p:'Participan, interactúan y comparten.'},
+  {t:'Resultado',w:'El recuerdo',h:'Un recuerdo que perdura',p:'Que no solo vean tu marca: que la vivan.'}];
+const cl=x=>Math.max(0,Math.min(1,x)),ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,n2=i=>'0'+(i+1);
+const SEG=[[0,.16],[.16,.4],[.4,.54],[.54,.69],[.69,1]],BUILD=.8;
+const stepOf=P=>{for(let i=SEG.length-1;i>=0;i--)if(P>=SEG[i][0])return i;return 0};
+const within=(P,i)=>cl((P-SEG[i][0])/(SEG[i][1]-SEG[i][0]));
+const nav=document.getElementById('nav'),nh=()=>nav?nav.offsetHeight:0;
+const setNh=()=>document.documentElement.style.setProperty('--nh',nh()+'px');
+const scrollPN=sec=>{const r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0};
+const app=document.getElementById('app');
+app.innerHTML='<div class="o2"><section class="sc" style="height:660vh" aria-label="Así se crea una experiencia de marca"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+
+  '<div class="ttl"><nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Experiencias de marca</span></nav><h1>De la idea<br><span>a la emoción.</span></h1></div><div class="stp"></div>'+
+  '<div class="strip">'+STEPS.map((s,i)=>'<div class="fc"><i></i><b>'+n2(i)+'</b><span>'+s.t+'</span></div>').join('')+'</div></div></section></div>';
+setNh();
+const pin=app.querySelector('.pin'),sec=app.querySelector('.sc'),stp=app.querySelector('.stp'),fc=app.querySelectorAll('.strip .fc');let cur=-1,st=null,camS={},lastBp=0;
+function tick(){const P=scrollPN(sec),k=stepOf(P),bp=cl(P/BUILD),end=ez(cl((P-.8)/.2));
+  // cámara: se acerca a la gente mientras recorre la activación y gira despacio al final
+  const z=Math.sin(Math.PI*cl((bp-.62)/.3));camS={s:(1+.12*z)*(1-.04*end),x:0,y:-4*z,b:.08*z-.35*end};lastBp=bp;
+  if(st){const dk=st.set(bp,camS,false,performance.now()/1000);pin.classList.toggle('dark',!!dk)}
+  fc.forEach((d,j)=>{d.classList.toggle('on',j===k);d.querySelector('i').style.setProperty('--p',j<k?1:j===k?within(P,k).toFixed(3):0)});
+  if(k!==cur){cur=k;const s=STEPS[k];stp.innerHTML='<div class="sw2" style="animation:sw .55s both"><span class="n">'+n2(k)+' / 05 · '+s.w+'</span><h3>'+s.h+'</h3><p>'+s.p+'</p></div>'}}
+let rq=0;addEventListener('scroll',()=>{if(!rq)rq=requestAnimationFrame(()=>{rq=0;tick()})},{passive:true});
+addEventListener('resize',()=>{setNh();if(st)st.resize();tick()});
+tick();
+createExperience(app.querySelector('.stage')).then(s=>{st=s;tick();
+  // la gente sigue caminando aunque no bajes
+  let lt=0;const loop=now=>{requestAnimationFrame(loop);if(now-lt<33||lastBp<.7)return;const r=sec.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;lt=now;st.set(lastBp,camS,false,now/1000)};requestAnimationFrame(loop)}).catch(e=>console.error(e));
+</script>
+</body>
+</html>
