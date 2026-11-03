@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Servicios — Launch Studio</title>
-<meta name="description" content="Stands, eventos corporativos, experiencias de marca y pop-up stores. Así trabajamos en Launch Studio.">
+<meta name="description" content="Stands, eventos corporativos, experiencias de marca, renders e interiorismo y diseño gráfico. Así trabajamos en Launch Studio.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,83 +12,60 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="css/estilos.css?v=202610221656">
 </head>
+<style>
+/* Servicios a pantalla completa: los cinco a la vista y la foto de fondo cambia con el que señalas.
+   Sin ratón (móvil) van pasando solos; tocar uno abre su página. */
+body{--hero-fg:#fff}
+.sfx{position:relative;height:100vh;min-height:600px;overflow:hidden;background:var(--ink);color:#fff}
+.sfx__bg{position:absolute;inset:0;opacity:0;transform:scale(1.08);transition:opacity 1s,transform 2.4s cubic-bezier(.2,.7,.2,1)}
+.sfx__bg.on{opacity:1;transform:none}
+.sfx__bg img{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.45)}
+.sfx__in{position:absolute;inset:0;z-index:2;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(96px,13vh,130px) var(--pad) clamp(26px,4vh,44px)}
+.sfx__k{font:400 11px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin:0}
+.sfx__k b{font-weight:400;color:var(--red)}
+.sfx__lst{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;margin:0;padding:0;list-style:none}
+.sfx__lst a{position:relative;display:inline-block;text-decoration:none;font-weight:800;font-size:clamp(34px,min(6.4vw,9.2vh),112px);line-height:1.04;letter-spacing:-.06em;color:rgba(241,240,232,.28);transition:color .4s,transform .6s cubic-bezier(.7,0,.2,1)}
+.sfx__lst a sup{position:absolute;left:100%;top:.55em;margin-left:12px;font:400 12px "DM Mono",monospace;letter-spacing:.06em;color:var(--red);opacity:0;transition:opacity .4s}
+.sfx__lst a.on,.sfx__lst a:focus-visible{color:#fff;transform:scale(1.03)}.sfx__lst a.on sup{opacity:1}
+.sfx__ft{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.sfx__ft p{margin:0;max-width:28em;font-size:17px;line-height:1.55;opacity:.88}
+.sfx__ft .tg{display:block;font:400 11px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.sfx__go{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;background:var(--white);color:var(--ink);font-weight:500;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s}
+.sfx__go:hover{background:var(--red);color:#fff}
+.sfx__sw{animation:sfxsw .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sfxsw{from{opacity:0;transform:translateY(12px)}}
+@media (max-width:820px){.sfx__lst a{font-size:clamp(24px,7.4vw,40px)}.sfx__lst a sup{display:none}.sfx__ft{flex-direction:column;align-items:flex-start;gap:16px}.sfx__ft p{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.sfx *{animation:none!important;transition:none!important}}
+</style>
+</head>
 <body>
-<header class="nav" id="nav">
+<header class="nav nav--over" id="nav">
   <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
   <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
   <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html" aria-current="page">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
 </header>
 
 <main>
-<section class="sec sec--top">
-  <div class="outline-bg outline-bg--red" aria-hidden="true">servicios</div>
-  <div class="wrap intro">
-    <p class="eyebrow">Servicios</p>
-    <h1>Stands, eventos y experiencias de marca.</h1>
-    <p class="lead">Creamos stands, eventos y experiencias de marca que hacen que tu proyecto cobre vida en cualquier punto de Europa.</p>
+<section class="sfx" id="sfx" aria-label="Servicios">
+  <div class="sfx__bgs" aria-hidden="true"></div>
+  <div class="sfx__in">
+    <h1 class="sfx__k">Servicios · <b>Lo que hacemos</b></h1>
+    <ul class="sfx__lst" id="sfx-lst"></ul>
+    <div class="sfx__ft"><div id="sfx-info"></div><span id="sfx-cta"></span></div>
   </div>
 </section>
-<section class="sec sec--tight"><div class="wrap"><div class="svcs"><article class="svc" id="stands">
-      <h2>Stands</h2>
-      <div><p>Diseñamos, fabricamos y montamos stands para congresos y ferias: corporativos, comerciales e institucionales, con integración audiovisual y acabados cuidados.</p>
-        <p class="svc__rel"><span>Proyectos</span><a href="proyectos/06-stand-janssen-oncology.html">Janssen Oncology</a><a href="proyectos/07-stand-truphone.html">Truphone</a><a href="proyectos/08-stand-ti-medi-jvm.html">TI-MEDI / JVM</a><a href="proyectos/09-stand-biohorizons.html">BioHorizons</a></p></div>
-    </article><article class="svc" id="eventos">
-      <h2>Eventos corporativos</h2>
-      <div><p>Diseño y producción integral del espacio: escenografía, estructuras, iluminación y el resto de elementos técnicos, coordinando cada fase.</p>
-        <p class="svc__rel"><span>Proyectos</span><a href="proyectos/04-evento-corporativo-ntt-data.html">NTT DATA</a><a href="proyectos/02-evento-promocion-base4.html">BASE4</a></p></div>
-    </article><article class="svc" id="experiencias">
-      <h2>Experiencias de marca</h2>
-      <div><p>Propuestas que convierten la marca en una experiencia y refuerzan el vínculo con su comunidad.</p>
-        <p class="svc__rel"><span>Proyectos</span><a href="proyectos/01-taller-amona.html">Taller Amona</a><a href="proyectos/03-market-the-office-studio.html">Market</a></p></div>
-    </article><article class="svc" id="pop-up">
-      <h2>Pop-up stores</h2>
-      <div><p>Producción y montaje de espacios temporales con un fuerte impacto visual: fabricación, instalación y acabados dentro de los plazos previstos.</p>
-        <p class="svc__rel"><span>Proyectos</span><a href="proyectos/05-pop-up-store-venca.html">Venca</a></p></div>
-    </article></div></div></section>
-<section class="sec sec--dark" id="metodologia">
-  <div class="outline-bg" aria-hidden="true">metodología</div>
-  <div class="wrap">
-    <p class="eyebrow">Metodología</p>
-    <h2>¿Qué hacemos?</h2>
-    <ol class="steps"><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Escuchamos: Stand para Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div>
-        <span class="step__n" aria-hidden="true">01</span>
-        <h3>Escuchamos</h3>
-        <p>Antes de empezar, queremos entender tu marca, tus objetivos y qué necesitas realmente.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Diseñamos: Pop-up store para Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"></div>
-        <span class="step__n" aria-hidden="true">02</span>
-        <h3>Diseñamos</h3>
-        <p>Creamos un concepto a medida que refleja tu identidad y conecta con tus objetivos.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="Planificamos: Evento corporativo para NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"></div>
-        <span class="step__n" aria-hidden="true">03</span>
-        <h3>Planificamos</h3>
-        <p>Coordinamos cada fase del proyecto para que todo esté bajo control.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Producimos: Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div>
-        <span class="step__n" aria-hidden="true">04</span>
-        <h3>Producimos</h3>
-        <p>Damos forma a cada detalle junto a nuestra red de colaboradores y proveedores de confianza.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="Supervisamos: Evento de promoción para BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"></div>
-        <span class="step__n" aria-hidden="true">05</span>
-        <h3>Supervisamos</h3>
-        <p>Estamos presentes en cada fase clave para asegurarnos de que todo se ejecuta según lo previsto.</p>
-      </li><li class="step">
-        <div class="step__img"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="Entregamos: Market" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"></div>
-        <span class="step__n" aria-hidden="true">06</span>
-        <h3>Entregamos</h3>
-        <p>Todo listo para que solo tengas que centrarte en lo importante: tu evento.</p>
-      </li></ol>
-  </div>
-</section>
-<section class="cta">
-  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
-  <div class="wrap cta__in">
+
+<section class="ctx" id="contacto">
+  <div class="wrap ctx__in">
     <p class="eyebrow">Contacto</p>
-    <h2>Hablemos de tu próximo proyecto.</h2>
-    <a class="btn btn--light" href="contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+    <h2>Your next chapter starts here.</h2>
+    <div class="ctx__pair">
+      <a class="ctx__it ctx__it--w" href="contacto.html"><span class="ctx__rb"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ctx1" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#ctx1" textLength="505" lengthAdjust="spacing">Cuéntanos tu proyecto · Formulario ·</textPath></text></svg><b>Formulario</b></span><span class="ctx__k">Tell us your idea</span></a>
+      <span class="ctx__or" aria-hidden="true">o</span>
+      <a class="ctx__it ctx__it--b" href="mailto:info@launchstudiogroup.com"><span class="ctx__rb"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ctx2" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text textLength="505" lengthAdjust="spacing"><textPath href="#ctx2" textLength="505" lengthAdjust="spacing">Escríbenos directamente · Email ·</textPath></text></svg><b>Email</b></span><span class="ctx__k">Say hello</span></a>
+    </div>
+    <p class="ctx__mailto"><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></p>
+    <p class="ctx__tel"><a href="tel:+34673071256">+34 673 071 256</a> · Barcelona</p>
   </div>
 </section>
 </main>
@@ -102,5 +79,31 @@
   <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
 </footer>
 <script src="js/sitio.js?v=202610221656"></script>
+<script>
+(function(){
+  var R='https://www.launchstudiogroup.com/',I='assets/img/servicios/';
+  var S=[
+   {id:'stands',n:'Stands',tag:'Build to stand out',d:'Diseñamos espacios que captan miradas y hacen que las marcas destaquen.',i:I+'stand-launch.jpg',href:'servicios/stands.html'},
+   {id:'eventos',n:'Eventos corporativos',tag:'Every detail matters',d:'Elegancia, precisión y diseño en eventos donde cada detalle cuenta.',i:R+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',fb:'assets/img/nosotros/nosotros-gradas.jpg',href:'opciones-subpaginas.html#eventos'},
+   {id:'experiencias',n:'Experiencias de marca',tag:'Make it a feeling',d:'Experiencias que conectan con las personas y convierten las marcas en emociones.',i:I+'servicio-experiencias-cursa-base4.jpg',href:'opciones-subpaginas.html#experiencias'},
+   {id:'renders',n:'Renders e interiorismo',full:'Renders, interiorismo y planimetría',tag:'Vision into form',d:'De la idea al espacio. Precisión técnica y visión estética.',i:I+'render-casa.jpg',href:'opciones-subpaginas.html#renders'},
+   {id:'grafico',n:'Diseño gráfico',tag:'Identity in every detail',d:'Identidades visuales que transmiten personalidad, coherencia y carácter.',i:I+'servicio-diseno-grafico-ceramica.jpg',href:'opciones-subpaginas.html#grafico'}];
+  var N=S.length,n2=function(i){return '0'+(i+1)},calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root=document.getElementById('sfx'),bgW=root.querySelector('.sfx__bgs'),lst=document.getElementById('sfx-lst'),info=document.getElementById('sfx-info'),cta=document.getElementById('sfx-cta');
+  bgW.innerHTML=S.map(function(s){return '<div class="sfx__bg"><img src="'+s.i+'" alt=""'+(s.fb?' onerror="this.onerror=null;this.src=\''+s.fb+'\'"':'')+'></div>'}).join('');
+  lst.innerHTML=S.map(function(s,i){return '<li><a id="'+s.id+'" href="'+s.href+'" data-i="'+i+'"'+(s.full?' aria-label="'+s.full+'"':'')+'>'+s.n+'<sup>'+n2(i)+'</sup></a></li>'}).join('');
+  var bgs=bgW.children,links=lst.querySelectorAll('a'),cur=-1,t0=0,held=false,DUR=4200;
+  function act(k){if(k===cur)return;cur=k;t0=performance.now();var s=S[k];
+    for(var j=0;j<N;j++){bgs[j].classList.toggle('on',j===k);links[j].classList.toggle('on',j===k)}
+    info.innerHTML='<div class="sfx__sw"><span class="tg">'+(s.full||s.n)+' · '+s.tag+'</span><p>'+s.d+'</p></div>';
+    cta.innerHTML='<a class="sfx__go" href="'+s.href+'">Ver servicio <span aria-hidden="true">→</span></a>'}
+  [].forEach.call(links,function(a){var k=+a.dataset.i;
+    a.addEventListener('mouseenter',function(){held=true;act(k)});a.addEventListener('focus',function(){held=true;act(k)});
+    a.addEventListener('mouseleave',function(){held=false;t0=performance.now()});a.addEventListener('blur',function(){held=false})});
+  var h=location.hash.slice(1),start=0;S.forEach(function(s,i){if(s.id===h)start=i});act(start);
+  if(h&&start>=0)scrollTo(0,0);
+  (function loop(now){if(!held&&!calm&&now-t0>DUR)act((cur+1)%N);requestAnimationFrame(loop)})(performance.now());
+})();
+</script>
 </body>
 </html>
