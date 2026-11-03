@@ -228,7 +228,7 @@ export async function createEvent(root, imgBase = '../assets/img/') {
     mats.forEach(m => { m.opacity = fill; m.transparent = fill < .999; m.depthWrite = fill > .4; });
     gfx.forEach(m => m.opacity = gfxA);
     // butacas fila a fila
-    chairPos.forEach(([x, z], i) => { const r = Math.floor(i / 16), k = eb(cl((p - .54 - r * .016 - (i % 16) * .0012) / .03)); dm.position.set(x, 0, z); dm.rotation.set(0, Math.PI, 0); dm.scale.setScalar(Math.max(.0001, k)); dm.updateMatrix(); chairs.setMatrixAt(i, dm.matrix); });
+    chairPos.forEach(([x, z], i) => { const r = Math.floor(i / 16), k = eb(cl((p - .54 - r * .016 - (i % 16) * .0012) / .03)); dm.position.set(x, 0, z); dm.rotation.set(0, 0, 0); dm.scale.setScalar(Math.max(.0001, k)); dm.updateMatrix(); chairs.setMatrixAt(i, dm.matrix); });
     chairs.instanceMatrix.needsUpdate = true; chairs.visible = p > .54;
     pops.forEach(([g, t]) => { const k = eb(cl((p - t) / .04)); g.scale.setScalar(Math.max(.0001, k)); g.visible = k > .001; });
     truss.position.y = P + 5.15 + (1 - drop) * 7; truss.visible = drop > .001;
