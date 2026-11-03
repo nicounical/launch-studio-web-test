@@ -156,6 +156,25 @@
   .sv .gal{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.sv .gal .ph,.sv .gal .ph:nth-child(1){grid-row:auto;aspect-ratio:4/3}
 }
 @media (prefers-reduced-motion:reduce){.sv *{animation:none!important;transition:none!important}}
+/* Portada: el stand se construye a pie de pasillo mientras bajas (bajar construye, subir desmonta) */
+.sv .bsc{height:900vh;margin-top:var(--bh)}
+.sv .bpin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;background:#F4F3EE}
+.sv .bstage{position:absolute;inset:0}
+.sv .bov{position:absolute;z-index:5;transition:color 1.2s,opacity .8s}
+.sv .bttl{left:var(--pad);top:clamp(22px,3vw,36px)}
+.sv .bttl h1{font-weight:800;font-size:clamp(34px,4.4vw,76px);line-height:.88;letter-spacing:-.065em;margin-top:14px}
+.sv .bttl h1 span{color:var(--red)}
+.sv .bcap{left:var(--pad);bottom:clamp(22px,3vw,40px)}
+.sv .bcap .s{display:flex;gap:16px;align-items:baseline;animation:sw .7s cubic-bezier(.2,.7,.2,1) both}
+.sv .bcap b{font:400 11px var(--mono);letter-spacing:.08em;color:var(--red)}
+.sv .bcap span{font-size:clamp(15px,1.3vw,19px);letter-spacing:-.01em}
+.sv .bfin{right:var(--pad);bottom:clamp(22px,3vw,40px);text-align:right;opacity:0}
+.sv .bfin h2{font-weight:300;font-size:clamp(26px,2.8vw,46px);letter-spacing:-.04em;line-height:1.02}
+.sv .bfin p{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-top:10px}
+.sv .bhint{right:var(--pad);top:clamp(26px,3vw,40px);font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.55}
+.sv .bpin.eve .bov{color:#fff}.sv .bpin.eve .crumb a{opacity:.8}
+@keyframes sw{from{opacity:0;transform:translateY(8px)}}
+@media (max-width:820px){.sv .bhint{display:none}.sv .bfin{left:var(--pad);right:auto;text-align:left;bottom:84px}}
 </style>
 </head>
 <body>
@@ -166,7 +185,15 @@
 </header>
 
 <main class="sv">
-<div id="app"></div>
+<section class="bsc" id="bsc" aria-label="El stand se construye mientras bajas">
+  <div class="bpin" id="bpin">
+    <div class="bstage" id="bstage"></div>
+    <div class="bov bttl"><nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Stands</span></nav><h1>Del plano<br><span>al stand.</span></h1></div>
+    <p class="bov bhint" id="bhint">Baja para construirlo ↓</p>
+    <div class="bov bcap" id="bcap" aria-live="polite"></div>
+    <div class="bov bfin" id="bfin"><h2>Listo para recibirte.</h2><p>El día antes de la feria · llave en mano</p></div>
+  </div>
+</section>
 <div class="wrap desc">
   <div><span class="k">01 · Build to stand out</span><h2>Stands que hacen que tu marca destaque</h2></div>
   <div class="body">
@@ -206,39 +233,24 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#0b0b0b" stroke-width="1" opacity=".35"/></pattern></defs></svg>
 <script src="../js/sitio.js?v=202610221656"></script>
 <script type="module">
-import { createStand } from '../assets/js/stand-3d.js?v=202611031330';
-const IMG={stand:'../assets/img/servicios/servicio-stands-truphone.jpg',render:'../assets/img/servicios/servicio-renders-interiorismo.jpg',graf:'../assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',sea:'../assets/img/manifiesto/manifiesto-mar-paddle-surf.jpg',gradas:'../assets/img/nosotros/nosotros-gradas.jpg',ped:'../assets/img/contacto/contacto-pedestal.jpg'};
-const STEPS=[
-  {t:'Plano',w:'Semana 1',h:'Escuchamos y dibujamos',p:'Entendemos qué quieres conseguir y dibujamos la distribución del espacio sobre los metros de tu feria.'},
-  {t:'Diseño 3D',w:'Semana 1–2',h:'Lo levantamos en 3D',p:'Diseñamos tu stand a medida para que lo veas antes de construirlo. Nos encargamos de la aprobación de planos con la feria.',img:IMG.render},
-  {t:'Producción',w:'Semana 2–3',h:'Fabricamos cada pieza',p:'Estructura, gráficas, pantallas y mobiliario. Contratamos los servicios y lo dejamos todo preparado.',img:IMG.graf},
-  {t:'Montaje',w:'Semana 4',h:'Lo montamos en la feria',p:'Coordinamos el montaje para que el día antes de la feria tengas tu stand terminado. Llave en mano.',img:'https://www.launchstudiogroup.com/JVM.jpeg',fb:IMG.ped},
-  {t:'Resultado',w:'Día de feria',h:'Listo para recibirte',p:'Tú céntrate en tu marca. Nosotros nos encargamos del espacio.',img:IMG.stand}];
-const cl=x=>Math.max(0,Math.min(1,x)),ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,n2=i=>'0'+(i+1);
-const SEG=[[0,.24],[.24,.45],[.45,.6],[.6,.78],[.8,1]],BUILD=.78;
-const stepOf=P=>{for(let i=SEG.length-1;i>=0;i--)if(P>=SEG[i][0])return i;return 0};
-const within=(P,i)=>cl((P-SEG[i][0])/(SEG[i][1]-SEG[i][0]));
-const mood='<div class="mood"><div class="a"><img src="'+IMG.sea+'" alt=""></div><div class="b"><img src="'+IMG.graf+'" alt=""></div><div class="c"><img src="'+IMG.gradas+'" alt=""></div><div class="sw"><i style="background:#D93333"></i><i style="background:#0b0b0b"></i><i style="background:#F1F0E8"></i><i style="background:#e2d3b9"></i></div></div>';
-const stepImg=i=>i===0?mood:'<img src="'+STEPS[i].img+'" alt="'+STEPS[i].t+'"'+(STEPS[i].fb?' onerror="this.onerror=null;this.src=\''+STEPS[i].fb+'\'"':'')+'>';
+import { createBuild } from '../assets/js/stand-build.js?v=202611031545';
+const PH=[[0,'01','El espacio vacío'],[.10,'02','La estructura'],[.30,'03','La arquitectura'],[.48,'04','El mobiliario'],[.64,'05','La marca'],[.74,'06','La luz'],[.9,'','']];
+const cl=x=>Math.max(0,Math.min(1,x));
 const nav=document.getElementById('nav'),nh=()=>nav?nav.offsetHeight:0;
-const setNh=()=>document.documentElement.style.setProperty('--nh',nh()+'px');
-const scrollPN=sec=>{const r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0};
-const app=document.getElementById('app');
-app.innerHTML='<div class="o2"><section class="sc" style="height:660vh" aria-label="Así se construye un stand"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+
-  '<div class="ttl"><nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Stands</span></nav><h1>Del plano<br><span>al stand.</span></h1></div><div class="stp"></div>'+
-  '<div class="strip">'+STEPS.map((s,i)=>'<div class="fc"><i></i><b>'+n2(i)+'</b><span>'+s.t+'</span></div>').join('')+'</div></div></section></div>';
-setNh();
-const pin=app.querySelector('.pin'),sec=app.querySelector('.sc'),stp=app.querySelector('.stp'),fc=app.querySelectorAll('.strip .fc');let cur=-1,st=null;
-function tick(){const P=scrollPN(sec),k=stepOf(P),bp=cl(P/BUILD),end=ez(cl((P-.8)/.2));
-  // cámara: se acerca a la pared gráfica en producción, se aleja en el montaje y gira despacio al final
-  const z=Math.sin(Math.PI*cl((bp-.5)/.3));
-  if(st){const dk=st.set(bp,{s:(1+.16*z)*(1-.05*end),x:2*z,y:10*z,b:.12*z-.4*end},false);pin.classList.toggle('dark',!!dk)}
-  fc.forEach((d,j)=>{d.classList.toggle('on',j===k);d.querySelector('i').style.setProperty('--p',j<k?1:j===k?within(P,k).toFixed(3):0)});
-  if(k!==cur){cur=k;const s=STEPS[k];stp.innerHTML='<div class="sw2" style="animation:sw .55s both"><span class="n">'+n2(k)+' / 05 · '+s.w+'</span><h3>'+s.h+'</h3><p>'+s.p+'</p></div>'}}
-let rq=0;addEventListener('scroll',()=>{if(!rq)rq=requestAnimationFrame(()=>{rq=0;tick()})},{passive:true});
-addEventListener('resize',()=>{setNh();if(st)st.resize();tick()});
-tick();
-createStand(app.querySelector('.stage')).then(s=>{st=s;tick()}).catch(e=>console.error(e));
+const sec=document.getElementById('bsc'),pin=document.getElementById('bpin'),cap=document.getElementById('bcap'),fin=document.getElementById('bfin'),hint=document.getElementById('bhint');
+const setNh=()=>document.documentElement.style.setProperty('--nh',nh()+'px');setNh();
+const prog=()=>{const r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0};
+let st=null,cur=-1,tgt=0,now=0,raf=0;
+// el scroll manda: un suavizado mínimo evita tirones sin separarse de la posición
+function loop(){now+=(tgt-now)*.18;if(Math.abs(tgt-now)<.0004)now=tgt;draw(now);raf=now!==tgt?requestAnimationFrame(loop):0}
+function draw(p){const eve=st?st.set(p):false;pin.classList.toggle('eve',!!eve);
+  let k=0;PH.forEach((ph,i)=>{if(p>=ph[0])k=i});
+  if(k!==cur){cur=k;const ph=PH[k];cap.innerHTML=ph[1]?'<div class="s"><b>'+ph[1]+'</b><span>'+ph[2]+'</span></div>':''}
+  fin.style.opacity=cl((p-.9)/.05);hint.style.opacity=1-cl(p/.03)}
+function onScroll(){tgt=prog();if(!raf)raf=requestAnimationFrame(loop)}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{setNh();if(st)st.resize();onScroll()});
+draw(0);
+createBuild(document.getElementById('bstage'),{mode:'D',imgBase:'../assets/img/'}).then(s=>{st=s;tgt=now=prog();draw(now)}).catch(e=>console.error(e));
 </script>
 </body>
 </html>
