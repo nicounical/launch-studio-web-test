@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contacto bajo Servicios: opciones — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Opciones del bloque de contacto de la página de Servicios: todas estrechas, sencillas y con fondo negro.
+   Cada una va entre un trozo de la portada de Servicios y el pie, como quedaría en la web. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--pad:clamp(20px,5vw,80px);--ease:cubic-bezier(.7,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:"Poppins",system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+h2,p{margin:0}a{color:inherit;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:var(--pad)}
+.k{font:400 11px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.lab{padding:46px var(--pad) 14px;max-width:1320px;margin:0 auto;display:flex;gap:14px;align-items:baseline}
+.lab b{font-weight:800;font-size:28px;letter-spacing:-.05em}.lab span{color:#5f5d56;font-size:15px}
+.hero{height:110px;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url(assets/img/servicios/stand-launch.jpg) center 70%/cover}
+.foot{height:60px;background:#e6e5dd}
+.blk{background:var(--ink);color:var(--white)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;background:var(--red);color:#fff;font-weight:500;font-size:15px;white-space:nowrap;transition:background .3s,color .3s}
+.btn:hover{background:var(--white);color:var(--ink)}
+.mut{opacity:.6}
+
+/* 1 */
+.o1 .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding-block:clamp(40px,5vw,64px)}
+.o1 h2{font-weight:300;font-size:clamp(28px,3.4vw,52px);line-height:1.05;letter-spacing:-.04em}.o1 h2 b{font-weight:800;letter-spacing:-.06em}
+.o1 .r{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+/* 2 · Una frase y un enlace */
+.o2 .wrap{text-align:center;padding-block:clamp(40px,5vw,60px)}
+.o2 p{font-size:16px;opacity:.7}
+.o2 a.big{display:inline-flex;align-items:center;gap:.3em;margin-top:10px;font-weight:800;font-size:clamp(40px,6vw,96px);line-height:1;letter-spacing:-.065em;border-bottom:3px solid var(--red);padding-bottom:6px;transition:color .3s}
+.o2 a.big i{font-style:normal;color:var(--red);transition:transform .5s var(--ease)}
+.o2 a.big:hover{color:var(--red)}.o2 a.big:hover i{transform:translateX(12px)}
+/* 3 · Todo el bloque es el enlace */
+.o3{display:block;transition:background .4s}
+.o3 .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:clamp(30px,4vw,48px)}
+.o3 .t{font-weight:300;font-size:clamp(26px,3.6vw,56px);letter-spacing:-.045em;line-height:1.05}
+.o3 .t b{font-weight:800;letter-spacing:-.06em}
+.o3 .c{flex:none;width:clamp(56px,6vw,84px);aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(241,240,232,.4);display:grid;place-items:center;font-size:22px;transition:background .3s,border-color .3s,transform .5s var(--ease)}
+.o3:hover{background:var(--red)}.o3:hover .c{background:var(--white);color:var(--ink);border-color:var(--white);transform:rotate(-45deg)}
+/* 4 · Dos caminos */
+.o4 .wrap{display:grid;grid-template-columns:1fr 1fr}
+.o4 a{display:block;padding:clamp(30px,4vw,48px) 0;transition:color .3s}
+.o4 a+a{border-left:1px solid rgba(241,240,232,.18);padding-left:clamp(24px,4vw,60px)}
+.o4 a .k{color:var(--red)}
+.o4 a .v{display:flex;align-items:center;gap:14px;margin-top:10px;font-weight:400;font-size:clamp(22px,2.6vw,40px);letter-spacing:-.035em}
+.o4 a .v i{font-style:normal;transition:transform .5s var(--ease)}
+.o4 a:hover{color:var(--red)}.o4 a:hover .v i{transform:translateX(10px)}
+/* 5 · Disponibles */
+.o5 .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding-block:clamp(36px,4.5vw,56px)}
+.o5 .st{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid rgba(241,240,232,.22);border-radius:999px}
+.o5 .st i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(217,51,51,.6);animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 10px rgba(217,51,51,0)}100%{box-shadow:0 0 0 0 rgba(217,51,51,0)}}
+.o5 h2{font-weight:400;font-size:clamp(24px,2.6vw,40px);letter-spacing:-.035em;margin-top:14px}
+.o5 .r{display:flex;gap:10px;flex-wrap:wrap}
+.o5 .ghost{display:inline-flex;align-items:center;padding:14px 24px;border-radius:999px;border:1.5px solid rgba(241,240,232,.4);font-weight:500;font-size:15px;transition:border-color .3s,background .3s,color .3s}
+.o5 .ghost:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+/* 6 · Mínimo */
+.o6{border-top:3px solid var(--red)}
+.o6 .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-block:clamp(26px,3vw,38px)}
+.o6 p{font-size:clamp(17px,1.6vw,22px);font-weight:400;letter-spacing:-.02em}
+.o6 p span{opacity:.55}
+.o6 a{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:16px;border-bottom:1.5px solid currentColor;padding-bottom:3px;transition:color .3s}
+.o6 a:hover{color:var(--red)}
+/* 7 · Círculo */
+.o7 .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;padding-block:clamp(28px,3.5vw,44px)}
+.o7 h2{font-weight:800;font-size:clamp(32px,4.4vw,70px);line-height:.92;letter-spacing:-.065em}.o7 h2 span{color:var(--red)}
+.o7 .sub{margin-top:14px}
+.o7 .ring{flex:none;position:relative;width:clamp(110px,11vw,150px);aspect-ratio:1;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;transition:background .3s,color .3s}
+.o7 .ring svg{position:absolute;inset:0;width:100%;height:100%;animation:rot 14s linear infinite}
+.o7 .ring text{font:400 10.5px "DM Mono",monospace;letter-spacing:.14em;fill:currentColor;text-transform:uppercase}
+.o7 .ring b{font-weight:500;font-size:15px}
+.o7 .ring:hover{background:var(--white);color:var(--ink)}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+@media (max-width:760px){
+  .o1 .r{align-items:flex-start}
+  .o4 .wrap{grid-template-columns:1fr}.o4 a+a{border-left:0;border-top:1px solid rgba(241,240,232,.18);padding-left:0}
+  .o7 .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="lab"><b>1</b><span>La actual: título a la izquierda, botón a la derecha.</span></div>
+<div class="hero"></div>
+<section class="blk o1"><div class="wrap"><div><p class="k" style="color:var(--red);margin-bottom:10px">Contacto</p><h2>¿Empezamos tu <b>proyecto?</b></h2></div><div class="r"><a class="btn" href="contacto.html">Cuéntanos tu idea →</a><p class="k mut">info@launchstudiogroup.com · +34 673 071 256</p></div></div></section>
+<div class="foot"></div>
+
+<div class="lab"><b>2</b><span>Una frase y un enlace grande en el centro.</span></div>
+<div class="hero"></div>
+<section class="blk o2"><div class="wrap"><p>¿Tienes un stand, un evento o una idea en mente?</p><a class="big" href="contacto.html">Hablemos <i>→</i></a></div></section>
+<div class="foot"></div>
+
+<div class="lab"><b>3</b><span>Todo el bloque es un enlace; al pasar el ratón se vuelve rojo.</span></div>
+<div class="hero"></div>
+<a class="blk o3" href="contacto.html"><div class="wrap"><span class="t">Empecemos <b>tu proyecto.</b></span><span class="c">→</span></div></a>
+<div class="foot"></div>
+
+<div class="lab"><b>4</b><span>Dos caminos: el formulario o el correo.</span></div>
+<div class="hero"></div>
+<section class="blk o4"><div class="wrap"><a href="contacto.html"><span class="k">Formulario</span><span class="v">Cuéntanos tu idea <i>→</i></span></a><a href="mailto:info@launchstudiogroup.com"><span class="k">Email</span><span class="v">info@launchstudiogroup.com <i>→</i></span></a></div></section>
+<div class="foot"></div>
+
+<div class="lab"><b>5</b><span>Con un aviso de «disponibles» y dos botones.</span></div>
+<div class="hero"></div>
+<section class="blk o5"><div class="wrap"><div><span class="st k"><i></i>Disponibles para nuevos proyectos</span><h2>Cuéntanos qué tienes en mente.</h2></div><div class="r"><a class="btn" href="contacto.html">Empezar un proyecto →</a><a class="ghost" href="tel:+34673071256">+34 673 071 256</a></div></div></section>
+<div class="foot"></div>
+
+<div class="lab"><b>6</b><span>Lo más mínimo: una línea roja, una frase y un enlace.</span></div>
+<div class="hero"></div>
+<section class="blk o6"><div class="wrap"><p>¿Un stand, un evento, una experiencia? <span>Te ayudamos.</span></p><a href="contacto.html">Escríbenos <span aria-hidden="true">→</span></a></div></section>
+<div class="foot"></div>
+
+<div class="lab"><b>7</b><span>Título a la izquierda y un círculo rojo que gira, como en la portada.</span></div>
+<div class="hero"></div>
+<section class="blk o7"><div class="wrap"><div><h2>Ready to<br><span>launch?</span></h2><p class="k mut sub">info@launchstudiogroup.com · +34 673 071 256</p></div>
+  <a class="ring" href="contacto.html" aria-label="Contactar"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cr" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text textLength="482" lengthAdjust="spacing"><textPath href="#cr">Cuéntanos tu proyecto · Cuéntanos tu proyecto ·</textPath></text></svg><b>Contactar</b></a></div></section>
+<div class="foot"></div>
+<div style="height:60px"></div>
+</body>
+</html>
