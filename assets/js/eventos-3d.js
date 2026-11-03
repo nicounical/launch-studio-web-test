@@ -29,7 +29,7 @@ function woodTex(base, seed) {
 const LOGO = 'M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
 function drawLogo(g, x, y, hgt, fill, dot = '#D93333') { const s = hgt / 1470; g.save(); g.translate(x, y); g.scale(s, s); g.translate(-440, -260); g.fillStyle = fill; g.fill(new Path2D(LOGO)); g.fillStyle = dot; g.beginPath(); g.arc(1288, 1467, 237, 0, 7); g.fill(); g.restore(); }
 function spaced(g, txt, x, y, sp) { if ('letterSpacing' in g) { g.letterSpacing = sp + 'px'; g.fillText(txt, x, y); g.letterSpacing = '0px'; return; } let cx = x; for (const ch of txt) { g.fillText(ch, cx, y); cx += g.measureText(ch).width + sp; } }
-function screenTex() {
+export function screenTex() {
   return canvasTex(2048, 1024, (g, w, h) => {
     const gr = g.createRadialGradient(w * .7, h * .35, 50, w * .6, h * .5, w * .7); gr.addColorStop(0, '#5a1715'); gr.addColorStop(.55, '#1c0c0c'); gr.addColorStop(1, '#0b0b0b');
     g.fillStyle = gr; g.fillRect(0, 0, w, h);
@@ -39,7 +39,7 @@ function screenTex() {
     g.font = '400 50px "DM Mono", monospace'; g.fillStyle = 'rgba(255,255,255,.75)'; spaced(g, 'PRODUCT LAUNCH · 2026', 160, 760, 10);
   });
 }
-function rollTex() { return canvasTex(512, 1400, (g, w, h) => { g.fillStyle = '#C4221D'; g.fillRect(0, 0, w, h); drawLogo(g, 70, 90, 170, '#ffffff', '#ffffff'); g.fillStyle = '#fff'; g.font = '800 120px Poppins, sans-serif'; g.textBaseline = 'alphabetic'; spaced(g, 'Launch', 60, 560, -5); spaced(g, 'Studio', 60, 680, -5); g.font = '400 34px "DM Mono", monospace'; spaced(g, 'EVERY DETAIL', 66, 1200, 6); spaced(g, 'MATTERS', 66, 1250, 6); }); }
+export function rollTex() { return canvasTex(512, 1400, (g, w, h) => { g.fillStyle = '#C4221D'; g.fillRect(0, 0, w, h); drawLogo(g, 70, 90, 170, '#ffffff', '#ffffff'); g.fillStyle = '#fff'; g.font = '800 120px Poppins, sans-serif'; g.textBaseline = 'alphabetic'; spaced(g, 'Launch', 60, 560, -5); spaced(g, 'Studio', 60, 680, -5); g.font = '400 34px "DM Mono", monospace'; spaced(g, 'EVERY DETAIL', 66, 1200, 6); spaced(g, 'MATTERS', 66, 1250, 6); }); }
 function lecternTex() { return canvasTex(512, 512, (g) => { drawLogo(g, 200, 120, 160, '#EDE6D8'); g.fillStyle = '#EDE6D8'; g.font = '400 44px Poppins, sans-serif'; g.textBaseline = 'middle'; spaced(g, 'LAUNCH', 150, 380, 14); }); }
 function barTex() { return canvasTex(1024, 256, (g) => { drawLogo(g, 90, 70, 110, '#EDE6D8'); g.fillStyle = '#EDE6D8'; g.font = '400 64px Poppins, sans-serif'; g.textBaseline = 'middle'; spaced(g, 'LAUNCH STUDIO · BAR', 210, 128, 16); }); }
 
