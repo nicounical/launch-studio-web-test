@@ -112,13 +112,14 @@
 .o2 .stp .n{font:400 11px var(--mono);letter-spacing:.08em;color:var(--red)}
 .o2 .stp h3{font-weight:300;font-size:clamp(24px,2.4vw,40px);line-height:1.02;letter-spacing:-.04em;margin-top:8px}
 .o2 .stp p{font-size:14px;line-height:1.55;color:var(--grey);margin-top:10px}
-.o2 .strip{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(18px,2.4vw,30px);z-index:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.o2 .strip .fc{position:relative;height:clamp(64px,8vh,90px);border-radius:6px;overflow:hidden;opacity:.45;filter:grayscale(1);transition:opacity .5s,filter .5s,transform .5s var(--ease);background:#ddd}
-.o2 .strip .fc.on{opacity:1;filter:none;transform:translateY(-6px)}
-.o2 .strip .fc span{position:absolute;left:8px;bottom:6px;z-index:2;font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-.o2 .strip .fc::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 60%)}
-.o2 .strip .fc i{position:absolute;left:0;top:0;height:3px;width:100%;z-index:3;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--p,0))}
-.o2 .strip .fc .mood{padding:3px;gap:3px}.o2 .strip .fc .mood .sw{display:none}
+.o2 .strip{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(18px,2.4vw,30px);z-index:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.6vw,24px)}
+.o2 .strip .fc{position:relative;padding-top:14px;color:rgba(11,11,11,.35);transition:color .4s}
+.o2 .strip .fc::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(11,11,11,.14)}
+.o2 .strip .fc i{position:absolute;left:0;top:0;height:2px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.o2 .strip .fc b{display:block;font:400 11px var(--mono);letter-spacing:.08em;color:inherit}
+.o2 .strip .fc span{display:block;font-weight:500;font-size:clamp(14px,1.2vw,18px);letter-spacing:-.02em;margin-top:4px}
+.o2 .pin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(120px,18vh,170px);background:linear-gradient(rgba(244,243,238,0),rgba(244,243,238,.94) 70%);z-index:4;pointer-events:none}
+.o2 .strip .fc.on{color:var(--ink)}.o2 .strip .fc.on b{color:var(--red)}
 .o2 .res .cap{bottom:clamp(130px,15vh,170px)}
 
 .sv .plab{position:absolute;left:0;top:0;font:400 11px var(--mono);letter-spacing:.08em;color:var(--grey);white-space:nowrap;pointer-events:none}
@@ -145,7 +146,7 @@
 .sv .nextsv:hover .nm i{background:var(--red);transform:rotate(-45deg)}
 @media (max-width:980px){
   .o2 .stp{left:var(--pad);right:var(--pad);top:auto;bottom:calc(clamp(64px,8vh,90px) + 40px);width:auto;text-align:left}.o2 .stp p{display:none}
-  .o2 .strip{gap:5px}.o2 .strip .fc span{font-size:0}
+  .o2 .strip{gap:6px}.o2 .strip .fc span{font-size:11px}.o2 .strip .fc b{font-size:9px}
   .co{padding:6px 8px}.co span{display:none}.co b{font-size:11px}
   .sv .desc{grid-template-columns:1fr}
   .sv .gal{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.sv .gal .ph,.sv .gal .ph:nth-child(1){grid-row:auto;aspect-ratio:4/3}
@@ -221,7 +222,7 @@ const scrollPN=sec=>{const r=sec.getBoundingClientRect(),h=r.height-(innerHeight
 const app=document.getElementById('app');
 app.innerHTML='<div class="o2"><section class="sc" style="height:660vh" aria-label="Así se construye un stand"><div class="pin"><div class="stage" style="position:absolute;inset:0"></div>'+
   '<div class="ttl"><nav class="crumb"><a href="../servicios.html">← Servicios</a><span>/</span><span>Stands</span></nav><h1>Del plano<br><span>al stand.</span></h1></div><div class="stp"></div>'+
-  '<div class="strip">'+STEPS.map((s,i)=>'<div class="fc">'+stepImg(i)+'<i></i><span>'+n2(i)+' · '+s.t+'</span></div>').join('')+'</div></div></section></div>';
+  '<div class="strip">'+STEPS.map((s,i)=>'<div class="fc"><i></i><b>'+n2(i)+'</b><span>'+s.t+'</span></div>').join('')+'</div></div></section></div>';
 setNh();
 const sec=app.querySelector('.sc'),stp=app.querySelector('.stp'),fc=app.querySelectorAll('.strip .fc');let cur=-1,st=null;
 function tick(){const P=scrollPN(sec),k=stepOf(P),bp=cl(P/BUILD),end=ez(cl((P-.8)/.2));
