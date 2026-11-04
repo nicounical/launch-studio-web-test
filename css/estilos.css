@@ -387,7 +387,7 @@ h3{font-weight:500;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spaci
 .nab h1,.nab__h{margin:0;font-weight:300;font-size:clamp(40px,7.4vw,128px);line-height:.98;letter-spacing:-.045em;color:var(--ink)}
 .nab h1 em,.nab__h em{font-style:normal;font-weight:600}
 .nab__mask{position:absolute;inset:0;clip-path:circle(calc(24vmin + (1 - var(--k,1))*(1 - var(--k,1))*70vmax) at 50% calc(50% + 30px))}
-.nab__bg{position:absolute;inset:0;background:url("../assets/img/nosotros/nosotros-sillas-mar-bn.jpg") 50% 62%/cover no-repeat;filter:brightness(calc(1 - (1 - var(--k,1))*.45))}
+.nab__bg{position:absolute;inset:0;background:url("../assets/img/nosotros/nosotros-sillas-mar-bn.jpg?v=2") 50% 62%/cover no-repeat;filter:brightness(calc(1 - (1 - var(--k,1))*.32))}
 .nab__ttl--in{position:absolute;inset:0;display:grid;place-items:center;padding-top:60px}
 .nab__ttl--in .nab__h{color:var(--white)}
 .nab__ttl--in .eyebrow{color:var(--white);opacity:.8}
