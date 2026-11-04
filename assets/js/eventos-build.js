@@ -25,12 +25,13 @@ const PAL = {
   B: { name: 'Salvia', bg: 0xF2F2EC, eve: 0x26302a, wall: '#E9ECE3', panel: [186, 160, 120], floor: [228, 214, 186], stage: 0xD8D6CC, fascia: 0x8C9A7C, chair: '#7F937A', carpet: '#D9D5C7', aisle: 0xC4221D, bar: 0xEDEAE0, text: '#2a2d28' },
   C: { name: 'Arcilla', bg: 0xF3ECE6, eve: 0x3b2622, wall: '#E7D3C6', panel: [150, 98, 70], floor: [210, 180, 146], stage: 0xC9A88E, fascia: 0x8F5A43, chair: '#EFE7DA', carpet: '#B9775E', aisle: 0xC4221D, bar: 0xDCC2B0, text: '#3a2620' },
   D: { name: 'Maqueta', bg: 0xF3F2EE, eve: 0x2c2826, wall: '#EFEAE0', panel: [190, 146, 100], floor: [220, 196, 158], stage: 0xD7CCBA, fascia: 0xA97C55, chair: '#3D5A80', carpet: '#D6CFC2', aisle: 0xC4221D, bar: 0xE6DED0, text: '#2a2522' },
+  R: { name: 'Real', bg: 0xE8E5DF, eve: 0x1c1a18, wall: '#D8D3CA', panel: [150, 112, 80], floor: [184, 152, 114], stage: 0x1e1d1c, fascia: 0x2a2928, chair: '#47484b', carpet: '#5e5852', aisle: 0x3e3833, bar: 0x1f1e1d, text: '#ECE6DA' },
   E: { name: 'Arena', bg: 0xF4EFE6, eve: 0x2f2620, wall: '#EADFCB', panel: [176, 130, 86], floor: [214, 186, 146], stage: 0xE2D3BC, fascia: 0xC4221D, chair: '#E3D6C0', carpet: '#C9B79A', aisle: 0xC4221D, bar: 0xF0E7D8, text: '#2a2522' }};
 
 function brandTex(txt, color, w = 1024, h = 256, size = 64, logo = true) { return canvasTex(w, h, g => { if (logo) drawLogo(g, h * .35, h * .28, h * .44, color); g.fillStyle = color; g.font = `400 ${size}px Poppins, sans-serif`; g.textBaseline = 'middle'; spaced(g, txt, logo ? h * .95 : w * .08, h / 2, size * .25); }); }
 
 export async function createEventBuild(root, opt = {}) {
-  const mode = opt.mode || 'A', C = PAL[mode];
+  const mode = opt.mode || 'A', cam = opt.cam || mode, C = PAL[opt.pal || mode];
   try { await Promise.all([document.fonts.load('800 80px Poppins'), document.fonts.load('400 40px "DM Mono"')]); } catch (e) { }
   const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1)); renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .97;
@@ -39,7 +40,7 @@ export async function createEventBuild(root, opt = {}) {
   const BG = new THREE.Color(C.bg), EVE = new THREE.Color(C.eve);
   const scene = new THREE.Scene(); scene.background = BG.clone(); scene.fog = new THREE.Fog(BG.clone(), 34, 85);
   scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(renderer), .03).texture;
-  const camera = new THREE.PerspectiveCamera(mode === 'C' ? 40 : 32, 1, .1, 250);
+  const camera = new THREE.PerspectiveCamera(cam === 'C' ? 40 : 32, 1, .1, 250);
   const composer = new EffectComposer(renderer, new THREE.WebGLRenderTarget(2, 2, { type: THREE.HalfFloatType, samples: 4 }));
   composer.addPass(new RenderPass(scene, camera));
   const gtao = new GTAOPass(scene, camera, 2, 2); gtao.updateGtaoMaterial({ radius: .55, distanceExponent: 1.8, thickness: 1, scale: 1.1, samples: 16 }); composer.addPass(gtao);
@@ -147,7 +148,7 @@ export async function createEventBuild(root, opt = {}) {
   const stageLed = add(grp(0, 0, 0), new THREE.BoxGeometry(8.4, .03, .02), mLed, 8, P + .58, 3.02); scene.add(stageLed.parent);
   [[6.6, 1.9], [8, 2.0], [9.4, 1.9]].forEach(([x, z], i) => spot(x, 4.9, 1.6, x, .6, z + .4, 30, .32, 0xfff0d8, .76 + i * .012, i === 1));
   [[5.2, 6.5], [10.8, 6.5]].forEach(([x, z], i) => spot(x, 4.6, 4.8, x, 0, z + 1, 10, .62, 0xffd6a0, .8 + i * .01));
-  [1.6, 4.1, 11.9, 14.4].forEach((x, i) => spot(x, .1, .6, x, 4.2, .3, 8, .5, mode === 'B' ? 0xb8d0a8 : 0xff8a6a, .78 + i * .008));
+  [1.6, 4.1, 11.9, 14.4].forEach((x, i) => spot(x, .1, .6, x, 4.2, .3, 8, .5, opt.pal ? 0xffc890 : mode === 'B' ? 0xb8d0a8 : 0xff8a6a, .78 + i * .008));
   [3.6, 9.6].forEach((z, i) => spot(.6, .1, z, .2, 4.2, z, 6, .55, 0xffb870, .8 + i * .01));
   [[3, 9.6], [8, 9.8], [13, 9.6], [14.6, 6.4]].forEach(([x, z], i) => spot(x, 4.4, z, x, 0, z, 8, .55, 0xffcf94, .82 + i * .008));
   point(.6, 2.6, 6.8, 2, 4.5, 0xffc98a, .8);
@@ -159,7 +160,7 @@ export async function createEventBuild(root, opt = {}) {
 
   /* coreografía */
   mats.forEach((m, i) => { m.userData.col = m.color.clone(); m.userData.map = m.map; m.userData.th = .62 + (i % 9) * .012; m.userData.clay = null; });
-  const dm = new THREE.Object3D(), clayMode = mode === 'D';
+  const dm = new THREE.Object3D(), clayMode = opt.clay !== undefined ? opt.clay : mode === 'D';
   function placeEl(e, p) { const k = cl((p - e.a) / (e.b - e.a)), g = e.g, h = e.home; g.visible = k > 0; if (!g.visible) return;
     if (e.mv === 'lay') { g.position.set(h.x, h.y + (1 - io(k)) * .25, h.z); return; }
     if (e.mv === 'drop' || e.mv === 'crane') g.position.set(h.x, h.y + (1 - io(k)) * e.h, h.z);
@@ -172,10 +173,11 @@ export async function createEventBuild(root, opt = {}) {
   let W = 1, Hh = 1;
   function shot(p) { const asp = W / Hh, far = Math.pow(Math.max(1, 1.3 / asp), .85), c = io(cl(p / .9));
     const orbit = (R, pol, az, tx, ty, tz) => { camera.position.set(tx + R * Math.sin(pol) * Math.sin(az), ty + R * Math.cos(pol), tz + R * Math.sin(pol) * Math.cos(az)); camera.lookAt(tx, ty, tz); };
-    if (mode === 'A') orbit((24 - 2 * c) * far, .9 + .08 * c, .7 - .06 * c, 8, .4, 5.4);
-    else if (mode === 'B') { const t = io(cl((p - .78) / .12)); orbit((22 + 2 * (1 - t)) * far, .02 + .92 * t, .5 * t, 8, .2, 5.6); }
-    else if (mode === 'C') { const z = lerp(14.5, 9.6, c); camera.position.set(8 + .25 * Math.sin(p * 3), 1.95, z * Math.max(1, far * .9)); camera.lookAt(8, 1.7 - .2 * c, 1.0); }
-    else if (mode === 'D') orbit((25 - 2.5 * c) * far, .74 + .12 * c, -.62 + .08 * c, 8, .2, 5.6);
+    if (cam === 'A') orbit((24 - 2 * c) * far, .9 + .08 * c, .7 - .06 * c, 8, .4, 5.4);
+    else if (cam === 'B') { const t = io(cl((p - .78) / .12)); orbit((22 + 2 * (1 - t)) * far, .02 + .92 * t, .5 * t, 8, .2, 5.6); }
+    else if (cam === 'C') { const z = lerp(14.5, 9.6, c); camera.position.set(8 + .25 * Math.sin(p * 3), 1.95, z * Math.max(1, far * .9)); camera.lookAt(8, 1.7 - .2 * c, 1.0); }
+    else if (cam === 'D') orbit((25 - 2.5 * c) * far, .74 + .12 * c, -.62 + .08 * c, 8, .2, 5.6);
+    else if (cam === 'F') { camera.position.set(lerp(15.2, 14.6, c) * Math.max(1, far * .9), 2.4, lerp(11.8, 10.6, c) * Math.max(1, far * .9)); camera.lookAt(7.2, 1.0, 4.2); }
     else orbit((19 - 1.5 * c) * far, 1.12 - .05 * c, .0, 8, 1.4, 4.2); }
 
   function resize() { W = root.clientWidth || 1; Hh = root.clientHeight || 1; renderer.setSize(W, Hh, false); composer.setSize(W, Hh); camera.aspect = W / Hh; camera.updateProjectionMatrix(); }
@@ -200,10 +202,10 @@ export async function createEventBuild(root, opt = {}) {
     const amb = soft(cl((p - .74) / .14));
     LT.forEach(([l, i, t]) => l.intensity = i * soft(cl((p - t) / .05)));
     mLed.emissiveIntensity = 2.2 * soft(cl((p - .76) / .06)); mCandle.emissiveIntensity = 1.6 * soft(cl((p - .84) / .04));
-    const dusk = mode === 'A' ? 1 : .75;
+    const dusk = opt.dusk !== undefined ? opt.dusk : mode === 'A' ? 1 : .75;
     scene.background.copy(BG).lerp(EVE, amb * .92 * dusk); scene.fog.color.copy(scene.background); hallMat.color.setRGB(1, 1, 1).lerp(EVE, amb * .8 * dusk);
     hemi.intensity = lerp(.9, .2, amb * dusk); sun.intensity = lerp(3.0, .25, amb * dusk);
-    if (mode === 'A') { const a = lerp(-.4, 1.25, cl(p / .86)); sun.position.set(8 + 20 * Math.cos(a), 6 + 16 * Math.sin(Math.min(a + .5, 2.6)), 5.5 + 14); sun.color.setHSL(.09, .5 * cl(p / .86), .95 - .1 * cl(p / .86)); }
+    if (cam === 'A' && !opt.pal) { const a = lerp(-.4, 1.25, cl(p / .86)); sun.position.set(8 + 20 * Math.cos(a), 6 + 16 * Math.sin(Math.min(a + .5, 2.6)), 5.5 + 14); sun.color.setHSL(.09, .5 * cl(p / .86), .95 - .1 * cl(p / .86)); }
     else sun.position.set(-9, 20, 17);
     mats.forEach(m => m.envMapIntensity = m.userData.env * lerp(1, .3, amb));
     renderer.toneMappingExposure = lerp(.97, 1.06, amb); bloom.strength = .05 + .15 * amb;
