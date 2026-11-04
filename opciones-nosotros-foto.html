@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nosotros — Launch Studio</title>
+<meta name="description" content="Estudio creativo especializado en stands y eventos corporativos. Barcelona, con presencia internacional.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=202611041059">
+<style>
+.fbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:90;display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(11,11,11,.9);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.fbar button{border:0;border-radius:999px;padding:8px 14px;background:none;color:#F1F0E8;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit}
+.fbar button[aria-pressed="true"]{background:#F1F0E8;color:#0b0b0b}
+.nab__bg{transition:filter .4s}
+body[data-b="1"] .nab__bg{filter:blur(3px) brightness(calc(1 - (1 - var(--k,1))*.45))}
+body[data-b="2"] .nab__bg{filter:blur(8px) brightness(calc(1 - (1 - var(--k,1))*.45))}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html" aria-current="page">Nosotros</a><a href="contacto.html">Contacto</a></nav>
+</header>
+
+<main>
+<section class="nab" id="nab"><div class="nab__pin" id="nab-pin">
+  <div class="nab__ttl"><p class="eyebrow">Nosotros</p><h1>Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></h1></div>
+  <div class="nab__mask"><div class="nab__bg"></div><div class="nab__ttl nab__ttl--in" aria-hidden="true"><div><p class="eyebrow">Nosotros</p><p class="nab__h">Las ideas cobran vida.<br><em>Las marcas, experiencias.</em></p></div></div></div>
+</div></section>
+<section class="nab__read">
+  <p class="nab__lead">En Launch Studio damos vida a las marcas a través de stands, eventos y experiencias que conectan con las personas y transmiten su esencia.</p>
+  <p class="nab__t">Somos un estudio creativo especializado en diseño, producción y gestión de proyectos para marcas que buscan comunicar, conectar y generar impacto. Nos implicamos desde el primer momento para entender tus objetivos, aportar ideas y convertirlas en experiencias reales, cuidando cada detalle de principio a fin.</p><p class="nab__t">Creemos que un buen proyecto va mucho más allá del diseño. Se trata de escuchar, comprender lo que necesitas y encontrar la mejor manera de hacerlo realidad, combinando creatividad, planificación y ejecución para que cada pieza encaje.</p>
+  <p class="nab__quote">Un equipo que resuelve, desde la primera idea hasta el montaje final.</p>
+  <p class="nab__t">Por eso, trabajamos de forma cercana y flexible, acompañándote en cada etapa y coordinando todo el proceso para que tengas la tranquilidad de contar con un equipo que resuelve. Desde la primera idea hasta el montaje final, estamos ahí para que todo funcione como debe.</p><p class="nab__t">Además, nuestra red de colaboradores y partners locales nos permite desarrollar proyectos en distintos puntos de Europa, con una visión internacional y la misma atención al detalle en cada lugar.</p>
+</section>
+<section class="nab__end"><div class="wrap"><p>Nos ocupamos de todo el proceso para que tú puedas centrarte en lo que importa: <b>tu marca.</b></p><a class="btn btn--light" href="contacto.html">Hablemos <span aria-hidden="true">→</span></a></div></section>
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="servicios.html#stands">Stands</a></li><li><a href="servicios.html#eventos">Eventos corporativos</a></li><li><a href="servicios.html#experiencias">Experiencias de marca</a></li><li><a href="servicios.html#pop-up">Pop-up stores</a></li><li><a href="servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<script src="js/sitio.js?v=202611041059"></script>
+<div class="fbar" role="group" aria-label="Foto"><button data-b="0" aria-pressed="true">Nítida</button><button data-b="1" aria-pressed="false">Un poco desenfocada</button><button data-b="2" aria-pressed="false">Desenfocada</button></div>
+<script>document.querySelectorAll('.fbar button').forEach(b=>b.onclick=()=>{document.body.dataset.b=b.dataset.b;document.querySelectorAll('.fbar button').forEach(x=>x.setAttribute('aria-pressed',x===b))})</script>
+</body>
+</html>
