@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
 <style>
 /* En la línea de «La invitación»: cada portada es una pieza física de un evento que cobra vida con el scroll.
    Bajar avanza la animación y subir la deshace. Todo en CSS, sin 3D pesado. */
@@ -99,13 +99,40 @@ h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
 .o5 .pg.last .d{font-size:clamp(100px,13vw,170px)}
 .o5 .pg .dw{text-align:center}
 
+
+/* 3 · La polaroid: sale de la cámara y se revela */
+.q3 .pin{background:#E8E2D7}
+.q3 .cam{position:absolute;left:50%;top:6%;width:min(300px,56vw);aspect-ratio:1.5;margin-left:calc(min(300px,56vw)/-2);background:#F4EFE6;border-radius:22px 22px 14px 14px;z-index:3;box-shadow:0 30px 60px rgba(60,30,20,.2);transform:translateY(calc(var(--cg,0)*-70vh))}
+.q3 .cam .lens{position:absolute;left:50%;top:44%;width:42%;aspect-ratio:1;margin:-21% 0 0 -21%;border-radius:50%;background:radial-gradient(circle at 40% 40%,#4a4f5a,#0b0b0b 55%);box-shadow:0 0 0 10px #1c1b1a,0 0 0 13px #cfc9be}
+.q3 .cam .flash{position:absolute;right:10%;top:12%;width:16%;height:12%;border-radius:4px;background:#eaeaea;box-shadow:0 0 calc(var(--fl,0)*120px) calc(var(--fl,0)*60px) rgba(255,255,255,.95)}
+.q3 .cam .stripe{position:absolute;left:0;right:0;bottom:22%;height:8%;background:var(--red)}
+.q3 .cam .slot{position:absolute;left:12%;right:12%;bottom:-2px;height:6px;border-radius:3px;background:#1c1b1a}
+.q3 .pol{position:absolute;left:50%;top:calc(6% + min(300px,56vw)/1.5 - 20px);width:min(240px,46vw);margin-left:calc(min(240px,46vw)/-2);background:#FBF9F4;padding:12px 12px 52px;z-index:2;box-shadow:0 20px 40px rgba(60,30,20,.18);transform:translateY(calc(var(--o,0)*1px)) rotate(calc(var(--rt,0)*1deg))}
+.q3 .pol .im{aspect-ratio:1;background:#1b1a18;overflow:hidden;position:relative}
+.q3 .pol .im img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(var(--sa,0)) brightness(calc(.3 + var(--dv,0)*.75)) contrast(calc(.6 + var(--dv,0)*.45)) sepia(calc((1 - var(--dv,0))*.6));opacity:var(--dv,0)}
+.q3 .pol .cap{position:absolute;left:14px;right:14px;bottom:14px;font-family:"Caveat",cursive;font-size:20px;color:#2a2622;display:flex;justify-content:space-between;align-items:center;opacity:var(--wr,0)}
+.q3 .pol .cap svg{height:18px;width:auto}
+/* 4 · El brindis: la copa se llena y suben las burbujas */
+.q4 .pin{background:#EDE6DA}
+.q4 .gl{position:relative;width:min(220px,42vw);height:min(560px,70vh)}
+.q4 .gl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.q4 .bub{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.35)}
+.q4 .lbl{position:absolute;right:calc(50% - min(380px,48vw));top:30%;text-align:right;opacity:var(--lb,0);transform:translateY(calc((1 - var(--lb,0))*14px))}
+.q4 .lbl h2{font-weight:800;font-size:clamp(40px,5.4vw,92px);line-height:.86;letter-spacing:-.065em}.q4 .lbl h2 span{color:var(--red)}
+/* 5 · La pulsera: la cinta de tela se enrolla y se cierra con el logo */
+.q5 .pin{background:#E9E3D8}
+.q5 .wb{position:relative;width:min(560px,80vw);height:min(420px,58vh)}
+.q5 .wb svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.q5 .tg{position:absolute;left:50%;top:76%;transform:translate(-50%,-50%) scale(var(--ts,0));width:110px;height:56px;border-radius:10px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.q5 .tg svg{position:static;width:auto;height:26px}
+.q5 .tg b{font:400 10px var(--mono);letter-spacing:.12em;font-weight:400}
 @media (max-width:820px){.side{bottom:20px}.side p{display:none}.o4 .tri{width:28vw}.o4 .dish{font-size:9px}.o4 .dish b{font-size:10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <nav class="bar" aria-label="Ideas"><b>Eventos · piezas del evento</b>
-  <a href="?m=1">1 · La acreditación</a><a href="?m=2">2 · La entrada</a><a href="?m=3">3 · La tarjeta de mesa</a><a href="?m=4">4 · El menú</a><a href="?m=5">5 · Save the date</a><a href="opciones-eventos-ideas.html?m=3">Ver la invitación →</a>
+  <a href="?m=1">1 · La acreditación</a><a href="?m=2">2 · La entrada</a><a href="?m=3">3 · La polaroid</a><a href="?m=4">4 · El brindis</a><a href="?m=5">5 · La pulsera</a><a href="opciones-eventos-ideas.html?m=3">Ver la invitación →</a>
 </nav>
 <main id="app"></main>
 <div class="note" id="note"></div>
@@ -121,9 +148,9 @@ h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
   var NOTES={
    1:'<b>1 · La acreditación.</b> La cinta roja de Launch baja desde arriba con la acreditación colgada. Se balancea, gira y enseña el nombre del invitado, su rol y el QR de acceso. Al final se da la vuelta y enseña el logo.',
    2:'<b>2 · La entrada.</b> Un ticket de evento entra en pantalla, se perfora la línea, cae un sello de «Access granted» y se arranca la matriz roja.',
-   3:'<b>3 · La tarjeta de mesa.</b> Una tarjeta de mesa sube sobre el mantel, se dobla y se queda de pie con el nombre del invitado y el número de mesa, junto a una copa.',
-   4:'<b>4 · El menú.</b> Un tríptico rojo de Launch se abre panel a panel y enseña el menú de la cena de gala.',
-   5:'<b>5 · Save the date.</b> Las hojas de un calendario caen una a una hasta llegar a la fecha del evento, en rojo.'};
+   3:'<b>3 · La polaroid.</b> Una cámara instantánea dispara con flash, la foto sale por la ranura y se revela poco a poco, de blanco a color, con una dedicatoria escrita a mano. Ideal con una foto real de un evento vuestro.',
+   4:'<b>4 · El brindis.</b> Una copa vacía se llena de cava mientras bajas, suben las burbujas y aparece «Cheers to that». Muy limpio y muy de celebración.',
+   5:'<b>5 · La pulsera.</b> Una cinta de tela roja de Launch se enrolla como una pulsera de acceso y se cierra con un cierre negro con el logo: «All access».'};
   document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Todos los textos (nombres, fechas, platos) son de ejemplo. También puedo combinar varias piezas: por ejemplo, la invitación al principio y la acreditación al final.';
   var app=document.getElementById('app'),tick=function(){};
   var prog=function(sec){var bh=document.querySelector('.bar').offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
@@ -145,25 +172,38 @@ h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
     tick=function(){var p=prog(sec);tk.style.setProperty('--in',out(cl(p/.3)).toFixed(3));sb.style.setProperty('--pf',ez(cl((p-.3)/.15)).toFixed(3));stp.style.setProperty('--st',out(cl((p-.45)/.1)).toFixed(3));sb.style.setProperty('--t',ez(cl((p-.62)/.3)).toFixed(3))};
   }
   if(M==='3'){
-    wrap('o3','<div class="table"></div><div class="pc obj" id="pc"><div class="half top shadow"><div style="display:flex;justify-content:space-between;align-items:center">'+LOGO().replace('class="lg"','class="lg" style="height:22px"')+'<p class="k" style="color:var(--grey)">Gala dinner</p></div><div style="display:flex;justify-content:space-between;align-items:flex-end"><h2>Sr. Daniel<br><b>Ortega</b></h2><div style="text-align:right"><p class="k" style="color:var(--grey)">Mesa</p><span class="num">07</span></div></div></div><div class="half bot"><p class="k" style="color:var(--grey)">14 · 05 · 2026</p><p class="k" style="color:var(--grey)">Barcelona</p></div></div><div class="gl" id="gl" style="left:calc(50% + min(220px,40vw))"></div>'+
-      side('Cada detalle,<br>en su <b>sitio.</b>','Distribución de mesas, mantelería, iluminación y decoración: cuidamos cada elemento para que la experiencia fluya.'));
-    var sec=document.getElementById('sc'),pc=document.getElementById('pc'),gl=document.getElementById('gl');
-    tick=function(){var p=prog(sec);pc.style.setProperty('--in',out(cl(p/.3)).toFixed(3));pc.style.setProperty('--fold',ez(cl((p-.3)/.3)).toFixed(3));pc.style.setProperty('--tilt',(ez(cl((p-.3)/.3))*14).toFixed(1));gl.style.setProperty('--g',ez(cl((p-.62)/.15)).toFixed(3))};
+    var PH='assets/img/nosotros/nosotros-gradas.jpg';
+    wrap('q3','<div class="cam" id="cam"><span class="flash"></span><span class="stripe"></span><span class="lens"></span><span class="slot"></span></div><div class="pol" id="pol"><div class="im"><img src="'+PH+'" alt="" onerror="this.onerror=null;this.src=\'assets/img/nosotros/nosotros-gradas.jpg\'"></div><div class="cap"><span>Product Launch · 2026</span>'+LOGO()+'</div></div>'+
+      side('Momentos que<br><b>se recuerdan.</b>','Creamos eventos con personalidad, pensados para sorprender, conectar y dejar huella.'));
+    var sec=document.getElementById('sc'),pin=document.getElementById('pin'),cam=document.getElementById('cam'),pol=document.getElementById('pol');
+    tick=function(){var p=prog(sec),H=pin.clientHeight,fl=cl((p-.08)/.04)*(1-cl((p-.12)/.06)),ej=out(cl((p-.14)/.22)),cg=ez(cl((p-.4)/.16)),dv=ez(cl((p-.42)/.38));
+      cam.style.setProperty('--fl',fl.toFixed(3));cam.style.setProperty('--cg',cg.toFixed(3));
+      var start=-pol.offsetHeight+10,mid=pol.offsetHeight*.15,endY=H*.5-pol.offsetTop-pol.offsetHeight*.5;
+      pol.style.setProperty('--o',(ej<1?start+(mid-start)*ej:mid+(endY-mid)*cg).toFixed(1));pol.style.setProperty('--rt',(cg*-4).toFixed(2));
+      pol.style.setProperty('--dv',dv.toFixed(3));pol.style.setProperty('--sa',ez(cl((p-.6)/.25)).toFixed(3));pol.style.setProperty('--wr',cl((p-.82)/.08).toFixed(3));pol.style.visibility=ej>0?'visible':'hidden'};
   }
   if(M==='4'){
-    var D=[['Entrante','Tartar de gamba roja, cítricos y hinojo'],['Principal','Lubina a la brasa, mantequilla de algas'],['Postre','Chocolate, avellana y aceite de oliva']];
-    wrap('o4','<div class="tri obj" id="tri"><div class="pn lf"><h3>Bienvenida</h3><div class="rule"></div><p class="dish"><b>Cóctel</b>Vermut de la casa<br>Gilda · Croqueta de jamón</p><div class="rule"></div><p class="dish"><b>Bodega</b>Cava brut nature<br>Blanco Penedès</p></div><div class="pn mid"><p class="k" style="color:var(--grey)">Gala dinner · 2026</p><h2>Menú</h2><div class="rule"></div>'+D.map(function(d){return '<p class="dish"><b>'+d[0]+'</b>'+d[1]+'</p>'}).join('')+'<div style="margin-top:auto">'+LOGO().replace('class="lg"','class="lg" style="height:22px"')+'</div></div><div class="pn rt"><h3>Programa</h3><div class="rule"></div><p class="dish"><b>21:00</b>Cena</p><p class="dish"><b>22:30</b>Discurso</p><p class="dish"><b>23:00</b>Música en directo</p><div class="rule"></div><p class="k" style="color:var(--red);margin-top:auto">Every detail matters</p></div><div class="cover">'+LOGO('#fff','#fff')+'</div></div>'+
-      side('Una noche<br><b>para recordar.</b>','Diseñamos cada pieza del evento, desde la mesa hasta el último detalle impreso.'));
-    var sec=document.getElementById('sc'),tri=document.getElementById('tri');
-    tick=function(){var p=prog(sec);tri.style.setProperty('--in',out(cl(p/.25)).toFixed(3));tri.style.setProperty('--r',ez(cl((p-.25)/.25)).toFixed(3));tri.style.setProperty('--l',ez(cl((p-.5)/.25)).toFixed(3));tri.style.transform='translateY('+((1-out(cl(p/.25)))*30)+'vh) rotateX(8deg) scale('+(1-.0*p)+')'};
+    var bubs='';for(var b=0;b<26;b++){var s=3+(b*7)%6;bubs+='<span class="bub" data-x="'+(38+(b*37)%26)+'" data-s="'+(.6+(b*13)%10/12)+'" data-o="'+((b*.137)%1)+'" style="width:'+s+'px;height:'+s+'px"></span>'}
+    wrap('q4','<div class="gl" id="gl"><svg viewBox="0 0 220 560"><defs><clipPath id="bowl"><path d="M40 20 C 34 120, 46 210, 110 250 C 174 210, 186 120, 180 20 Z"/></clipPath><linearGradient id="cava" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F6DFA0"/><stop offset="1" stop-color="#E2BA5E"/></linearGradient><linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity=".08"/><stop offset=".8" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient></defs>'+
+      '<g clip-path="url(#bowl)"><rect id="liq" x="0" y="250" width="220" height="250" fill="url(#cava)"/><rect id="foam" x="0" y="246" width="220" height="8" fill="#FFF8E6"/></g>'+
+      '<path d="M40 20 C 34 120, 46 210, 110 250 C 174 210, 186 120, 180 20" fill="url(#glass)" stroke="rgba(11,11,11,.35)" stroke-width="2"/><ellipse cx="110" cy="20" rx="70" ry="7" fill="none" stroke="rgba(11,11,11,.3)" stroke-width="2"/>'+
+      '<path d="M106 250 L106 500 M114 250 L114 500" stroke="rgba(11,11,11,.3)" stroke-width="2"/><ellipse cx="110" cy="505" rx="62" ry="10" fill="rgba(255,255,255,.4)" stroke="rgba(11,11,11,.3)" stroke-width="2"/><ellipse cx="110" cy="530" rx="80" ry="10" fill="rgba(60,30,20,.12)"/></svg>'+bubs+'</div><div class="lbl" id="lbl"><p class="k" style="color:var(--red);margin-bottom:12px">Every detail matters</p><h2>Cheers<br><span>to that.</span></h2></div>'+
+      side('Eventos que<br><b>se celebran.</b>','Presentaciones, aniversarios, cenas de gala y celebraciones: damos forma a cada momento especial.'));
+    var sec=document.getElementById('sc'),liq=document.getElementById('liq'),foam=document.getElementById('foam'),gl=document.getElementById('gl'),lbl=document.getElementById('lbl'),bb=gl.querySelectorAll('.bub');
+    tick=function(){var p=prog(sec),f=ez(cl((p-.08)/.55)),y=250-f*190;liq.setAttribute('y',y.toFixed(1));foam.setAttribute('y',(y-4).toFixed(1));foam.setAttribute('opacity',f>0?1:0);
+      var gw=gl.clientWidth,gh=gl.clientHeight;bb.forEach(function(b){var o=+b.dataset.o,s=+b.dataset.s,u=((p*3*s+o)%1),yy=250-u*(250-y);b.style.opacity=f>.05&&yy>y+4?.9:0;b.style.left=(+b.dataset.x/100*gw)+'px';b.style.top=(yy/560*gh)+'px'});
+      lbl.style.setProperty('--lb',ez(cl((p-.62)/.14)).toFixed(3))};
   }
   if(M==='5'){
-    var days=[['Abril','28','Martes'],['Abril','30','Jueves'],['Mayo','04','Lunes'],['Mayo','07','Jueves'],['Mayo','11','Lunes'],['Mayo','13','Miércoles']];
-    wrap('o5','<div class="cal shadow" id="cal"><div class="rings"><i></i><i></i><i></i><i></i></div><div class="pg last"><div class="m"><p class="k">Save the date</p>'+LOGO('#fff','#fff').replace('class="lg"','class="lg" style="height:22px"')+'</div><div><p class="d">14</p><p class="dw" style="font-size:18px;margin-top:10px">Mayo · 19:00</p></div><p class="k" style="text-align:center">Product Launch 2026 · Barcelona</p></div>'+
-      days.slice().reverse().map(function(d){return '<div class="pg"><div class="m"><p class="k" style="color:var(--red)">'+d[0]+' 2026</p>'+LOGO().replace('class="lg"','class="lg" style="height:20px"')+'</div><p class="d">'+d[1]+'</p><p class="k dw" style="color:var(--grey)">'+d[2]+'</p></div>'}).join('')+'</div>'+
-      side('Reserva<br>la <b>fecha.</b>','Planificamos cada evento con tiempo para que el gran día todo esté listo.'));
-    var sec=document.getElementById('sc'),pgs=[].slice.call(document.querySelectorAll('.o5 .pg:not(.last)')).reverse();
-    tick=function(){var p=prog(sec);pgs.forEach(function(g,i){var k=ez(cl((p-.1-i*.11)/.12));g.style.transform='rotateX('+(k*-110).toFixed(1)+'deg) translateY('+(k*-30).toFixed(1)+'px)';g.style.opacity=(1-cl((k-.7)/.3)).toFixed(3);g.style.zIndex=20-i})};
+    wrap('q5','<div class="wb" id="wb"><svg viewBox="0 0 560 420"><defs><path id="band" d="M280 320 A 210 105 0 1 1 280.1 320"/><path id="txtp" d="M280 326 A 210 111 0 1 1 280.1 326"/><linearGradient id="shade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#B9251F"/><stop offset=".5" stop-color="#D93333"/><stop offset="1" stop-color="#C4221D"/></linearGradient></defs>'+
+      '<ellipse cx="280" cy="340" rx="200" ry="26" fill="rgba(60,30,20,.12)"/>'+
+      '<use href="#band" id="bnd" fill="none" stroke="#D93333" stroke-width="40" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>'+
+      '<text id="btx" font-family="DM Mono, monospace" font-size="13" letter-spacing="6" fill="#fff" dy="4"><textPath href="#band" startOffset="0">LAUNCH STUDIO · ALL ACCESS · LAUNCH STUDIO · ALL ACCESS · LAUNCH STUDIO · ALL ACCESS ·</textPath></text></svg><div class="tg" id="tg">'+LOGO('#fff').replace('class="lg"','')+'<b>ALL<br>ACCESS</b></div></div>'+
+      side('Acceso a<br><b>todo el evento.</b>','Te acompañamos durante todo el proceso y coordinamos lo necesario para convertir tu idea en realidad.'));
+    var sec=document.getElementById('sc'),bnd=document.getElementById('bnd'),btx=document.getElementById('btx'),tg=document.getElementById('tg'),tp=btx.querySelector('textPath'),L=bnd.getTotalLength?0:0;
+    tick=function(){var p=prog(sec),w=ez(cl((p-.06)/.6));bnd.setAttribute('stroke-dashoffset',(1-w).toFixed(4));
+      btx.setAttribute('opacity',cl((w-.9)/.1).toFixed(2));tp.setAttribute('startOffset',(cl((p-.7)/.3)*-12).toFixed(1)+'%');
+      tg.style.setProperty('--ts',out(cl((p-.66)/.12)).toFixed(3))};
   }
   var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',tick);tick();
 })();
