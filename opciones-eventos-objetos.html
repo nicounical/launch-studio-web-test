@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos: piezas del evento — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* En la línea de «La invitación»: cada portada es una pieza física de un evento que cobra vida con el scroll.
+   Bajar avanza la animación y subir la deshace. Todo en CSS, sin 3D pesado. */
+:root{--white:#F1F0E8;--ink:#0b0b0b;--red:#D93333;--deep:#B9251F;--grey:#5f5d56;--line:rgba(11,11,11,.14);--paper:#FBF8F2;--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.sc{height:500vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:grid;place-items:center;perspective:1600px}
+.k{font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.crumb{position:absolute;left:var(--pad);top:clamp(20px,3vw,32px);z-index:9;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.side{position:absolute;left:var(--pad);bottom:clamp(30px,6vh,60px);max-width:min(420px,80vw);z-index:9}
+.side h1{font-weight:300;font-size:clamp(28px,3vw,50px);letter-spacing:-.04em;line-height:1.04}
+.side h1 b{font-weight:800;letter-spacing:-.06em}
+.side p{margin-top:14px;color:var(--grey);font-size:16px;line-height:1.55}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+.lg{display:block;height:28px;width:auto}
+.shadow{box-shadow:0 30px 70px rgba(60,30,20,.22),0 4px 12px rgba(0,0,0,.08)}
+.obj{position:relative;transform-style:preserve-3d}
+
+/* 1 · La acreditación: baja colgada de la cinta, gira y enseña el nombre */
+.o1 .pin{background:#E9E4DA}
+.o1 .lan{position:absolute;left:50%;top:0;width:clamp(26px,2.4vw,34px);margin-left:calc(clamp(26px,2.4vw,34px)/-2);height:calc(var(--y,0)*1px);background:repeating-linear-gradient(0deg,var(--red) 0 60px,var(--deep) 60px 62px);display:flex;justify-content:center}
+.o1 .lan span{writing-mode:vertical-rl;color:#fff;font:400 10px var(--mono);letter-spacing:.3em;text-transform:uppercase;padding-top:20px;white-space:nowrap;overflow:hidden}
+.o1 .badge{position:absolute;left:50%;top:calc(var(--y,0)*1px);width:min(300px,62vw);aspect-ratio:.68;margin-left:calc(min(300px,62vw)/-2);transform-origin:50% -20px;transform:rotateZ(calc(var(--sw,0)*1deg)) rotateY(calc(var(--r,0)*1deg));transform-style:preserve-3d}
+.o1 .clip{position:absolute;left:50%;top:-24px;width:46px;height:30px;margin-left:-23px;border-radius:6px 6px 4px 4px;background:linear-gradient(#d8d4cc,#a9a49a);z-index:2}
+.o1 .face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;overflow:hidden}
+.o1 .fr{background:var(--paper);padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.o1 .fr .hole{position:absolute;left:50%;top:12px;width:44px;height:8px;margin-left:-22px;border-radius:6px;background:#E9E4DA}
+.o1 .fr h2{font-weight:800;font-size:clamp(28px,3vw,40px);line-height:.9;letter-spacing:-.06em}
+.o1 .fr .tag{align-self:flex-start;background:var(--red);color:#fff;border-radius:999px;padding:6px 12px}
+.o1 .fr .qr{width:64px;height:64px;background:conic-gradient(from 90deg,#0b0b0b 25%,transparent 0 50%,#0b0b0b 0 75%,transparent 0) 0 0/16px 16px;border:4px solid #0b0b0b;border-radius:4px}
+.o1 .fr .row{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--line);padding-top:12px}
+.o1 .bk{background:var(--red);transform:rotateY(180deg);display:grid;place-items:center}
+.o1 .bk .lg{height:90px}
+
+/* 2 · La entrada: el ticket llega, se perfora y se arranca la matriz */
+.o2 .pin{background:#EDE6DA}
+.o2 .tk{position:relative;display:flex;filter:drop-shadow(0 30px 40px rgba(60,30,20,.2));transform:translateX(calc((1 - var(--in,0))*-60vw)) rotate(calc(-4deg + var(--in,0)*2deg))}
+.o2 .main{width:min(520px,62vw);aspect-ratio:2.1;background:var(--paper);border-radius:14px 0 0 14px;padding:clamp(16px,2.4vw,30px);display:flex;flex-direction:column;justify-content:space-between;-webkit-mask:radial-gradient(circle at 100% 0,transparent 14px,#000 15px) top/100% 51% no-repeat,radial-gradient(circle at 100% 100%,transparent 14px,#000 15px) bottom/100% 51% no-repeat;mask:radial-gradient(circle at 100% 0,transparent 14px,#000 15px) top/100% 51% no-repeat,radial-gradient(circle at 100% 100%,transparent 14px,#000 15px) bottom/100% 51% no-repeat}
+.o2 .main h2{font-weight:800;font-size:clamp(24px,3.4vw,52px);line-height:.88;letter-spacing:-.06em}.o2 .main h2 span{color:var(--red)}
+.o2 .main .row{display:flex;gap:clamp(14px,3vw,40px)}.o2 .main .row div{font-size:13px}.o2 .main .row b{display:block;font:400 9px var(--mono);letter-spacing:.1em;color:var(--grey);font-weight:400;text-transform:uppercase;margin-bottom:3px}
+.o2 .stub{position:relative;width:min(170px,22vw);background:var(--red);color:#fff;border-radius:0 14px 14px 0;padding:clamp(14px,2vw,24px) 14px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;transform-origin:0 100%;transform:translate(calc(var(--t,0)*90px),calc(var(--t,0)*160px)) rotate(calc(var(--t,0)*24deg));-webkit-mask:radial-gradient(circle at 0 0,transparent 14px,#000 15px) top/100% 51% no-repeat,radial-gradient(circle at 0 100%,transparent 14px,#000 15px) bottom/100% 51% no-repeat;mask:radial-gradient(circle at 0 0,transparent 14px,#000 15px) top/100% 51% no-repeat,radial-gradient(circle at 0 100%,transparent 14px,#000 15px) bottom/100% 51% no-repeat}
+.o2 .stub b{font-weight:800;font-size:clamp(28px,3vw,44px);letter-spacing:-.06em}
+.o2 .perf{position:absolute;left:0;top:18px;bottom:18px;width:0;border-left:2px dashed rgba(255,255,255,.9);transform:scaleY(var(--pf,0));transform-origin:50% 0}
+.o2 .stamp{position:absolute;right:30%;top:22%;padding:8px 14px;border:3px solid var(--red);color:var(--red);border-radius:8px;font:400 14px var(--mono);letter-spacing:.16em;transform:rotate(-12deg) scale(calc(2 - var(--st,0)));opacity:var(--st,0)}
+
+/* 3 · La tarjeta de mesa: se levanta, se dobla y enseña el nombre y la mesa */
+.o3 .pin{background:#EFEAE1}
+.o3 .table{position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(#F7F3EC,#E9E2D5);transform:perspective(900px) rotateX(58deg);transform-origin:50% 100%}
+.o3 .pc{position:relative;width:min(420px,72vw);aspect-ratio:1.5;transform:translateY(calc((1 - var(--in,0))*40vh)) rotateX(calc((1 - var(--fold,0))*72deg + 6deg));transform-style:preserve-3d;margin-top:4vh}
+.o3 .half{position:absolute;left:0;right:0;height:50%;background:var(--paper)}
+.o3 .top{top:0;border-radius:6px 6px 0 0;padding:20px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+.o3 .top h2{font-weight:300;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.04em;line-height:1}.o3 .top h2 b{font-weight:800}
+.o3 .bot{bottom:0;transform-origin:50% 0;transform:rotateX(calc(var(--fold,0)*84deg));border-radius:0 0 6px 6px;background:#F1EBE0;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.o3 .num{font-weight:800;font-size:clamp(34px,3.6vw,48px);color:var(--red);letter-spacing:-.06em;line-height:1}
+.o3 .gl{position:absolute;bottom:10%;width:18px;height:80px;border-radius:0 0 9px 9px;background:linear-gradient(90deg,rgba(255,255,255,.4),rgba(255,255,255,.9),rgba(255,255,255,.3));box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);opacity:var(--g,0)}
+.o3 .gl::after{content:"";position:absolute;left:8px;top:100%;width:2px;height:60px;background:rgba(0,0,0,.12)}
+
+/* 4 · El menú: un tríptico que se despliega panel a panel */
+.o4 .pin{background:#E6E0D5}
+.o4 .tri{position:relative;width:min(240px,26vw);aspect-ratio:.62;transform:translateY(calc((1 - var(--in,0))*30vh)) rotateX(8deg);transform-style:preserve-3d}
+.o4 .pn{position:absolute;inset:0;background:var(--paper);padding:clamp(14px,1.8vw,24px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;backface-visibility:hidden;border-radius:2px}
+.o4 .mid{box-shadow:0 30px 70px rgba(60,30,20,.2)}
+.o4 .lf{transform-origin:0 50%;transform:translateX(-100%) rotateY(calc((1 - var(--l,0))*180deg));background:#F6F1E8}
+.o4 .rt{transform-origin:100% 50%;transform:translateX(100%) rotateY(calc((1 - var(--r,0))*-180deg));background:#F6F1E8}
+.o4 .cover{position:absolute;inset:0;background:var(--red);transform-origin:100% 50%;transform:translateX(100%) rotateY(calc((1 - var(--r,0))*-180deg)) rotateY(180deg);backface-visibility:hidden;display:grid;place-items:center;border-radius:2px}
+.o4 .cover .lg{height:70px}
+.o4 h3{font:400 10px var(--mono);letter-spacing:.14em;color:var(--red);text-transform:uppercase;font-weight:400}
+.o4 .dish{font-size:clamp(11px,1vw,14px);line-height:1.45}.o4 .dish b{display:block;font-weight:600;font-size:clamp(12px,1.1vw,15px)}
+.o4 .rule{width:30px;height:1px;background:var(--red)}
+.o4 h2{font-weight:800;font-size:clamp(22px,2.4vw,34px);line-height:.9;letter-spacing:-.06em}
+
+/* 5 · Save the date: las hojas del calendario caen hasta el día del evento */
+.o5 .pin{background:#EBE5DA}
+.o5 .cal{position:relative;width:min(340px,64vw);aspect-ratio:.86}
+.o5 .rings{position:absolute;left:12%;right:12%;top:-14px;display:flex;justify-content:space-between;z-index:30}.o5 .rings i{width:12px;height:30px;border-radius:6px;background:linear-gradient(#cfcac0,#8f8a80)}
+.o5 .pg{position:absolute;inset:0;background:var(--paper);border-radius:10px;padding:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 0;backface-visibility:hidden}
+.o5 .pg .m{display:flex;justify-content:space-between;align-items:baseline}
+.o5 .pg .d{font-weight:800;font-size:clamp(110px,15vw,200px);line-height:.8;letter-spacing:-.08em;text-align:center}
+.o5 .pg.last{background:var(--red);color:#fff}
+.o5 .pg.last .d{font-size:clamp(100px,13vw,170px)}
+.o5 .pg .dw{text-align:center}
+
+@media (max-width:820px){.side{bottom:20px}.side p{display:none}.o4 .tri{width:28vw}.o4 .dish{font-size:9px}.o4 .dish b{font-size:10px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Ideas"><b>Eventos · piezas del evento</b>
+  <a href="?m=1">1 · La acreditación</a><a href="?m=2">2 · La entrada</a><a href="?m=3">3 · La tarjeta de mesa</a><a href="?m=4">4 · El menú</a><a href="?m=5">5 · Save the date</a><a href="opciones-eventos-ideas.html?m=3">Ver la invitación →</a>
+</nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var LOGO=function(f,d){return '<svg class="lg" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" fill="'+(f||'#0b0b0b')+'"/><circle cx="1288" cy="1467" r="237" fill="'+(d||'#D93333')+'"/></svg>'};
+  var cl=function(x){return Math.max(0,Math.min(1,x))},ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)};
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  var crumb='<p class="crumb">Servicios / Eventos corporativos</p>';
+  var side=function(h,p){return '<div class="side"><h1>'+h+'</h1><p>'+p+'</p></div>'};
+  var NOTES={
+   1:'<b>1 · La acreditación.</b> La cinta roja de Launch baja desde arriba con la acreditación colgada. Se balancea, gira y enseña el nombre del invitado, su rol y el QR de acceso. Al final se da la vuelta y enseña el logo.',
+   2:'<b>2 · La entrada.</b> Un ticket de evento entra en pantalla, se perfora la línea, cae un sello de «Access granted» y se arranca la matriz roja.',
+   3:'<b>3 · La tarjeta de mesa.</b> Una tarjeta de mesa sube sobre el mantel, se dobla y se queda de pie con el nombre del invitado y el número de mesa, junto a una copa.',
+   4:'<b>4 · El menú.</b> Un tríptico rojo de Launch se abre panel a panel y enseña el menú de la cena de gala.',
+   5:'<b>5 · Save the date.</b> Las hojas de un calendario caen una a una hasta llegar a la fecha del evento, en rojo.'};
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Todos los textos (nombres, fechas, platos) son de ejemplo. También puedo combinar varias piezas: por ejemplo, la invitación al principio y la acreditación al final.';
+  var app=document.getElementById('app'),tick=function(){};
+  var prog=function(sec){var bh=document.querySelector('.bar').offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  var wrap=function(cls,inner){app.innerHTML='<div class="'+cls+'"><section class="sc" id="sc"><div class="pin" id="pin">'+crumb+inner+'</div></section></div>'};
+
+  if(M==='1'){
+    wrap('o1','<div class="lan" id="lan"><span>Launch Studio · Launch Studio · Launch Studio · Launch Studio · Launch Studio</span></div><div class="badge obj" id="bd"><div class="clip"></div><div class="face fr shadow"><span class="hole"></span><div style="margin-top:18px">'+LOGO()+'</div><div><p class="k" style="color:var(--grey)">Product Launch 2026</p><h2 style="margin-top:10px">Laura<br>Martínez</h2><p class="k tag" style="margin-top:14px">Speaker</p></div><div class="row"><div><p class="k" style="color:var(--grey)">Acceso</p><p style="font-weight:600;font-size:14px">All areas</p></div><div class="qr"></div></div></div><div class="face bk shadow">'+LOGO('#fff','#fff')+'</div></div>'+
+      side('Cada invitado,<br><b>bienvenido.</b>','Acreditaciones, señalética y recepción: diseñamos la experiencia desde que tus invitados cruzan la puerta.'));
+    var sec=document.getElementById('sc'),pin=document.getElementById('pin'),lan=document.getElementById('lan'),bd=document.getElementById('bd');
+    tick=function(){var p=prog(sec),H=pin.clientHeight,dn=out(cl(p/.35)),y=-H*.8+dn*(H*.8+H*.18);
+      lan.style.setProperty('--y',Math.max(0,y+10));bd.style.setProperty('--y',y);
+      var sw=Math.sin(cl(p/.5)*Math.PI*3)*9*(1-cl(p/.5));bd.style.setProperty('--sw',sw.toFixed(2));
+      var r=ez(cl((p-.3)/.25))*360+ez(cl((p-.75)/.2))*180;bd.style.setProperty('--r',(r-360).toFixed(1))};
+  }
+  if(M==='2'){
+    wrap('o2','<div class="tk" id="tk"><div class="main"><div style="display:flex;justify-content:space-between;align-items:flex-start">'+LOGO()+'<p class="k" style="color:var(--grey)">Nº 0142</p></div><h2>Product<br><span>Launch 2026</span></h2><div class="row"><div><b>Fecha</b>14 · 05 · 2026</div><div><b>Puertas</b>19:00</div><div><b>Lugar</b>Barcelona</div></div><div class="stamp" id="stp">Access granted</div></div><div class="stub" id="sb"><span class="perf"></span><p class="k">Admit</p><b>One</b><p class="k">0142</p></div></div>'+
+      side('Tu entrada<br>al <b>evento.</b>','Del primer acceso al último aplauso, nos encargamos de que todo fluya.'));
+    var sec=document.getElementById('sc'),tk=document.getElementById('tk'),sb=document.getElementById('sb'),stp=document.getElementById('stp');
+    tick=function(){var p=prog(sec);tk.style.setProperty('--in',out(cl(p/.3)).toFixed(3));sb.style.setProperty('--pf',ez(cl((p-.3)/.15)).toFixed(3));stp.style.setProperty('--st',out(cl((p-.45)/.1)).toFixed(3));sb.style.setProperty('--t',ez(cl((p-.62)/.3)).toFixed(3))};
+  }
+  if(M==='3'){
+    wrap('o3','<div class="table"></div><div class="pc obj" id="pc"><div class="half top shadow"><div style="display:flex;justify-content:space-between;align-items:center">'+LOGO().replace('class="lg"','class="lg" style="height:22px"')+'<p class="k" style="color:var(--grey)">Gala dinner</p></div><div style="display:flex;justify-content:space-between;align-items:flex-end"><h2>Sr. Daniel<br><b>Ortega</b></h2><div style="text-align:right"><p class="k" style="color:var(--grey)">Mesa</p><span class="num">07</span></div></div></div><div class="half bot"><p class="k" style="color:var(--grey)">14 · 05 · 2026</p><p class="k" style="color:var(--grey)">Barcelona</p></div></div><div class="gl" id="gl" style="left:calc(50% + min(220px,40vw))"></div>'+
+      side('Cada detalle,<br>en su <b>sitio.</b>','Distribución de mesas, mantelería, iluminación y decoración: cuidamos cada elemento para que la experiencia fluya.'));
+    var sec=document.getElementById('sc'),pc=document.getElementById('pc'),gl=document.getElementById('gl');
+    tick=function(){var p=prog(sec);pc.style.setProperty('--in',out(cl(p/.3)).toFixed(3));pc.style.setProperty('--fold',ez(cl((p-.3)/.3)).toFixed(3));pc.style.setProperty('--tilt',(ez(cl((p-.3)/.3))*14).toFixed(1));gl.style.setProperty('--g',ez(cl((p-.62)/.15)).toFixed(3))};
+  }
+  if(M==='4'){
+    var D=[['Entrante','Tartar de gamba roja, cítricos y hinojo'],['Principal','Lubina a la brasa, mantequilla de algas'],['Postre','Chocolate, avellana y aceite de oliva']];
+    wrap('o4','<div class="tri obj" id="tri"><div class="pn lf"><h3>Bienvenida</h3><div class="rule"></div><p class="dish"><b>Cóctel</b>Vermut de la casa<br>Gilda · Croqueta de jamón</p><div class="rule"></div><p class="dish"><b>Bodega</b>Cava brut nature<br>Blanco Penedès</p></div><div class="pn mid"><p class="k" style="color:var(--grey)">Gala dinner · 2026</p><h2>Menú</h2><div class="rule"></div>'+D.map(function(d){return '<p class="dish"><b>'+d[0]+'</b>'+d[1]+'</p>'}).join('')+'<div style="margin-top:auto">'+LOGO().replace('class="lg"','class="lg" style="height:22px"')+'</div></div><div class="pn rt"><h3>Programa</h3><div class="rule"></div><p class="dish"><b>21:00</b>Cena</p><p class="dish"><b>22:30</b>Discurso</p><p class="dish"><b>23:00</b>Música en directo</p><div class="rule"></div><p class="k" style="color:var(--red);margin-top:auto">Every detail matters</p></div><div class="cover">'+LOGO('#fff','#fff')+'</div></div>'+
+      side('Una noche<br><b>para recordar.</b>','Diseñamos cada pieza del evento, desde la mesa hasta el último detalle impreso.'));
+    var sec=document.getElementById('sc'),tri=document.getElementById('tri');
+    tick=function(){var p=prog(sec);tri.style.setProperty('--in',out(cl(p/.25)).toFixed(3));tri.style.setProperty('--r',ez(cl((p-.25)/.25)).toFixed(3));tri.style.setProperty('--l',ez(cl((p-.5)/.25)).toFixed(3));tri.style.transform='translateY('+((1-out(cl(p/.25)))*30)+'vh) rotateX(8deg) scale('+(1-.0*p)+')'};
+  }
+  if(M==='5'){
+    var days=[['Abril','28','Martes'],['Abril','30','Jueves'],['Mayo','04','Lunes'],['Mayo','07','Jueves'],['Mayo','11','Lunes'],['Mayo','13','Miércoles']];
+    wrap('o5','<div class="cal shadow" id="cal"><div class="rings"><i></i><i></i><i></i><i></i></div><div class="pg last"><div class="m"><p class="k">Save the date</p>'+LOGO('#fff','#fff').replace('class="lg"','class="lg" style="height:22px"')+'</div><div><p class="d">14</p><p class="dw" style="font-size:18px;margin-top:10px">Mayo · 19:00</p></div><p class="k" style="text-align:center">Product Launch 2026 · Barcelona</p></div>'+
+      days.slice().reverse().map(function(d){return '<div class="pg"><div class="m"><p class="k" style="color:var(--red)">'+d[0]+' 2026</p>'+LOGO().replace('class="lg"','class="lg" style="height:20px"')+'</div><p class="d">'+d[1]+'</p><p class="k dw" style="color:var(--grey)">'+d[2]+'</p></div>'}).join('')+'</div>'+
+      side('Reserva<br>la <b>fecha.</b>','Planificamos cada evento con tiempo para que el gran día todo esté listo.'));
+    var sec=document.getElementById('sc'),pgs=[].slice.call(document.querySelectorAll('.o5 .pg:not(.last)')).reverse();
+    tick=function(){var p=prog(sec);pgs.forEach(function(g,i){var k=ez(cl((p-.1-i*.11)/.12));g.style.transform='rotateX('+(k*-110).toFixed(1)+'deg) translateY('+(k*-30).toFixed(1)+'px)';g.style.opacity=(1-cl((k-.7)/.3)).toFixed(3);g.style.zIndex=20-i})};
+  }
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',tick);tick();
+})();
+</script>
+</body>
+</html>
