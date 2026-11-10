@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos: lanzamiento de producto — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Cinco portadas de Eventos ambientadas en un lanzamiento de producto. Bajar avanza, subir retrocede. */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--ink:#0b0b0b;--red:#D93333;--deep:#B9251F;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{color:inherit;text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.sc{height:550vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:grid;place-items:center}
+.k{font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.crumb{position:absolute;left:var(--pad);top:clamp(20px,3vw,32px);z-index:9;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.side{position:absolute;left:var(--pad);bottom:clamp(30px,6vh,60px);max-width:min(440px,80vw);z-index:9}
+.side h1{font-weight:300;font-size:clamp(28px,3vw,50px);letter-spacing:-.04em;line-height:1.04}
+.side h1 b{font-weight:800;letter-spacing:-.06em}
+.side p{margin-top:14px;color:var(--grey);font-size:16px;line-height:1.55}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+.prod{display:block;height:100%;width:auto;overflow:visible}
+
+/* 1 · La caja */
+.l1 .pin{background:#EAE4D9;perspective:1400px}
+.l1 .scene{position:relative;width:min(420px,60vw);height:min(560px,64vh);transform-style:preserve-3d}
+.l1 .box{position:absolute;left:10%;right:10%;bottom:0;height:42%;background:linear-gradient(90deg,#c41f1a,#D93333 40%,#b51d18);border-radius:4px;box-shadow:0 40px 60px rgba(60,30,20,.25);display:grid;place-items:center;z-index:3}
+.l1 .lid{position:absolute;left:8%;right:8%;bottom:calc(42% - 6px);height:14%;background:linear-gradient(90deg,#b81c17,#e03a35 45%,#a91a15);border-radius:5px;z-index:4;transform-origin:50% 100%;box-shadow:0 10px 20px rgba(0,0,0,.18);display:grid;place-items:center}
+.l1 .pw{position:absolute;left:-30%;right:-30%;top:-40%;bottom:0;overflow:hidden;z-index:2}
+.l1 .pr{position:absolute;left:50%;bottom:20%;height:46%;transform:translateX(-50%);filter:drop-shadow(0 30px 30px rgba(60,30,20,.25))}
+.l1 .beam{position:absolute;left:50%;bottom:30%;width:120%;height:140%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(255,240,210,.95),rgba(255,240,210,0) 60%);opacity:var(--bm,0);z-index:1;pointer-events:none}
+.l1 .tag{position:absolute;right:-20%;top:12%;padding:8px 14px;border-radius:999px;background:var(--ink);color:#fff;z-index:6}
+
+/* 2 · El velo */
+.l2 .pin{background:linear-gradient(#E7E1D6,#DCD4C6)}
+.l2 .stg{position:relative;width:min(520px,70vw);height:min(600px,68vh)}
+.l2 .ped{position:absolute;left:22%;right:22%;bottom:0;height:24%;background:linear-gradient(90deg,#efe9df,#fff 45%,#e2dbcf);border-radius:4px 4px 0 0;box-shadow:0 30px 50px rgba(60,30,20,.18)}
+.l2 .ped::before{content:"";position:absolute;left:-4%;right:-4%;top:-10px;height:12px;background:#f7f3ec;border-radius:3px}
+.l2 .pr{position:absolute;left:50%;bottom:24%;height:56%;transform:translateX(-50%)}
+.l2 .veil{position:absolute;left:50%;bottom:calc(24% - 10px);width:62%;height:68%;transform:translateX(-50%);transform-origin:50% 0}
+.l2 .veil svg{width:100%;height:100%;overflow:visible}
+.l2 .spot{position:absolute;left:50%;top:-30%;width:120%;height:150%;transform:translateX(-50%);background:conic-gradient(from 160deg at 50% 0,transparent 0deg,rgba(255,246,226,.75) 12deg,rgba(255,246,226,.75) 28deg,transparent 40deg);opacity:var(--sp,0);mix-blend-mode:screen;pointer-events:none}
+.l2 .flash{position:absolute;inset:0;background:#fff;opacity:var(--fl,0);pointer-events:none;z-index:8}
+
+/* 3 · Cuenta atrás */
+.l3 .pin{background:var(--white)}
+.l3 .num{font-weight:800;font-size:clamp(200px,40vw,640px);line-height:.8;letter-spacing:-.08em;font-variant-numeric:tabular-nums;color:var(--ink);transform:scale(var(--s,1));opacity:var(--o,1)}
+.l3 .ring{position:absolute;width:min(70vh,70vw);aspect-ratio:1}
+.l3 .ring circle{fill:none;stroke-width:3}
+.l3 .go{position:absolute;inset:0;display:grid;place-items:start center;padding-top:9vh;opacity:var(--g,0);pointer-events:none}
+.l3 .go h2{font-weight:800;font-size:clamp(70px,13vw,220px);letter-spacing:-.075em;line-height:.85;text-align:center}
+.l3 .go h2 span{color:var(--red)}
+.l3 .burst{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,var(--red) 0,var(--red) calc(var(--b,0)*75vmax),transparent calc(var(--b,0)*75vmax + 1px));pointer-events:none}
+.l3 .pr{position:absolute;bottom:-6%;height:52%;left:50%;transform:translate(-50%,calc((1 - var(--pu,0))*80vh));z-index:4;filter:drop-shadow(0 30px 40px rgba(0,0,0,.3))}
+
+/* 4 · La ficha */
+.l4 .pin{background:#EDE8DF}
+.l4 .wrap{position:relative;width:min(1100px,92vw);height:min(620px,72vh)}
+.l4 .pr{position:absolute;left:50%;top:50%;height:86%;transform:translate(-50%,-50%) rotate(calc(var(--r,0)*1deg)) scale(var(--sc,1));filter:drop-shadow(0 40px 40px rgba(60,30,20,.22))}
+.l4 .co{position:absolute;opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);transform:translateY(10px)}
+.l4 .co.on{opacity:1;transform:none}
+.l4 .co b{display:block;font-weight:800;font-size:clamp(26px,3vw,46px);letter-spacing:-.06em;line-height:1}
+.l4 .co span{display:block;font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:6px}
+.l4 .co i{position:absolute;height:1px;background:var(--ink);top:20px}
+.l4 .big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:800;font-size:clamp(120px,24vw,380px);letter-spacing:-.08em;color:rgba(11,11,11,.05);white-space:nowrap;z-index:0}
+
+/* 5 · La rueda de prensa */
+.l5 .pin{background:#F1EDE5}
+.l5 .wall{position:absolute;inset:0;background-color:#F7F3EC;background-image:var(--pat);background-size:220px 130px;opacity:var(--w,0)}
+.l5 .pr{position:absolute;left:50%;bottom:4%;height:48%;transform:translateX(-50%) translateY(calc((1 - var(--pu,0))*75vh));z-index:3;filter:drop-shadow(0 30px 40px rgba(60,30,20,.25))}
+.l5 .fl{position:absolute;width:30vmax;height:30vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,0) 60%);transform:translate(-50%,-50%);opacity:0;z-index:5;pointer-events:none}
+.l5 .side{background:rgba(247,243,236,.92);padding:18px 20px;margin-left:-20px;border-radius:4px}
+.l5 .hl{position:absolute;left:50%;top:7%;transform:translateX(-50%);z-index:4;text-align:center;width:min(900px,90vw)}
+.l5 .hl h2{font-weight:800;font-size:clamp(34px,5.4vw,92px);line-height:.9;letter-spacing:-.065em;background:var(--white);display:inline-block;padding:.1em .18em .14em;clip-path:inset(0 calc((1 - var(--h,0))*100%) 0 0)}
+.l5 .hl h2 span{color:var(--red)}
+.l5 .hl p{margin-top:18px;opacity:var(--h2,0)}
+@media (max-width:820px){.side p{display:none}.l1 .tag{right:-4%}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Ideas"><b>Eventos · lanzamiento de producto</b>
+  <a href="?m=1">1 · La caja</a><a href="?m=2">2 · El velo</a><a href="?m=3">3 · Cuenta atrás</a><a href="?m=4">4 · La ficha</a><a href="?m=5">5 · La rueda de prensa</a>
+</nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var LOGO=function(f,h){return '<svg viewBox="440 260 1110 1470" style="height:'+h+';width:auto;display:block" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" fill="'+f+'"/><circle cx="1288" cy="1467" r="237" fill="'+f+'"/></svg>'};
+  // el producto: un frasco con tapón rojo y etiqueta de Launch (genérico, sirve para cualquier marca)
+  var PROD='<svg class="prod" viewBox="0 0 200 420" aria-hidden="true"><defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#d9d5cd"/><stop offset=".22" stop-color="#ffffff"/><stop offset=".55" stop-color="#ece8e0"/><stop offset="1" stop-color="#b9b4aa"/></linearGradient><linearGradient id="cp" x1="0" x2="1"><stop offset="0" stop-color="#a9201b"/><stop offset=".35" stop-color="#e2443e"/><stop offset="1" stop-color="#9d1c17"/></linearGradient></defs>'+
+    '<rect x="62" y="10" width="76" height="92" rx="10" fill="url(#cp)"/><rect x="74" y="98" width="52" height="22" fill="#cfcac0"/><rect x="20" y="118" width="160" height="292" rx="26" fill="url(#gl)"/>'+
+    '<rect x="44" y="190" width="112" height="150" rx="4" fill="#FBF8F2" stroke="rgba(0,0,0,.06)"/><g transform="translate(86 212) scale(.026)"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" transform="translate(-440 -260)" fill="#0b0b0b"/><circle cx="848" cy="1207" r="237" fill="#D93333"/></g>'+
+    '<text x="100" y="300" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="20" letter-spacing="-1">Launch</text><text x="100" y="322" text-anchor="middle" font-family="DM Mono" font-size="7" letter-spacing="2" fill="#5f5d56">EDITION 2026</text>'+
+    '<rect x="30" y="126" width="10" height="270" rx="5" fill="#fff" opacity=".6"/></svg>';
+  var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)};
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  var crumb='<p class="crumb">Servicios / Eventos corporativos</p>';
+  var side=function(h,p){return '<div class="side"><h1>'+h+'</h1><p>'+p+'</p></div>'};
+  var NOTES={
+   1:'<b>1 · La caja.</b> Una caja roja de Launch. Al bajar se levanta la tapa, sale un haz de luz y el producto sube despacio desde dentro, con la etiqueta «Nuevo». El momento del unboxing.',
+   2:'<b>2 · El velo.</b> El producto está tapado con una tela roja sobre un pedestal. Al bajar se tira de la tela, se enciende el foco y saltan los flashes de la prensa. El clásico momento de presentación.',
+   3:'<b>3 · Cuenta atrás.</b> Un 10 gigante que baja hasta 0 mientras bajas, con un anillo rojo que se completa. En el 0 la pantalla se llena de rojo, aparece «Launch.» y sube el producto. Juega con el nombre de la marca.',
+   4:'<b>4 · La ficha.</b> Como la página de producto de una gran marca: el producto gira y se acerca y, a su alrededor, aparecen los datos del evento (300 invitados, 1 escenario, 45 minutos de keynote…).',
+   5:'<b>5 · La rueda de prensa.</b> Se monta el photocall con el logo repetido, saltan los flashes de las cámaras, sube el producto y se escribe el titular: «Launch Studio presenta su nuevo producto».'};
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>El producto es genérico (un frasco con el logo de Launch). Si me pasas una foto de un producto real de un cliente o uno que queráis usar, lo cambio. Los datos y textos son de ejemplo.';
+  var app=document.getElementById('app'),tick=function(){};
+  var prog=function(sec){var bh=document.querySelector('.bar').offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  var wrap=function(cls,inner){app.innerHTML='<div class="'+cls+'"><section class="sc" id="sc"><div class="pin" id="pin">'+crumb+inner+'</div></section></div>'};
+
+  if(M==='1'){
+    wrap('l1','<div class="scene" id="sn"><div class="beam"></div><div class="pw"><div class="pr" id="pr">'+PROD+'</div></div><div class="box">'+LOGO('#fff','28%')+'</div><div class="lid" id="lid"><p class="k" style="color:#fff">Open me</p></div><span class="tag k" id="tag">● Nuevo · 2026</span></div>'+
+      side('El momento<br><b>de presentarlo.</b>','Presentaciones de producto que sorprenden, conectan y dejan huella.'));
+    var sec=document.getElementById('sc'),sn=document.getElementById('sn'),lid=document.getElementById('lid'),pr=document.getElementById('pr'),tag=document.getElementById('tag');
+    tick=function(){var p=prog(sec),l=io(cl((p-.1)/.25)),u=io(cl((p-.32)/.35));
+      lid.style.transform='translateY('+(-l*240)+'px) translateX('+(l*90)+'px) rotate('+(l*14)+'deg)';lid.style.opacity=1-cl((l-.7)/.3);
+      sn.style.setProperty('--bm',(cl((p-.25)/.15)).toFixed(3));pr.style.transform='translateX(-50%) translateY('+((1-u)*100-28)+'%)';
+      tag.style.opacity=cl((p-.68)/.08);tag.style.transform='translateY('+((1-out(cl((p-.68)/.1)))*12)+'px)'};
+  }
+  if(M==='2'){
+    wrap('l2','<div class="stg" id="stg"><div class="spot"></div><div class="ped"></div><div class="pr">'+PROD+'</div><div class="veil" id="vl"><svg viewBox="0 0 300 400" preserveAspectRatio="none"><defs><linearGradient id="silk" x1="0" x2="1"><stop offset="0" stop-color="#9f1c17"/><stop offset=".3" stop-color="#d9332d"/><stop offset=".5" stop-color="#b8231e"/><stop offset=".72" stop-color="#e24a43"/><stop offset="1" stop-color="#9a1a15"/></linearGradient></defs><path id="vp" fill="url(#silk)"/></svg></div></div><div class="flash" id="fl"></div>'+
+      side('El momento<br><b>de la verdad.</b>','Cuidamos cada detalle de la presentación: escenario, luz y el instante exacto en que todo se revela.'));
+    var sec=document.getElementById('sc'),stg=document.getElementById('stg'),vl=document.getElementById('vl'),vp=document.getElementById('vp'),fl=document.getElementById('fl');
+    tick=function(){var p=prog(sec),t=io(cl((p-.15)/.4));
+      // la tela se recoge hacia arriba y hacia la derecha, como si alguien tirase de ella
+      var top=t*380,sx=t*120,w=1-t*.55,y0=-top,y1=400-top*1.05;
+      var d='M'+(10*w+sx)+' '+(y1)+' C '+(0+sx)+' '+(y1*.6)+', '+(40+sx)+' '+(y0+60)+', '+(150+sx*1.4)+' '+(y0)+' C '+(260+sx)+' '+(y0+60)+', '+(300+sx)+' '+(y1*.6)+', '+(290*w+sx+10*(1-w))+' '+(y1)+' Q '+(150+sx)+' '+(y1+18)+' '+(10*w+sx)+' '+y1+' Z';
+      vp.setAttribute('d',d);vl.style.opacity=1-cl((p-.5)/.08);
+      stg.style.setProperty('--sp',cl((p-.35)/.15).toFixed(3));
+      var f=0;[.58,.66,.71,.8].forEach(function(t0){var k=(p-t0)/.02;if(k>0&&k<1)f=Math.max(f,1-k)});fl.style.setProperty('--fl',(f*.8).toFixed(3))};
+  }
+  if(M==='3'){
+    wrap('l3','<svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" stroke="rgba(11,11,11,.08)"/><circle id="rg" cx="50" cy="50" r="48" stroke="#D93333" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 50 50)"/></svg><div class="num" id="n">10</div><div class="burst" id="bs"></div><div class="go" id="go"><h2 style="color:#fff">Launch<span style="color:#0b0b0b">.</span></h2></div><div class="pr" id="pr">'+PROD+'</div>'+
+      side('El día que<br><b>todo empieza.</b>','Planificamos cada presentación al segundo para que el gran momento llegue en el instante justo.'));
+    var sec=document.getElementById('sc'),pin=document.getElementById('pin'),n=document.getElementById('n'),rg=document.getElementById('rg'),go=document.getElementById('go'),pr=document.getElementById('pr'),bs=document.getElementById('bs'),sd=pin.querySelector('.side');
+    tick=function(){var p=prog(sec),c=cl(p/.6),v=Math.max(0,10-Math.floor(c*11)),f=(c*11)%1;
+      n.textContent=v;n.style.setProperty('--s',(1+(1-f)*.06).toFixed(3));n.style.setProperty('--o',(p<.6?.4+.6*(1-f*.6):0).toFixed(3));n.style.color=v<=3?'#D93333':'#0b0b0b';
+      rg.setAttribute('stroke-dashoffset',(1-c).toFixed(4));bs.style.setProperty('--b',io(cl((p-.6)/.12)).toFixed(3));go.style.setProperty('--g',cl((p-.66)/.08).toFixed(3));
+      pr.style.setProperty('--pu',out(cl((p-.72)/.18)).toFixed(3));sd.style.color=p>.66?'#fff':'';sd.querySelector('p').style.color=p>.66?'rgba(255,255,255,.85)':''};
+  }
+  if(M==='4'){
+    var CO=[['300','Invitados',8,6,1],['1','Escenario',76,6,0],['45′','Keynote',4,34,1],['12','Pantallas LED',80,32,0],['4','Semanas de montaje',76,60,0],['∞','Detalles cuidados',80,86,0]];
+    wrap('l4','<div class="wrap" id="wr"><div class="big">Launch</div><div class="pr" id="pr">'+PROD+'</div>'+CO.map(function(c){return '<div class="co" style="left:'+c[2]+'%;top:'+c[3]+'%"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('')+'</div>'+
+      side('Un lanzamiento,<br><b>al detalle.</b>','Diseñamos la presentación de tu producto como si fuera el producto: con precisión y cuidado.'));
+    var sec=document.getElementById('sc'),pr=document.getElementById('pr'),cos=document.querySelectorAll('.l4 .co');
+    tick=function(){var p=prog(sec);pr.style.setProperty('--r',((1-io(cl(p/.4)))*-18).toFixed(2));pr.style.setProperty('--sc',(.7+.3*io(cl(p/.4))).toFixed(3));
+      cos.forEach(function(c,i){c.classList.toggle('on',p>.32+i*.08)})};
+  }
+  if(M==='5'){
+    var pat="url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='130'%3E%3Cg transform='translate(30 28) scale(.05)'%3E%3Cpath d='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z' transform='translate(-440 -260)' fill='%230b0b0b' fill-opacity='.16'/%3E%3Ccircle cx='848' cy='1207' r='237' fill='%23D93333' fill-opacity='.3'/%3E%3C/g%3E%3Ctext x='125' y='102' fill-opacity='.16' font-family='Poppins,sans-serif' font-weight='800' font-size='20' letter-spacing='-1'%3ELaunch%3C/text%3E%3C/svg%3E\")";
+    var FL=[[18,30,.32],[82,22,.38],[30,70,.42],[70,64,.47],[50,18,.52],[10,55,.56],[90,50,.6]];
+    wrap('l5','<div class="wall" id="wall" style="--pat:'+pat.replace(/"/g,'&quot;')+'"></div><div class="hl"><p class="k" style="color:var(--red);margin-bottom:12px;opacity:var(--h2,0)">Nota de prensa · 14.05.2026</p><h2 id="hh">Launch Studio presenta<br>su <span>nuevo producto.</span></h2></div><div class="pr" id="pr">'+PROD+'</div>'+FL.map(function(f){return '<span class="fl" style="left:'+f[0]+'%;top:'+f[1]+'%"></span>'}).join('')+
+      side('Que todo el mundo<br><b>hable de ello.</b>','Presentaciones a prensa, photocalls y lanzamientos pensados para que tu marca sea noticia.'));
+    var sec=document.getElementById('sc'),pin=document.getElementById('pin'),wall=document.getElementById('wall'),pr=document.getElementById('pr'),fls=document.querySelectorAll('.l5 .fl'),hl=document.querySelector('.l5 .hl');
+    tick=function(){var p=prog(sec);wall.style.setProperty('--w',cl(p/.15).toFixed(3));wall.style.backgroundPosition=(p*-120)+'px 0';
+      pr.style.setProperty('--pu',out(cl((p-.15)/.25)).toFixed(3));
+      fls.forEach(function(f,i){var k=(p-FL[i][2])/.025;f.style.opacity=k>0&&k<1?(1-k).toFixed(3):0});
+      hl.style.setProperty('--h',io(cl((p-.62)/.2)).toFixed(3));hl.style.setProperty('--h2',cl((p-.78)/.08).toFixed(3))};
+  }
+  var setBh=function(){document.documentElement.style.setProperty('--bh',document.querySelector('.bar').offsetHeight+'px')};setBh();
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',function(){setBh();tick()});
+  var FIX=new URLSearchParams(location.search).get('p');if(FIX!==null){prog=function(){return +FIX}}tick();
+})();
+</script>
+</body>
+</html>
