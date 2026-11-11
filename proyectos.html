@@ -104,7 +104,8 @@ var r=pb.getBoundingClientRect(),inside=on>=0&&r.bottom>m;pb.dataset.tone=inside
 dots.classList.toggle('on',inside);dots.style.color=pb.dataset.tone==='dark'?'#F1F0E8':'#0b0b0b';ds.forEach(function(d,i){d.classList.toggle('on',i===on)})};
 var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;t()})},{passive:true});t();})();
 </script>
-<section class="cta">
+<style>.cta--slim{padding-block:clamp(48px,6vw,86px)}.cta--slim .cta__words{font-size:clamp(110px,15vw,230px)}.cta--slim .cta__in{gap:18px}</style>
+<section class="cta cta--slim">
   <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
   <div class="wrap cta__in">
     <p class="eyebrow">Contacto</p>
