@@ -108,12 +108,6 @@ html{scroll-behavior:auto}
   </div>
 </div>
 <div class="wrap">
-  <div class="galh"><h2>Proyectos</h2><span class="k">Ejemplos de diseño gráfico</span></div>
-  <div class="gal">
-    <figure class="ph"><img src="../assets/img/servicios/servicio-diseno-grafico-ceramica.jpg" alt="Diseño gráfico aplicado a cerámica" loading="lazy"></figure>
-    <figure class="ph"><img src="../assets/img/servicios/stand-launch.jpg" alt="Identidad de Launch Studio aplicada a un stand" loading="lazy"></figure>
-    <figure class="ph mk" id="galLogo"></figure>
-  </div>
   <a class="nextsv" href="stands.html"><span class="k">Siguiente servicio</span><span class="nm">Stands<i>→</i></span></a>
 </div>
 <section class="cta">
@@ -141,7 +135,7 @@ html{scroll-behavior:auto}
   var D='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z',CX=1288,CY=1467,CR=237,VB='440 260 1110 1470';
   var NS='http://www.w3.org/2000/svg',INK='#0b0b0b';
   var logo=function(h,f){return '<svg viewBox="'+VB+'" style="height:'+h+';width:auto" aria-hidden="true"><path d="'+D+'" fill="'+(f||INK)+'"/><circle cx="'+CX+'" cy="'+CY+'" r="'+CR+'" fill="'+(f||INK)+'"/></svg>'};
-  document.getElementById('galLogo').innerHTML=logo('42%');
+  
   var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)};
   var M='1';
   var stage=document.getElementById('stage'),pin=document.getElementById('pin');pin.classList.add('c'+M);

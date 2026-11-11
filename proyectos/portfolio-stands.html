@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio de stands — Launch Studio</title>
+<meta name="description" content="Proyectos de stands de Launch Studio. Stands para ferias y congresos, diseñados a medida y entregados llave en mano.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="../css/estilos.css?v=202611041102">
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="../index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="../index.html">Inicio</a><a href="../proyectos.html" aria-current="page">Proyectos</a><a href="../servicios.html">Servicios</a><a href="../nosotros.html">Nosotros</a><a href="../contacto.html">Contacto</a></nav>
+</header>
+
+<main>
+<style>
+.pf{padding:calc(var(--pfn,80px) + clamp(28px,4vw,48px)) var(--pad) 0}
+.pf .k{font:400 11px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.pf__top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pf__top .k:first-child{color:var(--red)}
+.pf__top a{color:inherit;text-decoration:none;opacity:.55}.pf__top a:hover{opacity:1}
+.pf__hd{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;margin-top:clamp(28px,4vw,56px);padding-bottom:clamp(20px,2.4vw,30px);border-bottom:1px solid var(--line)}
+.pf h1{font-weight:800;font-size:clamp(48px,7.4vw,124px);letter-spacing:-.02em;line-height:.95;margin:0 0 0 -.03em;color:transparent;-webkit-text-stroke:2px var(--ink)}
+.pf h1 span{color:var(--red);-webkit-text-stroke:0}
+@supports not (-webkit-text-stroke:2px red){.pf h1{color:var(--ink)}}
+.pf__hd p{max-width:380px;color:var(--grey);line-height:1.6;margin:0}
+.pf__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,56px) clamp(18px,2.4vw,34px);padding:clamp(36px,5vw,64px) 0 clamp(60px,8vw,110px)}
+.pf__c{display:block;color:inherit;text-decoration:none}
+.pf__im{aspect-ratio:4/3;overflow:hidden;background:#dddbd0}
+.pf__im img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+a.pf__c:hover .pf__im img{transform:scale(1.04)}
+.pf__meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:16px}
+.pf__meta h2{font-weight:600;font-size:clamp(18px,1.6vw,24px);letter-spacing:-.03em;margin:0}
+.pf__meta .k{color:var(--grey)}
+.pf__c .go{display:inline-block;margin-top:8px;font-size:14px;font-weight:500;border-bottom:1px solid currentColor}
+.pf__sn{display:flex;flex-wrap:wrap;gap:6px 22px;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.pf__sn a{color:inherit;text-decoration:none;opacity:.6}.pf__sn a:hover{opacity:1}
+.pf__sn a[aria-current]{opacity:1;border-bottom:1px solid currentColor}
+.pf__pg{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding:clamp(24px,3vw,36px) 0 clamp(60px,8vw,100px)}
+.pf__pg a{color:inherit;text-decoration:none}
+.pf__pg strong{display:block;font-weight:800;font-size:clamp(22px,2.6vw,40px);letter-spacing:-.05em;margin-top:6px}
+.pf__pg a:hover strong{color:var(--red)}
+.pf__pg .nx{text-align:right}
+@media (max-width:760px){.pf__grid{grid-template-columns:1fr}.pf__pg .all{display:none}}
+</style>
+<section class="pf" id="pf">
+  <div class="wrap" style="padding:0;max-width:none">
+  <div class="pf__top"><span class="k">Portfolio · 04 proyectos</span><span class="k"><a href="../proyectos.html">Proyectos</a> / Stands</span></div>
+  <div class="pf__hd"><h1>Stands<span>.</span></h1><nav class="pf__sn" aria-label="Otros servicios"><a href="portfolio-stands.html" aria-current="page">Stands</a><a href="portfolio-eventos.html">Eventos corporativos</a><a href="portfolio-experiencias.html">Experiencias de marca</a><a href="portfolio-renders.html">Renders</a><a href="portfolio-grafico.html">Diseño gráfico</a></nav></div>
+  <div class="pf__grid"><a class="pf__c" href="06-stand-janssen-oncology.html"><div class="pf__im"><img src="../assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div><div class="pf__meta"><h2>Janssen Oncology</h2><span class="k">Stand congreso</span></div><span class="go">Ver proyecto →</span></a><a class="pf__c" href="07-stand-truphone.html"><div class="pf__im"><img src="../assets/img/proyectos/07-stand-truphone.jpg" alt="Truphone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/TRUPHONE.JPG'"></div><div class="pf__meta"><h2>Truphone</h2><span class="k">Stand corporativo</span></div><span class="go">Ver proyecto →</span></a><a class="pf__c" href="09-stand-biohorizons.html"><div class="pf__im"><img src="../assets/img/proyectos/09-stand-biohorizons.jpg" alt="BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"></div><div class="pf__meta"><h2>BioHorizons</h2><span class="k">Stand institucional</span></div><span class="go">Ver proyecto →</span></a><a class="pf__c" href="08-stand-ti-medi-jvm.html"><div class="pf__im"><img src="../assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></div><div class="pf__meta"><h2>TI-MEDI / JVM</h2><span class="k">Stand comercial</span></div><span class="go">Ver proyecto →</span></a></div>
+  <nav class="pf__pg" aria-label="Otros servicios"><a href="portfolio-grafico.html"><span class="k">← Anterior</span><strong>Diseño gráfico</strong></a><a class="all k" href="../proyectos.html">Todos los proyectos</a><a class="nx" href="portfolio-eventos.html"><span class="k">Siguiente →</span><strong>Eventos corporativos</strong></a></nav>
+  </div>
+</section>
+<script>(function(){var n=document.getElementById('nav');if(n)document.getElementById('pf').style.setProperty('--pfn',n.offsetHeight+'px')})();</script>
+<section class="cta">
+  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
+  <div class="wrap cta__in">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos de tu próximo proyecto.</h2>
+    <a class="btn btn--light" href="../contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="../index.html">Inicio</a></li><li><a href="../proyectos.html">Proyectos</a></li><li><a href="../servicios.html">Servicios</a></li><li><a href="../nosotros.html">Nosotros</a></li><li><a href="../contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="../servicios.html#stands">Stands</a></li><li><a href="../servicios.html#eventos">Eventos corporativos</a></li><li><a href="../servicios.html#experiencias">Experiencias de marca</a></li><li><a href="../servicios.html#pop-up">Pop-up stores</a></li><li><a href="../servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<script src="../js/sitio.js?v=202611041102"></script>
+</body>
+</html>
