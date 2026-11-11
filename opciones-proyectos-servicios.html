@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyectos por servicio — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Proyectos agrupados por servicio en una sola página. Cinco maquetaciones: ?m=1..5 */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bh) + 70px)}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover;background:#ddd8cc}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.k{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.head{padding:calc(var(--bh) + clamp(48px,8vw,110px)) var(--pad) clamp(36px,5vw,64px)}
+.head .k{color:var(--red)}
+.head h1{margin-top:16px;font-weight:300;font-size:clamp(44px,7vw,112px);letter-spacing:-.055em;line-height:.95}
+.head h1 b{font-weight:800;letter-spacing:-.065em}
+.head p{margin-top:22px;max-width:560px;color:var(--grey);font-size:17px;line-height:1.6}
+.card .im{overflow:hidden;position:relative}
+.card .im img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover .im img{transform:scale(1.045)}
+.card h3{font-weight:600;font-size:18px;letter-spacing:-.02em;margin-top:14px}
+.card .k{color:var(--grey);margin-top:6px;display:block}
+.soon{display:grid;place-items:center;border:1px dashed var(--line);color:var(--grey);min-height:180px;padding:24px;text-align:center}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+
+/* 1 · Índice lateral */
+.m1 .lay{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,4vw,64px);padding:0 var(--pad) 120px}
+.m1 .idx{position:sticky;top:calc(var(--bh) + 40px);align-self:start;display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.m1 .idx a{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-weight:400;font-size:16px;transition:color .2s,padding .3s}
+.m1 .idx a sup{font:400 11px var(--mono);color:var(--grey)}
+.m1 .idx a.on{color:var(--red);padding-left:10px;font-weight:600}
+.m1 .sv{padding-bottom:clamp(60px,8vw,120px)}
+.m1 .sv header{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--ink);padding-bottom:18px;margin-bottom:28px}
+.m1 .sv h2{font-weight:800;font-size:clamp(34px,4.6vw,72px);letter-spacing:-.065em;line-height:.9}
+.m1 .sv header p{max-width:340px;color:var(--grey);font-size:15px;line-height:1.55}
+.m1 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,34px)}
+.m1 .grid .card:first-child{grid-column:1/-1}
+.m1 .grid .card:first-child .im{aspect-ratio:16/8}
+.m1 .grid .im{aspect-ratio:4/3}
+
+/* 2 · Filas deslizables */
+.m2 .row{padding:clamp(40px,5vw,70px) 0;border-top:1px solid var(--line)}
+.m2 .row header{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;padding:0 var(--pad) 26px}
+.m2 .row .n{font:400 12px var(--mono);color:var(--red)}
+.m2 .row h2{font-weight:800;font-size:clamp(30px,3.6vw,56px);letter-spacing:-.06em;line-height:.95}
+.m2 .row h2 span{font-weight:300;color:var(--grey);font-size:.5em;letter-spacing:-.02em;margin-left:10px}
+.m2 .arr{display:flex;gap:8px}
+.m2 .arr button{width:46px;height:46px;border-radius:50%;border:1px solid var(--ink);background:none;font-size:18px;cursor:pointer}
+.m2 .arr button:hover{background:var(--ink);color:var(--white)}
+.m2 .track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 10px;scrollbar-width:none}
+.m2 .track::-webkit-scrollbar{display:none}
+.m2 .track .card{flex:0 0 clamp(260px,32vw,460px);scroll-snap-align:start}
+.m2 .track .im{aspect-ratio:4/5}
+.m2 .track .soon{flex:0 0 clamp(260px,32vw,460px);aspect-ratio:4/5}
+.m2 .row p.d{padding:0 var(--pad);margin-top:-12px;margin-bottom:24px;color:var(--grey);max-width:620px;font-size:15px;line-height:1.55}
+
+/* 3 · Pestañas fijas + capítulos con foto grande */
+.m3 .chips{position:sticky;top:var(--bh);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:14px var(--pad);background:rgba(241,240,232,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);scrollbar-width:none}
+.m3 .chips a{flex:none;border:1px solid var(--ink);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:400;transition:background .2s,color .2s}
+.m3 .chips a sup{font:400 10px var(--mono);margin-left:4px;opacity:.6}
+.m3 .chips a.on{background:var(--ink);color:var(--white)}
+.m3 .ch{padding:clamp(50px,7vw,100px) var(--pad) 0}
+.m3 .ch .top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:28px}
+.m3 .ch h2{font-weight:300;font-size:clamp(40px,6vw,96px);letter-spacing:-.06em;line-height:.9}
+.m3 .ch h2 b{display:block;font-weight:800;letter-spacing:-.07em}
+.m3 .ch .top p{color:var(--grey);font-size:16px;line-height:1.6;max-width:440px}
+.m3 .hero{position:relative;display:block;aspect-ratio:21/9;overflow:hidden}
+.m3 .hero .cap{position:absolute;left:0;bottom:0;right:0;padding:clamp(18px,3vw,36px);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));display:flex;justify-content:space-between;align-items:end}
+.m3 .hero h3{font-weight:600;font-size:clamp(20px,2.2vw,32px);letter-spacing:-.03em}
+.m3 .hero .k{color:#fff;opacity:.8}
+.m3 .rest{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin-top:clamp(16px,2vw,28px)}
+.m3 .rest .im{aspect-ratio:1}
+
+/* 4 · Lista tipográfica con vista previa */
+.m4 .grp{padding:0 var(--pad) clamp(60px,7vw,100px)}
+.m4 .grp header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.m4 .grp header .k{color:var(--red)}
+.m4 .grp h2{font-weight:400;font-size:15px;font:400 12px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.m4 .it{display:grid;grid-template-columns:70px 1fr auto 120px;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);position:relative}
+.m4 .it .n{font:400 12px var(--mono);color:var(--grey)}
+.m4 .it h3{font-weight:800;font-size:clamp(26px,4vw,62px);letter-spacing:-.06em;line-height:1;transition:color .25s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.m4 .it:hover h3{color:var(--red);transform:translateX(12px)}
+.m4 .it .k{color:var(--grey)}
+.m4 .it .th{width:120px;aspect-ratio:4/3;overflow:hidden}
+.m4 .prev{position:fixed;width:min(360px,30vw);aspect-ratio:4/5;pointer-events:none;z-index:60;opacity:0;transform:translate(-50%,-50%) scale(.9);transition:opacity .25s,transform .35s;overflow:hidden}
+.m4 .prev.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media (hover:hover) and (min-width:900px){.m4 .it .th{visibility:hidden}}
+
+/* 5 · Bandas de color por servicio */
+.m5 .band{padding:clamp(60px,8vw,120px) var(--pad);position:relative;overflow:hidden}
+.m5 .band.c0{background:var(--white)}.m5 .band.c1{background:var(--ink);color:var(--white)}.m5 .band.c2{background:#E7E1D6}.m5 .band.c3{background:var(--red);color:#fff}.m5 .band.c4{background:var(--paper)}
+.m5 .band .big{position:absolute;right:-.04em;top:.05em;font-weight:800;font-size:clamp(140px,22vw,360px);letter-spacing:-.08em;line-height:.8;opacity:.07;pointer-events:none}
+.m5 .band .top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:clamp(30px,4vw,56px);position:relative}
+.m5 .band h2{font-weight:800;font-size:clamp(38px,5.4vw,86px);letter-spacing:-.065em;line-height:.9}
+.m5 .band .top p{max-width:380px;font-size:16px;line-height:1.6;opacity:.75}
+.m5 .band .k{opacity:.7}
+.m5 .mos{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.8vw,24px);position:relative}
+.m5 .mos .card:nth-child(1){grid-column:span 7}.m5 .mos .card:nth-child(1) .im{aspect-ratio:4/3}
+.m5 .mos .card:nth-child(2){grid-column:span 5;margin-top:12%}.m5 .mos .card:nth-child(2) .im{aspect-ratio:4/5}
+.m5 .mos .card:nth-child(3){grid-column:3/span 5}.m5 .mos .card:nth-child(3) .im{aspect-ratio:1}
+.m5 .mos .card:nth-child(4){grid-column:span 5;margin-top:-10%}.m5 .mos .card:nth-child(4) .im{aspect-ratio:4/3}
+.m5 .mos .card:only-child{grid-column:1/-1}
+.m5 .band .card .k{color:inherit;opacity:.6}
+.m5 .band .go{display:inline-flex;gap:10px;margin-top:clamp(30px,4vw,50px);border-bottom:1px solid currentColor;padding-bottom:4px;font-weight:500;position:relative}
+
+@media (max-width:860px){
+  .m1 .lay{grid-template-columns:1fr}.m1 .idx{position:static;display:none}.m1 .grid{grid-template-columns:1fr}.m1 .sv header{flex-direction:column;align-items:start}
+  .m2 .row header{grid-template-columns:auto 1fr}.m2 .arr{display:none}
+  .m3 .ch .top{grid-template-columns:1fr}.m3 .hero{aspect-ratio:4/3}.m3 .rest{grid-template-columns:1fr 1fr}
+  .m4 .it{grid-template-columns:40px 1fr 90px}.m4 .it .k{display:none}.m4 .it .th{width:90px}
+  .m5 .band .top{flex-direction:column;align-items:start}.m5 .mos{grid-template-columns:1fr}.m5 .mos .card{grid-column:auto!important;margin-top:0!important}
+}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><b>Proyectos por servicio</b>
+  <a href="?m=1">1 · Índice lateral</a><a href="?m=2">2 · Filas deslizables</a><a href="?m=3">3 · Pestañas y capítulos</a><a href="?m=4">4 · Lista tipográfica</a><a href="?m=5">5 · Bandas de color</a>
+</nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  var S=[
+    {id:'stands',n:'Stands',d:'Stands para ferias y congresos, del diseño al montaje.',href:'servicios/stands.html',p:[
+      {t:'Janssen Oncology',c:'Stand congreso',img:OLD+'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG',href:'proyectos/06-stand-janssen-oncology.html'},
+      {t:'Truphone',c:'Stand corporativo',img:OLD+'TRUPHONE.JPG',href:'proyectos/07-stand-truphone.html'},
+      {t:'BioHorizons',c:'Stand institucional',img:OLD+'BIOHORIZONS.JPG',href:'proyectos/09-stand-biohorizons.html'},
+      {t:'TI-MEDI / JVM',c:'Stand comercial',img:OLD+'JVM.jpeg',href:'proyectos/08-stand-ti-medi-jvm.html'}]},
+    {id:'eventos',n:'Eventos corporativos',d:'Presentaciones, convenciones y eventos de marca con producción integral.',href:'servicios/eventos.html',p:[
+      {t:'NTT DATA',c:'Evento corporativo',img:OLD+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',href:'proyectos/04-evento-corporativo-ntt-data.html'},
+      {t:'BASE4',c:'Evento de promoción',img:OLD+'project-2.jpg',href:'proyectos/02-evento-promocion-base4.html'}]},
+    {id:'experiencias',n:'Experiencias de marca',d:'Pop-ups, markets y activaciones que se viven en primera persona.',href:'servicios/experiencias.html',p:[
+      {t:'Taller Amona',c:'Experiencia de marca',img:OLD+'project-1.JPG',href:'proyectos/01-taller-amona.html'},
+      {t:'Venca',c:'Pop-up store',img:OLD+'5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG',href:'proyectos/05-pop-up-store-venca.html'},
+      {t:'The Office Studio',c:'Market',img:OLD+'project-3.JPG',href:'proyectos/03-market-the-office-studio.html'}]},
+    {id:'renders',n:'Renders',d:'Visualizaciones fotorrealistas para decidir antes de construir.',href:'servicios.html',p:[
+      {t:'Vivienda unifamiliar',c:'Render exterior',img:'assets/img/servicios/render-casa.jpg',href:'servicios.html'},
+      {t:'Interiorismo',c:'Render interior',img:'assets/img/servicios/servicio-renders-interiorismo.jpg',href:'servicios.html'}]},
+    {id:'grafico',n:'Diseño gráfico',d:'Identidad, gráfica de stand y piezas de marca.',href:'servicios/grafico.html',p:[
+      {t:'Colección cerámica',c:'Identidad y packaging',img:'assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',href:'servicios/grafico.html'},
+      {t:'Launch Studio',c:'Gráfica de stand',img:'assets/img/servicios/stand-launch.jpg',href:'servicios/grafico.html'}]}
+  ];
+  var total=S.reduce(function(a,s){return a+s.p.length},0);
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  document.documentElement.style.setProperty('--bh',document.querySelector('.bar').offsetHeight+'px');
+  var pad=function(n){return (n<10?'0':'')+n};
+  var img=function(p){return '<img src="'+p.img+'" alt="'+p.t+'" loading="lazy" onerror="this.style.opacity=0">'};
+  var card=function(p){return '<a class="card" href="'+p.href+'"><div class="im">'+img(p)+'</div><h3>'+p.t+'</h3><span class="k">'+p.c+'</span></a>'};
+  var head='<header class="head"><p class="k">Proyectos · '+total+' trabajos</p><h1>Un portfolio<br><b>de experiencias.</b></h1><p>Nuestros proyectos ordenados por servicio: stands, eventos, experiencias de marca, renders y diseño gráfico.</p></header>';
+  var app=document.getElementById('app'),h='';
+  var NOTES={
+    1:'<b>1 · Índice lateral.</b> A la izquierda, un índice fijo con los cinco servicios y su número de proyectos; se marca en rojo el que estás viendo. Cada servicio tiene su capítulo con el primer proyecto en grande y el resto debajo.',
+    2:'<b>2 · Filas deslizables.</b> Una fila por servicio, como un catálogo de streaming: se desliza en horizontal (con las flechas o el dedo). Muy compacta: se ven todos los servicios sin bajar mucho.',
+    3:'<b>3 · Pestañas y capítulos.</b> Una barra de pestañas fija arriba que salta a cada servicio y se marca sola al bajar. Cada capítulo abre con una foto panorámica del proyecto principal y el resto en mosaico.',
+    4:'<b>4 · Lista tipográfica.</b> Muy editorial: los proyectos son títulos grandes agrupados por servicio. Al pasar el ratón aparece la foto siguiendo al cursor (en móvil se ve una miniatura).',
+    5:'<b>5 · Bandas de color.</b> Cada servicio es una banda con su propio fondo (crema, negro, arena, rojo…) y un mosaico de fotos descompensado. Se nota mucho el cambio de servicio al bajar.'};
+
+  if(M==='1'){
+    h='<div class="m1">'+head+'<div class="lay"><nav class="idx">'+S.map(function(s){return '<a href="#'+s.id+'">'+s.n+'<sup>'+pad(s.p.length)+'</sup></a>'}).join('')+'</nav><div>'+
+      S.map(function(s){return '<section class="sv" id="'+s.id+'"><header><h2>'+s.n+'</h2><p>'+s.d+'</p></header><div class="grid">'+s.p.map(card).join('')+'</div></section>'}).join('')+'</div></div></div>';
+  }
+  if(M==='2'){
+    h='<div class="m2">'+head+S.map(function(s,i){return '<section class="row" id="'+s.id+'"><header><span class="n">'+pad(i+1)+'</span><h2>'+s.n+'<span>'+s.p.length+' proyectos</span></h2><div class="arr"><button data-d="-1" aria-label="Anterior">←</button><button data-d="1" aria-label="Siguiente">→</button></div></header><p class="d">'+s.d+'</p><div class="track">'+s.p.map(card).join('')+(s.p.length<4?'<a class="soon" href="contacto.html"><span><span class="k">Tu proyecto aquí</span><br><br>¿Hablamos? →</span></a>':'')+'</div></section>'}).join('')+'</div>';
+  }
+  if(M==='3'){
+    h='<div class="m3">'+head+'<nav class="chips">'+S.map(function(s){return '<a href="#'+s.id+'">'+s.n+'<sup>'+s.p.length+'</sup></a>'}).join('')+'</nav>'+
+      S.map(function(s,i){var f=s.p[0];return '<section class="ch" id="'+s.id+'"><div class="top"><h2><span class="k" style="color:var(--red);display:block;margin-bottom:14px">'+pad(i+1)+' / '+pad(S.length)+'</span>'+s.n.split(' ')[0]+'<b>'+(s.n.split(' ').slice(1).join(' ')||'&nbsp;')+'</b></h2><p>'+s.d+'</p></div>'+
+        '<a class="hero card" href="'+f.href+'"><div class="im" style="position:absolute;inset:0">'+img(f)+'</div><div class="cap"><div><span class="k">'+f.c+'</span><h3>'+f.t+'</h3></div><span class="k">Ver proyecto →</span></div></a>'+
+        (s.p.length>1?'<div class="rest">'+s.p.slice(1).map(card).join('')+'</div>':'')+'</section>'}).join('')+'<div style="height:100px"></div></div>';
+  }
+  if(M==='4'){
+    var k=0;
+    h='<div class="m4">'+head+S.map(function(s,i){return '<section class="grp" id="'+s.id+'"><header><h2>'+pad(i+1)+' · '+s.n+'</h2><span class="k">'+s.p.length+' proyectos</span></header>'+
+      s.p.map(function(p){k++;return '<a class="it card" href="'+p.href+'" data-img="'+p.img+'"><span class="n">'+pad(k)+'</span><h3>'+p.t+'</h3><span class="k">'+p.c+'</span><div class="th">'+img(p)+'</div></a>'}).join('')+'</section>'}).join('')+'<div class="prev" id="pv"><img alt=""></div></div>';
+  }
+  if(M==='5'){
+    h='<div class="m5">'+head+S.map(function(s,i){return '<section class="band c'+i+'" id="'+s.id+'"><span class="big">'+pad(i+1)+'</span><div class="top"><div><span class="k">'+pad(i+1)+' · '+s.p.length+' proyectos</span><h2 style="margin-top:12px">'+s.n+'</h2></div><p>'+s.d+'</p></div><div class="mos">'+s.p.map(card).join('')+'</div><a class="go" href="'+s.href+'">Ver servicio <span>→</span></a></section>'}).join('')+'</div>';
+  }
+  app.innerHTML=h;
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Los proyectos están repartidos así: Stands (4), Eventos corporativos (2), Experiencias de marca (3). Renders y Diseño gráfico aún no tienen fichas de proyecto, así que he usado las imágenes de la web como ejemplo; cuando haya proyectos reales se añaden.';
+
+  // índice / pestañas que se marcan solas al bajar
+  var links=[].slice.call(document.querySelectorAll('.idx a,.chips a'));
+  if(links.length){
+    var secs=S.map(function(s){return document.getElementById(s.id)});
+    var spy=function(){var y=innerHeight*.35,on=0;secs.forEach(function(e,i){if(e.getBoundingClientRect().top<y)on=i});links.forEach(function(a,i){a.classList.toggle('on',i===on)});
+      var c=document.querySelector('.chips a.on');if(c&&c.parentNode.scrollWidth>c.parentNode.clientWidth)c.parentNode.scrollTo({left:c.offsetLeft-20,behavior:'smooth'})};
+    addEventListener('scroll',spy,{passive:true});spy();
+  }
+  // flechas de las filas
+  document.querySelectorAll('.m2 .row').forEach(function(r){var t=r.querySelector('.track');r.querySelectorAll('.arr button').forEach(function(b){b.onclick=function(){t.scrollBy({left:+b.dataset.d*t.clientWidth*.8,behavior:'smooth'})}})});
+  // vista previa que sigue al cursor
+  var pv=document.getElementById('pv');
+  if(pv&&matchMedia('(hover:hover) and (min-width:900px)').matches){var pi=pv.querySelector('img');
+    document.querySelectorAll('.m4 .it').forEach(function(it){it.addEventListener('mouseenter',function(){pi.src=it.dataset.img;pv.classList.add('on')});it.addEventListener('mouseleave',function(){pv.classList.remove('on')})});
+    addEventListener('mousemove',function(e){pv.style.left=(e.clientX+200)+'px';pv.style.top=e.clientY+'px'});
+  }
+})();
+</script>
+</body>
+</html>
