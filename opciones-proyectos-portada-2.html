@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyectos: portada — Launch Studio</title>
+<meta name="description" content="Una selección representativa de stands, eventos, experiencias de marca, renders y diseño gráfico de Launch Studio, ordenados por servicio.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=202611041102">
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html" aria-current="page">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
+</header>
+
+<main>
+<div class="pb" id="pb">
+<style>
+.pb{--pbg:var(--white);--pfg:var(--ink);background:var(--pbg);color:var(--pfg);transition:background-color .6s,color .6s}
+.pb[data-tone=dark]{--pbg:#0b0b0b;--pfg:#F1F0E8}
+.pb .sec--top{background:transparent}
+.pb__dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transition:opacity .4s}
+.pb__dots.on{opacity:1;pointer-events:auto}
+.pb__dots a{display:flex;align-items:center;justify-content:flex-end;gap:10px;font:400 10px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none}
+.pb__dots a span{opacity:0;transition:opacity .3s}
+.pb__dots a i{width:8px;height:8px;border-radius:50%;border:1px solid currentColor}
+.pb__dots a.on i{background:currentColor}
+.pb__dots a.on span,.pb__dots a:hover span{opacity:1}
+.pb__sv{min-height:100vh;padding:clamp(70px,9vw,130px) var(--pad);display:flex;flex-direction:column;justify-content:center;scroll-margin-top:60px}
+.pb__t{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+.pbc__k{display:block;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.pb__t h2{margin:12px 0 0;font-weight:800;font-size:clamp(46px,8.6vw,150px);letter-spacing:-.075em;line-height:.85}
+.pb__t p{margin:20px auto 0;max-width:460px;opacity:.75;line-height:1.6}
+.pb__go{display:inline-flex;gap:10px;margin-top:24px;border-bottom:1px solid currentColor;padding-bottom:4px;font-weight:500;color:inherit;text-decoration:none}
+.pb__row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:clamp(14px,1.8vw,26px);max-width:min(calc(var(--n) * 300px),calc(100vw - 2*var(--pad) - 120px));width:100%;margin:0 auto}
+.pbc{display:block;color:inherit;text-decoration:none}
+.pbc__im{aspect-ratio:4/5;overflow:hidden;background:rgba(127,120,105,.18)}
+.pbc__im img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pbc:hover .pbc__im img{transform:scale(1.045)}
+.pbc h3{margin:14px 0 0;font-weight:600;font-size:18px;letter-spacing:-.02em}
+.pbc .pbc__k{margin-top:6px}
+@media (max-width:860px){.pb__dots{display:none}.pb__sv{min-height:0}.pb__row{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pb__row{grid-template-columns:1fr}}
+</style>
+<style>
+.ob{position:fixed;right:12px;top:calc(var(--obt,80px) + 12px);z-index:90;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding:6px;border-radius:14px;max-width:340px!important;background:rgba(11,11,11,.92);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase;max-width:calc(100vw - 24px)}
+.ob a{color:#F1F0E8;text-decoration:none;border:1px solid rgba(241,240,232,.3);border-radius:999px;padding:6px 12px}
+.ob a[aria-current]{background:#F1F0E8;color:#0b0b0b}
+.cv{--nh:80px;position:relative}
+.cv a{color:inherit;text-decoration:none}
+.cv img{display:block;width:100%;height:100%;object-fit:cover;background:rgba(127,120,105,.2)}
+.cv .k{font:400 11px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+/* navegación discreta, común a todas */
+.sn{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 0;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.sn>span{opacity:.5;margin-right:14px}
+.sn a{position:relative;padding:2px 0;margin-right:22px;opacity:.75;transition:opacity .2s}
+.sn a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sn a:hover{opacity:1}.sn a:hover::after{transform:scaleX(1)}
+.sn a sup{font-size:8px;margin-left:3px;opacity:.6}
+
+/* 1 · foto a sangre */
+.p1{height:100vh;min-height:600px;color:#fff;overflow:hidden}
+.p1 .bg{position:absolute;inset:0}
+.p1 .bg img{transform:scale(1.06);animation:kb 18s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.p1 .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0,rgba(0,0,0,0) 30%,rgba(0,0,0,.6) 100%)}
+.p1 .in{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,5vh,56px)}
+.p1 h1{font-weight:800;font-size:clamp(64px,12vw,210px);letter-spacing:-.08em;line-height:.8;margin:0}
+.p1 .row{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:clamp(22px,3vw,36px);padding-top:18px;border-top:1px solid rgba(255,255,255,.35)}
+.p1 .cap{text-align:right;opacity:.8}
+
+/* 2 · palabra con foto dentro */
+.p2{min-height:100vh;padding:calc(var(--nh) + 40px) var(--pad) clamp(30px,5vh,56px);display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.p2 .top{display:flex;justify-content:space-between;gap:30px}
+.p2 .top .k:first-child{color:var(--red)}
+.p2 .word{font-weight:800;font-size:clamp(80px,19.5vw,360px);letter-spacing:-.085em;line-height:.8;margin:0 0 0 -.04em;color:transparent;background:url(assets/img/servicios/servicio-stands-truphone.jpg) center 40%/cover;-webkit-background-clip:text;background-clip:text;animation:pan 20s ease-in-out infinite alternate}
+@keyframes pan{to{background-position:center 70%}}
+.p2 .bot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.p2 .bot p{max-width:440px;color:var(--grey);font-size:17px;line-height:1.6;margin:0}
+
+/* 3 · collage editorial */
+.p3{min-height:100vh;padding:calc(var(--nh) + clamp(40px,6vw,80px)) var(--pad) clamp(30px,5vh,56px);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.p3 h1{font-weight:300;font-size:clamp(48px,6.4vw,110px);letter-spacing:-.065em;line-height:.9;margin:18px 0 0}
+.p3 h1 b{font-weight:800;display:block}
+.p3 .k.r{color:var(--red)}
+.p3 .tx p{margin:26px 0 40px;max-width:400px;color:var(--grey);font-size:17px;line-height:1.6}
+.p3 .col{position:relative;height:min(72vh,640px)}
+.p3 .col div{position:absolute;overflow:hidden;box-shadow:0 30px 60px rgba(30,20,10,.18)}
+.p3 .col .a{left:0;top:6%;width:58%;aspect-ratio:4/5}
+.p3 .col .b{right:0;top:0;width:44%;aspect-ratio:3/4}
+.p3 .col .c{right:12%;bottom:0;width:46%;aspect-ratio:4/3}
+.p3 .col .lab{position:absolute;left:0;bottom:2%;box-shadow:none;font:400 10px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+
+/* 4 · pase de proyectos */
+.p4{height:100vh;min-height:600px;background:#0b0b0b;color:#F1F0E8;overflow:hidden}
+.p4 .sl{position:absolute;inset:0}
+.p4 .sl div{position:absolute;inset:0;opacity:0;transition:opacity 1.4s}
+.p4 .sl div.on{opacity:1}
+.p4 .sl img{filter:brightness(.62)}
+.p4 .in{position:absolute;inset:calc(var(--nh) + 30px) var(--pad) clamp(28px,5vh,56px);display:flex;flex-direction:column;justify-content:space-between}
+.p4 .tp{display:flex;justify-content:space-between}
+.p4 h1{font-weight:300;font-size:clamp(46px,6.4vw,110px);letter-spacing:-.065em;line-height:.9;margin:0}
+.p4 h1 b{font-weight:800}
+.p4 .now{display:flex;gap:14px;align-items:baseline}
+.p4 .now b{font-weight:500;font-size:16px;letter-spacing:-.01em;text-transform:none;font-family:"Poppins",sans-serif}
+.p4 .pr{width:120px;height:1px;background:rgba(241,240,232,.25);position:relative;align-self:center}
+.p4 .pr i{position:absolute;left:0;top:0;bottom:0;background:#F1F0E8;width:0}
+.p4 .ft{display:flex;justify-content:space-between;align-items:end;gap:30px;border-top:1px solid rgba(241,240,232,.25);padding-top:18px}
+
+/* 5 · cifras */
+.p5{min-height:100vh;padding:calc(var(--nh) + clamp(40px,6vw,80px)) var(--pad) clamp(30px,5vh,56px);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.p5 h1{font-weight:300;font-size:clamp(40px,5.6vw,96px);letter-spacing:-.06em;line-height:.98;margin:0;max-width:16ch}
+.p5 h1 b{font-weight:800}
+.p5 h1 .im{display:inline-block;width:1.7em;height:.78em;vertical-align:-.04em;border-radius:999px;overflow:hidden;margin:0 .06em}
+.p5 .k.r{color:var(--red);margin-bottom:24px;display:block}
+.p5 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;border-top:1px solid var(--ink);padding-top:22px}
+.p5 .nums b{display:block;font-weight:800;font-size:clamp(40px,4.6vw,76px);letter-spacing:-.06em;line-height:.9}
+.p5 .nums span{color:var(--grey)}
+
+@media (max-width:860px){
+ .p1 .row,.p4 .ft{flex-direction:column;align-items:start}.p1 .cap{text-align:left}
+ .p2 .bot{grid-template-columns:1fr}.p2 .top .k:last-child{display:none}
+ .p3{grid-template-columns:1fr}.p3 .col{height:70vw}
+ .p4 .tp{flex-direction:column;gap:20px}
+ .p5 .nums{grid-template-columns:1fr 1fr}
+}
+</style>
+<nav class="ob" aria-label="Opciones de portada"><a href="?m=1">1 · Foto a sangre</a><a href="?m=2">2 · Foto en la palabra</a><a href="?m=3">3 · Collage</a><a href="?m=4">4 · Pase de proyectos</a><a href="?m=5">5 · Cifras</a></nav>
+<div class="cv" id="cv"></div>
+<script>
+(function(){
+var O='https://www.launchstudiogroup.com/';
+var S=[['stands','Stands',4],['eventos','Eventos',2],['experiencias','Experiencias',3],['renders','Renders',2],['grafico','Diseño gráfico',2]];
+var SL=[['assets/img/servicios/servicio-stands-truphone.jpg','Truphone','Stand'],[O+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG','NTT DATA','Evento corporativo'],['assets/img/servicios/servicio-experiencias-cursa-base4.jpg','BASE4','Experiencia de marca'],['assets/img/servicios/render-casa.jpg','Vivienda unifamiliar','Render'],[O+'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG','Janssen Oncology','Stand']];
+var M=new URLSearchParams(location.search).get('m')||'1';
+document.querySelectorAll('.ob a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+var im=function(u){return '<img src="'+u+'" alt="" onerror="this.style.opacity=0">'};
+var sn='<nav class="sn" aria-label="Ir a un servicio"><span>Ver</span>'+S.map(function(s){return '<a href="#'+s[0]+'">'+s[1]+'<sup>'+s[2]+'</sup></a>'}).join('')+'</nav>';
+var h='';
+if(M==='1')h='<section class="p1"><div class="bg">'+im(SL[0][0])+'</div><div class="in"><h1>Proyectos</h1><div class="row">'+sn+'<span class="k cap">En portada · Stand para Truphone</span></div></div></section>';
+if(M==='2')h='<section class="p2"><div class="top"><span class="k">Proyectos · 13 trabajos</span><span class="k" style="opacity:.5">Barcelona · Presencia internacional</span></div><h1 class="word">Proyectos</h1><div class="bot"><p>Stands, eventos y experiencias de marca que hemos diseñado y producido, del primer boceto al montaje.</p>'+sn+'</div></section>';
+if(M==='3')h='<section class="p3"><div class="tx"><span class="k r">Proyectos · 13 trabajos</span><h1>Un portfolio<b>de experiencias.</b></h1><p>Stands, eventos y experiencias de marca que hemos diseñado y producido, del primer boceto al montaje.</p>'+sn+'</div><div class="col"><div class="a">'+im(SL[0][0])+'</div><div class="b">'+im(SL[2][0])+'</div><div class="c">'+im(SL[3][0])+'</div></div></section>';
+if(M==='4')h='<section class="p4"><div class="sl">'+SL.map(function(x,i){return '<div'+(i?'':' class="on"')+'>'+im(x[0])+'</div>'}).join('')+'</div><div class="in"><div class="tp"><h1>Un portfolio<br><b>de experiencias.</b></h1><div class="now k"><span id="nn">01 / 05</span><span class="pr"><i id="np"></i></span><span id="nc">'+SL[0][2]+'</span><b id="nt">'+SL[0][1]+'</b></div></div><div class="ft">'+sn+'<span class="k" style="opacity:.6">13 trabajos</span></div></div></section>';
+if(M==='5')h='<section class="p5"><div><span class="k r">Proyectos</span><h1>Trece proyectos, <span class="im">'+im(SL[0][0])+'</span> cinco servicios y <b>una misma forma</b> de <span class="im">'+im(SL[2][0])+'</span> hacer las cosas.</h1></div><div><div class="nums"><div><b>13</b><span class="k">Proyectos</span></div><div><b>05</b><span class="k">Servicios</span></div><div><b>09</b><span class="k">Marcas</span></div></div><div style="margin-top:26px">'+sn+'</div></div></section>';
+var cv=document.getElementById('cv');cv.innerHTML=h;
+var nav=document.getElementById('nav');if(nav){cv.style.setProperty('--nh',nav.offsetHeight+'px');document.documentElement.style.setProperty('--obt',nav.offsetHeight+'px')}
+if(M==='4'){var ds=cv.querySelectorAll('.sl div'),i=0,t0=performance.now(),D=4500,np=document.getElementById('np');
+ (function loop(t){var k=(t-t0)/D;if(k>=1){ds[i].classList.remove('on');i=(i+1)%ds.length;ds[i].classList.add('on');t0=t;k=0;
+  document.getElementById('nn').textContent='0'+(i+1)+' / 05';document.getElementById('nt').textContent=SL[i][1];document.getElementById('nc').textContent=SL[i][2]}
+  np.style.width=(k*100)+'%';requestAnimationFrame(loop)})(t0);}
+})();
+</script>
+<nav class="pb__dots" id="pb-dots" aria-label="Servicios"><a href="#stands"><span>Stands</span><i></i></a><a href="#eventos"><span>Eventos corporativos</span><i></i></a><a href="#experiencias"><span>Experiencias de marca</span><i></i></a><a href="#renders"><span>Renders</span><i></i></a><a href="#grafico"><span>Diseño gráfico</span><i></i></a></nav>
+  <section class="pb__sv" id="stands" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">01 · 4 proyectos</span><h2>Stands</h2><p>Stands para ferias y congresos, del diseño al montaje.</p><a class="pb__go" href="servicios/stands.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:4"><a class="pbc" href="proyectos/06-stand-janssen-oncology.html"><div class="pbc__im"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div><h3>Janssen Oncology</h3><span class="pbc__k">Stand congreso</span></a><a class="pbc" href="proyectos/07-stand-truphone.html"><div class="pbc__im"><img src="assets/img/proyectos/07-stand-truphone.jpg" alt="Truphone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/TRUPHONE.JPG'"></div><h3>Truphone</h3><span class="pbc__k">Stand corporativo</span></a><a class="pbc" href="proyectos/09-stand-biohorizons.html"><div class="pbc__im"><img src="assets/img/proyectos/09-stand-biohorizons.jpg" alt="BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"></div><h3>BioHorizons</h3><span class="pbc__k">Stand institucional</span></a><a class="pbc" href="proyectos/08-stand-ti-medi-jvm.html"><div class="pbc__im"><img src="assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></div><h3>TI-MEDI / JVM</h3><span class="pbc__k">Stand comercial</span></a></div>
+  </section>
+  <section class="pb__sv" id="eventos" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">02 · 2 proyectos</span><h2>Eventos corporativos</h2><p>Presentaciones, convenciones y eventos de marca con producción integral.</p><a class="pb__go" href="servicios/eventos.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="proyectos/04-evento-corporativo-ntt-data.html"><div class="pbc__im"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"></div><h3>NTT DATA</h3><span class="pbc__k">Evento corporativo</span></a><a class="pbc" href="proyectos/02-evento-promocion-base4.html"><div class="pbc__im"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"></div><h3>BASE4</h3><span class="pbc__k">Evento de promoción</span></a></div>
+  </section>
+  <section class="pb__sv" id="experiencias" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">03 · 3 proyectos</span><h2>Experiencias de marca</h2><p>Pop-ups, markets y activaciones que se viven en primera persona.</p><a class="pb__go" href="servicios/experiencias.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:3"><a class="pbc" href="proyectos/01-taller-amona.html"><div class="pbc__im"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div><h3>Taller Amona</h3><span class="pbc__k">Experiencia de marca</span></a><a class="pbc" href="proyectos/05-pop-up-store-venca.html"><div class="pbc__im"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"></div><h3>Venca</h3><span class="pbc__k">Pop-up store</span></a><a class="pbc" href="proyectos/03-market-the-office-studio.html"><div class="pbc__im"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="The Office Studio" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"></div><h3>The Office Studio</h3><span class="pbc__k">Market</span></a></div>
+  </section>
+  <section class="pb__sv" id="renders" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">04 · 2 proyectos</span><h2>Renders</h2><p>Visualizaciones fotorrealistas para decidir antes de construir.</p><a class="pb__go" href="servicios.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/render-casa.jpg" alt="Vivienda unifamiliar" loading="lazy"></div><h3>Vivienda unifamiliar</h3><span class="pbc__k">Render exterior</span></a><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt="Interiorismo" loading="lazy"></div><h3>Interiorismo</h3><span class="pbc__k">Render interior</span></a></div>
+  </section>
+  <section class="pb__sv" id="grafico" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">05 · 2 proyectos</span><h2>Diseño gráfico</h2><p>Identidad, gráfica de stand y piezas de marca.</p><a class="pb__go" href="servicios/grafico.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-diseno-grafico-ceramica.jpg" alt="Colección cerámica" loading="lazy"></div><h3>Colección cerámica</h3><span class="pbc__k">Identidad y packaging</span></a><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/stand-launch.jpg" alt="Launch Studio" loading="lazy"></div><h3>Launch Studio</h3><span class="pbc__k">Gráfica de stand</span></a></div>
+  </section>
+</div>
+<script>
+(function(){var pb=document.getElementById('pb'),dots=document.getElementById('pb-dots'),ds=[].slice.call(dots.querySelectorAll('a')),sv=[].slice.call(pb.querySelectorAll('.pb__sv'));
+var t=function(){var on=-1,m=innerHeight*.5;sv.forEach(function(e,i){if(e.getBoundingClientRect().top<m)on=i});
+var r=pb.getBoundingClientRect(),inside=on>=0&&r.bottom>m;pb.dataset.tone=inside?sv[on].dataset.tone:'light';
+dots.classList.toggle('on',inside);dots.style.color=pb.dataset.tone==='dark'?'#F1F0E8':'#0b0b0b';ds.forEach(function(d,i){d.classList.toggle('on',i===on)})};
+var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;t()})},{passive:true});t();})();
+</script>
+<section class="cta">
+  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
+  <div class="wrap cta__in">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos de tu próximo proyecto.</h2>
+    <a class="btn btn--light" href="contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="servicios.html#stands">Stands</a></li><li><a href="servicios.html#eventos">Eventos corporativos</a></li><li><a href="servicios.html#experiencias">Experiencias de marca</a></li><li><a href="servicios.html#pop-up">Pop-up stores</a></li><li><a href="servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<script src="js/sitio.js?v=202611041102"></script>
+</body>
+</html>
