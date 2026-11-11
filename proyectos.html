@@ -49,15 +49,14 @@
 @media (max-width:520px){.pb__row{grid-template-columns:1fr}}
 </style>
 <style>
-.pc{min-height:100vh;padding:calc(var(--pcn,80px) + 40px) var(--pad) clamp(30px,5vh,56px);display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.pc{padding:calc(var(--pcn,80px) + clamp(28px,4vw,48px)) var(--pad) clamp(36px,5vw,64px);display:flex;flex-direction:column;gap:clamp(28px,4vw,56px)}
 .pc .k{font:400 11px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
 .pc__top{display:flex;justify-content:space-between;gap:30px}
 .pc__top .k:first-child{color:var(--red)}
 .pc__top .k:last-child{opacity:.5}
-.pc h1{font-weight:800;font-size:clamp(80px,19.5vw,360px);letter-spacing:-.085em;line-height:.8;margin:0 0 0 -.04em}
+.pc h1{font-weight:800;font-size:clamp(56px,9vw,150px);letter-spacing:-.075em;line-height:.85;margin:0 0 0 -.03em}
 .pc h1 span{color:var(--red)}
-.pc__bot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
-.pc__bot p{max-width:440px;color:var(--grey);font-size:17px;line-height:1.6;margin:0}
+.pc__bot{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:clamp(20px,2.4vw,30px)}
 .pc__sn{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 0;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
 .pc__sn>span{opacity:.5;margin-right:14px}
 .pc__sn a{position:relative;padding:2px 0;margin-right:22px;opacity:.75;color:inherit;text-decoration:none;transition:opacity .2s}
@@ -65,13 +64,12 @@
 .pc__sn a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .pc__sn a:hover{opacity:1}.pc__sn a:hover::after{transform:scaleX(1)}
 .pc__sn a sup{font-size:8px;margin-left:3px;opacity:.6}
-@media (max-width:860px){.pc{min-height:80vh}.pc h1{font-size:18vw}.pc__bot{grid-template-columns:1fr}.pc__top .k:last-child{display:none}}
+@media (max-width:860px){.pc h1{font-size:15vw}.pc__top .k:last-child{display:none}}
 </style>
 <section class="pc" id="pc">
   <div class="pc__top"><span class="k">Proyectos · 13 trabajos</span><span class="k">Barcelona · Presencia internacional</span></div>
-  <h1>Proyectos<span>.</span></h1>
   <div class="pc__bot">
-    <p>Stands, eventos y experiencias de marca que hemos diseñado y producido, del primer boceto al montaje.</p>
+    <h1>Proyectos<span>.</span></h1>
     <nav class="pc__sn" aria-label="Ir a un servicio"><span>Ver</span><a href="#stands">Stands<sup>4</sup></a><a href="#eventos">Eventos<sup>2</sup></a><a href="#experiencias">Experiencias<sup>3</sup></a><a href="#renders">Renders<sup>2</sup></a><a href="#grafico">Diseño gráfico<sup>2</sup></a></nav>
   </div>
 </section>
