@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diseño gráfico: merchandising (opciones) — Launch Studio</title>
+<meta name="description" content="Identidades visuales, presentaciones, catálogos y gráfica para stands y eventos: diseño gráfico que da personalidad a tu marca.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg?v=2" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=202611041102">
+<style>
+/* Subpágina de Diseño gráfico. Portada: el logo negro de Launch se construye sobre su retícula mientras bajas (bajar construye, subir deshace). */
+
+/* Subpágina de Diseño gráfico: cinco portadas en las que se construye el logo negro de Launch mientras bajas
+   (bajar avanza, subir retrocede). Debajo, la descripción del servicio y tres ejemplos. */
+:root{--bh:var(--nh,64px);--white:#F1F0E8;--paper:#F7F6F1;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto}
+
+.gp h1,.gp h2,.gp h3,.gp p,.gp figure{margin:0}.gp a{color:inherit;text-decoration:none}
+.gp img{display:block;width:100%;height:100%;object-fit:cover}
+.k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+
+/* portada */
+.sc{height:600vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;background:var(--paper)}
+.stage{position:absolute;inset:0}
+.ov{position:absolute;z-index:6}
+.ttl{left:var(--pad);top:clamp(22px,3vw,36px)}
+.ttl .k{opacity:.6}
+.ttl h1{font-weight:800;font-size:clamp(32px,4vw,68px);line-height:.88;letter-spacing:-.065em;margin-top:14px}
+.ttl h1 span{color:var(--red)}
+.cap{left:var(--pad);bottom:clamp(22px,3vw,40px);display:flex;gap:14px;align-items:baseline}
+.cap b{font:400 11px var(--mono);letter-spacing:.08em;color:var(--red);font-weight:400}
+.cap span{font-size:clamp(15px,1.3vw,19px)}
+.cap .s{display:flex;gap:14px;align-items:baseline;animation:sw .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sw{from{opacity:0;transform:translateY(8px)}}
+.hint{right:var(--pad);top:clamp(26px,3vw,40px);opacity:.55}
+.fin{right:var(--pad);bottom:clamp(22px,3vw,40px);text-align:right;opacity:0}
+.fin h2{font-weight:300;font-size:clamp(24px,2.6vw,42px);letter-spacing:-.04em}
+.fin p{margin-top:8px;opacity:.6}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+
+/* 1 · Construcción */
+.c1 .grid line{stroke:rgba(11,11,11,.07);stroke-width:1}
+.c1 .gd{fill:none;stroke:var(--red);stroke-width:1.2;stroke-dasharray:6 6}
+.c1 .gl{stroke:rgba(217,51,51,.55);stroke-width:1}
+.c1 .ol{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.c1 .pt{fill:#fff;stroke:var(--red);stroke-width:2}
+.c1 .ms{font:400 12px var(--mono);letter-spacing:.06em;fill:var(--red)}
+/* descripción y fotos */
+
+.desc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,110px);padding-block:clamp(60px,8vw,120px)}
+.desc h2{font-weight:400;font-size:clamp(30px,3.2vw,54px);line-height:1.04;letter-spacing:-.04em;margin-top:14px}
+.desc .k{color:var(--red)}
+.body p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--grey);max-width:36em}
+.body p+p{margin-top:1.1em}
+.body p.goal{margin-top:1.4em;padding-left:clamp(16px,2vw,26px);border-left:3px solid var(--red);font-weight:400;font-size:clamp(19px,1.6vw,24px);line-height:1.42;color:var(--ink)}
+.body p.goal b{font-weight:600;color:var(--red)}
+.galh{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-block:24px}
+.galh h2{font-weight:800;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.06em}
+.gal{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);aspect-ratio:2.1/1;margin-bottom:clamp(60px,8vw,110px)}
+.gal .ph{position:relative;overflow:hidden;border-radius:8px;background:#dddbd0}
+.gal .ph:first-child{grid-row:span 2}
+.gal .ph.mk{display:grid;place-items:center;background:#E9E4DA}
+.gal .ph.mk svg{height:42%;width:auto}
+.nextsv{display:block;border-top:1px solid var(--line);padding-block:clamp(40px,6vw,80px)}
+.nextsv .nm{display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:800;font-size:clamp(36px,6vw,104px);line-height:.92;letter-spacing:-.06em;margin-top:12px}
+.nextsv:hover .nm{color:var(--red)}
+.nextsv .nm i{flex:none;width:clamp(54px,6vw,96px);aspect-ratio:1;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:300;font-size:.36em}
+.sct{background:var(--ink);color:var(--white);padding:clamp(40px,5vw,64px) 0}
+.sct .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.sct h2{font-weight:300;font-size:clamp(28px,3.4vw,52px);letter-spacing:-.04em}.sct h2 b{font-weight:800}
+.sct a{display:inline-flex;padding:14px 26px;border-radius:999px;background:var(--red);color:#fff;font-weight:500}
+@media (max-width:820px){.desc{grid-template-columns:1fr}.gal{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.gal .ph{aspect-ratio:4/3}.gal .ph:first-child{grid-row:auto}.hint{display:none}.fin{left:var(--pad);right:auto;text-align:left;bottom:70px}}
+
+.gp .crumb a{opacity:.55}.gp .crumb a:hover{opacity:1;color:var(--red)}
+</style>
+<style id="nextsv-shared">
+.wrap:has(>a.nextsv){max-width:1320px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+.wrap>a.nextsv{display:block;text-decoration:none;color:#0b0b0b;border-top:1px solid rgba(11,11,11,.14);padding-block:clamp(40px,6vw,80px)}
+.wrap>a.nextsv .k{font:400 11px "DM Mono",ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#D93333}
+.wrap>a.nextsv .nm{display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:clamp(36px,6vw,104px);line-height:.92;letter-spacing:-.06em;margin-top:12px;color:#0b0b0b;transition:color .3s}
+.wrap>a.nextsv:hover .nm{color:#D93333}
+.wrap>a.nextsv .nm i{flex:none;width:clamp(54px,6vw,96px);aspect-ratio:1;border-radius:50%;background:#0b0b0b;color:#fff;display:grid;place-items:center;font-style:normal;font-weight:300;font-size:.36em;transition:background .3s,transform .5s cubic-bezier(.7,0,.2,1)}
+.wrap>a.nextsv:hover .nm i{background:#D93333;transform:rotate(-45deg)}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html" aria-current="page">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
+</header>
+
+<main class="gp">
+<section class="sc" id="sc" aria-label="El logo se construye mientras bajas">
+  <div class="pin" id="pin">
+    <div class="stage" id="stage"></div>
+    <div class="ov ttl"><nav class="k crumb"><a href="servicios.html">← Servicios</a> / Diseño gráfico</nav><h1>Del trazo<br><span>a la marca.</span></h1></div>
+    <p class="ov k hint" id="hint">Baja para construirlo ↓</p>
+    <div class="ov cap" id="cap" aria-live="polite"></div>
+    <div class="ov fin" id="fin"><h2>Identity in every detail.</h2><p class="k">Launch Studio · identidad visual</p></div>
+  </div>
+</section>
+<style>
+/* Opciones: el logo aplicado a merchandising, justo después de la portada */
+.ob{position:fixed;right:12px;top:calc(var(--obt,80px) + 12px);z-index:90;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding:6px;border-radius:14px;max-width:min(380px,calc(100vw - 24px));background:rgba(11,11,11,.92);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.ob a{color:#F1F0E8!important;text-decoration:none;border:1px solid rgba(241,240,232,.3);border-radius:999px;padding:6px 12px}
+.ob a[aria-current]{background:#F1F0E8;color:#0b0b0b!important}
+.mx{--mpad:clamp(20px,5vw,64px)}
+.mx .k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.mx .lg{transform-box:fill-box;transform-origin:50% 50%}
+.mx svg.it{display:block;width:100%;height:auto;overflow:visible}
+.mxh{max-width:1320px;margin:0 auto;padding:clamp(70px,9vw,130px) var(--mpad) clamp(30px,4vw,50px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,5vw,90px);align-items:end}
+.mxh .k{color:var(--red)}
+.mxh h2{font-weight:800;font-size:clamp(36px,5vw,84px);line-height:.9;letter-spacing:-.065em;margin-top:14px}
+.mxh h2 span{color:var(--red)}
+.mxh p{font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:var(--grey);max-width:34em}
+.tag{display:flex;flex-direction:column;gap:4px}
+.tag b{font-weight:600;font-size:clamp(15px,1.2vw,18px);letter-spacing:-.02em}
+.tag i{font:400 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;opacity:.6}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 1 · Bodegón */
+.m1{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
+.m1 .tl{position:relative;border-radius:10px;padding:clamp(16px,2vw,28px);display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1;overflow:hidden}
+.m1 .tl.big{grid-column:span 2;grid-row:span 2}
+.m1 .tl .ar{flex:1;display:grid;place-items:center;min-height:0}
+.m1 .tl .ar svg{max-height:100%;width:auto;max-width:86%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.m1 .tl:hover .ar svg{transform:scale(1.05) rotate(-2deg)}
+.bg-p{background:#E9E5DA;color:var(--ink)}.bg-r{background:var(--red);color:#F1F0E8}.bg-i{background:var(--ink);color:#F1F0E8}.bg-c{background:#F1F0E8;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)}
+
+/* 2 · Sello */
+.m2{position:relative}
+.m2 .pn{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);overflow:hidden}
+.m2 .lf{padding:clamp(30px,4vw,60px) var(--mpad);display:flex;flex-direction:column;justify-content:space-between;background:var(--paper)}
+.m2 .lf h2{font-weight:800;font-size:clamp(32px,3.8vw,64px);line-height:.9;letter-spacing:-.065em;margin-top:14px}
+.m2 .lf h2 span{color:var(--red)}
+.m2 ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.m2 li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .4s,padding .4s}
+.m2 li b{font-weight:600;font-size:clamp(15px,1.25vw,19px);letter-spacing:-.02em}
+.m2 li i{font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal}
+.m2 li.on{opacity:1;padding-left:14px}
+.m2 li.on b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:10px;vertical-align:middle}
+.m2 .st{position:relative;transition:background-color .7s;background:#E9E5DA}
+.m2 .o2{position:absolute;inset:8% 10%;display:grid;place-items:center;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .55s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.m2 .o2 svg{height:100%;width:auto;max-width:100%}
+.m2 .o2.on{opacity:1;transform:none}
+.m2 .o2.on .lg{animation:stamp .75s .3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2)}55%{opacity:1;transform:scale(.92)}100%{transform:scale(1)}}
+.m2 .cnt{position:absolute;right:var(--mpad);top:clamp(24px,3vw,40px);font:400 12px var(--mono);letter-spacing:.08em}
+.m2 .ink{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,36px)}
+
+/* 3 · Carrusel */
+.m3{position:relative}
+.m3 .pn{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:flex;align-items:center;background:var(--paper)}
+.m3 .tr{display:flex;gap:clamp(12px,1.4vw,20px);padding-inline:var(--mpad);will-change:transform}
+.m3 .pl{flex:none;width:clamp(280px,30vw,460px);height:min(72vh,620px);border-radius:12px;padding:clamp(18px,2vw,28px);display:flex;flex-direction:column;justify-content:space-between}
+.m3 .pl .ar{flex:1;display:grid;place-items:center;min-height:0;padding:6% 0}
+.m3 .pl .ar svg{height:100%;width:auto;max-width:100%}
+.m3 .pl .nb{display:flex;justify-content:space-between;font:400 11px var(--mono);letter-spacing:.08em}
+.m3 .pl.intro{width:clamp(300px,34vw,520px);background:transparent;padding-left:0;justify-content:flex-end}
+.m3 .pl.intro h2{font-weight:800;font-size:clamp(36px,4.6vw,80px);line-height:.88;letter-spacing:-.065em;margin:14px 0 18px}
+.m3 .pl.intro h2 span{color:var(--red)}
+.m3 .pl.intro p{color:var(--grey);line-height:1.65;max-width:26em}
+.m3 .bar{position:absolute;left:var(--mpad);right:var(--mpad);bottom:clamp(18px,3vh,30px);height:2px;background:var(--line)}
+.m3 .bar i{position:absolute;inset:0 auto 0 0;background:var(--red);width:0}
+
+/* 4 · Flat lay */
+.m4{position:relative;background:var(--red);color:#F1F0E8;height:clamp(760px,130vh,1250px);overflow:hidden}
+.m4 .ttl4{position:absolute;left:var(--mpad);top:clamp(50px,7vw,100px);z-index:3;max-width:520px}
+.m4 .ttl4 h2{font-weight:800;font-size:clamp(36px,5vw,84px);line-height:.88;letter-spacing:-.065em;margin-top:14px}
+.m4 .ttl4 p{margin-top:16px;line-height:1.65;opacity:.85;max-width:28em}
+.m4 .fl{position:absolute;will-change:transform}
+.m4 .fl svg{width:100%;height:auto;filter:drop-shadow(10px 16px 0 rgba(0,0,0,.14))}
+.m4 .fl .tg{position:absolute;white-space:nowrap;font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.m4 .leg{position:absolute;left:var(--mpad);right:var(--mpad);bottom:clamp(20px,3vw,36px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(241,240,232,.35);padding-top:14px;z-index:3}
+
+/* 5 · Manual de marca */
+.m5{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px)}
+.m5 .bx{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.3fr) minmax(0,.75fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.m5 .tb{border-right:1px solid var(--line);display:flex;flex-direction:column}
+.m5 .tb button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--line);font-weight:500;font-size:15px;transition:background .3s,color .3s}
+.m5 .tb button i{font:400 10px var(--mono);font-style:normal;opacity:.5}
+.m5 .tb button:hover{background:#F7F6F1}
+.m5 .tb button[aria-selected=true]{background:var(--ink);color:#F1F0E8}
+.m5 .tb button[aria-selected=true] i{color:var(--red);opacity:1}
+.m5 .dr{position:relative;aspect-ratio:1/1;max-height:640px;width:100%;background-color:#F7F6F1;background-image:linear-gradient(rgba(11,11,11,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,11,11,.06) 1px,transparent 1px);background-size:5% 5%;display:grid;place-items:center}
+.m5 .dr svg{width:82%;height:auto}
+.m5 .dr .gd5 rect,.m5 .dr .gd5 line{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 5}
+.m5 .dr .gd5 text{font:400 11px "DM Mono",monospace;fill:var(--red);letter-spacing:.04em}
+.m5 .dr .gd5{opacity:0;transition:opacity .6s .5s}
+.m5 .dr.in .gd5{opacity:1}
+.m5 .dr .art{transition:opacity .4s,transform .6s cubic-bezier(.2,.7,.2,1)}
+.m5 .dr.sw .art{opacity:0;transform:translateY(16px)}
+.m5 .sp{padding:clamp(18px,2vw,30px);display:flex;flex-direction:column;gap:18px}
+.m5 .sp h3{font-weight:800;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.05em;line-height:.95}
+.m5 dl{margin:0;display:grid;gap:0}
+.m5 dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.m5 dt{font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.55;padding-top:2px}
+.m5 dd{margin:0}
+.m5 .chips{display:flex;gap:8px;flex-wrap:wrap}
+.m5 .chip{display:flex;align-items:center;gap:6px;font:400 10px var(--mono)}
+.m5 .chip s{display:block;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(11,11,11,.18)}
+
+/* 6 · Escaparate */
+.m6{background:var(--ink);color:#F1F0E8}
+.m6 .mxh p{color:rgba(241,240,232,.65)}
+.m6 .sh{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(14px,2vw,30px)}
+.m6 .cell{position:relative;padding:clamp(30px,4vw,56px) 8% 0;border-bottom:6px solid #2a2a28;box-shadow:0 1px 0 rgba(241,240,232,.08);background:radial-gradient(60% 55% at 50% 0%,rgba(241,240,232,.13),transparent 70%);margin-bottom:clamp(40px,5vw,70px)}
+.m6 .cell svg{width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.m6 .cell:hover svg{transform:translateY(-14px)}
+.m6 .cell .tag{position:absolute;left:0;bottom:-46px;opacity:.55;transition:opacity .4s}
+.m6 .cell:hover .tag{opacity:1}
+.m6 .cell .tag i{color:var(--red);opacity:1}
+
+@media (max-width:820px){
+ .mxh{grid-template-columns:1fr}
+ .m1{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .m2 .pn{grid-template-columns:1fr;grid-template-rows:auto 1fr}.m2 ol{display:none}.m2 .lf{padding-block:20px}
+ .m4{height:auto;padding:90px var(--mpad) 110px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.m4 .ttl4,.m4 .leg{position:static;grid-column:1/-1}.m4 .fl{position:relative;left:auto!important;top:auto!important;width:auto!important}.m4 .fl .tg{display:none}
+ .m5 .bx{grid-template-columns:1fr}.m5 .tb{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}.m5 .tb button{white-space:nowrap;border-bottom:0;border-right:1px solid var(--line)}
+ .m6 .sh{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+<nav class="ob" aria-label="Opciones de merchandising"><a href="?m=1">1 · Bodegón</a><a href="?m=2">2 · Sello</a><a href="?m=3">3 · Carrusel</a><a href="?m=4">4 · Flat lay</a><a href="?m=5">5 · Manual</a><a href="?m=6">6 · Escaparate</a></nav>
+<section class="mx" id="mx" aria-label="Logo aplicado a merchandising"></section>
+<script>
+(function(){
+var VB='440 260 1110 1470',D='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
+var INK='#0b0b0b',RED='#D93333',CR='#F1F0E8',SK='rgba(11,11,11,.2)';
+var cl=function(x){return Math.max(0,Math.min(1,x))};
+// logo dentro de un objeto: x,y esquina, h altura
+var lg=function(x,y,h,c,extra){var w=h*1110/1470;return '<g class="lg"'+(extra||'')+'><svg x="'+x+'" y="'+y+'" width="'+w.toFixed(1)+'" height="'+h+'" viewBox="'+VB+'"><path d="'+D+'" fill="'+c+'"/><circle cx="1288" cy="1467" r="237" fill="'+c+'"/></svg></g>'};
+var sh='<ellipse cx="200" cy="372" rx="125" ry="11" fill="rgba(0,0,0,.13)"/>';
+var svg=function(b,noShadow){return '<svg class="it" viewBox="0 0 400 400" aria-hidden="true">'+(noShadow?'':sh)+b+'</svg>'};
+var I={
+ tee:{n:'Camiseta',t:'Serigrafía a una tinta',u:'Pecho izquierdo',s:'9 cm',L:[218,128,54],c:{b:INK,l:CR},f:function(c,L){return '<path d="M150 62 L104 78 L40 128 L78 196 L116 176 L116 352 L284 352 L284 176 L322 196 L360 128 L296 78 L250 62 Q200 98 150 62Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M150 62 Q200 98 250 62" fill="none" stroke="rgba(127,127,127,.45)" stroke-width="4"/><path d="M116 176 L116 214 M284 176 L284 214" stroke="rgba(127,127,127,.25)" stroke-width="2"/><path d="M116 336 L284 336" stroke="rgba(127,127,127,.2)" stroke-width="2"/>'+lg(L[0],L[1],L[2],c.l)}},
+ cap:{n:'Gorra',t:'Bordado frontal',u:'Panel frontal, centrado',s:'6 cm',L:[176,146,66],c:{b:RED,l:CR},f:function(c,L){return '<path d="M92 262 C92 150 140 104 200 104 C260 104 308 150 308 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M200 106 C196 160 196 220 200 262 M200 106 C158 130 140 190 136 262 M200 106 C242 130 260 190 264 262" stroke="rgba(0,0,0,.16)" fill="none" stroke-width="2"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="rgba(0,0,0,.2)"/><circle cx="200" cy="106" r="8" fill="'+c.b+'" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],c.l)}},
+ mug:{n:'Taza',t:'Impresión cerámica',u:'Frontal, centrado',s:'7 cm',L:[175,174,82],c:{b:CR,l:INK},f:function(c,L){return '<path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+c.b+'" stroke-width="22"/><path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+SK+'" stroke-width="22" stroke-opacity=".35" style="mix-blend-mode:multiply"/><rect x="120" y="108" width="170" height="234" rx="16" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><ellipse cx="205" cy="112" rx="83" ry="9" fill="rgba(0,0,0,.22)"/><rect x="134" y="124" width="14" height="200" rx="7" fill="rgba(255,255,255,.35)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ tote:{n:'Tote bag',t:'Serigrafía sobre algodón',u:'Frontal, centrado',s:'22 cm',L:[164,206,98],c:{b:'#E4DCCB',l:INK},f:function(c,L){return '<path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="'+c.b+'" stroke-width="14"/><path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="14"/><path d="M96 150 L304 150 L316 366 L84 366Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M96 150 L304 150 L303 168 L97 168Z" fill="rgba(0,0,0,.07)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ badge:{n:'Acreditación',t:'Impresión digital y lanyard',u:'Cabecera y centro',s:'4 cm',L:[178,214,60],c:{b:CR,l:INK,a:RED},f:function(c,L){return '<path d="M150 -20 L190 128 M250 -20 L210 128" stroke="'+c.a+'" stroke-width="14"/><rect x="186" y="116" width="28" height="28" rx="4" fill="#9b9b97"/><rect x="118" y="136" width="164" height="232" rx="12" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M118 148 a12 12 0 0 1 12 -12 h140 a12 12 0 0 1 12 12 v44 h-164Z" fill="'+c.a+'"/><rect x="180" y="148" width="40" height="8" rx="4" fill="rgba(0,0,0,.28)"/>'+lg(L[0],L[1],L[2],c.l)+'<text x="200" y="314" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="800" font-size="22" letter-spacing="-1" fill="'+c.l+'">Visitante</text><text x="200" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.4" fill="'+c.l+'" opacity=".6">LAUNCH STUDIO · 2026</text>'}},
+ cards:{n:'Tarjetas de visita',t:'Offset y stamping',u:'Anverso, esquina',s:'2 cm',L:[96,146,44],c:{},f:function(c,L){return '<g transform="rotate(-9 200 190)"><rect x="66" y="118" width="252" height="148" rx="6" fill="'+INK+'" stroke="rgba(241,240,232,.22)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],CR)+'<text x="96" y="246" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.6" fill="'+CR+'" opacity=".75">LAUNCH STUDIO</text></g><g transform="rotate(5 230 250)"><rect x="96" y="194" width="252" height="148" rx="6" fill="'+CR+'" stroke="'+SK+'" stroke-width="1.5"/><text x="122" y="244" font-family="Poppins,sans-serif" font-weight="800" font-size="19" letter-spacing="-.8" fill="'+INK+'">Launch Studio</text><text x="122" y="264" font-family="DM Mono,monospace" font-size="9" letter-spacing=".8" fill="'+INK+'" opacity=".6">Stands · Eventos · Diseño</text><text x="122" y="318" font-family="DM Mono,monospace" font-size="8.5" fill="'+INK+'" opacity=".6">info@launchstudiogroup.com</text>'+lg(300,212,36,RED)+'</g>'}},
+ note:{n:'Libreta',t:'Grabado en seco',u:'Portada, centrado',s:'5 cm',L:[170,152,92],c:{b:INK,a:RED},f:function(c,L){return '<rect x="112" y="56" width="186" height="292" rx="10" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="112" y="56" width="16" height="292" rx="6" fill="rgba(255,255,255,.07)"/><rect x="264" y="56" width="11" height="292" fill="'+c.a+'"/>'+lg(L[0]+1.6,L[1]+1.6,L[2],'rgba(255,255,255,.13)')+lg(L[0],L[1],L[2],'#030303')}},
+ bottle:{n:'Botella',t:'Grabado láser',u:'Cuerpo, centrado',s:'4 cm',L:[180,200,54],c:{b:'#C9CAC5',l:INK},f:function(c,L){return '<rect x="176" y="50" width="48" height="52" rx="9" fill="'+INK+'"/><rect x="184" y="98" width="32" height="16" fill="#8f908b"/><rect x="160" y="110" width="80" height="252" rx="30" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="171" y="132" width="10" height="206" rx="5" fill="rgba(255,255,255,.45)"/><rect x="222" y="132" width="6" height="206" rx="3" fill="rgba(0,0,0,.08)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ stick:{n:'Pegatinas',t:'Vinilo troquelado',u:'Pieza completa',s:'6 cm',L:[120,128,82],c:{},f:function(c,L){return '<g transform="rotate(-10 165 316)"><rect x="110" y="262" width="110" height="110" rx="24" fill="'+INK+'" stroke="#fff" stroke-width="6"/>'+lg(142,286,62,RED)+'</g><circle cx="262" cy="248" r="68" fill="'+CR+'" stroke="#fff" stroke-width="6"/><circle cx="262" cy="248" r="71" fill="none" stroke="'+SK+'" stroke-width="1"/>'+lg(237,214,68,INK)+'<circle cx="150" cy="168" r="80" fill="'+RED+'" stroke="#fff" stroke-width="6"/>'+lg(L[0],L[1],L[2],CR)+'<path d="M205 226 Q190 214 214 206 Z" fill="#f4f1ea"/>'}}
+};
+var K=['tee','cap','mug','tote','badge','cards','note','bottle','stick'];
+var draw=function(k,ov,noShadow){var it=I[k],c={};for(var a in it.c)c[a]=it.c[a];for(a in (ov||{}))c[a]=ov[a];return svg(it.f(c,it.L),noShadow)};
+var tag=function(k){return '<div class="tag"><b>'+I[k].n+'</b><i>'+I[k].t+'</i></div>'};
+var head=function(cls){return '<div class="mxh rv'+(cls?' '+cls:'')+'"><div><span class="k">Aplicaciones · Merchandising</span><h2>La marca, <span>en cada objeto.</span></h2></div><p>Una identidad funciona cuando se reconoce en todas partes: en una camiseta, en una acreditación o en una taza. Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'};
+var M=new URLSearchParams(location.search).get('m')||'1';
+document.querySelectorAll('.ob a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+var nav=document.getElementById('nav');document.documentElement.style.setProperty('--obt',(nav?nav.offsetHeight:64)+'px');
+var mx=document.getElementById('mx'),h='',upd=function(){};
+var sp=function(el){var bh=nav?nav.offsetHeight:0,r=el.getBoundingClientRect(),hh=r.height-(innerHeight-bh);return hh>0?cl((bh-r.top)/hh):0};
+
+if(M==='1'){
+ var BG={tee:'bg-p',cap:'bg-c',mug:'bg-i',tote:'bg-p',badge:'bg-c',cards:'bg-r',note:'bg-p',bottle:'bg-c',stick:'bg-p'};
+ var OV={mug:{b:CR,l:INK},cards:{}};
+ h=head()+'<div class="m1">'+K.map(function(k,i){return '<div class="tl rv '+BG[k]+(i===0?' big':'')+'" style="transition-delay:'+(i%4)*.08+'s"><div class="ar">'+draw(k,null,true)+'</div>'+tag(k)+'</div>'}).join('')+'</div>';
+}
+if(M==='2'){
+ var S2=['tee','cap','tote','badge','mug','note','cards'],BG2={tee:'#E9E5DA',cap:'#0b0b0b',tote:'#D93333',badge:'#E9E5DA',mug:'#0b0b0b',note:'#D93333',cards:'#E9E5DA'},OV2={cap:{b:RED,l:CR},tote:{b:'#F1F0E8'},note:{b:INK,a:CR},badge:{a:RED}};
+ h='<div class="m2" id="m2" style="height:'+(S2.length*75+60)+'vh"><div class="pn"><div class="lf"><div><span class="k" style="color:var(--red)">Aplicaciones · Merchandising</span><h2>La marca,<br><span>en cada objeto.</span></h2></div><ol>'+S2.map(function(k){return '<li><b>'+I[k].n+'</b><i>'+I[k].t+'</i></li>'}).join('')+'</ol></div><div class="st" id="st2">'+S2.map(function(k){return '<div class="o2">'+draw(k,OV2[k])+'</div>'}).join('')+'<span class="cnt" id="cnt2">01 / 0'+S2.length+'</span></div></div></div>';
+ upd=function(){var el=document.getElementById('m2'),p=sp(el),i=Math.min(S2.length-1,Math.floor(p*S2.length*0.999)),st=document.getElementById('st2');
+  if(st.dataset.i==i)return;st.dataset.i=i;st.style.backgroundColor=BG2[S2[i]];
+  var dk=BG2[S2[i]]==='#0b0b0b'||BG2[S2[i]]==='#D93333';document.getElementById('cnt2').style.color=dk?CR:INK;document.getElementById('cnt2').textContent='0'+(i+1)+' / 0'+S2.length;
+  st.querySelectorAll('.o2').forEach(function(o,j){o.classList.toggle('on',j===i)});el.querySelectorAll('li').forEach(function(l,j){l.classList.toggle('on',j===i)})};
+}
+if(M==='3'){
+ var BG3=['bg-i','bg-p','bg-r','bg-c','bg-p','bg-i','bg-r','bg-c','bg-p'],OV3={tee:{b:CR,l:INK},cap:{b:INK,l:CR},tote:{b:'#F1F0E8'},badge:{a:INK},note:{a:RED},mug:{b:CR,l:RED}};
+ var ord=['tee','mug','cap','tote','badge','note','cards','bottle','stick'];
+ h='<div class="m3" id="m3" style="height:420vh"><div class="pn"><div class="tr" id="tr3"><div class="pl intro"><span class="k" style="color:var(--red)">Aplicaciones · Merchandising</span><h2>La marca, <span>en cada objeto.</span></h2><p>Una identidad funciona cuando se reconoce en todas partes. Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'+ord.map(function(k,i){return '<div class="pl '+BG3[i]+'"><div class="nb"><span>0'+(i+1)+'</span><span>'+I[k].u+'</span></div><div class="ar">'+draw(k,OV3[k],true)+'</div>'+tag(k)+'</div>'}).join('')+'</div><div class="bar"><i id="bar3"></i></div></div></div>';
+ upd=function(){var el=document.getElementById('m3'),tr=document.getElementById('tr3'),p=sp(el),mxw=tr.scrollWidth-innerWidth;tr.style.transform='translateX('+(-p*mxw).toFixed(1)+'px)';document.getElementById('bar3').style.width=(p*100)+'%'};
+}
+if(M==='4'){
+ // posición (left%, top%, ancho vw, giro, velocidad parallax)
+ var P4=[['tee',54,6,24,-8,-.18,{b:INK,l:CR}],['cap',80,4,15,14,.12,{b:INK,l:RED}],['cards',30,44,21,6,.08],['mug',73,40,13,-6,-.1,{b:CR,l:RED}],['tote',4,52,19,-12,.16,{b:'#F1F0E8',l:INK}],['badge',52,50,15,9,-.06,{b:CR,l:INK,a:INK}],['note',83,58,13,-14,.2,{b:INK,a:CR}],['stick',24,74,15,10,-.14],['bottle',66,68,10,22,.1,{b:CR,l:INK}]];
+ h='<div class="m4" id="m4"><div class="ttl4 rv"><span class="k">Aplicaciones · Merchandising</span><h2>La marca,<br>en cada objeto.</h2><p>Camisetas, gorras, acreditaciones, papelería… Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'+P4.map(function(x){return '<div class="fl" data-v="'+x[5]+'" data-r="'+x[4]+'" style="left:'+x[1]+'%;top:'+x[2]+'%;width:'+x[3]+'vw;max-width:'+(x[3]*14)+'px">'+draw(x[0],x[6],true)+'</div>'}).join('')+'<div class="leg k">'+P4.map(function(x){return '<span>'+I[x[0]].n+'</span>'}).join('<span style="opacity:.4">/</span>')+'</div></div>';
+ upd=function(){var el=document.getElementById('m4'),r=el.getBoundingClientRect(),p=(innerHeight-r.top)/(innerHeight+r.height)-.5,mob=innerWidth<=820;
+  el.querySelectorAll('.fl').forEach(function(f){f.style.transform=mob?'rotate('+f.dataset.r+'deg)':'translateY('+(p*f.dataset.v*innerHeight*1.4).toFixed(1)+'px) rotate('+(+f.dataset.r+p*f.dataset.v*30).toFixed(1)+'deg)'})};
+}
+if(M==='5'){
+ var S5=['tee','cap','mug','tote','badge','note','bottle'];
+ var INKS={tee:[[INK,'Negro 0B0B0B'],[CR,'Crema F1F0E8']],cap:[[RED,'Rojo D93333'],[CR,'Hilo crema']],mug:[[CR,'Blanco cerámico'],[INK,'Negro 0B0B0B']],tote:[['#E4DCCB','Algodón natural'],[INK,'Negro 0B0B0B']],badge:[[RED,'Rojo D93333'],[INK,'Negro 0B0B0B'],[CR,'Crema F1F0E8']],note:[[INK,'Polipiel negra'],[RED,'Goma roja']],bottle:[['#C9CAC5','Acero'],[INK,'Grabado']]};
+ var SUP={tee:'Algodón 180 g',cap:'Sarga de algodón',mug:'Cerámica 330 ml',tote:'Algodón 220 g',badge:'PVC + lanyard 20 mm',note:'Libreta A5 tapa dura',bottle:'Acero inoxidable 500 ml'};
+ h=head()+'<div class="m5 rv"><div class="bx"><div class="tb" role="tablist">'+S5.map(function(k,i){return '<button role="tab" aria-selected="'+(i?'false':'true')+'" data-k="'+k+'"><i>0'+(i+1)+'</i>'+I[k].n+'</button>'}).join('')+'</div><div class="dr" id="dr5"></div><div class="sp" id="sp5"></div></div></div>';
+ var show=function(k){var it=I[k],L=it.L,w=L[2]*1110/1470,x2=L[0]+w,y2=L[1]+L[2],g='<g class="gd5"><rect x="'+(L[0]-6)+'" y="'+(L[1]-6)+'" width="'+(w+12)+'" height="'+(L[2]+12)+'"/><line x1="'+(L[0]-6)+'" y1="'+(L[1]-22)+'" x2="'+(x2+6)+'" y2="'+(L[1]-22)+'"/><text x="'+(L[0]-6)+'" y="'+(L[1]-28)+'">'+it.s+'</text><line x1="'+(x2+22)+'" y1="'+(L[1]-6)+'" x2="'+(x2+22)+'" y2="'+(y2+6)+'"/><line x1="'+(x2+6)+'" y1="'+(L[1]+L[2]/2)+'" x2="392" y2="'+(L[1]+L[2]/2)+'"/><text x="'+(x2+30)+'" y="'+(L[1]+L[2]/2-6)+'">eje</text></g>';
+  var dr=document.getElementById('dr5');dr.classList.add('sw');dr.classList.remove('in');
+  setTimeout(function(){dr.innerHTML='<svg viewBox="0 0 400 400" aria-hidden="true" style="overflow:visible"><g class="art">'+draw(k).replace(/^<svg[^>]*>|<\/svg>$/g,'')+'</g>'+g+'</svg>';dr.classList.remove('sw');requestAnimationFrame(function(){dr.classList.add('in')})},dr.innerHTML?260:0);
+  document.getElementById('sp5').innerHTML='<span class="k" style="color:var(--red)">Ficha de aplicación</span><h3>'+it.n+'</h3><dl><div><dt>Soporte</dt><dd>'+SUP[k]+'</dd></div><div><dt>Técnica</dt><dd>'+it.t+'</dd></div><div><dt>Ubicación</dt><dd>'+it.u+'</dd></div><div><dt>Tamaño logo</dt><dd>'+it.s+' de alto</dd></div><div><dt>Colores</dt><dd><div class="chips">'+INKS[k].map(function(c){return '<span class="chip"><s style="background:'+c[0]+'"></s>'+c[1]+'</span>'}).join('')+'</div></dd></div></dl>'};
+ setTimeout(function(){var bs=mx.querySelectorAll('.tb button');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-selected',x===b)});show(b.dataset.k)})});show(S5[0])});
+}
+if(M==='6'){
+ var OV6={tee:{b:CR,l:INK},mug:{b:CR,l:RED},tote:{b:'#E4DCCB'},cap:{b:RED,l:CR},note:{b:'#1c1c1b',a:RED},badge:{a:RED},bottle:{b:'#C9CAC5'}};
+ h='<div class="m6">'+head()+'<div class="sh">'+K.map(function(k,i){return '<div class="cell rv" style="transition-delay:'+(i%3)*.1+'s">'+draw(k,OV6[k],true)+tag(k)+'</div>'}).join('')+'</div></div>';
+}
+mx.innerHTML=h;
+var rv=mx.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.12});rv.forEach(function(e){ob.observe(e)})}else rv.forEach(function(e){e.classList.add('in')});
+var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;upd()})},{passive:true});addEventListener('resize',upd);upd();
+})();
+</script>
+
+<div class="wrap desc">
+  <div><span class="k">05 · Identity in every detail</span><h2>Diseño gráfico que da personalidad a tu marca</h2></div>
+  <div class="body">
+    <p>En Launch Studio diseñamos piezas gráficas que transmiten la esencia de tu marca y le dan una identidad propia. Creamos diseños cuidados y coherentes, pensados para comunicar lo que quieres transmitir y conectar con las personas a las que te diriges.</p>
+    <p>Cada proyecto empieza por entender tus necesidades y lo que quieres conseguir. A partir de ahí, trabajamos la tipografía, los colores, las imágenes y la composición para crear una propuesta visual que encaje con tu marca y con el mensaje que quieres comunicar.</p>
+    <p>Diseñamos desde presentaciones, catálogos y papelería corporativa hasta materiales gráficos para stands y eventos, adaptándonos a cada proyecto y cuidando cada detalle para que todo siga una misma línea visual.</p>
+    <p class="goal"><b>¿El objetivo?</b> Que tu marca tenga una imagen reconocible, transmita lo que quieres y mantenga su personalidad en cada soporte y punto de contacto.</p>
+  </div>
+</div>
+<div class="wrap">
+  <a class="nextsv" href="servicios/stands.html"><span class="k">Siguiente servicio</span><span class="nm">Stands<i>→</i></span></a>
+</div>
+<style>.cta--slim{padding-block:clamp(48px,6vw,86px)}.cta--slim .cta__words{font-size:clamp(110px,15vw,230px)}.cta--slim .cta__in{gap:18px}</style>
+<section class="cta cta--slim">
+  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
+  <div class="wrap cta__in">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos de tu próximo proyecto.</h2>
+    <a class="btn btn--light" href="contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="servicios.html#stands">Stands</a></li><li><a href="servicios.html#eventos">Eventos corporativos</a></li><li><a href="servicios/experiencias.html">Experiencias de marca</a></li><li><a href="servicios.html#pop-up">Pop-up stores</a></li><li><a href="servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<script src="js/sitio.js?v=202611041102"></script>
+<script>
+(function(){
+  var D='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z',CX=1288,CY=1467,CR=237,VB='440 260 1110 1470';
+  var NS='http://www.w3.org/2000/svg',INK='#0b0b0b';
+  var logo=function(h,f){return '<svg viewBox="'+VB+'" style="height:'+h+';width:auto" aria-hidden="true"><path d="'+D+'" fill="'+(f||INK)+'"/><circle cx="'+CX+'" cy="'+CY+'" r="'+CR+'" fill="'+(f||INK)+'"/></svg>'};
+  
+  var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)};
+  var M='1';
+  var stage=document.getElementById('stage'),pin=document.getElementById('pin');pin.classList.add('c'+M);
+  // el logo ocupa el centro de la portada: coordenadas del dibujo (1600 × 1000) con el logo a 640 de alto
+  var S=640/1470,TX=800-(440+1110/2)*S,TY=500-(260+1470/2)*S+30,LT='translate('+TX.toFixed(1)+' '+TY.toFixed(1)+') scale('+S.toFixed(4)+')';
+  var PH={
+   1:[[0,'01','La retícula'],[.14,'02','Las proporciones'],[.3,'03','El trazado'],[.52,'04','La forma'],[.64,'05','El punto'],[.8,'06','La marca']],
+   2:[[0,'01','Los puntos'],[.3,'02','La forma'],[.62,'03','La trama'],[.82,'04','La marca']],
+   3:[[0,'01','Cian'],[.12,'02','Magenta'],[.24,'03','Amarillo'],[.36,'04','Negro'],[.5,'05','El registro'],[.8,'06','La marca']],
+   4:[[0,'01','La marca'],[.3,'02','Papelería'],[.55,'03','Cada soporte'],[.8,'04','Una misma línea']],
+   5:[[0,'01','El boceto'],[.3,'02','Las correcciones'],[.55,'03','El vector'],[.8,'04','La marca']]};
+  var draw=function(){};
+
+  if(M==='1'){
+    var g='<svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet"><g class="grid" id="grid">';
+    for(var x=0;x<=1600;x+=40)g+='<line x1="'+x+'" y1="0" x2="'+x+'" y2="1000"/>';for(var y=0;y<=1000;y+=40)g+='<line x1="0" y1="'+y+'" x2="1600" y2="'+y+'"/>';
+    g+='</g><g transform="'+LT+'"><g id="gd"><circle class="gd" cx="'+CX+'" cy="'+CY+'" r="353" vector-effect="non-scaling-stroke" pathLength="1"/><circle class="gd" cx="'+CX+'" cy="'+CY+'" r="'+CR+'" vector-effect="non-scaling-stroke"/><circle class="gd" cx="935" cy="1230" r="473" vector-effect="non-scaling-stroke"/>'+
+      '<line class="gl" x1="462" y1="120" x2="462" y2="1850" vector-effect="non-scaling-stroke"/><line class="gl" x1="935" y1="120" x2="935" y2="1850" vector-effect="non-scaling-stroke"/><line class="gl" x1="300" y1="283" x2="1650" y2="283" vector-effect="non-scaling-stroke"/><line class="gl" x1="300" y1="1703" x2="1650" y2="1703" vector-effect="non-scaling-stroke"/>'+
+      '<text class="ms" x="600" y="230" style="font-size:44px">473</text><text class="ms" x="1060" y="1080" style="font-size:44px">r 237</text><text class="ms" x="250" y="1000" style="font-size:44px">1420</text></g>'+
+      '<path id="fill" d="'+D+'" fill="'+INK+'" opacity="0"/><path id="ol" class="ol" d="'+D+'" pathLength="1" vector-effect="non-scaling-stroke"/>'+
+      '<g id="pts">'+[[462,283],[935,283],[935,1467],[1027,1703],[935,1703],[462,1230]].map(function(p){return '<rect class="pt" x="'+(p[0]-18)+'" y="'+(p[1]-18)+'" width="36" height="36" vector-effect="non-scaling-stroke"/>'}).join('')+
+      '<line class="gl" x1="935" y1="1467" x2="935" y2="1640" vector-effect="non-scaling-stroke"/><circle class="pt" cx="935" cy="1640" r="14" vector-effect="non-scaling-stroke"/><line class="gl" x1="462" y1="1230" x2="462" y2="1500" vector-effect="non-scaling-stroke"/><circle class="pt" cx="462" cy="1500" r="14" vector-effect="non-scaling-stroke"/></g>'+
+      '<circle id="dot" cx="'+CX+'" cy="'+CY+'" r="'+CR+'" fill="'+INK+'"/></g></svg>';
+    stage.innerHTML=g;
+    var q=function(s){return stage.querySelector(s)},grid=q('#grid'),gd=q('#gd'),ol=q('#ol'),fill=q('#fill'),pts=q('#pts'),dot=q('#dot');
+    draw=function(p){grid.style.opacity=cl(p/.08)*(1-.7*cl((p-.75)/.15));gd.style.opacity=cl((p-.12)/.08)*(1-cl((p-.68)/.1));
+      ol.style.setProperty('--d',io(cl((p-.28)/.22)).toFixed(4));pts.style.opacity=cl((p-.32)/.04)*(1-cl((p-.5)/.06));
+      var f=io(cl((p-.5)/.12));fill.setAttribute('opacity',f.toFixed(3));ol.style.opacity=1-f*.9;
+      var d=cl((p-.62)/.14),y=(1-io(d))*-1600;dot.setAttribute('transform','translate(0 '+y.toFixed(1)+')');dot.style.opacity=d>0?1:0};
+  }
+
+  var cap=document.getElementById('cap'),fin=document.getElementById('fin'),hint=document.getElementById('hint'),sec=document.getElementById('sc'),cur=-1,last=0,ph=PH[M];
+  var prog=function(){var bh=(document.getElementById('nav')||{offsetHeight:0}).offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  function frame(p){last=p;draw(p);var k=0;ph.forEach(function(x,i){if(p>=x[0])k=i});
+    if(k!==cur){cur=k;cap.innerHTML='<div class="s"><b>'+ph[k][1]+'</b><span>'+ph[k][2]+'</span></div>'}
+    fin.style.opacity=cl((p-.9)/.06);hint.style.opacity=1-cl(p/.03)}
+  var setBh=function(){document.documentElement.style.setProperty('--nh',(document.getElementById('nav')||{offsetHeight:0}).offsetHeight+'px')};setBh();addEventListener('resize',setBh);
+  var tgt=0,now=0,raf=0;
+  function loop(){now+=(tgt-now)*.2;if(Math.abs(tgt-now)<.0005)now=tgt;frame(now);raf=now!==tgt?requestAnimationFrame(loop):0}
+  addEventListener('scroll',function(){tgt=prog();if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
+  addEventListener('resize',function(){frame(last)});
+  var FIX=new URLSearchParams(location.search).get('p');tgt=now=FIX!==null?+FIX:prog();frame(now);
+})();
+</script>
+</body>
+</html>
