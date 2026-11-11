@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos: presentación de producto — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Cinco portadas para Eventos corporativos. Bajar avanza, subir retrocede. ?m=1..5, ?p=0..1 fija el momento */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--sand:#E7E1D6;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{color:inherit;text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.sc{height:600vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:grid;place-items:center}
+.k{font:400 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.crumb{position:absolute;left:var(--pad);top:clamp(20px,3vw,32px);z-index:9;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.side{position:absolute;left:var(--pad);bottom:clamp(30px,6vh,60px);max-width:min(420px,80vw);z-index:9}
+.side h1{font-weight:300;font-size:clamp(28px,3vw,50px);letter-spacing:-.04em;line-height:1.04}
+.side h1 b{font-weight:800;letter-spacing:-.06em}
+.side p{margin-top:14px;color:var(--grey);font-size:16px;line-height:1.55}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+svg{overflow:visible}
+
+.tube{display:block;height:100%;width:auto;overflow:visible}
+/* 1 · Se abre el telón */
+.e1 .pin{background:#EAE2D6}
+.e1 .stage{position:relative;width:min(1100px,94vw);height:min(620px,72vh)}
+.e1 .wall{position:absolute;inset:0 0 16% 0;background:linear-gradient(#efe8dd,#e1d6c6);overflow:hidden}
+.e1 .scr{position:absolute;left:20%;right:20%;top:12%;height:34%;background:#151515;border-radius:3px;display:grid;place-items:center;color:#fff;overflow:hidden;box-shadow:0 0 0 7px #262626}
+.e1 .scr .in{text-align:center;opacity:0}
+.e1 .scr h2{font-weight:800;font-size:clamp(26px,4vw,64px);letter-spacing:-.065em;line-height:.9;margin-top:8px}
+.e1 .scr h2 span{color:var(--red)}
+.e1 .ped{position:absolute;left:50%;bottom:16%;width:15%;height:13%;transform:translateX(-50%);background:linear-gradient(90deg,#e9e3d8,#fff 45%,#d9d1c3);z-index:2}
+.e1 .ped::before{content:"";position:absolute;left:-6%;right:-6%;top:-8px;height:9px;background:#f6f2ea}
+.e1 .pr{position:absolute;left:50%;bottom:29%;height:24%;transform:translateX(-50%);z-index:2;filter:drop-shadow(0 18px 18px rgba(0,0,0,.25))}
+.e1 .floor{position:absolute;left:-4%;right:-4%;bottom:0;height:17%;background:linear-gradient(#b99c79,#94785a);clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
+.e1 .cur{position:absolute;top:0;bottom:16%;width:51%;background:repeating-linear-gradient(90deg,#a3221d 0,#d53a33 3%,#b8261f 6%,#8f1c18 8.5%,#a3221d 10%);box-shadow:inset 0 -40px 60px rgba(0,0,0,.25);z-index:3}
+.e1 .cur.l{left:0;transform-origin:0 0}.e1 .cur.r{right:0;transform-origin:100% 0}
+.e1 .val{position:absolute;left:0;right:0;top:0;height:8%;background:repeating-linear-gradient(90deg,#8f1c18 0,#c4302a 2.5%,#8f1c18 5%);z-index:4;border-bottom:3px solid #6d1612}
+.e1 .cone{position:absolute;top:-6%;width:46%;height:112%;left:27%;background:conic-gradient(from 166deg at 50% 0,transparent 0deg,rgba(255,240,215,.6) 9deg,rgba(255,240,215,.6) 19deg,transparent 28deg);mix-blend-mode:screen;opacity:0;z-index:2;pointer-events:none}
+.e1 .aud{position:absolute;left:-4%;right:-4%;bottom:-4%;width:108%;height:13%;z-index:6}
+
+/* 2 · La pantalla LED */
+.e2 .pin{background:var(--sand)}
+.e2 .wallw{position:relative;width:min(1000px,90vw);aspect-ratio:16/9;max-height:66vh;background:#141414;border-radius:6px;box-shadow:0 0 0 10px #232323,0 40px 80px rgba(60,40,20,.25)}
+.e2 canvas{position:absolute;inset:0;width:100%;height:100%}
+.e2 .legs{position:absolute;left:12%;right:12%;bottom:-14%;height:14%;display:flex;justify-content:space-between}
+.e2 .legs i{width:10px;background:#232323}
+
+/* 3 · Escaleta del lanzamiento */
+.e3 .pin{background:var(--white)}
+.e3 .wrap{position:relative;width:min(1180px,92vw);display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.e3 .clk{font-weight:800;font-size:clamp(90px,15vw,250px);letter-spacing:-.07em;line-height:.8;font-variant-numeric:tabular-nums}
+.e3 .clk span{color:var(--red)}
+.e3 .day{margin-top:18px;display:flex;align-items:center;gap:14px}
+.e3 .day i{flex:1;height:2px;background:var(--line);position:relative}
+.e3 .day i em{position:absolute;left:0;top:0;bottom:0;background:var(--red);width:0}
+.e3 ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.e3 li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);opacity:.28;transition:opacity .35s,padding .35s}
+.e3 li.on{opacity:1;padding-left:10px}.e3 li.done{opacity:.6}
+.e3 li .t{font:400 12px var(--mono);padding-top:4px}.e3 li.on .t{color:var(--red)}
+.e3 li h3{font-weight:600;font-size:clamp(18px,1.8vw,26px);letter-spacing:-.03em}
+.e3 li p{color:var(--grey);font-size:14px;line-height:1.5;margin-top:4px;max-height:0;overflow:hidden;transition:max-height .4s}
+.e3 li.on p{max-height:60px}
+.e3 .mini{position:absolute;right:calc(100% + 30px);top:50%;height:200px;transform:translateY(-50%)}
+
+/* 4 · Tipografía y producto */
+.e4 .pin{background:var(--white)}
+.e4 .w{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 var(--pad)}
+.e4 .w h2{font-weight:800;font-size:clamp(56px,11vw,190px);letter-spacing:-.075em;line-height:.85}
+.e4 .w h2 em{font-style:normal;color:var(--red)}
+.e4 .w .k{display:block;margin-bottom:22px;color:var(--grey)}
+.e4 .fin{background:var(--white)}
+.e4 .fin h2{font-size:clamp(40px,6.4vw,110px)}
+.e4 .pr{position:absolute;left:50%;bottom:-2%;height:52%;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 30px 40px rgba(40,60,90,.25))}
+.e4 .bar5{position:absolute;left:var(--pad);right:var(--pad);top:clamp(56px,7vw,80px);display:flex;gap:6px;z-index:9}
+.e4 .bar5 i{flex:1;height:2px;background:var(--line);position:relative;overflow:hidden}
+.e4 .bar5 i em{position:absolute;inset:0;background:var(--ink);transform-origin:0 0;transform:scaleX(0)}
+
+/* 5 · Los móviles del público */
+.e5 .pin{background:#E6DED1}
+.e5 .stage{position:absolute;inset:0}
+.e5 .back{position:absolute;left:0;right:0;top:0;bottom:30%;background:linear-gradient(#ece5da,#ddd2c1)}
+.e5 .scr{position:absolute;left:22%;right:22%;top:8%;height:34%;background:#151515;box-shadow:0 0 0 6px #262626;display:grid;place-items:center;color:#fff;text-align:center}
+.e5 .scr h2{font-weight:800;font-size:clamp(22px,3vw,48px);letter-spacing:-.06em;line-height:.9}
+.e5 .scr h2 span{color:var(--red)}
+.e5 .plat{position:absolute;left:30%;right:30%;top:66%;height:6%;background:#cbbfae;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.e5 .pr{position:absolute;left:50%;top:44%;height:23%;transform:translateX(-50%);filter:drop-shadow(0 10px 12px rgba(0,0,0,.22))}
+.e5 .floor{position:absolute;left:0;right:0;bottom:0;height:30%;background:#c9b9a3}
+.e5 .spot{position:absolute;left:35%;width:30%;top:-10%;height:90%;background:conic-gradient(from 168deg at 50% 0,transparent 0,rgba(255,244,222,.55) 7deg,rgba(255,244,222,.55) 17deg,transparent 24deg);mix-blend-mode:screen;opacity:0}
+.e5 .ph{position:absolute;bottom:-30%;width:clamp(90px,10vw,150px);aspect-ratio:.5;background:#111;border-radius:16px;padding:8px;box-shadow:0 20px 40px rgba(0,0,0,.35);z-index:5}
+.e5 .ph .sc2{width:100%;height:100%;border-radius:10px;background:#1e1e1e;overflow:hidden;position:relative;display:grid;place-items:center}
+.e5 .ph .sc2 svg{height:62%;opacity:0}
+.e5 .ph .rec{position:absolute;left:8px;top:8px;font:400 8px var(--mono);color:#fff;opacity:0}
+.e5 .ph .rec::before{content:"● ";color:var(--red)}
+.e5 .ph .hand{position:absolute;left:-14%;right:-14%;top:58%;height:80%;background:#2b2420;border-radius:40% 40% 10% 10%;z-index:-1}
+.e5 .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:8}
+@media (max-width:820px){.side p{display:none}.e3 .wrap{grid-template-columns:1fr}.e3 li p{display:none}.e3 .mini{display:none}.e5 .ph:nth-of-type(n+4){display:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><b>Eventos · presentación de producto</b>
+  <a href="?m=1">1 · Se abre el telón</a><a href="?m=2">2 · La pantalla LED</a><a href="?m=3">3 · La escaleta</a><a href="?m=4">4 · Tipografía y producto</a><a href="?m=5">5 · Los móviles del público</a>
+</nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)},seg=function(p,a,b){return cl((p-a)/(b-a))};
+  var LOGO=function(f,h){return '<svg viewBox="440 260 1110 1470" style="height:'+h+';width:auto;display:block" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" fill="'+f+'"/><circle cx="1288" cy="1467" r="237" fill="'+f+'"/></svg>'};
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  var crumb='<p class="crumb">Servicios / Eventos corporativos</p>';
+  var side=function(h,p){return '<div class="side"><h1>'+h+'</h1><p>'+p+'</p></div>'};
+  var TUBE=function(id){return '<svg class="tube" viewBox="0 0 200 540" aria-hidden="true"><defs><linearGradient id="tb'+id+'" x1="0" x2="1"><stop offset="0" stop-color="#5f8bb6"/><stop offset=".22" stop-color="#a9cbe6"/><stop offset=".5" stop-color="#7fa9cf"/><stop offset="1" stop-color="#557fa9"/></linearGradient><linearGradient id="tc'+id+'" x1="0" x2="1"><stop offset="0" stop-color="#d9cfbb"/><stop offset=".3" stop-color="#fbf6ec"/><stop offset="1" stop-color="#cdc2ad"/></linearGradient><pattern id="tr'+id+'" width="5" height="44" patternUnits="userSpaceOnUse"><rect width="5" height="44" fill="#6f9bc4"/><rect width="1.6" height="44" fill="#5d88b2"/></pattern></defs>'+
+    '<rect x="8" y="0" width="184" height="44" fill="url(#tr'+id+')"/><path d="M10 44H190C186 160 160 300 156 452H44C40 300 14 160 10 44Z" fill="url(#tb'+id+')"/><path d="M30 60C34 170 52 300 58 440" stroke="#fff" stroke-opacity=".35" stroke-width="8" fill="none" stroke-linecap="round"/>'+
+    '<g transform="translate(78 196) scale(.04)"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" transform="translate(-440 -260)" fill="#fff"/><circle cx="848" cy="1207" r="237" fill="#fff"/></g>'+
+    '<text x="100" y="300" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="800" font-size="26" letter-spacing="-1" fill="#fff">Launch</text><text x="100" y="322" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" letter-spacing="2.5" fill="#fff" fill-opacity=".85">HYDRA CREAM</text>'+
+    '<path d="M44 452H156L152 528Q152 538 142 538H58Q48 538 48 528Z" fill="url(#tc'+id+')"/></svg>'};
+  var NOTES={
+    1:'<b>1 · Se abre el telón.</b> Un escenario con el telón rojo cerrado y el público delante. Al bajar se abre, se enciende el foco sobre el producto en su pedestal y la pantalla anuncia «Nuevo · Hydra Cream».',
+    2:'<b>2 · La pantalla LED.</b> Una pantalla de leds apagada. Al bajar se van encendiendo los puntos y forman el producto, luego el nombre en rojo. Muy de presentación en escenario, y muy ligera de cargar.',
+    3:'<b>3 · La escaleta.</b> El día de la presentación, hora a hora: montaje, ensayo, llega la prensa, keynote, el momento del reveal, la demo… El reloj avanza al bajar y el producto aparece justo en «El reveal».',
+    4:'<b>4 · Tipografía y producto.</b> Frases grandes que se suceden («Un producto.», «Un escenario.», «300 miradas.», «Un momento.») y al final sube el producto con «Presentaciones de producto».',
+    5:'<b>5 · Los móviles del público.</b> Vista desde el patio de butacas: el producto en el escenario y, al bajar, el público levanta los móviles para grabarlo. En sus pantallas aparece el producto y saltan los flashes.'};
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>El producto es el tubo de tus fotos con el tapón crema, dibujado en plano. Nombres, horas y cifras son de ejemplo.';
+  var app=document.getElementById('app'),tick=function(){};
+  var bar=document.querySelector('.bar');
+  var prog=function(sec){var bh=bar.offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  var wrap=function(cls,inner){app.innerHTML='<div class="'+cls+'"><section class="sc" id="sc"><div class="pin" id="pin">'+crumb+inner+'</div></section></div>'};
+  var heads=function(n){var h='';for(var i=0;i<n;i++){var x=i*(3000/(n-1))+(i%2?18:-18),y=(i%3)*10;h+='<g transform="translate('+x.toFixed(0)+' '+(20+y)+')"><ellipse cx="0" cy="40" rx="30" ry="36" fill="#0b0b0b"/><rect x="-62" y="70" width="124" height="120" rx="50" fill="#0b0b0b"/></g>'}return '<svg class="aud" viewBox="0 0 3000 200" preserveAspectRatio="xMidYMax slice">'+h+'</svg>'};
+
+  if(M==='1'){
+    wrap('e1','<div class="stage"><div class="wall"><div class="scr"><div class="in" id="si">'+LOGO('#fff','36px').replace('display:block','display:block;margin:0 auto')+'<p class="k" style="margin-top:14px;opacity:.7">Nuevo · 2026</p><h2>Hydra Cream<span>.</span></h2></div></div><div class="cone" id="cn"></div></div><div class="floor"></div><div class="ped"></div><div class="pr">'+TUBE('a')+'</div><div class="cur l" id="cl"></div><div class="cur r" id="cr"></div><div class="val"></div>'+heads(40)+'</div>');
+    var sec=document.getElementById('sc'),cL=document.getElementById('cl'),cR=document.getElementById('cr'),si=document.getElementById('si'),cn=document.getElementById('cn');
+    tick=function(){var p=prog(sec),o=io(seg(p,.1,.55));
+      cL.style.transform='translateX('+(-o*80)+'%) scaleX('+(1-o*.6)+')';cR.style.transform='translateX('+(o*80)+'%) scaleX('+(1-o*.6)+')';
+      cn.style.opacity=seg(p,.5,.66);var t=out(seg(p,.66,.82));si.style.opacity=t;si.style.transform='translateY('+((1-t)*14)+'px)'};
+  }
+  if(M==='2'){
+    wrap('e2','<div class="wallw"><canvas id="cv"></canvas><div class="legs"><i></i><i></i></div></div>');
+    var sec=document.getElementById('sc'),cv=document.getElementById('cv'),cx=cv.getContext('2d'),COLS=96,ROWS=54,dots=[];
+    // máscara: tubo a la izquierda-centro y texto a la derecha
+    var off=document.createElement('canvas');off.width=COLS;off.height=ROWS;var o=off.getContext('2d');
+    var build=function(){o.clearRect(0,0,COLS,ROWS);
+      o.fillStyle='#7fa9cf';o.beginPath();o.save();o.translate(4,2);o.scale(1.5,1.5);o.moveTo(12,4);o.lineTo(26,4);o.bezierCurveTo(25.6,12,24,22,23.6,29);o.lineTo(14.4,29);o.bezierCurveTo(14,22,12.4,12,12,4);o.fill();
+      o.fillStyle='#5f8bb6';o.fillRect(11.5,2,15,2.4);o.fillStyle='#F1E9D8';o.fillRect(15,29,8,4);o.restore();
+      o.fillStyle='#ffffff';o.font='800 13px Poppins, sans-serif';o.textBaseline='alphabetic';o.fillText('Hydra',47,26);o.fillText('Cream',47,40);
+      o.fillStyle='#D93333';o.font='600 7px Poppins, sans-serif';o.fillText('NUEVO · 2026',48,13);
+      var d=o.getImageData(0,0,COLS,ROWS).data;dots=[];
+      for(var y=0;y<ROWS;y++)for(var x=0;x<COLS;x++){var i=(y*COLS+x)*4;var a=d[i+3];dots.push({x:x,y:y,c:a>90?'rgb('+d[i]+','+d[i+1]+','+d[i+2]+')':null,r:Math.random(),t:(x/COLS)*.55+Math.random()*.45})}};
+    build();document.fonts&&document.fonts.ready.then(function(){build();tick()});
+    var size=function(){var r=cv.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,2);cv.width=r.width*dpr;cv.height=r.height*dpr};size();addEventListener('resize',size);
+    tick=function(){var p=prog(sec),W=cv.width,H=cv.height,gx=W/COLS,gy=H/ROWS,rad=Math.min(gx,gy)*.36;cx.clearRect(0,0,W,H);
+      var on=io(seg(p,.08,.8)),tw=seg(p,.85,1);
+      dots.forEach(function(d){var px=(d.x+.5)*gx,py=(d.y+.5)*gy,lit=d.c&&d.t<on*1.02;
+        cx.beginPath();cx.arc(px,py,rad,0,Math.PI*2);
+        if(lit){cx.fillStyle=d.c;cx.globalAlpha=1}else{cx.fillStyle='#2a2a2a';cx.globalAlpha=1;
+          if(!d.c&&p<.85&&d.r<.02*(1-on)){cx.fillStyle='#555'}}
+        cx.fill()});
+      if(tw>0){cx.globalAlpha=tw*.25;cx.fillStyle='#D93333';cx.fillRect(0,H-gy*1.2,W*tw,gy*.5)}cx.globalAlpha=1};
+  }
+  if(M==='3'){
+    var RS=[[8,0,'Montaje del escenario','Escenografía, pantallas, luz y sonido listos a primera hora.'],[10,0,'Ensayo general','Pasamos la presentación al segundo con el equipo y el ponente.'],[11,30,'Llega la prensa','Acreditaciones, photocall y kit de prensa.'],[12,0,'Keynote','Arranca la presentación con la sala llena.'],[12,30,'El reveal','Se descubre el producto. El momento que todos recordarán.'],[13,0,'Demo y prueba','Zonas para tocar, probar y fotografiar el producto.'],[14,0,'Entrevistas y cóctel','Cierre con prensa, invitados y redes.']];
+    wrap('e3','<div class="wrap"><div style="position:relative"><p class="k" style="color:var(--red);margin-bottom:18px">El día de la presentación</p><div class="clk" id="clk">08<span>:</span>00</div><div class="day k"><span>08:00</span><i><em id="dp"></em></i><span>15:00</span></div><h1 style="margin-top:clamp(28px,4vw,48px);font-weight:300;font-size:clamp(28px,3vw,48px);letter-spacing:-.04em;line-height:1.05">Un lanzamiento se prepara<br><b style="font-weight:800;letter-spacing:-.06em">al minuto.</b></h1></div><div style="position:relative"><div class="mini" id="mini" style="opacity:0">'+TUBE('c')+'</div><ol>'+
+      RS.map(function(r){return '<li><span class="t">'+('0'+r[0]).slice(-2)+':'+('0'+r[1]).slice(-2)+'</span><div><h3>'+r[2]+'</h3><p>'+r[3]+'</p></div></li>'}).join('')+'</ol></div></div>');
+    var sec=document.getElementById('sc'),clk=document.getElementById('clk'),dp=document.getElementById('dp'),lis=[].slice.call(document.querySelectorAll('.e3 li')),mini=document.getElementById('mini');
+    tick=function(){var p=prog(sec),k=seg(p,.03,.95),mins=8*60+Math.round(k*7*60/5)*5,h=Math.floor(mins/60),m=mins%60;
+      clk.innerHTML=('0'+h).slice(-2)+'<span>:</span>'+('0'+m).slice(-2);dp.style.width=(k*100)+'%';
+      var cur=0;RS.forEach(function(r,i){if(mins>=r[0]*60+r[1])cur=i});lis.forEach(function(li,i){li.classList.toggle('on',i===cur);li.classList.toggle('done',i<cur)});
+      var rv=cur>=4?1:0;mini.style.opacity=rv;mini.style.transform='translateY(calc(-50% + '+((1-rv)*30)+'px))';mini.style.transition='opacity .5s,transform .6s'};
+  }
+  if(M==='4'){
+    var W4=[['Todo empieza con','Un producto<em>.</em>'],['Le damos','Un escenario<em>.</em>'],['Lo ponemos delante de','300 miradas<em>.</em>'],['Y lo convertimos en','Un momento<em>.</em>'],['Launch Studio','Presentaciones<br>de producto']];
+    wrap('e4','<div class="bar5">'+W4.map(function(){return '<i><em></em></i>'}).join('')+'</div>'+W4.map(function(w,i){return '<div class="w'+(i===4?' fin':'')+'"><div'+(i===4?' style="margin-top:-28vh"':'')+'><span class="k">'+w[0]+'</span><h2>'+w[1]+'</h2></div></div>'}).join('')+'<div class="pr" id="pr">'+TUBE('d')+'</div>');
+    var sec=document.getElementById('sc'),ws=[].slice.call(document.querySelectorAll('.e4 .w')),ps=[].slice.call(document.querySelectorAll('.e4 .bar5 em')),pr=document.getElementById('pr');
+    tick=function(){var p=prog(sec),n=W4.length;
+      ws.forEach(function(w,i){var k=seg(p,i/n,(i+1)/n),inn=out(cl(k/.25)),ok=i===n-1?0:io(cl((k-.75)/.25));
+        w.style.opacity=(i===0&&p<.001)?1:Math.min(inn,1-ok);w.querySelector('h2').style.transform='translateY('+((1-inn)*40-ok*40)+'px)';ps[i].style.transform='scaleX('+k+')'});
+      var u=out(seg(p,.82,.97));pr.style.transform='translateX(-50%) translateY('+((1-u)*110)+'%)'};
+  }
+  if(M==='5'){
+    var PH=[[6,-6],[22,4],[40,-3],[60,5],[78,-5]];
+    wrap('e5','<div class="stage"><div class="back"><div class="scr"><div><p class="k" style="opacity:.6;margin-bottom:8px">Nuevo · 2026</p><h2>Hydra Cream<span>.</span></h2></div></div></div><div class="floor"></div><div class="spot" id="sp"></div><div class="plat"></div><div class="pr">'+TUBE('e')+'</div>'+
+      PH.map(function(f,i){return '<div class="ph" style="left:'+f[0]+'%;transform:rotate('+f[1]+'deg)"><div class="hand"></div><div class="sc2"><span class="rec">REC</span>'+TUBE('p'+i).replace('class="tube"','class="tube" style="height:62%"')+'</div></div>'}).join('')+'</div><div class="flash" id="fl"></div>');
+    var sec=document.getElementById('sc'),phs=[].slice.call(document.querySelectorAll('.e5 .ph')),sp=document.getElementById('sp'),fl=document.getElementById('fl');
+    tick=function(){var p=prog(sec);sp.style.opacity=seg(p,.05,.25);
+      phs.forEach(function(ph,i){var u=out(seg(p,.2+i*.07,.45+i*.07)),sc=seg(p,.4+i*.07,.5+i*.07);ph.style.bottom=(-30+u*42+(i%2)*4)+'%';
+        ph.querySelector('.sc2 svg').style.opacity=sc;ph.querySelector('.rec').style.opacity=sc;ph.querySelector('.sc2').style.background=sc>0?'#d8cdbb':'#1e1e1e'});
+      var f=0;[.62,.7,.76,.86].forEach(function(t){var k=(p-t)/.02;if(k>0&&k<1)f=Math.max(f,1-k)});fl.style.opacity=f*.7};
+  }
+  var setBh=function(){document.documentElement.style.setProperty('--bh',bar.offsetHeight+'px')};setBh();
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',function(){setBh();tick()});
+  var FIX=new URLSearchParams(location.search).get('p');if(FIX!==null){prog=function(){return +FIX}}tick();
+})();
+</script>
+</body>
+</html>
