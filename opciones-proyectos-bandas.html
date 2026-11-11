@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyectos en bandas de color — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Variaciones de la opción «Bandas de color»: un color por servicio. ?m=1..5 */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--sand:#E7E1D6;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover;background:rgba(127,120,105,.18)}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.k{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.head{padding:calc(var(--bh) + clamp(48px,8vw,110px)) var(--pad) clamp(36px,5vw,64px);background:var(--white)}
+.head .k{color:var(--red)}
+.head h1{margin-top:16px;font-weight:300;font-size:clamp(44px,7vw,112px);letter-spacing:-.055em;line-height:.95}
+.head h1 b{font-weight:800;letter-spacing:-.065em}
+.head p{margin-top:22px;max-width:560px;color:var(--grey);font-size:17px;line-height:1.6}
+.card{display:block}
+.card .im{overflow:hidden;position:relative}
+.card .im img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover .im img{transform:scale(1.045)}
+.card h3{font-weight:600;font-size:18px;letter-spacing:-.02em;margin-top:14px}
+.card .k{display:block;margin-top:6px;opacity:.6}
+.go{display:inline-flex;gap:10px;border-bottom:1px solid currentColor;padding-bottom:4px;font-weight:500}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey);background:var(--white)}
+.note b{color:var(--ink);font-weight:600}
+/* paleta por servicio */
+.c0{--bg:var(--white);--fg:var(--ink)}.c1{--bg:var(--ink);--fg:var(--white)}.c2{--bg:var(--sand);--fg:var(--ink)}.c3{--bg:var(--red);--fg:#fff}.c4{--bg:var(--paper);--fg:var(--ink)}
+
+/* 1 · Bandas que se apilan */
+.m1 .st{position:sticky;top:var(--bh);min-height:calc(100vh - var(--bh));background:var(--bg);color:var(--fg);padding:clamp(40px,5vw,72px) var(--pad);border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.12);display:grid;grid-template-rows:auto 1fr;gap:clamp(24px,3vw,40px)}
+.m1 .st .top{display:flex;justify-content:space-between;align-items:end;gap:30px}
+.m1 .st h2{font-weight:800;font-size:clamp(40px,6vw,96px);letter-spacing:-.07em;line-height:.88}
+.m1 .st .top p{max-width:360px;opacity:.75;line-height:1.6}
+.m1 .st .row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:clamp(14px,1.6vw,22px);min-height:0}
+.m1 .st .row .card{display:flex;flex-direction:column;min-height:0}
+.m1 .st .row .im{flex:1;min-height:200px;max-height:52vh}
+.m1 .end{height:30vh}
+
+/* 2 · Portada a sangre por servicio */
+.m2 .cover{display:block;position:relative;height:88vh;min-height:520px;overflow:hidden;color:#fff}
+.m2 .cover>.im{position:absolute;inset:0}
+.m2 .cover>.im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.6))}
+.m2 .cover .txt{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(30px,5vw,60px);display:flex;justify-content:space-between;align-items:end;gap:30px}
+.m2 .cover h2{font-weight:800;font-size:clamp(54px,10vw,170px);letter-spacing:-.075em;line-height:.82}
+.m2 .cover .meta{text-align:right;white-space:nowrap}
+.m2 .cover .meta h3{font-weight:500;font-size:18px;margin-top:8px}
+.m2 .tag{position:absolute;left:var(--pad);top:clamp(24px,4vw,44px);background:var(--bg);color:var(--fg);padding:8px 14px;border-radius:999px}
+.m2 .after{background:var(--bg);color:var(--fg);padding:clamp(40px,5vw,72px) var(--pad);display:grid;grid-template-columns:1fr 2fr;gap:clamp(24px,4vw,64px)}
+.m2 .after p{font-size:18px;line-height:1.6;opacity:.8;max-width:360px}
+.m2 .after .go{margin-top:30px}
+.m2 .after .g{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+.m2 .after .g .im{aspect-ratio:3/4}
+
+/* 3 · Panel de color fijo + fotos que pasan */
+.m3 .sp{display:grid;grid-template-columns:5fr 7fr;background:var(--bg);color:var(--fg)}
+.m3 .sp:nth-of-type(even){grid-template-columns:7fr 5fr}
+.m3 .sp:nth-of-type(even) .pan{order:2}
+.m3 .pan{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));padding:clamp(36px,5vw,72px) var(--pad);display:flex;flex-direction:column;justify-content:space-between}
+.m3 .pan .n{font-weight:800;font-size:clamp(90px,14vw,220px);letter-spacing:-.08em;line-height:.8;opacity:.12}
+.m3 .pan h2{font-weight:800;font-size:clamp(36px,4.6vw,72px);letter-spacing:-.065em;line-height:.9}
+.m3 .pan p{margin-top:18px;max-width:340px;opacity:.75;line-height:1.6}
+.m3 .pan .go{margin-top:26px;align-self:start}
+.m3 .ph{padding:clamp(36px,5vw,72px) var(--pad);display:flex;flex-direction:column;gap:clamp(36px,5vw,72px)}
+.m3 .ph .card:nth-child(odd){width:86%}
+.m3 .ph .card:nth-child(even){width:68%;align-self:end}
+.m3 .ph .im{aspect-ratio:4/3}
+
+/* 4 · Galería horizontal anclada */
+.m4 .hz{position:relative;background:var(--bg);color:var(--fg)}
+.m4 .hz .pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.m4 .hz .rail{display:flex;gap:clamp(18px,2vw,30px);padding-left:var(--pad);will-change:transform;align-items:center}
+.m4 .hz .intro{flex:0 0 min(440px,80vw);padding-right:30px}
+.m4 .hz .intro .n{font:400 12px var(--mono);letter-spacing:.1em}
+.m4 .hz .intro h2{margin-top:14px;font-weight:800;font-size:clamp(42px,5.6vw,90px);letter-spacing:-.07em;line-height:.88}
+.m4 .hz .intro p{margin-top:18px;opacity:.75;line-height:1.6;max-width:340px}
+.m4 .hz .card{flex:0 0 auto;width:clamp(260px,30vw,460px)}
+.m4 .hz .card:nth-child(even) .im{aspect-ratio:4/5}
+.m4 .hz .card:nth-child(odd) .im{aspect-ratio:1}
+.m4 .hz .end{flex:0 0 clamp(220px,24vw,340px);padding:0 var(--pad) 0 20px}
+.m4 .prog{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(24px,4vh,40px);height:2px;background:currentColor;opacity:.15}
+.m4 .prog i{position:absolute;left:0;top:0;bottom:0;background:currentColor;opacity:1;width:0}
+
+/* 5 · El color cambia al bajar */
+.m5{transition:background-color .6s,color .6s;background:var(--bg,#F1F0E8);color:var(--fg,#0b0b0b)}
+.m5 .head{background:transparent}
+.m5 .dots{position:fixed;right:var(--pad);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:12px}
+.m5 .dots a{display:flex;align-items:center;justify-content:end;gap:10px;font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.m5 .dots a span{opacity:0;transition:opacity .3s}
+.m5 .dots a i{width:8px;height:8px;border-radius:50%;border:1px solid currentColor}
+.m5 .dots a.on i{background:currentColor}
+.m5 .dots a.on span,.m5 .dots a:hover span{opacity:1}
+.m5 .sv{min-height:100vh;padding:clamp(60px,8vw,120px) var(--pad);display:flex;flex-direction:column;justify-content:center}
+.m5 .sv .t{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+.m5 .sv .t .k{opacity:.6}
+.m5 .sv h2{margin-top:12px;font-weight:800;font-size:clamp(50px,9vw,150px);letter-spacing:-.075em;line-height:.85}
+.m5 .sv .t p{margin:20px auto 0;max-width:460px;opacity:.75;line-height:1.6}
+.m5 .fan{display:flex;justify-content:center;gap:clamp(14px,1.8vw,26px);align-items:start}
+.m5 .fan .card{width:clamp(200px,22vw,320px)}
+.m5 .fan .card:nth-child(2n){margin-top:60px}
+.m5 .fan .im{aspect-ratio:4/5}
+.m5 .sv .t .go{margin-top:24px}
+
+@media (max-width:860px){
+  .m1 .st .top{flex-direction:column;align-items:start}.m1 .st .row{grid-auto-flow:row;grid-auto-columns:auto}.m1 .st .row .card:nth-child(n+3){display:none}.m1 .st .row .im{max-height:none;aspect-ratio:16/10;flex:none}
+  .m2 .cover .txt{flex-direction:column;align-items:start}.m2 .cover .meta{text-align:left}.m2 .after{grid-template-columns:1fr}.m2 .after .g{grid-template-columns:1fr 1fr}
+  .m3 .sp,.m3 .sp:nth-of-type(even){grid-template-columns:1fr}.m3 .sp:nth-of-type(even) .pan{order:0}.m3 .pan{position:relative;top:0;height:auto;gap:20px}.m3 .pan .n{display:none}.m3 .ph .card{width:100%!important}
+  .m5 .dots{display:none}.m5 .fan{flex-direction:column;align-items:center}.m5 .fan .card{width:100%;margin-top:0!important}
+}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><b>Proyectos · bandas de color</b>
+  <a href="?m=1">1 · Se apilan</a><a href="?m=2">2 · Portada a sangre</a><a href="?m=3">3 · Panel fijo</a><a href="?m=4">4 · Galería horizontal</a><a href="?m=5">5 · El color cambia</a>
+</nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var OLD='https://www.launchstudiogroup.com/';
+  var S=[
+    {id:'stands',n:'Stands',d:'Stands para ferias y congresos, del diseño al montaje.',href:'servicios/stands.html',bg:'#F1F0E8',fg:'#0b0b0b',p:[
+      {t:'Janssen Oncology',c:'Stand congreso',img:OLD+'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG',href:'proyectos/06-stand-janssen-oncology.html'},
+      {t:'Truphone',c:'Stand corporativo',img:OLD+'TRUPHONE.JPG',href:'proyectos/07-stand-truphone.html'},
+      {t:'BioHorizons',c:'Stand institucional',img:OLD+'BIOHORIZONS.JPG',href:'proyectos/09-stand-biohorizons.html'},
+      {t:'TI-MEDI / JVM',c:'Stand comercial',img:OLD+'JVM.jpeg',href:'proyectos/08-stand-ti-medi-jvm.html'}]},
+    {id:'eventos',n:'Eventos corporativos',d:'Presentaciones, convenciones y eventos de marca con producción integral.',href:'servicios/eventos.html',bg:'#0b0b0b',fg:'#F1F0E8',p:[
+      {t:'NTT DATA',c:'Evento corporativo',img:OLD+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',href:'proyectos/04-evento-corporativo-ntt-data.html'},
+      {t:'BASE4',c:'Evento de promoción',img:OLD+'project-2.jpg',href:'proyectos/02-evento-promocion-base4.html'}]},
+    {id:'experiencias',n:'Experiencias de marca',d:'Pop-ups, markets y activaciones que se viven en primera persona.',href:'servicios/experiencias.html',bg:'#E7E1D6',fg:'#0b0b0b',p:[
+      {t:'Taller Amona',c:'Experiencia de marca',img:OLD+'project-1.JPG',href:'proyectos/01-taller-amona.html'},
+      {t:'Venca',c:'Pop-up store',img:OLD+'5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG',href:'proyectos/05-pop-up-store-venca.html'},
+      {t:'The Office Studio',c:'Market',img:OLD+'project-3.JPG',href:'proyectos/03-market-the-office-studio.html'}]},
+    {id:'renders',n:'Renders',d:'Visualizaciones fotorrealistas para decidir antes de construir.',href:'servicios.html',bg:'#D93333',fg:'#ffffff',p:[
+      {t:'Vivienda unifamiliar',c:'Render exterior',img:'assets/img/servicios/render-casa.jpg',href:'servicios.html'},
+      {t:'Interiorismo',c:'Render interior',img:'assets/img/servicios/servicio-renders-interiorismo.jpg',href:'servicios.html'}]},
+    {id:'grafico',n:'Diseño gráfico',d:'Identidad, gráfica de stand y piezas de marca.',href:'servicios/grafico.html',bg:'#FBF8F2',fg:'#0b0b0b',p:[
+      {t:'Colección cerámica',c:'Identidad y packaging',img:'assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',href:'servicios/grafico.html'},
+      {t:'Launch Studio',c:'Gráfica de stand',img:'assets/img/servicios/stand-launch.jpg',href:'servicios/grafico.html'}]}
+  ];
+  var total=S.reduce(function(a,s){return a+s.p.length},0);
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  document.documentElement.style.setProperty('--bh',document.querySelector('.bar').offsetHeight+'px');
+  var pad=function(n){return (n<10?'0':'')+n};
+  var img=function(p){return '<img src="'+p.img+'" alt="'+p.t+'" loading="lazy" onerror="this.style.opacity=0">'};
+  var card=function(p){return '<a class="card" href="'+p.href+'"><div class="im">'+img(p)+'</div><h3>'+p.t+'</h3><span class="k">'+p.c+'</span></a>'};
+  var head='<header class="head"><p class="k">Proyectos · '+total+' trabajos</p><h1>Un portfolio<br><b>de experiencias.</b></h1><p>Nuestros proyectos ordenados por servicio: stands, eventos, experiencias de marca, renders y diseño gráfico.</p></header>';
+  var go=function(s){return '<a class="go" href="'+s.href+'">Ver servicio <span>→</span></a>'};
+  var app=document.getElementById('app'),h='',tick=function(){};
+  var NOTES={
+    1:'<b>1 · Se apilan.</b> Cada servicio es una tarjeta de color a pantalla completa con las esquinas redondeadas. Al bajar, la siguiente sube y se coloca encima de la anterior, como si fueran fichas.',
+    2:'<b>2 · Portada a sangre.</b> Cada servicio abre con su mejor proyecto a pantalla completa y el nombre del servicio en gigante. Debajo, una banda de su color con el texto y el resto de proyectos.',
+    3:'<b>3 · Panel fijo.</b> La pantalla se parte en dos: un panel de color con el número y el nombre del servicio se queda quieto mientras las fotos pasan al lado. Va alternando izquierda y derecha.',
+    4:'<b>4 · Galería horizontal.</b> Al bajar, los proyectos de cada servicio se mueven de lado, como una galería. Una línea abajo marca cuánto queda. Cada servicio tiene su color.',
+    5:'<b>5 · El color cambia.</b> Una sola página continua: el fondo cambia suavemente de color según el servicio que estás viendo (crema, negro, arena, rojo…). A la derecha, unos puntos sirven de índice.'};
+
+  if(M==='1'){
+    h='<div class="m1">'+head+S.map(function(s,i){return '<section class="st c'+i+'" id="'+s.id+'" style="z-index:'+(i+1)+'"><div class="top"><div><span class="k" style="opacity:.6">'+pad(i+1)+' / '+pad(S.length)+' · '+s.p.length+' proyectos</span><h2 style="margin-top:12px">'+s.n+'</h2></div><div><p>'+s.d+'</p><div style="margin-top:18px">'+go(s)+'</div></div></div><div class="row">'+s.p.map(card).join('')+'</div></section>'}).join('')+'<div class="end"></div></div>';
+  }
+  if(M==='2'){
+    h='<div class="m2">'+head+S.map(function(s,i){var f=s.p[0];return '<section class="c'+i+'" id="'+s.id+'"><a class="cover" href="'+f.href+'"><div class="im">'+img(f)+'</div><span class="tag k">'+pad(i+1)+' · '+s.p.length+' proyectos</span><div class="txt"><h2>'+s.n+'</h2><div class="meta"><span class="k">'+f.c+'</span><h3>'+f.t+' →</h3></div></div></a>'+
+      '<div class="after"><div><p>'+s.d+'</p><div>'+go(s)+'</div></div><div class="g">'+s.p.slice(1).map(card).join('')+'</div></div></section>'}).join('')+'</div>';
+  }
+  if(M==='3'){
+    h='<div class="m3">'+head+S.map(function(s,i){return '<section class="sp c'+i+'" id="'+s.id+'"><div class="pan"><span class="n">'+pad(i+1)+'</span><div><span class="k" style="opacity:.6">'+s.p.length+' proyectos</span><h2 style="margin-top:12px">'+s.n+'</h2><p>'+s.d+'</p>'+go(s)+'</div></div><div class="ph">'+s.p.map(card).join('')+'</div></section>'}).join('')+'</div>';
+  }
+  if(M==='4'){
+    h='<div class="m4">'+head+S.map(function(s,i){return '<section class="hz c'+i+'" id="'+s.id+'"><div class="pin"><div class="rail"><div class="intro"><span class="n">'+pad(i+1)+' / '+pad(S.length)+' · '+s.p.length+' proyectos</span><h2>'+s.n+'</h2><p>'+s.d+'</p></div>'+s.p.map(card).join('')+'<div class="end">'+go(s)+'</div></div><div class="prog"><i></i></div></div></section>'}).join('')+'</div>';
+  }
+  if(M==='5'){
+    h='<div class="m5" id="m5">'+head+'<nav class="dots">'+S.map(function(s){return '<a href="#'+s.id+'"><span>'+s.n+'</span><i></i></a>'}).join('')+'</nav>'+
+      S.map(function(s,i){return '<section class="sv" id="'+s.id+'" data-i="'+i+'"><div class="t"><span class="k">'+pad(i+1)+' · '+s.p.length+' proyectos</span><h2>'+s.n+'</h2><p>'+s.d+'</p>'+go(s)+'</div><div class="fan">'+s.p.map(card).join('')+'</div></section>'}).join('')+'</div>';
+  }
+  app.innerHTML=h;
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Mismo reparto que antes: Stands (4), Eventos corporativos (2), Experiencias de marca (3), y Renders y Diseño gráfico con imágenes de ejemplo hasta que haya proyectos.';
+
+  if(M==='4'){
+    var hs=[].slice.call(document.querySelectorAll('.m4 .hz'));
+    var setH=function(){hs.forEach(function(sec){var r=sec.querySelector('.rail');var ex=Math.max(0,r.scrollWidth-innerWidth);sec.dataset.ex=ex;sec.style.height='calc(100vh - var(--bh) + '+ex+'px)'})};
+    tick=function(){hs.forEach(function(sec){var ex=+sec.dataset.ex,top=sec.getBoundingClientRect().top-document.querySelector('.bar').offsetHeight,k=ex>0?Math.max(0,Math.min(1,-top/ex)):0;
+      sec.querySelector('.rail').style.transform='translateX('+(-k*ex)+'px)';sec.querySelector('.prog i').style.width=(k*100)+'%'})};
+    setH();addEventListener('resize',function(){setH();tick()});addEventListener('load',function(){setH();tick()});
+  }
+  if(M==='5'){
+    var m5=document.getElementById('m5'),svs=[].slice.call(document.querySelectorAll('.m5 .sv')),dots=[].slice.call(document.querySelectorAll('.m5 .dots a'));
+    tick=function(){var on=-1;svs.forEach(function(e,i){if(e.getBoundingClientRect().top<innerHeight*.5)on=i});
+      var s=on<0?{bg:'#F1F0E8',fg:'#0b0b0b'}:S[on];m5.style.setProperty('--bg',s.bg);m5.style.setProperty('--fg',s.fg);document.body.style.background=s.bg;
+      dots.forEach(function(d,i){d.classList.toggle('on',i===on)})};
+  }
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});tick();
+})();
+</script>
+</body>
+</html>
