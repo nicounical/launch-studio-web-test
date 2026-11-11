@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos: planos y conferencias — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Cinco portadas para Eventos corporativos. Bajar avanza, subir retrocede. ?m=1..5, ?p=0..1 fija el momento */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--sand:#E7E1D6;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{color:inherit;text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.sc{height:600vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:grid;place-items:center}
+.k{font:400 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.crumb{position:absolute;left:var(--pad);top:clamp(20px,3vw,32px);z-index:9;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.side{position:absolute;left:var(--pad);bottom:clamp(30px,6vh,60px);max-width:min(420px,80vw);z-index:9}
+.side h1{font-weight:300;font-size:clamp(28px,3vw,50px);letter-spacing:-.04em;line-height:1.04}
+.side h1 b{font-weight:800;letter-spacing:-.06em}
+.side p{margin-top:14px;color:var(--grey);font-size:16px;line-height:1.55}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+svg{overflow:visible}
+
+.plan{display:block}
+.lb{font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.tag{position:absolute;right:var(--pad);top:clamp(20px,3vw,32px);text-align:right;z-index:9}
+.tag b{display:block;font-weight:800;font-size:clamp(30px,3.6vw,58px);letter-spacing:-.06em;line-height:.95}
+.tag span{display:block;color:var(--grey);font-size:15px;max-width:300px;margin:8px 0 0 auto;line-height:1.5}
+.tag .k{color:var(--red)}
+.pv{position:relative;width:min(760px,54vw);margin:10vh 0 0 18vw}
+/* 1 · se dibuja */
+.e1 .pin,.e2 .pin,.e3 .pin,.e6 .pin{background:var(--white)}
+.e1 svg .dw{fill:none;stroke:#0b0b0b}
+/* 3 · isométrico */
+.e3 .iso{position:relative;width:min(640px,52vw);aspect-ratio:1.4;margin:4vh 0 0 18vw;transform-style:preserve-3d}
+.e3 .fl{position:absolute;inset:0;background:#FBF8F2;border:2px solid #0b0b0b;transform-style:preserve-3d}
+.e3 .ob{position:absolute;transform-style:preserve-3d}
+.e3 .ob .t{position:absolute;inset:0;background:#E7E1D6;border:1px solid #0b0b0b}
+.e3 .ob .s1,.e3 .ob .s2{position:absolute;background:#cfc5b5;border:1px solid #0b0b0b}
+.e3 .ch{position:absolute;width:3.2%;aspect-ratio:1;background:#D93333;border-radius:2px}
+.e3 .scr{position:absolute;background:#0b0b0b;transform-origin:50% 100%;color:#fff;display:grid;place-items:center;font-weight:800;letter-spacing:-.05em}
+.e3 .scr span{color:var(--red)}
+/* 4 · ponentes */
+.e4 .pin{background:#E8E1D5}
+.e4 .room{position:relative;width:min(1100px,94vw);height:min(600px,70vh)}
+.e4 .wall{position:absolute;inset:0 0 24% 0;background:linear-gradient(#ece6dc,#ddd3c4)}
+.e4 .scr{position:absolute;left:20%;right:20%;top:7%;height:46%;background:#121212;box-shadow:0 0 0 7px #232323;color:#fff;padding:3% 4%;display:flex;flex-direction:column;justify-content:space-between}
+.e4 .scr h2{font-weight:800;font-size:clamp(20px,2.8vw,44px);letter-spacing:-.06em;line-height:.92}
+.e4 .scr h2 span{color:var(--red)}
+.e4 .scr .k{opacity:.6}
+.e4 .floor{position:absolute;left:0;right:0;bottom:0;height:24%;background:#bfa88b}
+.e4 .stg{position:absolute;left:12%;right:12%;bottom:18%;height:8%;background:#2a2622;clip-path:polygon(2% 0,98% 0,100% 100%,0 100%)}
+.e4 .sp{position:absolute;bottom:25%;width:4.4%;transition:opacity .4s,transform .4s;z-index:3}
+.e4 .lec{position:absolute;left:20%;bottom:25%;width:6%;height:15%;background:#1b1b1b;clip-path:polygon(0 0,100% 0,86% 100%,14% 100%);z-index:3}
+.e4 .lec::after{content:"";position:absolute;left:30%;top:20%;width:40%;height:14%;background:var(--red)}
+.e4 .tbl{position:absolute;left:44%;right:16%;bottom:25%;height:7%;background:#1b1b1b;z-index:2}
+.e4 .aud{position:absolute;left:-4%;right:-4%;bottom:-3%;width:108%;height:12%;z-index:6}
+.e4 .mic{position:absolute;bottom:9%;left:30%;width:3%;z-index:7;opacity:0;transition:opacity .4s}
+.e4 .ag{position:absolute;right:calc(var(--pad) + 1%);top:clamp(80px,13vh,120px);z-index:9;text-align:right}
+.e4 .ag p{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.3;margin:6px 0;transition:opacity .3s}
+.e4 .ag p.on{opacity:1}.e4 .ag p.on b{color:var(--red);font-weight:400}
+/* 5 · el programa */
+.e5 .pin{background:var(--white)}
+.e5 .wrap{width:min(1180px,94vw);display:grid;grid-template-columns:.8fr 2fr;gap:clamp(24px,4vw,60px);align-items:center}
+.e5 .grid{position:relative;display:grid;grid-template-columns:54px repeat(3,1fr);grid-template-rows:34px repeat(9,1fr);height:min(560px,68vh);border-top:1px solid var(--ink)}
+.e5 .hd{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:10px 8px;border-bottom:1px solid var(--line)}
+.e5 .hr{font:400 11px var(--mono);color:var(--grey);border-top:1px solid var(--line);padding-top:4px}
+.e5 .cell{border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.e5 .ss{position:absolute;margin:3px;padding:8px 10px;background:var(--sand);font-size:13px;line-height:1.3;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s,background .3s,color .3s}
+.e5 .ss b{display:block;font-weight:600;letter-spacing:-.01em}
+.e5 .ss i{font-style:normal;font:400 10px var(--mono);opacity:.6}
+.e5 .ss.in{opacity:1;transform:none}
+.e5 .ss.now{background:var(--red);color:#fff}
+.e5 .now-line{position:absolute;left:54px;right:0;height:2px;background:var(--red);z-index:3}
+.e5 .now-line::before{content:"";position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--red)}
+.e5 .big{font-weight:800;font-size:clamp(70px,9vw,150px);letter-spacing:-.07em;line-height:.85;font-variant-numeric:tabular-nums}
+.e5 .big span{color:var(--red)}
+.e5 .st{display:flex;gap:26px;margin-top:22px}.e5 .st b{display:block;font-weight:800;font-size:30px;letter-spacing:-.05em}
+.e5 .ttl{margin-top:22px;font-weight:300;font-size:clamp(24px,2.4vw,40px);letter-spacing:-.04em;line-height:1.05}.e5 .ttl b{font-weight:800;letter-spacing:-.06em}
+.e5 .side{display:none}
+/* 6 · el congreso */
+.e6 .clk{position:absolute;right:var(--pad);top:clamp(20px,3vw,32px);text-align:right;z-index:9}
+.e6 .clk b{display:block;font-weight:800;font-size:clamp(46px,6vw,96px);letter-spacing:-.06em;line-height:.9;font-variant-numeric:tabular-nums}
+.e6 .clk span{display:block;color:var(--grey);font-size:15px;margin-top:6px}
+@media (max-width:820px){.side p{display:none}.tag span{display:none}.pv,.e3 .iso{width:92vw;margin:10vh 0 0}.e5 .wrap{grid-template-columns:1fr}.e5 .wrap>div:first-child{display:none}.e4 .ag{display:none}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><b>Planos</b><a href="?m=1">1 · Se dibuja</a><a href="?m=2">2 · Cambia de formato</a><a href="?m=3">3 · De plano a 3D</a><b style="margin-left:10px">Conferencias</b><a href="?m=4">4 · Los ponentes</a><a href="?m=5">5 · El programa</a><a href="?m=6">6 · El congreso</a></nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)},seg=function(p,a,b){return cl((p-a)/(b-a))};
+  var LOGO=function(f,h){return '<svg viewBox="440 260 1110 1470" style="height:'+h+';width:auto;display:block" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" fill="'+f+'"/><circle cx="1288" cy="1467" r="237" fill="'+f+'"/></svg>'};
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  var crumb='<p class="crumb">Servicios / Eventos corporativos</p>';
+  var side=function(h,p){return '<div class="side"><h1>'+h+'</h1><p>'+p+'</p></div>'};
+  var NOTES={
+    1:'<b>1 · Se dibuja.</b> Sobre fondo crema el plano se traza solo mientras bajas: primero las paredes, luego el escenario y la pantalla, las filas de sillas una a una y las zonas con su nombre. Al final aparece en rojo el recorrido del invitado.',
+    2:'<b>2 · Cambia de formato.</b> La misma sala vista desde arriba y las sillas se van recolocando al bajar: teatro, escuela, banquete y cóctel. Enseña que adaptamos el espacio a cada tipo de evento.',
+    3:'<b>3 · De plano a 3D.</b> Empieza como un plano plano visto desde arriba y, al bajar, se inclina en perspectiva: el escenario y las mesas cogen volumen, la pantalla se levanta y aparecen las sillas en rojo.',
+    4:'<b>4 · Los ponentes.</b> Una conferencia desde el público. Al bajar avanza el programa: bienvenida en el atril, keynote, mesa redonda con cuatro ponentes y turno de preguntas con el micrófono en la sala. La pantalla y la agenda cambian con cada sesión.',
+    5:'<b>5 · El programa.</b> La agenda de un congreso con tres salas. Al bajar se van colocando las sesiones y una línea roja marca la hora; la sesión en curso se pone en rojo. Al lado, los contadores de sesiones, ponentes y salas.',
+    6:'<b>6 · El congreso.</b> El plano de un congreso entero: acreditaciones, zona expositiva, tres salas y café. Avanza la hora y las salas se encienden cuando hay sesión, mientras los asistentes (puntos) se mueven entre espacios.'};
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Nombres, horas y cifras son de ejemplo.';
+  var app=document.getElementById('app'),tick=function(){};
+  var bar=document.querySelector('.bar');
+  var prog=function(sec){var bh=bar.offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  var wrap=function(cls,inner){app.innerHTML='<div class="'+cls+'"><section class="sc" id="sc"><div class="pin" id="pin">'+crumb+inner+'</div></section></div>'};
+  var heads=function(n){var h='';for(var i=0;i<n;i++){var x=i*(3000/(n-1))+(i%2?18:-18),y=(i%3)*10;h+='<g transform="translate('+x.toFixed(0)+' '+(20+y)+')"><ellipse cx="0" cy="40" rx="30" ry="36" fill="#0b0b0b"/><rect x="-62" y="70" width="124" height="120" rx="50" fill="#0b0b0b"/></g>'}return '<svg class="aud" viewBox="0 0 3000 200" preserveAspectRatio="xMidYMax slice">'+h+'</svg>'};
+  var tag=function(k,b,t){return '<div class="tag"><span class="k lb" id="tk">'+k+'</span><b id="tb">'+b+'</b><span id="ts">'+t+'</span></div>'};
+
+  if(M==='1'){
+    var g='<svg class="plan pv" viewBox="0 0 1000 620"><g id="L0"><path class="dw" pathLength="1" stroke-width="3" d="M20 20H980V600H580M420 600H20Z"/></g>'+
+      '<g id="L1"><path class="dw" pathLength="1" stroke-width="1.6" d="M300 50H700V150H300Z"/><path class="dw" pathLength="1" stroke-width="8" d="M360 66H640"/></g><g id="L2">';
+    for(var r=0;r<8;r++)for(var c=0;c<16;c++){var x=250+c*30+(c>7?20:0),y=210+r*34;g+='<rect class="seat" data-r="'+r+'" x="'+(x-8)+'" y="'+(y-8)+'" width="16" height="16" rx="3" fill="none" stroke="#0b0b0b" stroke-opacity=".5" opacity="0"/>'}
+    g+='</g><g id="L3" opacity="0"><rect x="40" y="440" width="170" height="140" fill="#E7E1D6" stroke="#0b0b0b"/><text x="56" y="466" font-family="DM Mono" font-size="11" letter-spacing="2">ACREDITACIONES</text><rect x="40" y="40" width="170" height="160" fill="#E7E1D6" stroke="#0b0b0b"/><text x="56" y="66" font-family="DM Mono" font-size="11" letter-spacing="2">PRENSA</text><rect x="790" y="40" width="170" height="250" fill="#E7E1D6" stroke="#0b0b0b"/><text x="806" y="66" font-family="DM Mono" font-size="11" letter-spacing="2">DEMO</text><rect x="790" y="420" width="170" height="160" fill="#E7E1D6" stroke="#0b0b0b"/><text x="806" y="446" font-family="DM Mono" font-size="11" letter-spacing="2">CÓCTEL</text><text x="500" y="128" text-anchor="middle" font-family="DM Mono" font-size="11" letter-spacing="3" fill="#5f5d56">ESCENARIO</text></g>'+
+      '<path id="rt" pathLength="1" d="M500 600V540H125V420M125 420V300H230M230 300H500V180" fill="none" stroke="#D93333" stroke-width="3" stroke-dasharray="1" stroke-dashoffset="1" stroke-linecap="round"/><circle id="rd" r="7" fill="#D93333" opacity="0"/></svg>';
+    var ST=[['01 · Paredes','La sala','Medimos y dibujamos el espacio real del recinto.'],['02 · Escenario','El escenario','Ubicación, tamaño y pantalla según la visibilidad.'],['03 · Aforo','128 asientos','Distribución del público con pasillos y salidas.'],['04 · Zonas','Cada zona','Acreditaciones, prensa, demo y cóctel.'],['05 · Recorrido','El invitado','Así se mueve cada persona desde que entra.']];
+    wrap('e1',g+tag(ST[0][0],ST[0][1],ST[0][2])+side('Antes del evento,<br><b>el plano.</b>','Diseñamos cada metro del espacio antes de montar nada.'));
+    var sec=document.getElementById('sc'),L0=document.querySelectorAll('#L0 .dw'),L1=document.querySelectorAll('#L1 .dw'),seats=[].slice.call(document.querySelectorAll('.seat')),L3=document.getElementById('L3'),rt=document.getElementById('rt'),rd=document.getElementById('rd');
+    var dash=function(els,k){[].forEach.call(els,function(e){e.style.strokeDasharray=1;e.style.strokeDashoffset=1-k})};
+    tick=function(){var p=prog(sec);dash(L0,io(seg(p,.02,.2)));dash(L1,io(seg(p,.2,.34)));
+      var rr=seg(p,.34,.56)*8;seats.forEach(function(s){s.setAttribute('opacity',cl(rr-(+s.dataset.r)))});
+      L3.setAttribute('opacity',seg(p,.56,.68));var k=io(seg(p,.7,.92));rt.style.strokeDashoffset=1-k;
+      if(k>0){var pt=rt.getPointAtLength(k*rt.getTotalLength());rd.setAttribute('cx',pt.x);rd.setAttribute('cy',pt.y);rd.setAttribute('opacity',1)}else rd.setAttribute('opacity',0);
+      var i=p<.2?0:p<.34?1:p<.56?2:p<.69?3:4;document.getElementById('tk').textContent=ST[i][0];document.getElementById('tb').textContent=ST[i][1];document.getElementById('ts').textContent=ST[i][2]};
+  }
+  if(M==='2'){
+    var N=96,LY=[],i,r,c;
+    // teatro
+    var t=[];for(r=0;r<8;r++)for(c=0;c<12;c++)t.push([290+c*36+(c>5?24:0),220+r*40,0]);LY.push(t);
+    // escuela (mesas de 4 x 2 sillas)
+    var e=[];for(r=0;r<6;r++)for(c=0;c<16;c++)e.push([268+c*30+Math.floor(c/4)*22,232+r*58,0]);LY.push(e);
+    // banquete: 8 mesas redondas x 12
+    var bq=[],TB=[];for(r=0;r<2;r++)for(c=0;c<4;c++){var cx=300+c*140,cy=270+r*170;TB.push([cx,cy]);for(i=0;i<12;i++){var a=i/12*Math.PI*2;bq.push([cx+Math.cos(a)*52,cy+Math.sin(a)*52,a])}}LY.push(bq);
+    // cóctel: 12 mesas altas, 8 personas
+    var ck=[],TC=[];for(i=0;i<12;i++){var cx=260+(i%4)*160+((i/4|0)%2)*60,cy=240+(i/4|0)*130;TC.push([cx,cy]);for(var j=0;j<8;j++){var a=j/8*Math.PI*2+i;ck.push([cx+Math.cos(a)*(30+(j%2)*10),cy+Math.sin(a)*(30+(j%2)*10),a])}}LY.push(ck);
+    var svg='<svg class="plan pv" viewBox="0 0 1000 620"><rect x="20" y="20" width="960" height="580" fill="none" stroke="#0b0b0b" stroke-width="3"/><rect x="330" y="50" width="340" height="80" fill="#E7E1D6" stroke="#0b0b0b"/><rect x="380" y="62" width="240" height="10" fill="#0b0b0b"/>'+
+      '<g id="tE" opacity="0">';for(r=0;r<6;r++)for(c=0;c<4;c++)svg+='<rect x="'+(256+c*142)+'" y="'+(206+r*58)+'" width="114" height="14" fill="#E7E1D6" stroke="#0b0b0b"/>';
+    svg+='</g><g id="tB" opacity="0">'+TB.map(function(t){return '<circle cx="'+t[0]+'" cy="'+t[1]+'" r="36" fill="#E7E1D6" stroke="#0b0b0b"/>'}).join('')+'</g><g id="tC" opacity="0">'+TC.map(function(t){return '<circle cx="'+t[0]+'" cy="'+t[1]+'" r="14" fill="#E7E1D6" stroke="#0b0b0b"/>'}).join('')+'</g>';
+    for(i=0;i<N;i++)svg+='<rect class="ch" width="14" height="14" rx="3" fill="#D93333"/>';svg+='</svg>';
+    var NM=[['Formato 01','Teatro','Todas las miradas al escenario. Ideal para keynotes y presentaciones.'],['Formato 02','Escuela','Mesas para tomar notas. Formaciones y jornadas de trabajo.'],['Formato 03','Banquete','Mesas redondas para comidas, cenas y galas.'],['Formato 04','Cóctel','Mesas altas y espacio libre para conversar.']];
+    wrap('e2',svg+tag(NM[0][0],NM[0][1],NM[0][2])+side('Un mismo espacio,<br><b>cuatro eventos.</b>','Adaptamos la distribución a lo que tu evento necesita.'));
+    var sec=document.getElementById('sc'),chs=[].slice.call(document.querySelectorAll('.e2 .ch')),tE=document.getElementById('tE'),tB=document.getElementById('tB'),tC=document.getElementById('tC');
+    tick=function(){var p=prog(sec),f=seg(p,.02,.92)*3,k=Math.min(2,Math.floor(f)),u=io(cl((f-k-.35)/.65));if(f>=3){k=2;u=1}
+      var A=LY[k],B=LY[k+1];chs.forEach(function(ch,i){var x=A[i][0]+(B[i][0]-A[i][0])*u,y=A[i][1]+(B[i][1]-A[i][1])*u;ch.setAttribute('x',x-7);ch.setAttribute('y',y-7);ch.setAttribute('rx',k+u>2.5?7:3)});
+      var lv=k+u;tE.setAttribute('opacity',cl(1-Math.abs(lv-1)*1.6));tB.setAttribute('opacity',cl(1-Math.abs(lv-2)*1.6));tC.setAttribute('opacity',cl(1-Math.abs(lv-3)*1.6));
+      var n=Math.round(lv);document.getElementById('tk').textContent=NM[n][0];document.getElementById('tb').textContent=NM[n][1];document.getElementById('ts').textContent=NM[n][2]};
+  }
+  if(M==='3'){
+    var ch='';for(var r=0;r<6;r++)for(var c=0;c<12;c++)ch+='<div class="ch" style="left:'+(22+c*4.6+(c>5?3:0))+'%;top:'+(42+r*7.6)+'%"></div>';
+    wrap('e3','<div class="iso" id="iso"><div class="fl"><div class="ob" id="stg" style="left:25%;top:6%;width:50%;height:16%"><div class="t"></div></div><div class="scr" id="scr" style="left:30%;top:-8%;width:40%;height:14%"><span style="opacity:0" id="sct">Bienvenidos<span>.</span></span></div><div class="ob" id="acr" style="left:3%;top:76%;width:14%;height:18%"><div class="t"></div></div><div class="ob" id="bar" style="left:84%;top:40%;width:12%;height:40%"><div class="t"></div></div>'+ch+'</div></div>'+tag('Del plano','Al espacio','Cada plano se convierte en un espacio real, medido al centímetro.')+side('Lo vemos<br><b>antes de montarlo.</b>','Plano, volumen y recorrido: así sabes cómo será tu evento antes de que empiece.'));
+    var sec=document.getElementById('sc'),iso=document.getElementById('iso'),obs=[document.getElementById('stg'),document.getElementById('acr'),document.getElementById('bar')],scr=document.getElementById('scr'),sct=document.getElementById('sct'),chs=[].slice.call(document.querySelectorAll('.e3 .ch'));
+    tick=function(){var p=prog(sec),k=io(seg(p,.05,.4)),h=out(seg(p,.38,.6)),sc=out(seg(p,.55,.72));
+      iso.style.transform='rotateX('+(k*58)+'deg) rotateZ('+(-k*38)+'deg)';
+      obs.forEach(function(o,i){o.querySelector('.t').style.transform='translateZ('+(h*[26,40,40][i])+'px)';o.style.boxShadow=h?'0 0 0 1px rgba(0,0,0,.2)':'none'});
+      scr.style.transform='translateZ('+(h*26)+'px) rotateX('+(-sc*90)+'deg)';scr.style.opacity=sc>0?1:0;scr.style.fontSize='clamp(10px,1.4vw,18px)';sct.style.opacity=sc;
+      chs.forEach(function(c,i){var t=out(seg(p,.6+(i%12)*.012,.72+(i%12)*.012));c.style.transform='translateZ('+(t*10)+'px)';c.style.opacity=t})};
+  }
+  if(M==='4'){
+    var person=function(c){return '<svg viewBox="0 0 40 120" style="width:100%;display:block"><circle cx="20" cy="11" r="9" fill="'+c+'"/><path d="M6 26Q20 20 34 26L36 70H4Z" fill="'+c+'"/><rect x="9" y="68" width="9" height="50" fill="'+c+'"/><rect x="22" y="68" width="9" height="50" fill="'+c+'"/></svg>'};
+    var seated=function(c){return '<svg viewBox="0 0 40 90" style="width:100%;display:block"><circle cx="20" cy="11" r="9" fill="'+c+'"/><path d="M6 26Q20 20 34 26L34 62H6Z" fill="'+c+'"/><rect x="6" y="58" width="30" height="10" fill="'+c+'"/><rect x="26" y="62" width="8" height="26" fill="'+c+'"/></svg>'};
+    var SS=[['09:30','Bienvenida','Apertura del<br>congreso<span>.</span>',[1,0,0,0,0],0],['10:00','Keynote','El futuro<br>del sector<span>.</span>',[0,1,0,0,0],0],['11:30','Mesa redonda','Cuatro miradas,<br>un reto<span>.</span>',[0,0,1,1,1],1],['12:30','Preguntas','Turno de<br>preguntas<span>.</span>',[0,0,1,1,1],2],['13:00','Clausura','Gracias<span>.</span>',[1,0,0,0,0],0]];
+    wrap('e4','<div class="room"><div class="wall"><div class="scr"><span class="k" id="sk">10:00 · Keynote</span><h2 id="sh"></h2><span class="k">Congreso 2026 · Sala principal</span></div></div><div class="floor"></div><div class="stg"></div><div class="lec"></div><div class="tbl" id="tb4"></div>'+
+      '<div class="sp" style="left:20.6%;bottom:34%" id="p0">'+person('#1b1b1b')+'</div><div class="sp" style="left:58%" id="p1">'+person('#1b1b1b')+'</div><div class="sp" style="left:50%" id="p2">'+seated('#1b1b1b')+'</div><div class="sp" style="left:62%" id="p3">'+seated('#1b1b1b')+'</div><div class="sp" style="left:74%" id="p4">'+seated('#1b1b1b')+'</div>'+
+      heads(40)+'<div class="mic" id="mic"><svg viewBox="0 0 20 60"><rect x="6" y="0" width="8" height="16" rx="4" fill="#D93333"/><rect x="9" y="16" width="2" height="44" fill="#0b0b0b"/></svg></div></div>'+
+      '<div class="ag" id="ag">'+SS.map(function(s){return '<p><b>'+s[0]+'</b> · '+s[1]+'</p>'}).join('')+'</div>');
+    var sec=document.getElementById('sc'),ps=[0,1,2,3,4].map(function(i){return document.getElementById('p'+i)}),ag=[].slice.call(document.querySelectorAll('#ag p')),tb4=document.getElementById('tb4'),mic=document.getElementById('mic');
+    tick=function(){var p=prog(sec),i=Math.min(SS.length-1,Math.floor(seg(p,.03,.95)*SS.length)),s=SS[i];
+      document.getElementById('sk').textContent=s[0]+' · '+s[1];document.getElementById('sh').innerHTML=s[2];
+      ps.forEach(function(e,k){e.style.opacity=s[3][k];e.style.transform='translateY('+((1-s[3][k])*10)+'px)'});ps[0].style.bottom='25%';ps[0].style.zIndex=4;ps[0].style.left='20.8%';
+      tb4.style.opacity=s[4]?1:0;mic.style.opacity=s[4]===2?1:0;ag.forEach(function(a,k){a.classList.toggle('on',k===i)})};
+  }
+  if(M==='5'){
+    var R=['Sala A','Sala B','Sala C'],SES=[[0,0,1,'Bienvenida','Auditorio'],[0,1,2,'Keynote: el sector en 2030','Laura Martín'],[1,1,2,'Taller de innovación','Equipo Launch'],[2,1,3,'Casos de éxito','Tres marcas'],[0,3,4,'Mesa redonda','4 ponentes'],[1,3,4,'Sostenibilidad','Jordi Puig'],[0,4,5,'Comida y networking','Zona expo'],[1,5,7,'Workshop práctico','Plazas limitadas'],[2,5,6,'Tecnología','Ana López'],[0,5,6,'Liderazgo','Pablo Gil'],[2,6,8,'Startups','Pitch session'],[0,7,8,'Clausura','Auditorio']];
+    var grid='<div class="grid" id="gr"><div class="hd"></div>'+R.map(function(r){return '<div class="hd">'+r+'</div>'}).join('');
+    for(var h=0;h<9;h++){grid+='<div class="hr">'+(9+h)+':00</div><div class="cell"></div><div class="cell"></div><div class="cell"></div>'}
+    grid+=SES.map(function(x){return '<div class="ss" data-a="'+x[1]+'" data-b="'+x[2]+'" data-c="'+x[0]+'"><b>'+x[3]+'</b><i>'+x[4]+'</i></div>'}).join('')+'<div class="now-line" id="nl"></div></div>';
+    wrap('e5','<div class="wrap"><div><p class="k" style="color:var(--red);margin-bottom:14px">Congreso 2026 · Programa</p><div class="big" id="hh">09<span>:</span>00</div><div class="st"><div><b id="c1">0</b><span class="k">Sesiones</span></div><div><b id="c2">0</b><span class="k">Ponentes</span></div><div><b>3</b><span class="k">Salas</span></div></div><p class="ttl">Un programa entero,<br><b>funcionando a la vez.</b></p></div>'+grid+'</div>');
+    var sec=document.getElementById('sc'),gr=document.getElementById('gr'),ss=[].slice.call(document.querySelectorAll('.e5 .ss')),nl=document.getElementById('nl');
+    var place=function(){var W=gr.clientWidth-54,Hh=gr.clientHeight-34,rh=Hh/9;ss.forEach(function(e){var c=+e.dataset.c,a=+e.dataset.a,b=+e.dataset.b;e.style.left=(54+c*W/3)+'px';e.style.width=(W/3-6)+'px';e.style.top=(34+a*rh)+'px';e.style.height=((b-a)*rh-6)+'px'})};place();addEventListener('resize',place);
+    tick=function(){var p=prog(sec),k=seg(p,.03,.95),t=k*9,Hh=gr.clientHeight-34;nl.style.top=(34+t*Hh/9)+'px';var mins=Math.round(t*60/5)*5,h=9+Math.floor(mins/60),m=mins%60;
+      document.getElementById('hh').innerHTML=('0'+h).slice(-2)+'<span>:</span>'+('0'+m).slice(-2);var n=0,sp=0;
+      ss.forEach(function(e,i){var a=+e.dataset.a,b=+e.dataset.b,shown=t>=a-.6;e.classList.toggle('in',shown);e.classList.toggle('now',t>=a&&t<b);if(shown){n++;sp+=[1,1,2,3,4,1,0,2,1,1,5,1][i]}});
+      document.getElementById('c1').textContent=n;document.getElementById('c2').textContent=sp};
+  }
+  if(M==='6'){
+    var RM=[['A','Auditorio',520,40,440,250,[[1,3],[4.5,6.5],[7,8]]],['B','Talleres',520,320,210,200,[[1.5,3],[3.5,4.5],[5.5,7.5]]],['C','Ponencias',750,320,210,200,[[2,3.5],[5,6]]]];
+    var svg='<svg class="plan pv" viewBox="0 0 1000 560"><rect x="20" y="20" width="960" height="520" fill="none" stroke="#0b0b0b" stroke-width="3"/>'+
+      '<rect x="40" y="400" width="200" height="120" fill="#E7E1D6" stroke="#0b0b0b"/><text x="56" y="426" font-family="DM Mono" font-size="11" letter-spacing="2">ACREDITACIONES</text>'+
+      '<rect x="40" y="40" width="440" height="340" fill="#FBF8F2" stroke="#0b0b0b"/><text x="56" y="66" font-family="DM Mono" font-size="11" letter-spacing="2">ZONA EXPOSITIVA</text>';
+    for(var r=0;r<3;r++)for(var c=0;c<4;c++)svg+='<rect x="'+(66+c*102)+'" y="'+(96+r*92)+'" width="72" height="56" fill="#E7E1D6" stroke="#0b0b0b" stroke-width="1"/>';
+    svg+='<rect x="260" y="400" width="220" height="120" fill="#E7E1D6" stroke="#0b0b0b"/><text x="276" y="426" font-family="DM Mono" font-size="11" letter-spacing="2">CAFÉ</text>';
+    svg+=RM.map(function(x,i){return '<rect id="rm'+i+'" x="'+x[2]+'" y="'+x[3]+'" width="'+x[4]+'" height="'+x[5]+'" fill="#F1F0E8" stroke="#0b0b0b" style="transition:fill .4s"/><text id="rt'+i+'" x="'+(x[2]+16)+'" y="'+(x[3]+26)+'" font-family="DM Mono" font-size="11" letter-spacing="2" style="transition:fill .4s">SALA '+x[0]+' · '+x[1].toUpperCase()+'</text>'}).join('');
+    svg+='<g id="pp"></g></svg>';
+    wrap('e6',svg+'<div class="clk"><span class="k" style="color:var(--red)">Congreso 2026</span><b id="ck">09:00</b><span id="cs">Llegada y acreditaciones</span></div>'+side('Un congreso,<br><b>muchos espacios.</b>','Coordinamos salas, exposición, flujos de asistentes y horarios para que todo encaje.'));
+    var sec=document.getElementById('sc'),pp=document.getElementById('pp'),NP=90,dd='';for(var i=0;i<NP;i++)dd+='<circle r="4.5" fill="#0b0b0b"/>';pp.innerHTML=dd;var cs=[].slice.call(pp.children);
+    var spot=function(z,i){var rnd=function(n){return ((Math.sin(i*12.9898+n*78.233)*43758.5453)%1+1)%1};
+      if(z==='acr')return [60+rnd(1)*160,440+rnd(2)*70];if(z==='exp')return [60+rnd(3)*400,80+rnd(4)*280];if(z==='caf')return [280+rnd(5)*180,440+rnd(6)*70];var R=RM[z];return [R[2]+20+rnd(7)*(R[4]-40),R[3]+40+rnd(8)*(R[5]-60)]};
+    var where=function(t,i){if(t<.8)return i%3?'acr':'exp';var act=[];RM.forEach(function(R,k){R[6].forEach(function(s){if(t>=s[0]&&t<s[1])act.push(k)})});if(!act.length)return i%2?'caf':'exp';if(i%4===0)return 'exp';return act[i%act.length]};
+    tick=function(){var p=prog(sec),t=seg(p,.02,.96)*9,mins=Math.round(t*60/5)*5,h=9+Math.floor(mins/60),m=mins%60;document.getElementById('ck').textContent=('0'+h).slice(-2)+':'+('0'+m).slice(-2);
+      var act=[];RM.forEach(function(R,k){var on=R[6].some(function(s){return t>=s[0]&&t<s[1]});act.push(on);document.getElementById('rm'+k).setAttribute('fill',on?'#D93333':'#F1F0E8');document.getElementById('rt'+k).setAttribute('fill',on?'#fff':'#0b0b0b')});
+      var n=act.filter(Boolean).length;document.getElementById('cs').textContent=t<.8?'Llegada y acreditaciones':n?n+(n>1?' salas en sesión':' sala en sesión'):'Pausa · café y exposición';
+      cs.forEach(function(c,i){var t0=Math.floor(t*2)/2,f=io(cl((t-t0)*2/0.6)),a=spot(where(t0-.5,i),i),b=spot(where(t0,i),i);if(t0<.5)a=b;c.setAttribute('cx',a[0]+(b[0]-a[0])*f);c.setAttribute('cy',a[1]+(b[1]-a[1])*f)})};
+  }
+  var setBh=function(){document.documentElement.style.setProperty('--bh',bar.offsetHeight+'px')};setBh();
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',function(){setBh();tick()});
+  var FIX=new URLSearchParams(location.search).get('p');if(FIX!==null){prog=function(){return +FIX}}tick();
+})();
+</script>
+</body>
+</html>
