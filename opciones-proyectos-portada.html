@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyectos: portada — Launch Studio</title>
+<meta name="description" content="Una selección representativa de stands, eventos, experiencias de marca, renders y diseño gráfico de Launch Studio, ordenados por servicio.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=202611041102">
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="Launch Studio, inicio"><svg class="mark" viewBox="440 260 1110 1470" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z"/><circle cx="1288" cy="1467" r="237"/></svg><span>Launch Studio</span></a>
+  <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
+  <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html" aria-current="page">Proyectos</a><a href="servicios.html">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
+</header>
+
+<main>
+<div class="pb" id="pb">
+<style>
+.pb{--pbg:var(--white);--pfg:var(--ink);background:var(--pbg);color:var(--pfg);transition:background-color .6s,color .6s}
+.pb[data-tone=dark]{--pbg:#0b0b0b;--pfg:#F1F0E8}
+.pb .sec--top{background:transparent}
+.pb__dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transition:opacity .4s}
+.pb__dots.on{opacity:1;pointer-events:auto}
+.pb__dots a{display:flex;align-items:center;justify-content:flex-end;gap:10px;font:400 10px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none}
+.pb__dots a span{opacity:0;transition:opacity .3s}
+.pb__dots a i{width:8px;height:8px;border-radius:50%;border:1px solid currentColor}
+.pb__dots a.on i{background:currentColor}
+.pb__dots a.on span,.pb__dots a:hover span{opacity:1}
+.pb__sv{min-height:100vh;padding:clamp(70px,9vw,130px) var(--pad);display:flex;flex-direction:column;justify-content:center;scroll-margin-top:60px}
+.pb__t{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+.pbc__k{display:block;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.pb__t h2{margin:12px 0 0;font-weight:800;font-size:clamp(46px,8.6vw,150px);letter-spacing:-.075em;line-height:.85}
+.pb__t p{margin:20px auto 0;max-width:460px;opacity:.75;line-height:1.6}
+.pb__go{display:inline-flex;gap:10px;margin-top:24px;border-bottom:1px solid currentColor;padding-bottom:4px;font-weight:500;color:inherit;text-decoration:none}
+.pb__row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:clamp(14px,1.8vw,26px);max-width:min(calc(var(--n) * 300px),calc(100vw - 2*var(--pad) - 120px));width:100%;margin:0 auto}
+.pbc{display:block;color:inherit;text-decoration:none}
+.pbc__im{aspect-ratio:4/5;overflow:hidden;background:rgba(127,120,105,.18)}
+.pbc__im img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pbc:hover .pbc__im img{transform:scale(1.045)}
+.pbc h3{margin:14px 0 0;font-weight:600;font-size:18px;letter-spacing:-.02em}
+.pbc .pbc__k{margin-top:6px}
+@media (max-width:860px){.pb__dots{display:none}.pb__sv{min-height:0}.pb__row{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pb__row{grid-template-columns:1fr}}
+</style>
+<style>
+.ob{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:8px;border-radius:999px;background:rgba(11,11,11,.92);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase;max-width:calc(100vw - 24px)}
+.ob a{color:#F1F0E8;text-decoration:none;border:1px solid rgba(241,240,232,.3);border-radius:999px;padding:6px 12px}
+.ob a[aria-current]{background:#F1F0E8;color:#0b0b0b}
+.cv{--nh:80px;color:var(--ink)}
+.cv .k{font:400 11px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.cv a{color:inherit;text-decoration:none}
+.cv img{display:block;width:100%;height:100%;object-fit:cover;background:rgba(127,120,105,.2)}
+/* 1 índice gigante */
+.c1{padding:calc(var(--nh) + clamp(40px,6vw,90px)) var(--pad) clamp(40px,6vw,80px)}
+.c1 .hd{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:clamp(30px,4vw,56px)}
+.c1 h1{font-weight:800;font-size:clamp(46px,7vw,110px);letter-spacing:-.07em;line-height:.85;margin:0}
+.c1 .hd p{max-width:340px;color:var(--grey);line-height:1.6;margin:0}
+.c1 .li a{display:grid;grid-template-columns:70px 1fr auto 60px;align-items:center;gap:20px;padding:clamp(14px,1.6vw,22px) 0;border-top:1px solid var(--ink);position:relative;transition:color .25s}
+.c1 .li a:last-child{border-bottom:1px solid var(--ink)}
+.c1 .li .n{font:400 12px "DM Mono",monospace;color:var(--red)}
+.c1 .li b{font-weight:800;font-size:clamp(30px,4.6vw,72px);letter-spacing:-.065em;line-height:1;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.c1 .li .c{font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.c1 .li .ar{font-size:26px;justify-self:end;transition:transform .3s}
+.c1 .li .th{position:absolute;right:120px;top:50%;width:200px;aspect-ratio:4/3;transform:translateY(-50%) scale(.85) rotate(-3deg);opacity:0;transition:opacity .3s,transform .4s;pointer-events:none;overflow:hidden}
+.c1 .li a:hover{color:var(--red)}.c1 .li a:hover b{transform:translateX(14px)}.c1 .li a:hover .ar{transform:translateY(4px)}
+.c1 .li a:hover .th{opacity:1;transform:translateY(-50%) scale(1) rotate(-3deg)}
+/* 2 mosaico de servicios */
+.c2{padding:calc(var(--nh) + clamp(40px,6vw,80px)) var(--pad) clamp(40px,6vw,80px)}
+.c2 .hd{text-align:center;margin-bottom:clamp(30px,4vw,50px)}
+.c2 h1{font-weight:300;font-size:clamp(44px,6.4vw,104px);letter-spacing:-.06em;line-height:.9;margin:14px 0 0}
+.c2 h1 b{font-weight:800}
+.c2 .k{color:var(--red)}
+.c2 .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;height:min(56vh,520px)}
+.c2 .tl a{position:relative;overflow:hidden;color:#fff}
+.c2 .tl img{transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .4s;filter:brightness(.78)}
+.c2 .tl a:hover img{transform:scale(1.06);filter:brightness(.6)}
+.c2 .tl .cap{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:end;gap:8px}
+.c2 .tl b{font-weight:700;font-size:clamp(16px,1.5vw,22px);letter-spacing:-.03em;line-height:1.05}
+.c2 .tl .n{position:absolute;left:16px;top:14px;font:400 11px "DM Mono",monospace}
+/* 3 titular + cinta de fotos + botones */
+.c3{padding-top:calc(var(--nh) + clamp(40px,6vw,90px));overflow:hidden}
+.c3 .hd{padding:0 var(--pad);display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.c3 h1{font-weight:800;font-size:clamp(70px,14vw,240px);letter-spacing:-.08em;line-height:.8;margin:0}
+.c3 .cnt{text-align:right}.c3 .cnt b{display:block;font-weight:800;font-size:clamp(50px,6vw,96px);letter-spacing:-.06em;line-height:.9;color:var(--red)}
+.c3 .rib{display:flex;gap:12px;margin:clamp(30px,4vw,50px) 0;width:max-content;animation:rib 50s linear infinite}
+.c3 .rib div{width:clamp(180px,18vw,280px);aspect-ratio:4/3;flex:none}
+@keyframes rib{to{transform:translateX(-50%)}}
+.c3 .pills{padding:0 var(--pad) clamp(40px,6vw,80px);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.c3 .pills a{border:1px solid var(--ink);border-radius:999px;padding:12px 20px;font-size:16px;font-weight:400;transition:background .2s,color .2s}
+.c3 .pills a sup{font:400 10px "DM Mono",monospace;margin-left:4px;color:var(--red)}
+.c3 .pills a:hover{background:var(--ink);color:var(--white)}
+.c3 .pills .k{margin-right:10px;color:var(--grey)}
+/* 4 pantalla dividida */
+.c4{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr}
+.c4 .l{padding:calc(var(--nh) + clamp(40px,6vw,90px)) var(--pad) clamp(40px,6vw,70px);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.c4 h1{font-weight:300;font-size:clamp(44px,5.6vw,92px);letter-spacing:-.06em;line-height:.92;margin:14px 0 0}
+.c4 h1 b{font-weight:800}
+.c4 .l p{max-width:420px;color:var(--grey);font-size:17px;line-height:1.6;margin:0}
+.c4 .l .k{color:var(--red)}
+.c4 .r{background:var(--ink);color:var(--white);padding:calc(var(--nh) + clamp(40px,6vw,90px)) var(--pad) clamp(40px,6vw,70px);display:flex;flex-direction:column;justify-content:end}
+.c4 .r .k{opacity:.5;margin-bottom:20px}
+.c4 .r a{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-top:1px solid rgba(241,240,232,.2);font-weight:500;font-size:clamp(20px,2vw,30px);letter-spacing:-.03em;transition:padding .3s,color .2s}
+.c4 .r a span{font:400 11px "DM Mono",monospace;opacity:.6}
+.c4 .r a:hover{padding-left:12px;color:var(--red)}
+.c4 .r a::after{content:"↓";font-size:18px}
+.c4 .r a span{margin-left:auto;margin-right:16px}
+/* 5 acordeón de imágenes */
+.c5{padding-top:var(--nh);height:100vh;display:flex;flex-direction:column}
+.c5 .hd{padding:clamp(24px,3vw,40px) var(--pad);display:flex;justify-content:space-between;align-items:end;gap:20px}
+.c5 h1{font-weight:800;font-size:clamp(40px,5vw,80px);letter-spacing:-.07em;line-height:.9;margin:0}
+.c5 .hd p{color:var(--grey);max-width:360px;line-height:1.55;margin:0}
+.c5 .ac{flex:1;display:flex;gap:6px;padding:0 var(--pad) var(--pad);min-height:0}
+.c5 .ac a{flex:1;position:relative;overflow:hidden;color:#fff;transition:flex .7s cubic-bezier(.2,.7,.2,1)}
+.c5 .ac a:hover,.c5 .ac a.on{flex:3.2}
+.c5 .ac img{filter:brightness(.7)}
+.c5 .ac .v{position:absolute;left:18px;bottom:18px;writing-mode:vertical-rl;transform:rotate(180deg);font-weight:800;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.04em;white-space:nowrap;transition:opacity .3s}
+.c5 .ac .h{position:absolute;left:22px;right:22px;bottom:22px;opacity:0;transition:opacity .4s .15s}
+.c5 .ac .h b{display:block;font-weight:800;font-size:clamp(28px,3.4vw,54px);letter-spacing:-.06em;line-height:.95}
+.c5 .ac a:hover .v,.c5 .ac a.on .v{opacity:0}.c5 .ac a:hover .h,.c5 .ac a.on .h{opacity:1}
+.c5 .ac .n{position:absolute;left:18px;top:16px;font:400 11px "DM Mono",monospace}
+@media (max-width:860px){
+ .c1 .hd{flex-direction:column;align-items:start}.c1 .li a{grid-template-columns:40px 1fr 40px}.c1 .li .c,.c1 .li .th{display:none}
+ .c2 .tl{grid-template-columns:1fr 1fr;height:auto}.c2 .tl a{aspect-ratio:1}.c2 .tl a:first-child{grid-column:1/-1;aspect-ratio:16/9}
+ .c3 .hd{grid-template-columns:1fr}.c3 .cnt{text-align:left}
+ .c4{grid-template-columns:1fr}.c4 .r{padding-top:40px}
+ .c5{height:auto}.c5 .hd{flex-direction:column;align-items:start}.c5 .ac{flex-direction:column}.c5 .ac a{flex:none;height:90px}.c5 .ac a.on,.c5 .ac a:hover{flex:none;height:90px}.c5 .ac .v{writing-mode:horizontal-tb;transform:none}.c5 .ac .h{display:none}.c5 .ac a .v{opacity:1!important}
+}
+</style>
+<nav class="ob" aria-label="Opciones de portada"><a href="?m=1">1 · Índice</a><a href="?m=2">2 · Mosaico</a><a href="?m=3">3 · Cinta y botones</a><a href="?m=4">4 · Dividida</a><a href="?m=5">5 · Acordeón</a></nav>
+<div class="cv" id="cv"></div>
+<script>
+(function(){
+var O='https://www.launchstudiogroup.com/';
+var S=[['stands','Stands',4,'assets/img/servicios/servicio-stands-truphone.jpg'],['eventos','Eventos corporativos',2,O+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'],['experiencias','Experiencias de marca',3,'assets/img/servicios/servicio-experiencias-cursa-base4.jpg'],['renders','Renders',2,'assets/img/servicios/render-casa.jpg'],['grafico','Diseño gráfico',2,'assets/img/servicios/servicio-diseno-grafico-ceramica.jpg']];
+var ALL=[O+'c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG',O+'25f3b694-0d3c-438c-be95-81e2b03044e5.JPG',O+'project-1.JPG',O+'TRUPHONE.JPG','assets/img/servicios/render-casa.jpg',O+'5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG',O+'BIOHORIZONS.JPG','assets/img/servicios/servicio-diseno-grafico-ceramica.jpg',O+'project-2.jpg',O+'JVM.jpeg',O+'project-3.JPG','assets/img/servicios/servicio-renders-interiorismo.jpg'];
+var M=new URLSearchParams(location.search).get('m')||'1';
+document.querySelectorAll('.ob a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+var pad=function(n){return '0'+n},im=function(u){return '<img src="'+u+'" alt="" loading="lazy" onerror="this.style.opacity=0">'};
+var T=13,h='';
+if(M==='1')h='<div class="c1"><div class="hd"><div><p class="k" style="color:var(--red);margin:0 0 16px">Proyectos · '+T+' trabajos</p><h1>Proyectos.</h1></div><p>Elige un servicio para ver sus proyectos, o baja para recorrerlos todos.</p></div><nav class="li">'+S.map(function(s,i){return '<a href="#'+s[0]+'"><span class="n">'+pad(i+1)+'</span><b>'+s[1]+'</b><span class="c">'+s[2]+' proyectos</span><span class="ar">↓</span><span class="th">'+im(s[3])+'</span></a>'}).join('')+'</nav></div>';
+if(M==='2')h='<div class="c2"><div class="hd"><p class="k">Proyectos · '+T+' trabajos</p><h1>Un portfolio <b>de experiencias.</b></h1></div><nav class="tl">'+S.map(function(s,i){return '<a href="#'+s[0]+'">'+im(s[3])+'<span class="n">'+pad(i+1)+'</span><span class="cap"><b>'+s[1]+'</b><span class="k">'+s[2]+' ↓</span></span></a>'}).join('')+'</nav></div>';
+if(M==='3')h='<div class="c3"><div class="hd"><h1>Proyectos</h1><div class="cnt"><b>'+T+'</b><span class="k">trabajos · 5 servicios</span></div></div><div class="rib">'+ALL.concat(ALL).map(function(u){return '<div>'+im(u)+'</div>'}).join('')+'</div><nav class="pills"><span class="k">Ir a →</span>'+S.map(function(s){return '<a href="#'+s[0]+'">'+s[1]+'<sup>'+s[2]+'</sup></a>'}).join('')+'</nav></div>';
+if(M==='4')h='<div class="c4"><div class="l"><div><p class="k">Proyectos · '+T+' trabajos</p><h1>Un portfolio<br><b>de experiencias.</b></h1></div><p>Stands, eventos, experiencias de marca, renders y diseño gráfico. Cada proyecto, ordenado por servicio.</p></div><nav class="r"><p class="k">Ver por servicio</p>'+S.map(function(s,i){return '<a href="#'+s[0]+'">'+pad(i+1)+' · '+s[1]+'<span>'+s[2]+' proyectos</span></a>'}).join('')+'</nav></div>';
+if(M==='5')h='<div class="c5"><div class="hd"><div><p class="k" style="color:var(--red);margin:0 0 12px">Proyectos · '+T+' trabajos</p><h1>Un portfolio de experiencias.</h1></div><p>Pasa por encima de cada servicio y pulsa para ir a sus proyectos.</p></div><nav class="ac">'+S.map(function(s,i){return '<a href="#'+s[0]+'"'+(i===0?' class="on"':'')+'>'+im(s[3])+'<span class="n">'+pad(i+1)+'</span><span class="v">'+s[1]+'</span><span class="h"><span class="k">'+s[2]+' proyectos ↓</span><b>'+s[1]+'</b></span></a>'}).join('')+'</nav></div>';
+var cv=document.getElementById('cv');cv.innerHTML=h;
+var nav=document.getElementById('nav');if(nav)cv.style.setProperty('--nh',nav.offsetHeight+'px');
+var ac=cv.querySelector('.ac');if(ac)ac.addEventListener('mouseover',function(e){var a=e.target.closest('a');if(!a)return;ac.querySelectorAll('a').forEach(function(x){x.classList.toggle('on',x===a)})});
+})();
+</script>
+<nav class="pb__dots" id="pb-dots" aria-label="Servicios"><a href="#stands"><span>Stands</span><i></i></a><a href="#eventos"><span>Eventos corporativos</span><i></i></a><a href="#experiencias"><span>Experiencias de marca</span><i></i></a><a href="#renders"><span>Renders</span><i></i></a><a href="#grafico"><span>Diseño gráfico</span><i></i></a></nav>
+  <section class="pb__sv" id="stands" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">01 · 4 proyectos</span><h2>Stands</h2><p>Stands para ferias y congresos, del diseño al montaje.</p><a class="pb__go" href="servicios/stands.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:4"><a class="pbc" href="proyectos/06-stand-janssen-oncology.html"><div class="pbc__im"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div><h3>Janssen Oncology</h3><span class="pbc__k">Stand congreso</span></a><a class="pbc" href="proyectos/07-stand-truphone.html"><div class="pbc__im"><img src="assets/img/proyectos/07-stand-truphone.jpg" alt="Truphone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/TRUPHONE.JPG'"></div><h3>Truphone</h3><span class="pbc__k">Stand corporativo</span></a><a class="pbc" href="proyectos/09-stand-biohorizons.html"><div class="pbc__im"><img src="assets/img/proyectos/09-stand-biohorizons.jpg" alt="BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"></div><h3>BioHorizons</h3><span class="pbc__k">Stand institucional</span></a><a class="pbc" href="proyectos/08-stand-ti-medi-jvm.html"><div class="pbc__im"><img src="assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></div><h3>TI-MEDI / JVM</h3><span class="pbc__k">Stand comercial</span></a></div>
+  </section>
+  <section class="pb__sv" id="eventos" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">02 · 2 proyectos</span><h2>Eventos corporativos</h2><p>Presentaciones, convenciones y eventos de marca con producción integral.</p><a class="pb__go" href="servicios/eventos.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="proyectos/04-evento-corporativo-ntt-data.html"><div class="pbc__im"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"></div><h3>NTT DATA</h3><span class="pbc__k">Evento corporativo</span></a><a class="pbc" href="proyectos/02-evento-promocion-base4.html"><div class="pbc__im"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"></div><h3>BASE4</h3><span class="pbc__k">Evento de promoción</span></a></div>
+  </section>
+  <section class="pb__sv" id="experiencias" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">03 · 3 proyectos</span><h2>Experiencias de marca</h2><p>Pop-ups, markets y activaciones que se viven en primera persona.</p><a class="pb__go" href="servicios/experiencias.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:3"><a class="pbc" href="proyectos/01-taller-amona.html"><div class="pbc__im"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div><h3>Taller Amona</h3><span class="pbc__k">Experiencia de marca</span></a><a class="pbc" href="proyectos/05-pop-up-store-venca.html"><div class="pbc__im"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"></div><h3>Venca</h3><span class="pbc__k">Pop-up store</span></a><a class="pbc" href="proyectos/03-market-the-office-studio.html"><div class="pbc__im"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="The Office Studio" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"></div><h3>The Office Studio</h3><span class="pbc__k">Market</span></a></div>
+  </section>
+  <section class="pb__sv" id="renders" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">04 · 2 proyectos</span><h2>Renders</h2><p>Visualizaciones fotorrealistas para decidir antes de construir.</p><a class="pb__go" href="servicios.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/render-casa.jpg" alt="Vivienda unifamiliar" loading="lazy"></div><h3>Vivienda unifamiliar</h3><span class="pbc__k">Render exterior</span></a><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt="Interiorismo" loading="lazy"></div><h3>Interiorismo</h3><span class="pbc__k">Render interior</span></a></div>
+  </section>
+  <section class="pb__sv" id="grafico" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">05 · 2 proyectos</span><h2>Diseño gráfico</h2><p>Identidad, gráfica de stand y piezas de marca.</p><a class="pb__go" href="servicios/grafico.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-diseno-grafico-ceramica.jpg" alt="Colección cerámica" loading="lazy"></div><h3>Colección cerámica</h3><span class="pbc__k">Identidad y packaging</span></a><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/stand-launch.jpg" alt="Launch Studio" loading="lazy"></div><h3>Launch Studio</h3><span class="pbc__k">Gráfica de stand</span></a></div>
+  </section>
+</div>
+<script>
+(function(){var pb=document.getElementById('pb'),dots=document.getElementById('pb-dots'),ds=[].slice.call(dots.querySelectorAll('a')),sv=[].slice.call(pb.querySelectorAll('.pb__sv'));
+var t=function(){var on=-1,m=innerHeight*.5;sv.forEach(function(e,i){if(e.getBoundingClientRect().top<m)on=i});
+var r=pb.getBoundingClientRect(),inside=on>=0&&r.bottom>m;pb.dataset.tone=inside?sv[on].dataset.tone:'light';
+dots.classList.toggle('on',inside);dots.style.color=pb.dataset.tone==='dark'?'#F1F0E8':'#0b0b0b';ds.forEach(function(d,i){d.classList.toggle('on',i===on)})};
+var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;t()})},{passive:true});t();})();
+</script>
+<section class="cta">
+  <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
+  <div class="wrap cta__in">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos de tu próximo proyecto.</h2>
+    <a class="btn btn--light" href="contacto.html">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div><h3>Navegación</h3><ul><li><a href="index.html">Inicio</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+    <div><h3>Qué hacemos</h3><ul><li><a href="servicios.html#stands">Stands</a></li><li><a href="servicios.html#eventos">Eventos corporativos</a></li><li><a href="servicios.html#experiencias">Experiencias de marca</a></li><li><a href="servicios.html#pop-up">Pop-up stores</a></li><li><a href="servicios.html#metodologia">Metodología</a></li></ul></div>
+    <div><h3>Contacto</h3><ul><li><a href="mailto:info@launchstudiogroup.com">info@launchstudiogroup.com</a></li><li><a href="tel:+34673071256">+34 673 071 256</a></li></ul></div>
+    <div><h3>Estudio</h3><ul><li>Barcelona</li><li>Presencia internacional</li></ul></div>
+  </div>
+  <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
+</footer>
+<script src="js/sitio.js?v=202611041102"></script>
+</body>
+</html>
