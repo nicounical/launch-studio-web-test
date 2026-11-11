@@ -54,8 +54,9 @@
 .pc__top{display:flex;justify-content:space-between;gap:30px}
 .pc__top .k:first-child{color:var(--red)}
 .pc__top .k:last-child{opacity:.5}
-.pc h1{font-weight:800;font-size:clamp(56px,9vw,150px);letter-spacing:-.075em;line-height:.85;margin:0 0 0 -.03em}
+.pc h1{font-weight:800;font-size:clamp(56px,9vw,150px);letter-spacing:-.02em;line-height:.95;margin:0 0 0 -.03em;color:transparent;-webkit-text-stroke:2px var(--red)}
 .pc h1 span{color:var(--red)}
+@supports not (-webkit-text-stroke:2px red){.pc h1{color:var(--red)}}
 .pc__bot{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:clamp(20px,2.4vw,30px)}
 .pc__sn{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 0;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
 .pc__sn>span{opacity:.5;margin-right:14px}
