@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos: presentación de producto (2) — Launch Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Poppins:wght@300;400;500;600;800&display=swap">
+<style>
+/* Cinco portadas para Eventos corporativos. Bajar avanza, subir retrocede. ?m=1..5, ?p=0..1 fija el momento */
+:root{--white:#F1F0E8;--paper:#FBF8F2;--sand:#E7E1D6;--ink:#0b0b0b;--red:#D93333;--grey:#5f5d56;--line:rgba(11,11,11,.14);--pad:clamp(20px,4vw,64px);--bh:48px;--font:"Poppins",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:9px var(--pad);background:rgba(11,11,11,.94);color:var(--white);font:400 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.bar b{font-weight:400;opacity:.55;margin-right:6px}
+.bar a{color:inherit;text-decoration:none;border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:5px 12px}
+.bar a:hover{background:var(--red);border-color:var(--red)}
+.bar a[aria-current]{background:var(--white);color:var(--ink);border-color:var(--white)}
+.sc{height:600vh;margin-top:var(--bh)}
+.pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:grid;place-items:center}
+.k{font:400 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.crumb{position:absolute;left:var(--pad);top:clamp(20px,3vw,32px);z-index:9;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.side{position:absolute;left:var(--pad);bottom:clamp(30px,6vh,60px);max-width:min(420px,80vw);z-index:9}
+.side h1{font-weight:300;font-size:clamp(28px,3vw,50px);letter-spacing:-.04em;line-height:1.04}
+.side h1 b{font-weight:800;letter-spacing:-.06em}
+.side p{margin-top:14px;color:var(--grey);font-size:16px;line-height:1.55}
+.note{padding:40px var(--pad) 80px;max-width:860px;font-size:16px;line-height:1.7;color:var(--grey)}
+.note b{color:var(--ink);font-weight:600}
+svg{overflow:visible}
+
+/* 1 · El keynote */
+.e1 .pin{background:#E8E1D5}
+.e1 .room{position:relative;width:min(1100px,94vw);height:min(620px,72vh)}
+.e1 .wall{position:absolute;inset:0 0 22% 0;background:linear-gradient(#ece6dc,#ddd3c4)}
+.e1 .scr{position:absolute;left:16%;right:16%;top:8%;height:58%;background:#121212;box-shadow:0 0 0 8px #232323;overflow:hidden;color:#fff}
+.e1 .sl{position:absolute;inset:0;padding:6% 7%;display:flex;flex-direction:column;justify-content:space-between;opacity:0;transition:opacity .45s}
+.e1 .sl.on{opacity:1}
+.e1 .sl h2{font-weight:800;font-size:clamp(20px,3.1vw,50px);letter-spacing:-.065em;line-height:.9}
+.e1 .sl h2 span{color:var(--red)}
+.e1 .sl .k{opacity:.6}
+.e1 .floor{position:absolute;left:0;right:0;bottom:0;height:22%;background:#bfa88b}
+.e1 .stg{position:absolute;left:10%;right:10%;bottom:16%;height:9%;background:#2a2622;clip-path:polygon(2% 0,98% 0,100% 100%,0 100%)}
+.e1 .spk{position:absolute;left:62%;bottom:24%;width:5.4%;z-index:3}
+.e1 .lec{position:absolute;left:26%;bottom:24%;width:7%;height:17%;background:#1b1b1b;clip-path:polygon(0 0,100% 0,86% 100%,14% 100%);z-index:3}
+.e1 .lec::after{content:"";position:absolute;left:30%;top:20%;width:40%;height:14%;background:var(--red)}
+.e1 .spot{position:absolute;left:52%;width:26%;top:-10%;height:104%;background:conic-gradient(from 168deg at 50% 0,transparent 0,rgba(255,244,222,.5) 7deg,rgba(255,244,222,.5) 17deg,transparent 24deg);mix-blend-mode:screen;z-index:2}
+.e1 .aud{position:absolute;left:-4%;right:-4%;bottom:-3%;width:108%;height:13%;z-index:6}
+.e1 .dots{position:absolute;right:20%;bottom:calc(36% + 10px);display:flex;gap:6px;z-index:4}
+.e1 .dots i{width:6px;height:6px;border-radius:50%;background:rgba(11,11,11,.2)}.e1 .dots i.on{background:var(--red)}
+
+/* 2 · El pedestal vacío */
+.e2 .pin{background:#1a1816;color:var(--white)}
+.e2 .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 70%,#3a332c 0,#1a1816 60%);transition:none}
+.e2 .beam{position:absolute;left:50%;top:-5%;width:44vmin;height:90%;transform:translateX(-50%);background:linear-gradient(rgba(255,240,215,.0),rgba(255,240,215,.32));clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);opacity:0}
+.e2 .pool{position:absolute;left:50%;top:76%;width:60vmin;height:12vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(255,236,205,.55),transparent 70%);opacity:0}
+.e2 .ped{position:absolute;left:50%;top:58%;width:22vmin;height:20vmin;transform:translateX(-50%);background:linear-gradient(90deg,#d8d0c3,#f7f3ec 45%,#c8bfb1)}
+.e2 .ped::before{content:"";position:absolute;left:-6%;right:-6%;top:-1.6vmin;height:1.8vmin;background:#efe9df}
+.e2 .dust{position:absolute;inset:0;pointer-events:none}
+.e2 .dust i{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,240,215,.8)}
+.e2 .tx{position:absolute;left:50%;top:22%;transform:translateX(-50%);text-align:center;width:90vw}
+.e2 .tx h2{font-weight:800;font-size:clamp(46px,8vw,140px);letter-spacing:-.075em;line-height:.85;opacity:0}
+.e2 .tx h2 span{color:var(--red)}
+.e2 .tx .k{display:block;margin-bottom:18px;opacity:0;color:rgba(241,240,232,.7)}
+.e2 .crumb{color:var(--white)}
+.e2 .side h1{color:var(--white)}.e2 .side p{color:rgba(241,240,232,.65)}
+
+/* 3 · La regiduría */
+.e3 .pin{background:var(--white)}
+.e3 .wrap{width:min(1200px,94vw);display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.e3 .mon{position:relative;aspect-ratio:16/10;background:#0f0f0f;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px rgba(30,20,10,.18)}
+.e3 .mon .lbl{position:absolute;left:12px;top:10px;z-index:5;color:#fff;opacity:.7}
+.e3 .mon .rec{position:absolute;right:12px;top:10px;z-index:5;color:#fff}
+.e3 .mon .rec::before{content:"● ";color:var(--red)}
+.e3 .sv{position:absolute;inset:0}
+.e3 .sv .w{position:absolute;inset:0 0 28% 0;background:#d9cfbf;transition:filter .5s}
+.e3 .sv .s{position:absolute;left:18%;right:18%;top:10%;height:46%;background:#141414;box-shadow:0 0 0 5px #262626;display:grid;place-items:center;color:#fff;text-align:center}
+.e3 .sv .s h2{font-weight:800;font-size:clamp(18px,2.6vw,40px);letter-spacing:-.06em;opacity:0;transition:opacity .5s}
+.e3 .sv .s h2 span{color:var(--red)}
+.e3 .sv .f{position:absolute;left:0;right:0;bottom:0;height:28%;background:#a8916f;transition:filter .5s}
+.e3 .sv .bx{position:absolute;left:44%;bottom:24%;width:12%;aspect-ratio:1;background:#2a2a2a;transition:background .6s,box-shadow .6s}
+.e3 .sv .cn{position:absolute;left:30%;width:40%;top:-10%;height:100%;background:conic-gradient(from 166deg at 50% 0,transparent 0,rgba(255,240,215,.6) 9deg,rgba(255,240,215,.6) 19deg,transparent 28deg);mix-blend-mode:screen;opacity:0;transition:opacity .5s}
+.e3 .sv .dark{position:absolute;inset:0;background:#000;opacity:0;transition:opacity .5s}
+.e3 .sv .burst{position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(217,51,51,.45),transparent 55%);opacity:0;transition:opacity .5s}
+.e3 ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink);font-family:var(--mono)}
+.e3 li{display:grid;grid-template-columns:56px 1fr 52px;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.04em;text-transform:uppercase;opacity:.3;transition:opacity .3s}
+.e3 li.done{opacity:.55}.e3 li.on{opacity:1}
+.e3 li .go{justify-self:end;font-size:10px;border:1px solid currentColor;border-radius:999px;padding:3px 8px}
+.e3 li.on .go{background:var(--red);border-color:var(--red);color:#fff}
+.e3 li.on .n{color:var(--red)}
+.e3 .ttl{font-weight:300;font-size:clamp(26px,2.8vw,44px);letter-spacing:-.04em;line-height:1.05;margin-bottom:22px}
+.e3 .ttl b{font-weight:800;letter-spacing:-.06em}
+.e3 .side{display:none}
+
+/* 4 · El kit de prensa */
+.e4 .pin{background:var(--sand);perspective:1600px}
+.e4 .tbl{position:relative;width:min(900px,90vw);height:min(560px,68vh)}
+.e4 .box{position:absolute;left:50%;top:50%;width:min(520px,62vw);aspect-ratio:1.5;transform:translate(-50%,-50%);background:#f6f1e8;box-shadow:0 40px 60px rgba(60,40,20,.25);border-radius:4px}
+.e4 .box .inner{position:absolute;inset:4%;background:#d9cfbe;box-shadow:inset 0 8px 20px rgba(0,0,0,.18)}
+.e4 .lid{position:absolute;left:50%;top:50%;width:min(530px,63vw);aspect-ratio:1.5;transform:translate(-50%,-50%);background:var(--ink);color:var(--white);border-radius:4px;display:grid;place-items:center;z-index:10;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+.e4 .lid .in{text-align:center}
+.e4 .lid h3{font-weight:800;font-size:clamp(26px,3.2vw,48px);letter-spacing:-.06em;margin-top:14px}
+.e4 .it{position:absolute;left:50%;top:50%;z-index:5;box-shadow:0 14px 30px rgba(60,40,20,.2)}
+.e4 .inv{width:min(250px,30vw);aspect-ratio:.72;background:var(--paper);padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.e4 .inv h4{font-weight:800;font-size:clamp(18px,2vw,28px);letter-spacing:-.05em;line-height:.95;margin:0}
+.e4 .acr{width:min(170px,22vw);aspect-ratio:.68;background:#fff;border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+.e4 .acr h4{font-weight:800;font-size:20px;letter-spacing:-.05em;line-height:.95;margin:0}
+.e4 .acr .rol{align-self:start;background:var(--red);color:#fff;padding:4px 8px;border-radius:999px}
+.e4 .ent{width:min(300px,38vw);aspect-ratio:2.6;display:flex}
+.e4 .ent .a{flex:1;background:var(--paper);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}
+.e4 .ent .b{width:30%;background:var(--red);color:#fff;display:grid;place-items:center;border-left:2px dashed rgba(255,255,255,.5);font-weight:800;font-size:22px;letter-spacing:-.05em}
+.e4 .ent h4{font-weight:800;font-size:16px;letter-spacing:-.04em;margin:0}
+.e4 .smp{width:min(150px,18vw);aspect-ratio:1;background:var(--ink);display:grid;place-items:center}
+.e4 .lbl{position:absolute;font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--grey);opacity:0;white-space:nowrap}
+
+/* 5 · La conversación */
+.e5 .pin{background:var(--white)}
+.e5 .wrap{width:min(1200px,94vw);display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,5vw,80px);align-items:center}
+.e5 .big{font-weight:800;font-size:clamp(80px,11vw,190px);letter-spacing:-.07em;line-height:.85;font-variant-numeric:tabular-nums}
+.e5 .big span{color:var(--red)}
+.e5 .hl{margin-top:22px;font-weight:300;font-size:clamp(26px,2.8vw,44px);letter-spacing:-.04em;line-height:1.05}
+.e5 .hl b{font-weight:800;letter-spacing:-.06em}
+.e5 .st{display:flex;gap:28px;margin-top:26px}
+.e5 .st b{display:block;font-weight:800;font-size:28px;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.e5 .feed{position:relative;height:min(560px,66vh);overflow:hidden;-webkit-mask:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.e5 .rail{position:absolute;left:0;right:0;top:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.e5 .post{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;font-size:14px;line-height:1.45}
+.e5 .post .u{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px;margin-bottom:10px}
+.e5 .post .u i{width:24px;height:24px;border-radius:50%;background:var(--sand)}
+.e5 .post .u span{font:400 10px var(--mono);color:var(--grey);margin-left:auto}
+.e5 .post .im{aspect-ratio:4/3;border-radius:6px;margin-bottom:10px;position:relative;overflow:hidden}
+.e5 .post .h{color:var(--red)}
+.e5 .post .lk{margin-top:8px;font:400 11px var(--mono);color:var(--grey)}
+.e5 .post .lk::before{content:"♥ ";color:var(--red)}
+@media (max-width:820px){.side p{display:none}.e3 .wrap,.e5 .wrap{grid-template-columns:1fr}.e3 .ttl{display:none}.e5 .feed{height:46vh}.e5 .big{font-size:18vw}}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="Opciones"><b>Eventos · presentación de producto</b>
+  <a href="?m=1">1 · El keynote</a><a href="?m=2">2 · El pedestal vacío</a><a href="?m=3">3 · La regiduría</a><a href="?m=4">4 · El kit de prensa</a><a href="?m=5">5 · La conversación</a></nav>
+<main id="app"></main>
+<div class="note" id="note"></div>
+
+<script>
+(function(){
+  var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=function(x){return 1-Math.pow(1-x,3)},seg=function(p,a,b){return cl((p-a)/(b-a))};
+  var LOGO=function(f,h){return '<svg viewBox="440 260 1110 1470" style="height:'+h+';width:auto;display:block" aria-hidden="true"><path d="M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z" fill="'+f+'"/><circle cx="1288" cy="1467" r="237" fill="'+f+'"/></svg>'};
+  var M=new URLSearchParams(location.search).get('m')||'1';
+  document.querySelectorAll('.bar a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+  var crumb='<p class="crumb">Servicios / Eventos corporativos</p>';
+  var side=function(h,p){return '<div class="side"><h1>'+h+'</h1><p>'+p+'</p></div>'};
+  var NOTES={
+    1:'<b>1 · El keynote.</b> La sala desde el público: ponente en el escenario y la gran pantalla detrás. Al bajar pasan las diapositivas de la presentación («El reto», «La idea», «Presentamos…») hasta el momento final.',
+    2:'<b>2 · El pedestal vacío.</b> Sala a oscuras, un pedestal y un foco que se enciende poco a poco con polvo flotando en la luz. Cuando todo está listo aparece el mensaje: «Tu producto, aquí.» No enseñamos ningún producto: el protagonista es el del cliente.',
+    3:'<b>3 · La regiduría.</b> Lo que no se ve: la hoja de cues del regidor (sala a negro, música, foco, vídeo, reveal, aplauso) y, al lado, el monitor de cámara donde se ve el efecto de cada cue en el escenario. Cuenta que controlamos el momento al segundo.',
+    4:'<b>4 · El kit de prensa.</b> Una caja negra con el logo. Al bajar se levanta la tapa y salen las piezas del kit: invitación, acreditación, entrada y la caja de muestra, colocándose sobre la mesa. Recupera las piezas que te gustaron.',
+    5:'<b>5 · La conversación.</b> Lo que pasa después: van apareciendo publicaciones de los asistentes con el hashtag del evento y los contadores suben (publicaciones, alcance, menciones). Una presentación de producto que se convierte en conversación.'};
+  document.getElementById('note').innerHTML=NOTES[M]+'<br><br>Sin producto concreto: todo gira alrededor del evento. Textos, nombres y cifras son de ejemplo.';
+  var app=document.getElementById('app'),tick=function(){};
+  var bar=document.querySelector('.bar');
+  var prog=function(sec){var bh=bar.offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
+  var wrap=function(cls,inner){app.innerHTML='<div class="'+cls+'"><section class="sc" id="sc"><div class="pin" id="pin">'+crumb+inner+'</div></section></div>'};
+  var heads=function(n){var h='';for(var i=0;i<n;i++){var x=i*(3000/(n-1))+(i%2?18:-18),y=(i%3)*10;h+='<g transform="translate('+x.toFixed(0)+' '+(20+y)+')"><ellipse cx="0" cy="40" rx="30" ry="36" fill="#0b0b0b"/><rect x="-62" y="70" width="124" height="120" rx="50" fill="#0b0b0b"/></g>'}return '<svg class="aud" viewBox="0 0 3000 200" preserveAspectRatio="xMidYMax slice">'+h+'</svg>'};
+  var person='<svg viewBox="0 0 40 120" style="width:100%;display:block"><circle cx="20" cy="11" r="9" fill="#1b1b1b"/><path d="M6 26Q20 20 34 26L36 70H4Z" fill="#1b1b1b"/><rect x="9" y="68" width="9" height="50" fill="#1b1b1b"/><rect x="22" y="68" width="9" height="50" fill="#1b1b1b"/><path d="M34 30L44 44" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round"/></svg>';
+
+  if(M==='1'){
+    var SL=[['01 · El reto','¿Cómo destacar<br>en un mercado<br>saturado?'],['02 · La idea','Menos ruido.<br><span>Más experiencia.</span>'],['03 · El momento','Presentamos…'],['2026',LOGO('#fff','70px')+'<div style="margin-top:18px">Nuevo<span>.</span></div>']];
+    wrap('e1','<div class="room"><div class="wall"><div class="scr">'+SL.map(function(x,i){return '<div class="sl'+(i?'':' on')+'"><span class="k">'+x[0]+'</span><h2>'+x[1]+'</h2><span class="k">Convención 2026 · Barcelona</span></div>'}).join('')+'</div></div><div class="floor"></div><div class="stg"></div><div class="spot"></div><div class="lec"></div><div class="spk">'+person+'</div><div class="dots">'+SL.map(function(){return '<i></i>'}).join('')+'</div>'+heads(40)+'</div>');
+    var sec=document.getElementById('sc'),sls=[].slice.call(document.querySelectorAll('.e1 .sl')),ds=[].slice.call(document.querySelectorAll('.e1 .dots i')),spk=document.querySelector('.e1 .spk');
+    tick=function(){var p=prog(sec),i=Math.min(SL.length-1,Math.floor(seg(p,.05,.85)*SL.length));sls.forEach(function(s,k){s.classList.toggle('on',k===i)});ds.forEach(function(d,k){d.classList.toggle('on',k<=i)});
+      spk.style.left=(62-Math.sin(p*Math.PI*2)*3)+'%'};
+  }
+  if(M==='2'){
+    var dust='';for(var i=0;i<40;i++)dust+='<i style="left:'+(42+Math.random()*16)+'%;top:'+(10+Math.random()*60)+'%" data-s="'+Math.random()+'"></i>';
+    wrap('e2','<div class="bg"></div><div class="beam" id="bm"></div><div class="pool" id="pl"></div><div class="ped"></div><div class="dust" id="du">'+dust+'</div><div class="tx"><span class="k" id="tk">Presentaciones de producto</span><h2 id="th">Tu producto<span>,</span><br>aquí.</h2></div>'+
+      side('El escenario<br><b>ya está listo.</b>','Nosotros ponemos el espacio, la luz y el momento. El protagonista lo pones tú.'));
+    var sec=document.getElementById('sc'),bm=document.getElementById('bm'),pl=document.getElementById('pl'),ds=[].slice.call(document.querySelectorAll('#du i')),th=document.getElementById('th'),tk=document.getElementById('tk');
+    tick=function(){var p=prog(sec),l=io(seg(p,.08,.5));bm.style.opacity=l;pl.style.opacity=l;
+      ds.forEach(function(d){var k=+d.dataset.s;d.style.opacity=l*(.3+.7*k);d.style.transform='translate('+(Math.sin(p*12+k*9)*12)+'px,'+(-p*60*k)+'px)'});
+      var t=out(seg(p,.55,.75));th.style.opacity=t;th.style.transform='translateY('+((1-t)*24)+'px)';tk.style.opacity=seg(p,.72,.82)};
+  }
+  if(M==='3'){
+    var CU=[['Q01','Sala a negro',function(v){v.dark=.75}],['Q02','Música de entrada',function(v){v.dark=.75;v.rec=1}],['Q03','Foco al escenario',function(v){v.dark=.55;v.cone=1}],['Q04','Vídeo en pantalla',function(v){v.dark=.4;v.cone=1;v.txt=1}],['Q05','Reveal',function(v){v.dark=0;v.cone=1;v.txt=1;v.box=1}],['Q06','Aplauso · luz de sala',function(v){v.dark=0;v.txt=1;v.box=1;v.burst=1}]];
+    wrap('e3','<div class="wrap"><div class="mon"><span class="k lbl">CAM 1 · Sala principal</span><span class="k rec">En directo</span><div class="sv"><div class="w"></div><div class="s"><h2 id="stx">Nuevo<span>.</span></h2></div><div class="f"></div><div class="cn" id="cn"></div><div class="bx" id="bx"></div><div class="burst" id="bu"></div><div class="dark" id="dk"></div></div></div><div><p class="ttl">El gran momento,<br><b>controlado al segundo.</b></p><ol>'+
+      CU.map(function(c){return '<li><span class="n">'+c[0]+'</span><span>'+c[1]+'</span><span class="go">GO</span></li>'}).join('')+'</ol></div></div>');
+    var sec=document.getElementById('sc'),lis=[].slice.call(document.querySelectorAll('.e3 li')),dk=document.getElementById('dk'),cn=document.getElementById('cn'),stx=document.getElementById('stx'),bx=document.getElementById('bx'),bu=document.getElementById('bu');
+    tick=function(){var p=prog(sec),i=Math.min(CU.length-1,Math.floor(seg(p,.04,.9)*CU.length));lis.forEach(function(l,k){l.classList.toggle('on',k===i);l.classList.toggle('done',k<i)});
+      var v={dark:0,cone:0,txt:0,box:0,burst:0};if(p>.02)CU[i][2](v);dk.style.opacity=v.dark;cn.style.opacity=v.cone;stx.style.opacity=v.txt;bu.style.opacity=v.burst;
+      bx.style.background=v.box?'#D93333':'#2a2a2a';bx.style.boxShadow=v.box?'0 0 40px rgba(217,51,51,.6)':'none'};
+  }
+  if(M==='4'){
+    var IT=[['inv','<span class="k" style="color:var(--red)">Estás invitado</span><h4>Presentación<br>2026</h4><span class="k" style="color:var(--grey)">14 mayo · Barcelona</span>',-58,-16,-8,'La invitación'],
+            ['acr','<div>'+LOGO('#0b0b0b','22px')+'<h4 style="margin-top:12px">Prensa</h4></div><span class="k rol">Acceso total</span>',-12,6,6,'La acreditación'],
+            ['ent','<div class="a"><span class="k" style="color:var(--red)">Entrada</span><h4>Presentación 2026</h4><span class="k" style="color:var(--grey)">Fila 2 · Asiento 8</span></div><div class="b">08</div>',30,-22,-4,'La entrada'],
+            ['smp',LOGO('#F1F0E8','46%'),40,16,8,'La muestra']];
+    wrap('e4','<div class="tbl"><div class="box"><div class="inner"></div></div>'+IT.map(function(t){return '<div class="it '+t[0]+'">'+t[1]+'</div><span class="lbl">'+t[5]+'</span>'}).join('')+'<div class="lid" id="lid"><div class="in">'+LOGO('#F1F0E8','46px').replace('display:block','display:block;margin:0 auto')+'<h3>Press kit</h3><span class="k" style="opacity:.6">Presentación 2026</span></div></div></div>'+
+      side('Que la experiencia<br><b>empiece antes.</b>','Invitaciones, acreditaciones, kits de prensa y cada pieza que rodea a la presentación.'));
+    var sec=document.getElementById('sc'),lid=document.getElementById('lid'),its=[].slice.call(document.querySelectorAll('.e4 .it')),lbs=[].slice.call(document.querySelectorAll('.e4 .lbl'));
+    tick=function(){var p=prog(sec),l=io(seg(p,.06,.3));lid.style.opacity=1-seg(p,.22,.3);lid.style.transform='translate(calc(-50% + '+(l*70)+'vw),calc(-50% - '+(l*30)+'vh)) rotate('+(l*14)+'deg)';
+      its.forEach(function(it,i){var t=IT[i],k=io(seg(p,.3+i*.1,.48+i*.1));it.style.transform='translate(calc(-50% + '+(k*t[2]*0.9)+'%*'+1+'),-50%)';
+        it.style.transform='translate(-50%,-50%) translate('+(k*t[2])+'vmin,'+(k*t[3])+'vmin) rotate('+(k*t[4])+'deg) scale('+(.7+.3*k)+')';it.style.zIndex=k>.05?6+i:2;it.style.opacity=k>0?1:0;
+        var lb=lbs[i];lb.style.left='calc(50% + '+(t[2])+'vmin)';lb.style.top='calc(50% + '+(t[3]+(i===2?9:i===0?22:i===1?16:12))+'vmin)';lb.style.transform='translateX(-50%)';lb.style.opacity=seg(p,.45+i*.1,.5+i*.1)})};
+  }
+  if(M==='5'){
+    var U=['Marta R.','Jordi P.','Ana L.','Pablo G.','Laura M.','Sergio T.','Clara V.','Dani F.'],TX=['Increíble el momento del reveal 🙌','Así se presenta un producto.','La puesta en escena, de otro nivel.','Primera fila 👀','Qué ganas de probarlo.','Hoy toca presentación.','Brutal la pantalla.','No me lo quería perder.'],CO=['#D93333','#0b0b0b','#E7E1D6','#b9a68b'];
+    var posts='';for(var i=0;i<16;i++){var c=CO[i%4];posts+='<div class="post"><div class="u"><i></i>'+U[i%8]+'<span>'+(i+1)*2+' min</span></div>'+(i%3!==1?'<div class="im" style="background:'+c+'"><div style="position:absolute;inset:0;display:grid;place-items:center">'+LOGO(c==='#0b0b0b'||c==='#D93333'?'#F1F0E8':'#0b0b0b','44px')+'</div></div>':'')+TX[i%8]+' <span class="h">#LaunchDay</span><div class="lk">'+(120+i*37)+'</div></div>'}
+    wrap('e5','<div class="wrap"><div><p class="k" style="color:var(--red);margin-bottom:16px">#LaunchDay</p><div class="big" id="bg">0</div><p class="k" style="margin-top:8px;color:var(--grey)">publicaciones</p><p class="hl">Una presentación<br><b>de la que se habla.</b></p><div class="st"><div><b id="s1">0</b><span class="k">Alcance</span></div><div><b id="s2">0</b><span class="k">Menciones</span></div></div></div><div class="feed"><div class="rail" id="rl">'+posts+'</div></div></div>');
+    var sec=document.getElementById('sc'),rl=document.getElementById('rl'),bg=document.getElementById('bg'),s1=document.getElementById('s1'),s2=document.getElementById('s2');
+    var fmt=function(n){return n>=1000?(n/1000).toFixed(n>=100000?0:1).replace('.',',')+'k':String(n)};
+    tick=function(){var p=prog(sec),k=io(seg(p,.03,.95));rl.style.transform='translateY('+(-k*(rl.scrollHeight-rl.parentNode.clientHeight))+'px)';
+      bg.textContent=Math.round(k*1240+.4).toLocaleString('es-ES');s1.textContent=fmt(Math.round(k*184000));s2.textContent=fmt(Math.round(k*3200))};
+  }
+  var setBh=function(){document.documentElement.style.setProperty('--bh',bar.offsetHeight+'px')};setBh();
+  var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick()})},{passive:true});addEventListener('resize',function(){setBh();tick()});
+  var FIX=new URLSearchParams(location.search).get('p');if(FIX!==null){prog=function(){return +FIX}}tick();
+})();
+</script>
+</body>
+</html>
