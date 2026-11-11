@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Proyectos — Launch Studio</title>
-<meta name="description" content="Una selección representativa de stands y eventos corporativos concebidos, producidos y entregados por Launch Studio.">
+<meta name="description" content="Una selección representativa de stands, eventos, experiencias de marca, renders y diseño gráfico de Launch Studio, ordenados por servicio.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,56 +20,71 @@
 </header>
 
 <main>
+<div class="pb" id="pb">
+<style>
+.pb{--pbg:var(--white);--pfg:var(--ink);background:var(--pbg);color:var(--pfg);transition:background-color .6s,color .6s}
+.pb[data-tone=dark]{--pbg:#0b0b0b;--pfg:#F1F0E8}
+.pb .sec--top{background:transparent}
+.pb__dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transition:opacity .4s}
+.pb__dots.on{opacity:1;pointer-events:auto}
+.pb__dots a{display:flex;align-items:center;justify-content:flex-end;gap:10px;font:400 10px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none}
+.pb__dots a span{opacity:0;transition:opacity .3s}
+.pb__dots a i{width:8px;height:8px;border-radius:50%;border:1px solid currentColor}
+.pb__dots a.on i{background:currentColor}
+.pb__dots a.on span,.pb__dots a:hover span{opacity:1}
+.pb__sv{min-height:100vh;padding:clamp(70px,9vw,130px) var(--pad);display:flex;flex-direction:column;justify-content:center;scroll-margin-top:60px}
+.pb__t{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+.pbc__k{display:block;font:400 11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.pb__t h2{margin:12px 0 0;font-weight:800;font-size:clamp(46px,8.6vw,150px);letter-spacing:-.075em;line-height:.85}
+.pb__t p{margin:20px auto 0;max-width:460px;opacity:.75;line-height:1.6}
+.pb__go{display:inline-flex;gap:10px;margin-top:24px;border-bottom:1px solid currentColor;padding-bottom:4px;font-weight:500;color:inherit;text-decoration:none}
+.pb__row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:clamp(14px,1.8vw,26px);max-width:min(calc(var(--n) * 300px),calc(100vw - 2*var(--pad) - 120px));width:100%;margin:0 auto}
+.pbc{display:block;color:inherit;text-decoration:none}
+.pbc__im{aspect-ratio:4/5;overflow:hidden;background:rgba(127,120,105,.18)}
+.pbc__im img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pbc:hover .pbc__im img{transform:scale(1.045)}
+.pbc h3{margin:14px 0 0;font-weight:600;font-size:18px;letter-spacing:-.02em}
+.pbc .pbc__k{margin-top:6px}
+@media (max-width:860px){.pb__dots{display:none}.pb__sv{min-height:0}.pb__row{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pb__row{grid-template-columns:1fr}}
+</style>
 <section class="sec sec--top">
   <div class="outline-bg outline-bg--red" aria-hidden="true">proyectos</div>
   <div class="wrap intro">
-    <p class="eyebrow">Proyectos</p>
+    <p class="eyebrow">Proyectos · 13 trabajos</p>
     <h1>Un portfolio de experiencias.</h1>
-    <p class="lead">Una selección representativa de stands y eventos corporativos concebidos, producidos y entregados por Launch Studio.</p>
+    <p class="lead">Nuestros proyectos ordenados por servicio: stands, eventos, experiencias de marca, renders y diseño gráfico.</p>
   </div>
 </section>
-<section class="sec sec--tight sec--words">
-  <div class="words-bg" aria-hidden="true"><div class="words-bg__row"><span>stands eventos experiencias diseño </span><span>stands eventos experiencias diseño </span></div><div class="words-bg__row"><span>diseño lanzamientos crear marca </span><span>diseño lanzamientos crear marca </span></div><div class="words-bg__row"><span>marca stands eventos experiencias </span><span>marca stands eventos experiencias </span></div><div class="words-bg__row"><span>experiencias diseño lanzamientos crear </span><span>experiencias diseño lanzamientos crear </span></div><div class="words-bg__row"><span>crear marca stands eventos </span><span>crear marca stands eventos </span></div><div class="words-bg__row"><span>eventos experiencias diseño lanzamientos </span><span>eventos experiencias diseño lanzamientos </span></div><div class="words-bg__row"><span>lanzamientos crear marca stands </span><span>lanzamientos crear marca stands </span></div></div>
-  <div class="wrap"><div class="pgrid">
-      <div class="pgrid__col"><a class="pcard" href="proyectos/01-taller-amona.html" style="order:0;--r:5/6;--w:100%">
-        <div class="pcard__img"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Taller Amona</h3>
-        <p class="pcard__cat">Experiencia de marca</p>
-      </a><a class="pcard" href="proyectos/03-market-the-office-studio.html" style="order:2;--r:4/5;--w:72%">
-        <div class="pcard__img"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="Market" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Market</h3>
-        <p class="pcard__cat">Market</p>
-      </a><a class="pcard" href="proyectos/05-pop-up-store-venca.html" style="order:4;--r:1/1;--w:86%">
-        <div class="pcard__img"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Pop-up store para Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Pop-up store para Venca</h3>
-        <p class="pcard__cat">Pop-up store</p>
-      </a><a class="pcard" href="proyectos/07-stand-truphone.html" style="order:6;--r:6/5;--w:100%">
-        <div class="pcard__img"><img src="assets/img/proyectos/07-stand-truphone.jpg" alt="Stand para Truphone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/TRUPHONE.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Stand para Truphone</h3>
-        <p class="pcard__cat">Stand corporativo</p>
-      </a><a class="pcard" href="proyectos/09-stand-biohorizons.html" style="order:8;--r:5/6;--w:82%">
-        <div class="pcard__img"><img src="assets/img/proyectos/09-stand-biohorizons.jpg" alt="Stand para BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Stand para BioHorizons</h3>
-        <p class="pcard__cat">Stand institucional</p>
-      </a></div>
-      <div class="pgrid__col pgrid__col--b"><a class="pcard" href="proyectos/02-evento-promocion-base4.html" style="order:1;--r:1/1;--w:78%">
-        <div class="pcard__img"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="Evento de promoción para BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Evento de promoción para BASE4</h3>
-        <p class="pcard__cat">Evento de promoción</p>
-      </a><a class="pcard" href="proyectos/04-evento-corporativo-ntt-data.html" style="order:3;--r:6/5;--w:100%">
-        <div class="pcard__img"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="Evento corporativo para NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Evento corporativo para NTT DATA</h3>
-        <p class="pcard__cat">Evento corporativo</p>
-      </a><a class="pcard" href="proyectos/06-stand-janssen-oncology.html" style="order:5;--r:5/6;--w:100%">
-        <div class="pcard__img"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Stand para Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Stand para Janssen Oncology</h3>
-        <p class="pcard__cat">Stand congreso</p>
-      </a><a class="pcard" href="proyectos/08-stand-ti-medi-jvm.html" style="order:7;--r:4/5;--w:70%">
-        <div class="pcard__img"><img src="assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="Stand para TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"><span class="pcard__badge" aria-hidden="true"><span>Ver proyecto • Ver proyecto • Ver proyecto • </span></span></div>
-        <h3>Stand para TI-MEDI / JVM</h3>
-        <p class="pcard__cat">Stand comercial</p>
-      </a></div>
-    </div></div></section>
+<nav class="pb__dots" id="pb-dots" aria-label="Servicios"><a href="#stands"><span>Stands</span><i></i></a><a href="#eventos"><span>Eventos corporativos</span><i></i></a><a href="#experiencias"><span>Experiencias de marca</span><i></i></a><a href="#renders"><span>Renders</span><i></i></a><a href="#grafico"><span>Diseño gráfico</span><i></i></a></nav>
+  <section class="pb__sv" id="stands" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">01 · 4 proyectos</span><h2>Stands</h2><p>Stands para ferias y congresos, del diseño al montaje.</p><a class="pb__go" href="servicios/stands.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:4"><a class="pbc" href="proyectos/06-stand-janssen-oncology.html"><div class="pbc__im"><img src="assets/img/proyectos/06-stand-janssen-oncology.jpg" alt="Janssen Oncology" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/c2a866e5-b2a5-486d-84e8-c9346805efe2.JPG'"></div><h3>Janssen Oncology</h3><span class="pbc__k">Stand congreso</span></a><a class="pbc" href="proyectos/07-stand-truphone.html"><div class="pbc__im"><img src="assets/img/proyectos/07-stand-truphone.jpg" alt="Truphone" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/TRUPHONE.JPG'"></div><h3>Truphone</h3><span class="pbc__k">Stand corporativo</span></a><a class="pbc" href="proyectos/09-stand-biohorizons.html"><div class="pbc__im"><img src="assets/img/proyectos/09-stand-biohorizons.jpg" alt="BioHorizons" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/BIOHORIZONS.JPG'"></div><h3>BioHorizons</h3><span class="pbc__k">Stand institucional</span></a><a class="pbc" href="proyectos/08-stand-ti-medi-jvm.html"><div class="pbc__im"><img src="assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></div><h3>TI-MEDI / JVM</h3><span class="pbc__k">Stand comercial</span></a></div>
+  </section>
+  <section class="pb__sv" id="eventos" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">02 · 2 proyectos</span><h2>Eventos corporativos</h2><p>Presentaciones, convenciones y eventos de marca con producción integral.</p><a class="pb__go" href="servicios/eventos.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="proyectos/04-evento-corporativo-ntt-data.html"><div class="pbc__im"><img src="assets/img/proyectos/04-evento-corporativo-ntt-data.jpg" alt="NTT DATA" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/25f3b694-0d3c-438c-be95-81e2b03044e5.JPG'"></div><h3>NTT DATA</h3><span class="pbc__k">Evento corporativo</span></a><a class="pbc" href="proyectos/02-evento-promocion-base4.html"><div class="pbc__im"><img src="assets/img/proyectos/02-evento-promocion-base4.jpg" alt="BASE4" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-2.jpg'"></div><h3>BASE4</h3><span class="pbc__k">Evento de promoción</span></a></div>
+  </section>
+  <section class="pb__sv" id="experiencias" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">03 · 3 proyectos</span><h2>Experiencias de marca</h2><p>Pop-ups, markets y activaciones que se viven en primera persona.</p><a class="pb__go" href="servicios/experiencias.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:3"><a class="pbc" href="proyectos/01-taller-amona.html"><div class="pbc__im"><img src="assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div><h3>Taller Amona</h3><span class="pbc__k">Experiencia de marca</span></a><a class="pbc" href="proyectos/05-pop-up-store-venca.html"><div class="pbc__im"><img src="assets/img/proyectos/05-pop-up-store-venca.jpg" alt="Venca" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/5e63e182-50b9-46a9-9ef0-f818a5e932c4.JPG'"></div><h3>Venca</h3><span class="pbc__k">Pop-up store</span></a><a class="pbc" href="proyectos/03-market-the-office-studio.html"><div class="pbc__im"><img src="assets/img/proyectos/03-market-the-office-studio.jpg" alt="The Office Studio" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-3.JPG'"></div><h3>The Office Studio</h3><span class="pbc__k">Market</span></a></div>
+  </section>
+  <section class="pb__sv" id="renders" data-tone="dark">
+    <div class="pb__t"><span class="pbc__k">04 · 2 proyectos</span><h2>Renders</h2><p>Visualizaciones fotorrealistas para decidir antes de construir.</p><a class="pb__go" href="servicios.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/render-casa.jpg" alt="Vivienda unifamiliar" loading="lazy"></div><h3>Vivienda unifamiliar</h3><span class="pbc__k">Render exterior</span></a><a class="pbc" href="servicios.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-renders-interiorismo.jpg" alt="Interiorismo" loading="lazy"></div><h3>Interiorismo</h3><span class="pbc__k">Render interior</span></a></div>
+  </section>
+  <section class="pb__sv" id="grafico" data-tone="light">
+    <div class="pb__t"><span class="pbc__k">05 · 2 proyectos</span><h2>Diseño gráfico</h2><p>Identidad, gráfica de stand y piezas de marca.</p><a class="pb__go" href="servicios/grafico.html">Ver servicio <span aria-hidden="true">→</span></a></div>
+    <div class="pb__row" style="--n:2"><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/servicio-diseno-grafico-ceramica.jpg" alt="Colección cerámica" loading="lazy"></div><h3>Colección cerámica</h3><span class="pbc__k">Identidad y packaging</span></a><a class="pbc" href="servicios/grafico.html"><div class="pbc__im"><img src="assets/img/servicios/stand-launch.jpg" alt="Launch Studio" loading="lazy"></div><h3>Launch Studio</h3><span class="pbc__k">Gráfica de stand</span></a></div>
+  </section>
+</div>
+<script>
+(function(){var pb=document.getElementById('pb'),dots=document.getElementById('pb-dots'),ds=[].slice.call(dots.querySelectorAll('a')),sv=[].slice.call(pb.querySelectorAll('.pb__sv'));
+var t=function(){var on=-1,m=innerHeight*.5;sv.forEach(function(e,i){if(e.getBoundingClientRect().top<m)on=i});
+var r=pb.getBoundingClientRect(),inside=on>=0&&r.bottom>m;pb.dataset.tone=inside?sv[on].dataset.tone:'light';
+dots.classList.toggle('on',inside);dots.style.color=pb.dataset.tone==='dark'?'#F1F0E8':'#0b0b0b';ds.forEach(function(d,i){d.classList.toggle('on',i===on)})};
+var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;t()})},{passive:true});t();})();
+</script>
 <section class="cta">
   <div class="cta__words" aria-hidden="true"><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span><span>hablemos stands eventos diseño lanzamientos experiencias hablemos stands eventos diseño lanzamientos experiencias </span></div>
   <div class="wrap cta__in">
