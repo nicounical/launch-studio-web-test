@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Diseño gráfico: merchandising (opciones) — Launch Studio</title>
+<title>Diseño gráfico: logo y merchandising (opciones) — Launch Studio</title>
 <meta name="description" content="Identidades visuales, presentaciones, catálogos y gráfica para stands y eventos: diseño gráfico que da personalidad a tu marca.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/logo/favicon.svg?v=2" type="image/svg+xml">
@@ -25,7 +25,7 @@ html{scroll-behavior:auto}
 .k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
 
 /* portada */
-.sc{height:600vh;margin-top:var(--bh)}
+.sc{height:1250vh;margin-top:var(--bh)}
 .pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;background:var(--paper)}
 .stage{position:absolute;inset:0}
 .ov{position:absolute;z-index:6}
@@ -88,6 +88,16 @@ html{scroll-behavior:auto}
 .wrap>a.nextsv .nm i{flex:none;width:clamp(54px,6vw,96px);aspect-ratio:1;border-radius:50%;background:#0b0b0b;color:#fff;display:grid;place-items:center;font-style:normal;font-weight:300;font-size:.36em;transition:background .3s,transform .5s cubic-bezier(.7,0,.2,1)}
 .wrap>a.nextsv:hover .nm i{background:#D93333;transform:rotate(-45deg)}
 </style>
+<style>
+.ob{position:fixed;right:12px;top:calc(var(--obt,80px) + 12px);z-index:90;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding:6px;border-radius:14px;max-width:min(400px,calc(100vw - 24px));background:rgba(11,11,11,.92);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.ob a{color:#F1F0E8!important;text-decoration:none;border:1px solid rgba(241,240,232,.3);border-radius:999px;padding:6px 12px}
+.ob a[aria-current]{background:#F1F0E8;color:#0b0b0b!important}
+#mz{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:0;z-index:2}
+.pin{transition:color .5s}
+.pin.mzd{color:#F1F0E8}.pin.mzd .ttl .k a{color:#F1F0E8}
+.pin.mzr .ttl h1 span,.pin.mzr .cap b{color:#F1F0E8}
+.pin.mzd .cap b{color:#F1F0E8}
+</style>
 </head>
 <body>
 <header class="nav" id="nav">
@@ -96,217 +106,18 @@ html{scroll-behavior:auto}
   <nav aria-label="Principal" id="nav-menu"><a href="index.html">Inicio</a><a href="proyectos.html">Proyectos</a><a href="servicios.html" aria-current="page">Servicios</a><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></nav>
 </header>
 
+<nav class="ob" aria-label="Opciones de merchandising"><a href="?m=1">1 · Sello</a><a href="?m=2">2 · Sello a color</a><a href="?m=3">3 · Bodegón</a><a href="?m=4">4 · Flat lay</a><a href="?m=5">5 · Carrusel</a></nav>
 <main class="gp">
 <section class="sc" id="sc" aria-label="El logo se construye mientras bajas">
   <div class="pin" id="pin">
     <div class="stage" id="stage"></div>
+    <svg id="mz" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
     <div class="ov ttl"><nav class="k crumb"><a href="servicios.html">← Servicios</a> / Diseño gráfico</nav><h1>Del trazo<br><span>a la marca.</span></h1></div>
     <p class="ov k hint" id="hint">Baja para construirlo ↓</p>
     <div class="ov cap" id="cap" aria-live="polite"></div>
     <div class="ov fin" id="fin"><h2>Identity in every detail.</h2><p class="k">Launch Studio · identidad visual</p></div>
   </div>
 </section>
-<style>
-/* Opciones: el logo aplicado a merchandising, justo después de la portada */
-.ob{position:fixed;right:12px;top:calc(var(--obt,80px) + 12px);z-index:90;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding:6px;border-radius:14px;max-width:min(380px,calc(100vw - 24px));background:rgba(11,11,11,.92);font:400 11px "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
-.ob a{color:#F1F0E8!important;text-decoration:none;border:1px solid rgba(241,240,232,.3);border-radius:999px;padding:6px 12px}
-.ob a[aria-current]{background:#F1F0E8;color:#0b0b0b!important}
-.mx{--mpad:clamp(20px,5vw,64px)}
-.mx .k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.mx .lg{transform-box:fill-box;transform-origin:50% 50%}
-.mx svg.it{display:block;width:100%;height:auto;overflow:visible}
-.mxh{max-width:1320px;margin:0 auto;padding:clamp(70px,9vw,130px) var(--mpad) clamp(30px,4vw,50px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,5vw,90px);align-items:end}
-.mxh .k{color:var(--red)}
-.mxh h2{font-weight:800;font-size:clamp(36px,5vw,84px);line-height:.9;letter-spacing:-.065em;margin-top:14px}
-.mxh h2 span{color:var(--red)}
-.mxh p{font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:var(--grey);max-width:34em}
-.tag{display:flex;flex-direction:column;gap:4px}
-.tag b{font-weight:600;font-size:clamp(15px,1.2vw,18px);letter-spacing:-.02em}
-.tag i{font:400 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;opacity:.6}
-.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-
-/* 1 · Bodegón */
-.m1{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
-.m1 .tl{position:relative;border-radius:10px;padding:clamp(16px,2vw,28px);display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1;overflow:hidden}
-.m1 .tl.big{grid-column:span 2;grid-row:span 2}
-.m1 .tl .ar{flex:1;display:grid;place-items:center;min-height:0}
-.m1 .tl .ar svg{max-height:100%;width:auto;max-width:86%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.m1 .tl:hover .ar svg{transform:scale(1.05) rotate(-2deg)}
-.bg-p{background:#E9E5DA;color:var(--ink)}.bg-r{background:var(--red);color:#F1F0E8}.bg-i{background:var(--ink);color:#F1F0E8}.bg-c{background:#F1F0E8;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)}
-
-/* 2 · Sello */
-.m2{position:relative}
-.m2 .pn{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);overflow:hidden}
-.m2 .lf{padding:clamp(30px,4vw,60px) var(--mpad);display:flex;flex-direction:column;justify-content:space-between;background:var(--paper)}
-.m2 .lf h2{font-weight:800;font-size:clamp(32px,3.8vw,64px);line-height:.9;letter-spacing:-.065em;margin-top:14px}
-.m2 .lf h2 span{color:var(--red)}
-.m2 ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.m2 li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .4s,padding .4s}
-.m2 li b{font-weight:600;font-size:clamp(15px,1.25vw,19px);letter-spacing:-.02em}
-.m2 li i{font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal}
-.m2 li.on{opacity:1;padding-left:14px}
-.m2 li.on b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:10px;vertical-align:middle}
-.m2 .st{position:relative;transition:background-color .7s;background:#E9E5DA}
-.m2 .o2{position:absolute;inset:8% 10%;display:grid;place-items:center;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .55s,transform .8s cubic-bezier(.2,.7,.2,1)}
-.m2 .o2 svg{height:100%;width:auto;max-width:100%}
-.m2 .o2.on{opacity:1;transform:none}
-.m2 .o2.on .lg{animation:stamp .75s .3s cubic-bezier(.2,.7,.2,1) both}
-@keyframes stamp{0%{opacity:0;transform:scale(2.2)}55%{opacity:1;transform:scale(.92)}100%{transform:scale(1)}}
-.m2 .cnt{position:absolute;right:var(--mpad);top:clamp(24px,3vw,40px);font:400 12px var(--mono);letter-spacing:.08em}
-.m2 .ink{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,36px)}
-
-/* 3 · Carrusel */
-.m3{position:relative}
-.m3 .pn{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;display:flex;align-items:center;background:var(--paper)}
-.m3 .tr{display:flex;gap:clamp(12px,1.4vw,20px);padding-inline:var(--mpad);will-change:transform}
-.m3 .pl{flex:none;width:clamp(280px,30vw,460px);height:min(72vh,620px);border-radius:12px;padding:clamp(18px,2vw,28px);display:flex;flex-direction:column;justify-content:space-between}
-.m3 .pl .ar{flex:1;display:grid;place-items:center;min-height:0;padding:6% 0}
-.m3 .pl .ar svg{height:100%;width:auto;max-width:100%}
-.m3 .pl .nb{display:flex;justify-content:space-between;font:400 11px var(--mono);letter-spacing:.08em}
-.m3 .pl.intro{width:clamp(300px,34vw,520px);background:transparent;padding-left:0;justify-content:flex-end}
-.m3 .pl.intro h2{font-weight:800;font-size:clamp(36px,4.6vw,80px);line-height:.88;letter-spacing:-.065em;margin:14px 0 18px}
-.m3 .pl.intro h2 span{color:var(--red)}
-.m3 .pl.intro p{color:var(--grey);line-height:1.65;max-width:26em}
-.m3 .bar{position:absolute;left:var(--mpad);right:var(--mpad);bottom:clamp(18px,3vh,30px);height:2px;background:var(--line)}
-.m3 .bar i{position:absolute;inset:0 auto 0 0;background:var(--red);width:0}
-
-/* 4 · Flat lay */
-.m4{position:relative;background:var(--red);color:#F1F0E8;height:clamp(760px,130vh,1250px);overflow:hidden}
-.m4 .ttl4{position:absolute;left:var(--mpad);top:clamp(50px,7vw,100px);z-index:3;max-width:520px}
-.m4 .ttl4 h2{font-weight:800;font-size:clamp(36px,5vw,84px);line-height:.88;letter-spacing:-.065em;margin-top:14px}
-.m4 .ttl4 p{margin-top:16px;line-height:1.65;opacity:.85;max-width:28em}
-.m4 .fl{position:absolute;will-change:transform}
-.m4 .fl svg{width:100%;height:auto;filter:drop-shadow(10px 16px 0 rgba(0,0,0,.14))}
-.m4 .fl .tg{position:absolute;white-space:nowrap;font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.m4 .leg{position:absolute;left:var(--mpad);right:var(--mpad);bottom:clamp(20px,3vw,36px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(241,240,232,.35);padding-top:14px;z-index:3}
-
-/* 5 · Manual de marca */
-.m5{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px)}
-.m5 .bx{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.3fr) minmax(0,.75fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-.m5 .tb{border-right:1px solid var(--line);display:flex;flex-direction:column}
-.m5 .tb button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--line);font-weight:500;font-size:15px;transition:background .3s,color .3s}
-.m5 .tb button i{font:400 10px var(--mono);font-style:normal;opacity:.5}
-.m5 .tb button:hover{background:#F7F6F1}
-.m5 .tb button[aria-selected=true]{background:var(--ink);color:#F1F0E8}
-.m5 .tb button[aria-selected=true] i{color:var(--red);opacity:1}
-.m5 .dr{position:relative;aspect-ratio:1/1;max-height:640px;width:100%;background-color:#F7F6F1;background-image:linear-gradient(rgba(11,11,11,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,11,11,.06) 1px,transparent 1px);background-size:5% 5%;display:grid;place-items:center}
-.m5 .dr svg{width:82%;height:auto}
-.m5 .dr .gd5 rect,.m5 .dr .gd5 line{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 5}
-.m5 .dr .gd5 text{font:400 11px "DM Mono",monospace;fill:var(--red);letter-spacing:.04em}
-.m5 .dr .gd5{opacity:0;transition:opacity .6s .5s}
-.m5 .dr.in .gd5{opacity:1}
-.m5 .dr .art{transition:opacity .4s,transform .6s cubic-bezier(.2,.7,.2,1)}
-.m5 .dr.sw .art{opacity:0;transform:translateY(16px)}
-.m5 .sp{padding:clamp(18px,2vw,30px);display:flex;flex-direction:column;gap:18px}
-.m5 .sp h3{font-weight:800;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.05em;line-height:.95}
-.m5 dl{margin:0;display:grid;gap:0}
-.m5 dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
-.m5 dt{font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.55;padding-top:2px}
-.m5 dd{margin:0}
-.m5 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.m5 .chip{display:flex;align-items:center;gap:6px;font:400 10px var(--mono)}
-.m5 .chip s{display:block;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(11,11,11,.18)}
-
-/* 6 · Escaparate */
-.m6{background:var(--ink);color:#F1F0E8}
-.m6 .mxh p{color:rgba(241,240,232,.65)}
-.m6 .sh{max-width:1320px;margin:0 auto;padding:0 var(--mpad) clamp(70px,9vw,120px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(14px,2vw,30px)}
-.m6 .cell{position:relative;padding:clamp(30px,4vw,56px) 8% 0;border-bottom:6px solid #2a2a28;box-shadow:0 1px 0 rgba(241,240,232,.08);background:radial-gradient(60% 55% at 50% 0%,rgba(241,240,232,.13),transparent 70%);margin-bottom:clamp(40px,5vw,70px)}
-.m6 .cell svg{width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.m6 .cell:hover svg{transform:translateY(-14px)}
-.m6 .cell .tag{position:absolute;left:0;bottom:-46px;opacity:.55;transition:opacity .4s}
-.m6 .cell:hover .tag{opacity:1}
-.m6 .cell .tag i{color:var(--red);opacity:1}
-
-@media (max-width:820px){
- .mxh{grid-template-columns:1fr}
- .m1{grid-template-columns:repeat(2,minmax(0,1fr))}
- .m2 .pn{grid-template-columns:1fr;grid-template-rows:auto 1fr}.m2 ol{display:none}.m2 .lf{padding-block:20px}
- .m4{height:auto;padding:90px var(--mpad) 110px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.m4 .ttl4,.m4 .leg{position:static;grid-column:1/-1}.m4 .fl{position:relative;left:auto!important;top:auto!important;width:auto!important}.m4 .fl .tg{display:none}
- .m5 .bx{grid-template-columns:1fr}.m5 .tb{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}.m5 .tb button{white-space:nowrap;border-bottom:0;border-right:1px solid var(--line)}
- .m6 .sh{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-</style>
-<nav class="ob" aria-label="Opciones de merchandising"><a href="?m=1">1 · Bodegón</a><a href="?m=2">2 · Sello</a><a href="?m=3">3 · Carrusel</a><a href="?m=4">4 · Flat lay</a><a href="?m=5">5 · Manual</a><a href="?m=6">6 · Escaparate</a></nav>
-<section class="mx" id="mx" aria-label="Logo aplicado a merchandising"></section>
-<script>
-(function(){
-var VB='440 260 1110 1470',D='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
-var INK='#0b0b0b',RED='#D93333',CR='#F1F0E8',SK='rgba(11,11,11,.2)';
-var cl=function(x){return Math.max(0,Math.min(1,x))};
-// logo dentro de un objeto: x,y esquina, h altura
-var lg=function(x,y,h,c,extra){var w=h*1110/1470;return '<g class="lg"'+(extra||'')+'><svg x="'+x+'" y="'+y+'" width="'+w.toFixed(1)+'" height="'+h+'" viewBox="'+VB+'"><path d="'+D+'" fill="'+c+'"/><circle cx="1288" cy="1467" r="237" fill="'+c+'"/></svg></g>'};
-var sh='<ellipse cx="200" cy="372" rx="125" ry="11" fill="rgba(0,0,0,.13)"/>';
-var svg=function(b,noShadow){return '<svg class="it" viewBox="0 0 400 400" aria-hidden="true">'+(noShadow?'':sh)+b+'</svg>'};
-var I={
- tee:{n:'Camiseta',t:'Serigrafía a una tinta',u:'Pecho izquierdo',s:'9 cm',L:[218,128,54],c:{b:INK,l:CR},f:function(c,L){return '<path d="M150 62 L104 78 L40 128 L78 196 L116 176 L116 352 L284 352 L284 176 L322 196 L360 128 L296 78 L250 62 Q200 98 150 62Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M150 62 Q200 98 250 62" fill="none" stroke="rgba(127,127,127,.45)" stroke-width="4"/><path d="M116 176 L116 214 M284 176 L284 214" stroke="rgba(127,127,127,.25)" stroke-width="2"/><path d="M116 336 L284 336" stroke="rgba(127,127,127,.2)" stroke-width="2"/>'+lg(L[0],L[1],L[2],c.l)}},
- cap:{n:'Gorra',t:'Bordado frontal',u:'Panel frontal, centrado',s:'6 cm',L:[176,146,66],c:{b:RED,l:CR},f:function(c,L){return '<path d="M92 262 C92 150 140 104 200 104 C260 104 308 150 308 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M200 106 C196 160 196 220 200 262 M200 106 C158 130 140 190 136 262 M200 106 C242 130 260 190 264 262" stroke="rgba(0,0,0,.16)" fill="none" stroke-width="2"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="rgba(0,0,0,.2)"/><circle cx="200" cy="106" r="8" fill="'+c.b+'" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],c.l)}},
- mug:{n:'Taza',t:'Impresión cerámica',u:'Frontal, centrado',s:'7 cm',L:[175,174,82],c:{b:CR,l:INK},f:function(c,L){return '<path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+c.b+'" stroke-width="22"/><path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+SK+'" stroke-width="22" stroke-opacity=".35" style="mix-blend-mode:multiply"/><rect x="120" y="108" width="170" height="234" rx="16" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><ellipse cx="205" cy="112" rx="83" ry="9" fill="rgba(0,0,0,.22)"/><rect x="134" y="124" width="14" height="200" rx="7" fill="rgba(255,255,255,.35)"/>'+lg(L[0],L[1],L[2],c.l)}},
- tote:{n:'Tote bag',t:'Serigrafía sobre algodón',u:'Frontal, centrado',s:'22 cm',L:[164,206,98],c:{b:'#E4DCCB',l:INK},f:function(c,L){return '<path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="'+c.b+'" stroke-width="14"/><path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="14"/><path d="M96 150 L304 150 L316 366 L84 366Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M96 150 L304 150 L303 168 L97 168Z" fill="rgba(0,0,0,.07)"/>'+lg(L[0],L[1],L[2],c.l)}},
- badge:{n:'Acreditación',t:'Impresión digital y lanyard',u:'Cabecera y centro',s:'4 cm',L:[178,214,60],c:{b:CR,l:INK,a:RED},f:function(c,L){return '<path d="M150 -20 L190 128 M250 -20 L210 128" stroke="'+c.a+'" stroke-width="14"/><rect x="186" y="116" width="28" height="28" rx="4" fill="#9b9b97"/><rect x="118" y="136" width="164" height="232" rx="12" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M118 148 a12 12 0 0 1 12 -12 h140 a12 12 0 0 1 12 12 v44 h-164Z" fill="'+c.a+'"/><rect x="180" y="148" width="40" height="8" rx="4" fill="rgba(0,0,0,.28)"/>'+lg(L[0],L[1],L[2],c.l)+'<text x="200" y="314" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="800" font-size="22" letter-spacing="-1" fill="'+c.l+'">Visitante</text><text x="200" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.4" fill="'+c.l+'" opacity=".6">LAUNCH STUDIO · 2026</text>'}},
- cards:{n:'Tarjetas de visita',t:'Offset y stamping',u:'Anverso, esquina',s:'2 cm',L:[96,146,44],c:{},f:function(c,L){return '<g transform="rotate(-9 200 190)"><rect x="66" y="118" width="252" height="148" rx="6" fill="'+INK+'" stroke="rgba(241,240,232,.22)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],CR)+'<text x="96" y="246" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.6" fill="'+CR+'" opacity=".75">LAUNCH STUDIO</text></g><g transform="rotate(5 230 250)"><rect x="96" y="194" width="252" height="148" rx="6" fill="'+CR+'" stroke="'+SK+'" stroke-width="1.5"/><text x="122" y="244" font-family="Poppins,sans-serif" font-weight="800" font-size="19" letter-spacing="-.8" fill="'+INK+'">Launch Studio</text><text x="122" y="264" font-family="DM Mono,monospace" font-size="9" letter-spacing=".8" fill="'+INK+'" opacity=".6">Stands · Eventos · Diseño</text><text x="122" y="318" font-family="DM Mono,monospace" font-size="8.5" fill="'+INK+'" opacity=".6">info@launchstudiogroup.com</text>'+lg(300,212,36,RED)+'</g>'}},
- note:{n:'Libreta',t:'Grabado en seco',u:'Portada, centrado',s:'5 cm',L:[170,152,92],c:{b:INK,a:RED},f:function(c,L){return '<rect x="112" y="56" width="186" height="292" rx="10" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="112" y="56" width="16" height="292" rx="6" fill="rgba(255,255,255,.07)"/><rect x="264" y="56" width="11" height="292" fill="'+c.a+'"/>'+lg(L[0]+1.6,L[1]+1.6,L[2],'rgba(255,255,255,.13)')+lg(L[0],L[1],L[2],'#030303')}},
- bottle:{n:'Botella',t:'Grabado láser',u:'Cuerpo, centrado',s:'4 cm',L:[180,200,54],c:{b:'#C9CAC5',l:INK},f:function(c,L){return '<rect x="176" y="50" width="48" height="52" rx="9" fill="'+INK+'"/><rect x="184" y="98" width="32" height="16" fill="#8f908b"/><rect x="160" y="110" width="80" height="252" rx="30" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="171" y="132" width="10" height="206" rx="5" fill="rgba(255,255,255,.45)"/><rect x="222" y="132" width="6" height="206" rx="3" fill="rgba(0,0,0,.08)"/>'+lg(L[0],L[1],L[2],c.l)}},
- stick:{n:'Pegatinas',t:'Vinilo troquelado',u:'Pieza completa',s:'6 cm',L:[120,128,82],c:{},f:function(c,L){return '<g transform="rotate(-10 165 316)"><rect x="110" y="262" width="110" height="110" rx="24" fill="'+INK+'" stroke="#fff" stroke-width="6"/>'+lg(142,286,62,RED)+'</g><circle cx="262" cy="248" r="68" fill="'+CR+'" stroke="#fff" stroke-width="6"/><circle cx="262" cy="248" r="71" fill="none" stroke="'+SK+'" stroke-width="1"/>'+lg(237,214,68,INK)+'<circle cx="150" cy="168" r="80" fill="'+RED+'" stroke="#fff" stroke-width="6"/>'+lg(L[0],L[1],L[2],CR)+'<path d="M205 226 Q190 214 214 206 Z" fill="#f4f1ea"/>'}}
-};
-var K=['tee','cap','mug','tote','badge','cards','note','bottle','stick'];
-var draw=function(k,ov,noShadow){var it=I[k],c={};for(var a in it.c)c[a]=it.c[a];for(a in (ov||{}))c[a]=ov[a];return svg(it.f(c,it.L),noShadow)};
-var tag=function(k){return '<div class="tag"><b>'+I[k].n+'</b><i>'+I[k].t+'</i></div>'};
-var head=function(cls){return '<div class="mxh rv'+(cls?' '+cls:'')+'"><div><span class="k">Aplicaciones · Merchandising</span><h2>La marca, <span>en cada objeto.</span></h2></div><p>Una identidad funciona cuando se reconoce en todas partes: en una camiseta, en una acreditación o en una taza. Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'};
-var M=new URLSearchParams(location.search).get('m')||'1';
-document.querySelectorAll('.ob a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
-var nav=document.getElementById('nav');document.documentElement.style.setProperty('--obt',(nav?nav.offsetHeight:64)+'px');
-var mx=document.getElementById('mx'),h='',upd=function(){};
-var sp=function(el){var bh=nav?nav.offsetHeight:0,r=el.getBoundingClientRect(),hh=r.height-(innerHeight-bh);return hh>0?cl((bh-r.top)/hh):0};
-
-if(M==='1'){
- var BG={tee:'bg-p',cap:'bg-c',mug:'bg-i',tote:'bg-p',badge:'bg-c',cards:'bg-r',note:'bg-p',bottle:'bg-c',stick:'bg-p'};
- var OV={mug:{b:CR,l:INK},cards:{}};
- h=head()+'<div class="m1">'+K.map(function(k,i){return '<div class="tl rv '+BG[k]+(i===0?' big':'')+'" style="transition-delay:'+(i%4)*.08+'s"><div class="ar">'+draw(k,null,true)+'</div>'+tag(k)+'</div>'}).join('')+'</div>';
-}
-if(M==='2'){
- var S2=['tee','cap','tote','badge','mug','note','cards'],BG2={tee:'#E9E5DA',cap:'#0b0b0b',tote:'#D93333',badge:'#E9E5DA',mug:'#0b0b0b',note:'#D93333',cards:'#E9E5DA'},OV2={cap:{b:RED,l:CR},tote:{b:'#F1F0E8'},note:{b:INK,a:CR},badge:{a:RED}};
- h='<div class="m2" id="m2" style="height:'+(S2.length*75+60)+'vh"><div class="pn"><div class="lf"><div><span class="k" style="color:var(--red)">Aplicaciones · Merchandising</span><h2>La marca,<br><span>en cada objeto.</span></h2></div><ol>'+S2.map(function(k){return '<li><b>'+I[k].n+'</b><i>'+I[k].t+'</i></li>'}).join('')+'</ol></div><div class="st" id="st2">'+S2.map(function(k){return '<div class="o2">'+draw(k,OV2[k])+'</div>'}).join('')+'<span class="cnt" id="cnt2">01 / 0'+S2.length+'</span></div></div></div>';
- upd=function(){var el=document.getElementById('m2'),p=sp(el),i=Math.min(S2.length-1,Math.floor(p*S2.length*0.999)),st=document.getElementById('st2');
-  if(st.dataset.i==i)return;st.dataset.i=i;st.style.backgroundColor=BG2[S2[i]];
-  var dk=BG2[S2[i]]==='#0b0b0b'||BG2[S2[i]]==='#D93333';document.getElementById('cnt2').style.color=dk?CR:INK;document.getElementById('cnt2').textContent='0'+(i+1)+' / 0'+S2.length;
-  st.querySelectorAll('.o2').forEach(function(o,j){o.classList.toggle('on',j===i)});el.querySelectorAll('li').forEach(function(l,j){l.classList.toggle('on',j===i)})};
-}
-if(M==='3'){
- var BG3=['bg-i','bg-p','bg-r','bg-c','bg-p','bg-i','bg-r','bg-c','bg-p'],OV3={tee:{b:CR,l:INK},cap:{b:INK,l:CR},tote:{b:'#F1F0E8'},badge:{a:INK},note:{a:RED},mug:{b:CR,l:RED}};
- var ord=['tee','mug','cap','tote','badge','note','cards','bottle','stick'];
- h='<div class="m3" id="m3" style="height:420vh"><div class="pn"><div class="tr" id="tr3"><div class="pl intro"><span class="k" style="color:var(--red)">Aplicaciones · Merchandising</span><h2>La marca, <span>en cada objeto.</span></h2><p>Una identidad funciona cuando se reconoce en todas partes. Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'+ord.map(function(k,i){return '<div class="pl '+BG3[i]+'"><div class="nb"><span>0'+(i+1)+'</span><span>'+I[k].u+'</span></div><div class="ar">'+draw(k,OV3[k],true)+'</div>'+tag(k)+'</div>'}).join('')+'</div><div class="bar"><i id="bar3"></i></div></div></div>';
- upd=function(){var el=document.getElementById('m3'),tr=document.getElementById('tr3'),p=sp(el),mxw=tr.scrollWidth-innerWidth;tr.style.transform='translateX('+(-p*mxw).toFixed(1)+'px)';document.getElementById('bar3').style.width=(p*100)+'%'};
-}
-if(M==='4'){
- // posición (left%, top%, ancho vw, giro, velocidad parallax)
- var P4=[['tee',54,6,24,-8,-.18,{b:INK,l:CR}],['cap',80,4,15,14,.12,{b:INK,l:RED}],['cards',30,44,21,6,.08],['mug',73,40,13,-6,-.1,{b:CR,l:RED}],['tote',4,52,19,-12,.16,{b:'#F1F0E8',l:INK}],['badge',52,50,15,9,-.06,{b:CR,l:INK,a:INK}],['note',83,58,13,-14,.2,{b:INK,a:CR}],['stick',24,74,15,10,-.14],['bottle',66,68,10,22,.1,{b:CR,l:INK}]];
- h='<div class="m4" id="m4"><div class="ttl4 rv"><span class="k">Aplicaciones · Merchandising</span><h2>La marca,<br>en cada objeto.</h2><p>Camisetas, gorras, acreditaciones, papelería… Llevamos tu logo a cada soporte cuidando la técnica, el tamaño y la colocación.</p></div>'+P4.map(function(x){return '<div class="fl" data-v="'+x[5]+'" data-r="'+x[4]+'" style="left:'+x[1]+'%;top:'+x[2]+'%;width:'+x[3]+'vw;max-width:'+(x[3]*14)+'px">'+draw(x[0],x[6],true)+'</div>'}).join('')+'<div class="leg k">'+P4.map(function(x){return '<span>'+I[x[0]].n+'</span>'}).join('<span style="opacity:.4">/</span>')+'</div></div>';
- upd=function(){var el=document.getElementById('m4'),r=el.getBoundingClientRect(),p=(innerHeight-r.top)/(innerHeight+r.height)-.5,mob=innerWidth<=820;
-  el.querySelectorAll('.fl').forEach(function(f){f.style.transform=mob?'rotate('+f.dataset.r+'deg)':'translateY('+(p*f.dataset.v*innerHeight*1.4).toFixed(1)+'px) rotate('+(+f.dataset.r+p*f.dataset.v*30).toFixed(1)+'deg)'})};
-}
-if(M==='5'){
- var S5=['tee','cap','mug','tote','badge','note','bottle'];
- var INKS={tee:[[INK,'Negro 0B0B0B'],[CR,'Crema F1F0E8']],cap:[[RED,'Rojo D93333'],[CR,'Hilo crema']],mug:[[CR,'Blanco cerámico'],[INK,'Negro 0B0B0B']],tote:[['#E4DCCB','Algodón natural'],[INK,'Negro 0B0B0B']],badge:[[RED,'Rojo D93333'],[INK,'Negro 0B0B0B'],[CR,'Crema F1F0E8']],note:[[INK,'Polipiel negra'],[RED,'Goma roja']],bottle:[['#C9CAC5','Acero'],[INK,'Grabado']]};
- var SUP={tee:'Algodón 180 g',cap:'Sarga de algodón',mug:'Cerámica 330 ml',tote:'Algodón 220 g',badge:'PVC + lanyard 20 mm',note:'Libreta A5 tapa dura',bottle:'Acero inoxidable 500 ml'};
- h=head()+'<div class="m5 rv"><div class="bx"><div class="tb" role="tablist">'+S5.map(function(k,i){return '<button role="tab" aria-selected="'+(i?'false':'true')+'" data-k="'+k+'"><i>0'+(i+1)+'</i>'+I[k].n+'</button>'}).join('')+'</div><div class="dr" id="dr5"></div><div class="sp" id="sp5"></div></div></div>';
- var show=function(k){var it=I[k],L=it.L,w=L[2]*1110/1470,x2=L[0]+w,y2=L[1]+L[2],g='<g class="gd5"><rect x="'+(L[0]-6)+'" y="'+(L[1]-6)+'" width="'+(w+12)+'" height="'+(L[2]+12)+'"/><line x1="'+(L[0]-6)+'" y1="'+(L[1]-22)+'" x2="'+(x2+6)+'" y2="'+(L[1]-22)+'"/><text x="'+(L[0]-6)+'" y="'+(L[1]-28)+'">'+it.s+'</text><line x1="'+(x2+22)+'" y1="'+(L[1]-6)+'" x2="'+(x2+22)+'" y2="'+(y2+6)+'"/><line x1="'+(x2+6)+'" y1="'+(L[1]+L[2]/2)+'" x2="392" y2="'+(L[1]+L[2]/2)+'"/><text x="'+(x2+30)+'" y="'+(L[1]+L[2]/2-6)+'">eje</text></g>';
-  var dr=document.getElementById('dr5');dr.classList.add('sw');dr.classList.remove('in');
-  setTimeout(function(){dr.innerHTML='<svg viewBox="0 0 400 400" aria-hidden="true" style="overflow:visible"><g class="art">'+draw(k).replace(/^<svg[^>]*>|<\/svg>$/g,'')+'</g>'+g+'</svg>';dr.classList.remove('sw');requestAnimationFrame(function(){dr.classList.add('in')})},dr.innerHTML?260:0);
-  document.getElementById('sp5').innerHTML='<span class="k" style="color:var(--red)">Ficha de aplicación</span><h3>'+it.n+'</h3><dl><div><dt>Soporte</dt><dd>'+SUP[k]+'</dd></div><div><dt>Técnica</dt><dd>'+it.t+'</dd></div><div><dt>Ubicación</dt><dd>'+it.u+'</dd></div><div><dt>Tamaño logo</dt><dd>'+it.s+' de alto</dd></div><div><dt>Colores</dt><dd><div class="chips">'+INKS[k].map(function(c){return '<span class="chip"><s style="background:'+c[0]+'"></s>'+c[1]+'</span>'}).join('')+'</div></dd></div></dl>'};
- setTimeout(function(){var bs=mx.querySelectorAll('.tb button');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-selected',x===b)});show(b.dataset.k)})});show(S5[0])});
-}
-if(M==='6'){
- var OV6={tee:{b:CR,l:INK},mug:{b:CR,l:RED},tote:{b:'#E4DCCB'},cap:{b:RED,l:CR},note:{b:'#1c1c1b',a:RED},badge:{a:RED},bottle:{b:'#C9CAC5'}};
- h='<div class="m6">'+head()+'<div class="sh">'+K.map(function(k,i){return '<div class="cell rv" style="transition-delay:'+(i%3)*.1+'s">'+draw(k,OV6[k],true)+tag(k)+'</div>'}).join('')+'</div></div>';
-}
-mx.innerHTML=h;
-var rv=mx.querySelectorAll('.rv');
-if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.12});rv.forEach(function(e){ob.observe(e)})}else rv.forEach(function(e){e.classList.add('in')});
-var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;upd()})},{passive:true});addEventListener('resize',upd);upd();
-})();
-</script>
 
 <div class="wrap desc">
   <div><span class="k">05 · Identity in every detail</span><h2>Diseño gráfico que da personalidad a tu marca</h2></div>
@@ -340,6 +151,102 @@ var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame
   </div>
   <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
 </footer>
+<script>
+(function(){
+var VB='440 260 1110 1470',D='M462 283H935V1467A353 353 0 0 0 1027 1703H935A473 473 0 0 1 462 1230Z';
+var INK='#0b0b0b',RED='#D93333',CR='#F1F0E8',PA='#F7F6F1',BE='#E9E5DA',SK='rgba(11,11,11,.2)',NOLG=false;
+var lg=function(x,y,h,c){if(NOLG)return '';var w=h*1110/1470;return '<svg x="'+x+'" y="'+y+'" width="'+w.toFixed(1)+'" height="'+h+'" viewBox="'+VB+'"><path d="'+D+'" fill="'+c+'"/><circle cx="1288" cy="1467" r="237" fill="'+c+'"/></svg>'};
+var I={
+ tee:{n:'Camiseta',t:'Serigrafía a una tinta',u:'Pecho izquierdo',s:'9 cm',L:[218,128,54],c:{b:INK,l:CR},f:function(c,L){return '<path d="M150 62 L104 78 L40 128 L78 196 L116 176 L116 352 L284 352 L284 176 L322 196 L360 128 L296 78 L250 62 Q200 98 150 62Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M150 62 Q200 98 250 62" fill="none" stroke="rgba(127,127,127,.45)" stroke-width="4"/><path d="M116 176 L116 214 M284 176 L284 214" stroke="rgba(127,127,127,.25)" stroke-width="2"/><path d="M116 336 L284 336" stroke="rgba(127,127,127,.2)" stroke-width="2"/>'+lg(L[0],L[1],L[2],c.l)}},
+ cap:{n:'Gorra',t:'Bordado frontal',u:'Panel frontal, centrado',s:'6 cm',L:[176,146,66],c:{b:RED,l:CR},f:function(c,L){return '<path d="M92 262 C92 150 140 104 200 104 C260 104 308 150 308 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M200 106 C196 160 196 220 200 262 M200 106 C158 130 140 190 136 262 M200 106 C242 130 260 190 264 262" stroke="rgba(0,0,0,.16)" fill="none" stroke-width="2"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M68 262 Q200 238 332 262 Q340 304 200 310 Q60 304 68 262Z" fill="rgba(0,0,0,.2)"/><circle cx="200" cy="106" r="8" fill="'+c.b+'" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],c.l)}},
+ mug:{n:'Taza',t:'Impresión cerámica',u:'Frontal, centrado',s:'7 cm',L:[175,174,82],c:{b:CR,l:INK},f:function(c,L){return '<path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+c.b+'" stroke-width="22"/><path d="M286 160 C352 160 352 292 286 292" fill="none" stroke="'+SK+'" stroke-width="22" stroke-opacity=".35" style="mix-blend-mode:multiply"/><rect x="120" y="108" width="170" height="234" rx="16" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><ellipse cx="205" cy="112" rx="83" ry="9" fill="rgba(0,0,0,.22)"/><rect x="134" y="124" width="14" height="200" rx="7" fill="rgba(255,255,255,.35)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ tote:{n:'Tote bag',t:'Serigrafía sobre algodón',u:'Frontal, centrado',s:'22 cm',L:[164,206,98],c:{b:'#E4DCCB',l:INK},f:function(c,L){return '<path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="'+c.b+'" stroke-width="14"/><path d="M150 162 C150 66 250 66 250 162" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="14"/><path d="M96 150 L304 150 L316 366 L84 366Z" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M96 150 L304 150 L303 168 L97 168Z" fill="rgba(0,0,0,.07)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ badge:{n:'Acreditación',t:'Impresión digital y lanyard',u:'Cabecera y centro',s:'4 cm',L:[178,214,60],c:{b:CR,l:INK,a:RED},f:function(c,L){return '<path d="M150 -20 L190 128 M250 -20 L210 128" stroke="'+c.a+'" stroke-width="14"/><rect x="186" y="116" width="28" height="28" rx="4" fill="#9b9b97"/><rect x="118" y="136" width="164" height="232" rx="12" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><path d="M118 148 a12 12 0 0 1 12 -12 h140 a12 12 0 0 1 12 12 v44 h-164Z" fill="'+c.a+'"/><rect x="180" y="148" width="40" height="8" rx="4" fill="rgba(0,0,0,.28)"/>'+lg(L[0],L[1],L[2],c.l)+'<text x="200" y="314" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="800" font-size="22" letter-spacing="-1" fill="'+c.l+'">Visitante</text><text x="200" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.4" fill="'+c.l+'" opacity=".6">LAUNCH STUDIO · 2026</text>'}},
+ cards:{n:'Tarjetas de visita',t:'Offset y stamping',u:'Anverso, esquina',s:'2 cm',L:[96,146,44],c:{},f:function(c,L){return '<g transform="rotate(-9 200 190)"><rect x="66" y="118" width="252" height="148" rx="6" fill="'+INK+'" stroke="rgba(241,240,232,.22)" stroke-width="1.5"/>'+lg(L[0],L[1],L[2],CR)+'<text x="96" y="246" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1.6" fill="'+CR+'" opacity=".75">LAUNCH STUDIO</text></g><g transform="rotate(5 230 250)"><rect x="96" y="194" width="252" height="148" rx="6" fill="'+CR+'" stroke="'+SK+'" stroke-width="1.5"/><text x="122" y="244" font-family="Poppins,sans-serif" font-weight="800" font-size="19" letter-spacing="-.8" fill="'+INK+'">Launch Studio</text><text x="122" y="264" font-family="DM Mono,monospace" font-size="9" letter-spacing=".8" fill="'+INK+'" opacity=".6">Stands · Eventos · Diseño</text><text x="122" y="318" font-family="DM Mono,monospace" font-size="8.5" fill="'+INK+'" opacity=".6">info@launchstudiogroup.com</text>'+lg(300,212,36,RED)+'</g>'}},
+ note:{n:'Libreta',t:'Grabado en seco',u:'Portada, centrado',s:'5 cm',L:[170,152,92],c:{b:INK,a:RED},f:function(c,L){return '<rect x="112" y="56" width="186" height="292" rx="10" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="112" y="56" width="16" height="292" rx="6" fill="rgba(255,255,255,.07)"/><rect x="264" y="56" width="11" height="292" fill="'+c.a+'"/>'+lg(L[0]+1.6,L[1]+1.6,L[2],'rgba(255,255,255,.13)')+lg(L[0],L[1],L[2],'#030303')}},
+ bottle:{n:'Botella',t:'Grabado láser',u:'Cuerpo, centrado',s:'4 cm',L:[180,200,54],c:{b:'#C9CAC5',l:INK},f:function(c,L){return '<rect x="176" y="50" width="48" height="52" rx="9" fill="'+INK+'"/><rect x="184" y="98" width="32" height="16" fill="#8f908b"/><rect x="160" y="110" width="80" height="252" rx="30" fill="'+c.b+'" stroke="'+SK+'" stroke-width="1.5"/><rect x="171" y="132" width="10" height="206" rx="5" fill="rgba(255,255,255,.45)"/><rect x="222" y="132" width="6" height="206" rx="3" fill="rgba(0,0,0,.08)"/>'+lg(L[0],L[1],L[2],c.l)}},
+ stick:{n:'Pegatinas',t:'Vinilo troquelado',u:'Pieza completa',s:'6 cm',L:[120,128,82],c:{},f:function(c,L){return '<g transform="rotate(-10 165 316)"><rect x="110" y="262" width="110" height="110" rx="24" fill="'+INK+'" stroke="#fff" stroke-width="6"/>'+lg(142,286,62,RED)+'</g><circle cx="262" cy="248" r="68" fill="'+CR+'" stroke="#fff" stroke-width="6"/><circle cx="262" cy="248" r="71" fill="none" stroke="'+SK+'" stroke-width="1"/>'+lg(237,214,68,INK)+'<circle cx="150" cy="168" r="80" fill="'+RED+'" stroke="#fff" stroke-width="6"/>'+lg(L[0],L[1],L[2],CR)+'<path d="M205 226 Q190 214 214 206 Z" fill="#f4f1ea"/>'}}
+};
+
+var cl=function(x){return Math.max(0,Math.min(1,x))},io=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},L=function(a,b,t){return a+(b-a)*t};
+var hx=function(h){h=h.replace('#','');return [0,2,4].map(function(i){return parseInt(h.substr(i,2),16)})};
+var mix=function(a,b,t){var A=hx(a),B=hx(b);return 'rgb('+A.map(function(v,i){return Math.round(L(v,B[i],t))}).join(',')+')'};
+var M=new URLSearchParams(location.search).get('m')||'1';
+document.querySelectorAll('.ob a').forEach(function(a){if(a.getAttribute('href')==='?m='+M)a.setAttribute('aria-current','page')});
+var nav=document.getElementById('nav');document.documentElement.style.setProperty('--obt',(nav?nav.offsetHeight:64)+'px');
+window.SPL=.42;
+var mz=document.getElementById('mz'),pin=document.getElementById('pin'),stage=document.getElementById('stage');
+var item=function(k,ov,nolg){var it=I[k],c={};for(var a in it.c)c[a]=it.c[a];for(a in (ov||{}))c[a]=ov[a];NOLG=!!nolg;var s=it.f(c,it.L);NOLG=false;return s};
+var lcol=function(k,ov){return (ov&&ov.l)||I[k].c.l||INK};
+var oT=function(cx,cy,s,r){return 'translate('+cx.toFixed(1)+' '+cy.toFixed(1)+') rotate('+(r||0).toFixed(2)+') scale('+s.toFixed(4)+') translate(-200 -200)'};
+var lT=function(cx,cy,H,r){return 'translate('+cx.toFixed(1)+' '+cy.toFixed(1)+') rotate('+(r||0).toFixed(2)+') scale('+(H/1470).toFixed(5)+') translate(-995 -995)'};
+// dónde queda el logo de un objeto colocado en (cx,cy) con escala s y giro r
+var tgt=function(k,cx,cy,s,r){var l=I[k].L,px=(l[0]+l[2]*1110/1470/2-200)*s,py=(l[1]+l[2]/2-200)*s,a=(r||0)*Math.PI/180;return {x:cx+px*Math.cos(a)-py*Math.sin(a),y:cy+px*Math.sin(a)+py*Math.cos(a),H:l[2]*s,r:r||0}};
+var C0={x:800,y:530,H:640,r:0};
+var lt=function(a,b,t){return {x:L(a.x,b.x,t),y:L(a.y,b.y,t),H:L(a.H,b.H,t),r:L(a.r,b.r,t)}};
+var BIG='<g id="bl"><path d="'+D+'"/><circle cx="1288" cy="1467" r="237"/></g>';
+var g='<defs><filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="10" dy="16" stdDeviation="0" flood-color="#000" flood-opacity=".16"/></filter></defs>',P=[],MPH=[],up=function(){};
+var setTone=function(dark,redbg){pin.classList.toggle('mzd',dark);pin.classList.toggle('mzr',redbg)};
+var ph=function(pm,txt){MPH.push([SPL+(1-SPL)*pm,txt])};
+var SPL=window.SPL;
+
+if(M==='1'||M==='2'){
+ var S=['tee','cap','mug','tote','badge','bottle'],H=105,CX=800,CY=520;
+ var OV=M==='1'?{tee:{},cap:{},mug:{},tote:{},badge:{},bottle:{}}:{tee:{b:INK,l:CR},cap:{b:RED,l:CR},mug:{b:CR,l:RED},tote:{b:CR,l:INK},badge:{b:CR,l:INK,a:RED},bottle:{b:RED,l:CR}};
+ var BG=M==='1'?{}:{tee:RED,cap:INK,mug:BE,tote:RED,badge:INK,bottle:BE};
+ g+=S.map(function(k,i){return '<g id="o'+i+'" opacity="0">'+item(k,OV[k],true)+'</g>'}).join('')+BIG;
+ var seg=.86/S.length;
+ ph(.07,'Una camiseta');S.forEach(function(k,i){if(i)ph(.14+(i-1)*seg+seg*.85,I[k].n+' · '+I[k].t.toLowerCase())});MPH[0][1]='Camiseta · serigrafía a una tinta';
+ up=function(pm){var lc,lo,bg=null,cur,
+   e=io(cl(pm/.14)),u=(pm-.14)/seg,i=Math.max(0,Math.min(S.length-1,Math.floor(u))),f=pm<.14?0:u-i,t=(i<S.length-1)?io(cl((f-.62)/.38)):0;
+  for(var j=0;j<S.length;j++){var o=P[j],s=H/I[S[j]].L[2],l=I[S[j]].L,lx=l[0]+l[2]*1110/1470/2,ly=l[1]+l[2]/2,op=0,dx=0;
+   if(pm<.14){if(j===0){op=cl((pm-.06)/.08);dx=0}}
+   else if(j===i){op=1-t;dx=-t*900}else if(j===i+1){op=t;dx=(1-t)*900}
+   o.setAttribute('opacity',op.toFixed(3));if(op>0)o.setAttribute('transform','translate('+(CX+dx-lx*s).toFixed(1)+' '+(CY-ly*s).toFixed(1)+') scale('+s.toFixed(4)+')')}
+  var T={x:CX,y:CY,H:H,r:0},pos=lt(C0,T,e),pul=1+.32*Math.sin(Math.PI*t);pos.H*=pul;
+  lc=pm<.14?mix(INK,lcol(S[0],OV[S[0]]),cl((pm-.08)/.06)):mix(lcol(S[i],OV[S[i]]),lcol(S[Math.min(i+1,S.length-1)],OV[S[Math.min(i+1,S.length-1)]]),t);
+  var bl=P.bl;bl.setAttribute('transform',lT(pos.x,pos.y,pos.H,0));bl.setAttribute('fill',lc);
+  if(M==='2'){var b0=pm<.14?mix(PA,BG[S[0]],cl((pm-.04)/.1)):mix(BG[S[i]],BG[S[Math.min(i+1,S.length-1)]],t);pin.style.background=b0;cur=S[t>.5?i+1:i];if(pm<.14&&pm<.09){setTone(false,false)}else setTone(BG[cur]!==BE,BG[cur]===RED)}
+ };
+}
+if(M==='3'){
+ var S3=['tee','cap','mug','tote','badge','bottle'],T=290,GP=22,X0=1600-90-(3*T+2*GP),Y0=170,s3=.5;
+ var TB={tee:BE,cap:INK,mug:RED,tote:BE,badge:INK,bottle:RED},TX={tee:INK,cap:CR,mug:CR,tote:INK,badge:CR,bottle:CR};
+ var O3={tee:{b:INK,l:CR},cap:{b:RED,l:CR},mug:{b:CR,l:RED},tote:{b:CR,l:INK},badge:{b:CR,l:INK,a:RED},bottle:{b:CR,l:INK}};
+ var TL=S3.map(function(k,i){var tx=X0+(i%3)*(T+GP),ty=Y0+Math.floor(i/3)*(T+GP);return {k:k,x:tx,y:ty,cx:tx+T/2,cy:ty+T/2-18}});
+ g+=TL.map(function(t,i){return '<g id="o'+i+'" opacity="0"><rect x="'+t.x+'" y="'+t.y+'" width="'+T+'" height="'+T+'" rx="12" fill="'+TB[t.k]+'"/><g transform="'+oT(t.cx,t.cy,s3,0)+'">'+item(t.k,O3[t.k],true)+'</g><text x="'+(t.x+18)+'" y="'+(t.y+T-36)+'" font-family="Poppins,sans-serif" font-weight="600" font-size="16" fill="'+TX[t.k]+'">'+I[t.k].n+'</text><text x="'+(t.x+18)+'" y="'+(t.y+T-18)+'" font-family="DM Mono,monospace" font-size="9.5" letter-spacing="1" fill="'+TX[t.k]+'" opacity=".6">'+I[t.k].t.toUpperCase()+'</text>'+(i?'<g class="sl" fill="'+lcol(t.k,O3[t.k])+'"><path d="'+D+'"/><circle cx="1288" cy="1467" r="237"/></g>':'')+'</g>'}).join('')+BIG;
+ ph(.1,'Una camiseta');ph(.36,'Cada soporte');ph(.82,'Una misma marca');
+ up=function(pm){var e=io(cl(pm/.3)),A=tgt('tee',TL[0].cx,TL[0].cy,s3,0),pos=lt(C0,A,e);
+  P.bl.setAttribute('transform',lT(pos.x,pos.y,pos.H,0));P.bl.setAttribute('fill',mix(INK,CR,cl((pm-.2)/.1)));
+  P[0].setAttribute('opacity',cl((pm-.14)/.12).toFixed(3));
+  for(var j=1;j<TL.length;j++){var st=.3+(j-1)*.11,q=io(cl((pm-st)/.12)),z=cl((pm-st-.05)/.1),o=P[j];o.setAttribute('opacity',q.toFixed(3));o.setAttribute('transform','translate(0 '+((1-q)*50).toFixed(1)+')');
+   var a=tgt(TL[j].k,TL[j].cx,TL[j].cy,s3,0),sc=1+1.3*(1-io(z));o.querySelector('.sl').setAttribute('transform',lT(a.x,a.y,a.H*sc,0));o.querySelector('.sl').setAttribute('opacity',z>0?Math.min(1,z*3):0)}
+ };
+}
+if(M==='4'){
+ var F=[['tee',800,520,420,-6,{b:INK,l:CR}],['cap',1190,250,250,12,{b:INK,l:RED}],['cards',470,440,290,4],['mug',1255,650,220,-8,{b:CR,l:RED}],['tote',400,760,280,-10,{b:CR,l:INK}],['badge',1020,830,250,8,{b:CR,l:INK,a:INK}],['note',1450,430,220,-14,{b:INK,a:CR}],['stick',700,880,190,10]];
+ g+=F.map(function(x,i){return '<g id="o'+i+'" opacity="0" filter="url(#ds)"><g class="in">'+item(x[0],x[5],i===0)+'</g></g>'}).join('')+BIG;
+ ph(.1,'Una camiseta');ph(.38,'Gorras, tazas, papelería');ph(.84,'Una misma marca');
+ up=function(pm){var b=cl(pm/.16);pin.style.background=mix(PA,RED,b);setTone(b>.5,b>.5);
+  var e=io(cl(pm/.28)),f0=F[0],A=tgt('tee',f0[1],f0[2],f0[3]/400,f0[4]),pos=lt(C0,A,e);P.bl.setAttribute('transform',lT(pos.x,pos.y,pos.H,pos.r));P.bl.setAttribute('fill',mix(INK,CR,cl((pm-.16)/.1)));
+  var q0=io(cl((pm-.12)/.16));P[0].setAttribute('opacity',q0.toFixed(3));P[0].firstChild.setAttribute('transform',oT(f0[1],f0[2],f0[3]/400*(1.12-.12*q0),f0[4]));
+  for(var j=1;j<F.length;j++){var x=F[j],st=.28+(j-1)*.075,q=io(cl((pm-st)/.13));P[j].setAttribute('opacity',cl(q*4).toFixed(3));P[j].firstChild.setAttribute('transform','translate(0 '+(-(1-q)*1000).toFixed(1)+') '+oT(x[1],x[2],x[3]/400,x[4]+(1-q)*50))}
+ };
+}
+if(M==='5'){
+ var S5=['tee','cap','mug','tote','badge','note','bottle','cards','stick'],GA=440,SZ=.95,Y5=500;
+ g+=S5.map(function(k,i){return '<g id="o'+i+'"><g class="in">'+item(k,null,i===0)+'</g><g class="lb"><text font-family="Poppins,sans-serif" font-weight="600" font-size="20" fill="currentColor" x="-160" y="0">'+I[k].n+'</text><text font-family="DM Mono,monospace" font-size="11" letter-spacing="1.2" fill="currentColor" opacity=".55" x="-160" y="24">'+I[k].t.toUpperCase()+'</text></g></g>'}).join('')+BIG;
+ ph(.1,'Una camiseta');S5.forEach(function(k,i){if(i)ph(.26+.7*i/(S5.length-1)-.04,I[k].n+' · '+I[k].t.toLowerCase())});
+ up=function(pm){var sh=io(cl((pm-.26)/.7))*GA*(S5.length-1),e=io(cl(pm/.22));
+  for(var j=0;j<S5.length;j++){var x=800+j*GA-sh,o=P[j],op=j===0?cl((pm-.1)/.12):cl((pm-.16)/.1);o.setAttribute('opacity',op.toFixed(3));o.firstChild.setAttribute('transform',oT(x,Y5,SZ,0));o.lastChild.setAttribute('transform','translate('+x.toFixed(1)+' '+(Y5+235)+')');o.lastChild.setAttribute('opacity',(Math.max(0,1-Math.abs(x-800)/700)).toFixed(3))}
+  var A=tgt('tee',800-sh,Y5,SZ,0),pos=lt(C0,A,e);P.bl.setAttribute('transform',lT(pos.x,pos.y,pos.H,0));P.bl.setAttribute('fill',mix(INK,CR,cl((pm-.12)/.1)))};
+}
+mz.innerHTML=g;P.bl=mz.querySelector('#bl');mz.querySelectorAll('[id^=o]').forEach(function(o){P[+o.id.slice(1)]=o});
+window.MPH=MPH;
+window.MZ=function(pm){var on=pm>0;mz.style.opacity=on?1:0;stage.style.opacity=on?1-cl(pm/.05):1;if(!on){pin.style.background='';setTone(false,false);return}up(pm)};
+})();
+
+</script>
 <script src="js/sitio.js?v=202611041102"></script>
 <script>
 (function(){
@@ -378,11 +285,11 @@ var raf=0;addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame
       var d=cl((p-.62)/.14),y=(1-io(d))*-1600;dot.setAttribute('transform','translate(0 '+y.toFixed(1)+')');dot.style.opacity=d>0?1:0};
   }
 
-  var cap=document.getElementById('cap'),fin=document.getElementById('fin'),hint=document.getElementById('hint'),sec=document.getElementById('sc'),cur=-1,last=0,ph=PH[M];
+  var cap=document.getElementById('cap'),fin=document.getElementById('fin'),hint=document.getElementById('hint'),sec=document.getElementById('sc'),cur=-1,last=0,SPL=window.SPL,ph=PH[M].map(function(x){return [x[0]*SPL,x[1],x[2]]}).concat(window.MPH.map(function(x,i){return [x[0],("0"+(PH[M].length+i+1)).slice(-2),x[1]]}));
   var prog=function(){var bh=(document.getElementById('nav')||{offsetHeight:0}).offsetHeight,r=sec.getBoundingClientRect(),h=r.height-(innerHeight-bh);return h>0?cl((bh-r.top)/h):0};
-  function frame(p){last=p;draw(p);var k=0;ph.forEach(function(x,i){if(p>=x[0])k=i});
+  function frame(p){last=p;var pl=cl(p/SPL);draw(pl);MZ(cl((p-SPL)/(1-SPL)));var k=0;ph.forEach(function(x,i){if(p>=x[0])k=i});
     if(k!==cur){cur=k;cap.innerHTML='<div class="s"><b>'+ph[k][1]+'</b><span>'+ph[k][2]+'</span></div>'}
-    fin.style.opacity=cl((p-.9)/.06);hint.style.opacity=1-cl(p/.03)}
+    fin.style.opacity=cl((p-.955)/.035);hint.style.opacity=1-cl(p/.03)}
   var setBh=function(){document.documentElement.style.setProperty('--nh',(document.getElementById('nav')||{offsetHeight:0}).offsetHeight+'px')};setBh();addEventListener('resize',setBh);
   var tgt=0,now=0,raf=0;
   function loop(){now+=(tgt-now)*.2;if(Math.abs(tgt-now)<.0005)now=tgt;frame(now);raf=now!==tgt?requestAnimationFrame(loop):0}
