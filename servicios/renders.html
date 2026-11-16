@@ -19,7 +19,7 @@ html{scroll-behavior:auto}
 .rp h1,.rp h2,.rp h3,.rp p{margin:0}.rp a{color:inherit;text-decoration:none}
 .rp img{display:block;width:100%;height:100%;object-fit:cover}
 .k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.sc{height:600vh;margin-top:var(--bh)}
+.sc{height:420vh;margin-top:var(--bh)}
 .pin{position:sticky;top:var(--bh);height:calc(100vh - var(--bh));overflow:hidden;background:#f4f1ea}
 .ov{position:absolute;z-index:6;transition:color .4s}
 .ttl{left:var(--pad);top:clamp(22px,3vw,36px)}
@@ -36,13 +36,13 @@ html{scroll-behavior:auto}
 .rd{position:absolute;inset:0;background:#f4f1ea}
 .rd::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);background-size:5px 5px;opacity:.6}
 .rd .lay{position:absolute;inset:0}
-.rd .sk{mix-blend-mode:multiply;clip-path:inset(0 calc((1 - var(--w,0))*100%) 0 0);opacity:var(--sko,1)}
-.rd .wc{mix-blend-mode:multiply;opacity:var(--wco,0);filter:saturate(.55) contrast(.9) blur(1px)}
-.rd .fin{opacity:var(--fo,0)}
+.rd .sk{will-change:clip-path;clip-path:inset(0 calc((1 - var(--w,0))*100%) 0 0);opacity:var(--sko,1)}
+.rd .wc{opacity:var(--wco,0);will-change:opacity}
+.rd .fin{opacity:var(--fo,0);will-change:opacity}
 .rd .fin::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.28),transparent 30%,transparent 70%,rgba(0,0,0,.35))}
 .rd svg{position:absolute;inset:0;width:100%;height:100%}
-.rd .cn{stroke:rgba(11,11,11,.28);stroke-width:1.2;fill:none;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
-.rd .mn{stroke:#2a2724;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}
+.rd .cn{stroke:rgba(11,11,11,.28);stroke-width:1.2;fill:none;stroke-dasharray:1;stroke-dashoffset:1}
+.rd .mn{stroke:#2a2724;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
 .rd .veil{position:absolute;inset:0 0 auto 0;height:34%;background:linear-gradient(#f4f1ea,rgba(244,241,234,0));opacity:calc(1 - var(--fo,0))}
 .rd .pen{position:absolute;top:0;bottom:0;width:2px;left:calc(var(--w,0)*100%);background:var(--red);box-shadow:0 0 0 4px rgba(217,51,51,.12);opacity:var(--po,0)}
 .rd .tag{position:absolute;right:var(--pad);bottom:clamp(22px,3vw,40px);z-index:5;padding:6px 12px;border-radius:999px;background:#fff;font:400 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:var(--fo,0)}
@@ -127,17 +127,19 @@ html{scroll-behavior:auto}
   var mn=['M110 380 H1410 L1390 400 H110 Z','M182 400 V722 H1334 V400','M410 400 V722','M642 400 V722','M872 400 V722','M1102 400 V722','M182 526 H736 M182 614 H736 M736 526 V614','M1338 424 H1716 V716 H1338','M150 728 H1850','M1338 716 L1850 728','M850 100 V378 M930 120 V378','M1760 0 V560 M1800 0 V580'];
   var I='../assets/img/servicios/';
   var rd=document.getElementById('rd');
-  rd.innerHTML='<div class="lay sk"><img src="'+I+'render-casa-boceto.jpg" alt=""></div><div class="lay wc"><img src="'+I+'render-casa.jpg" alt=""></div><div class="lay fin"><img src="'+I+'render-casa.jpg" alt="Render final de una casa en el bosque"></div>'+
-    '<svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><filter id="pencil"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs><g filter="url(#pencil)">'+cn.map(function(d,i){return '<path class="cn" pathLength="1" style="--d:var(--c'+i+',0)" d="'+d+'"/>'}).join('')+'</g><g filter="url(#pencil)" style="opacity:var(--mo,1)">'+mn.map(function(d,i){return '<path class="mn" pathLength="1" style="--d:var(--m'+i+',0)" d="'+d+'"/>'}).join('')+'</g></svg><div class="veil"></div><div class="pen"></div><span class="tag">Render final</span>';
+  rd.innerHTML='<div class="lay sk"><img src="'+I+'render-casa-boceto-papel.jpg" alt=""></div><div class="lay wc"><img src="'+I+'render-casa-acuarela.jpg" alt=""></div><div class="lay fin"><img src="'+I+'render-casa.jpg" alt="Render final de una casa en el bosque"></div>'+
+    '<svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="gc">'+cn.map(function(d,i){return '<path class="cn" pathLength="1" d="'+d+'"/>'}).join('')+'</g><g class="gm">'+mn.map(function(d,i){return '<path class="mn" pathLength="1" d="'+d+'"/>'}).join('')+'</g></svg><div class="veil"></div><div class="pen"></div><span class="tag">Render final</span>';
   var sv=rd.querySelector('svg'),pin=document.getElementById('pin'),cap=document.getElementById('cap'),hint=document.getElementById('hint'),sec=document.getElementById('sc');
   var PH=[[0,'01','Encajamos el espacio'],[.2,'02','Dibujamos la idea'],[.4,'03','Le damos profundidad'],[.6,'04','Probamos materiales y luz'],[.8,'05','El render final']],cur=-1;
   var nav=document.getElementById('nav'),nh=function(){return nav?nav.offsetHeight:0};
   var setNh=function(){document.documentElement.style.setProperty('--nh',nh()+'px')};setNh();
   var prog=function(){var r=sec.getBoundingClientRect(),h=r.height-(innerHeight-nh());return h>0?cl((nh()-r.top)/h):0};
+  var CP=[].slice.call(sv.querySelectorAll('.cn')),MP=[].slice.call(sv.querySelectorAll('.mn')),GC=sv.querySelector('.gc'),GM=sv.querySelector('.gm'),last={};
+  var set=function(el,key,prop,v){if(last[key]!==v){last[key]=v;el.style[prop]=v}};
   var tick=function(){var P=prog(),c=cl(P/.18),m=cl((P-.17)/.24),w=ez(cl((P-.4)/.2)),wc=cl((P-.6)/.16),fo=ez(cl((P-.8)/.12));
-    for(var i=0;i<cn.length;i++)sv.style.setProperty('--c'+i,cl(c*1.6-i*.08).toFixed(3));
-    for(var j=0;j<mn.length;j++)sv.style.setProperty('--m'+j,cl(m*1.8-j*.07).toFixed(3));
-    sv.querySelector('g[filter]').style.opacity=(1-cl((P-.5)/.15)).toFixed(3);sv.style.setProperty('--mo',(1-fo).toFixed(3));
+    for(var i=0;i<CP.length;i++)set(CP[i],'c'+i,'strokeDashoffset',(1-cl(c*1.6-i*.08)).toFixed(3));
+    for(var j=0;j<MP.length;j++)set(MP[j],'m'+j,'strokeDashoffset',(1-cl(m*1.8-j*.07)).toFixed(3));
+    set(GC,'gc','opacity',(1-cl((P-.5)/.15)).toFixed(3));set(GM,'gm','opacity',(1-fo).toFixed(3));
     rd.style.setProperty('--w',w.toFixed(4));rd.style.setProperty('--po',(w>0&&w<1?1:0));rd.style.setProperty('--sko',(1-fo*.9).toFixed(3));rd.style.setProperty('--wco',(wc*.75*(1-fo)).toFixed(3));rd.style.setProperty('--fo',fo.toFixed(3));
     pin.classList.toggle('dark',fo>.5);
     var k=0;PH.forEach(function(x,i){if(P>=x[0])k=i});if(k!==cur){cur=k;cap.innerHTML='<div class="s"><b>'+PH[k][1]+' / 05</b><span>'+PH[k][2]+'</span></div>'}
