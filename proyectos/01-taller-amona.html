@@ -11,6 +11,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=DM+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="../css/estilos.css?v=202611041102">
+<style id="proj-ficha">
+.sec--top:has(+.wrap .proj__img){padding-top:clamp(110px,12vw,170px);padding-bottom:clamp(28px,3.5vw,48px)}
+.sec--top .intro:has(h1){gap:12px}
+.sec--top .intro:has(h1){max-width:calc(1180px + 2*var(--pad))}
+.sec--top .intro h1{font-size:clamp(30px,3.6vw,54px);line-height:1;letter-spacing:-.05em}
+.proj__img{max-width:1180px}
+.wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
+.proj__n{display:none}
+.wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
+.pmeta{margin:0}
+.pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
+.pmeta div:last-child{border-bottom:1px solid var(--line,rgba(11,11,11,.14))}
+.pmeta dt{font:400 10.5px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.55;padding-top:3px}
+.pmeta dd{margin:0}
+@media (max-width:860px){.proj__body{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="nav" id="nav">
@@ -30,7 +47,7 @@
 <div class="wrap"><div class="proj__img"><img src="../assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div></div>
 <section class="sec sec--tight">
   <div class="wrap proj__body">
-    <p class="proj__n" aria-hidden="true">01</p>
+    <p class="proj__n" aria-hidden="true">01</p><dl class="pmeta"><div><dt>Cliente</dt><dd>Amona Concept</dd></div><div><dt>Proyecto</dt><dd>Experiencia de marca</dd></div><div><dt>Lugar</dt><dd>Barcelona</dd></div><div><dt>Servicio</dt><dd>Diseño y producción</dd></div></dl>
     <div class="prose"><p>Diseño y producción de una experiencia de marca para @amonaconcept en Espai Can Juan, a través de un taller exclusivo de personalización de alpargatas.</p><p>Una propuesta creada para convertir el proceso artesanal en una experiencia inmersiva, reforzando el vínculo entre la identidad de marca y su comunidad.</p></div>
   </div>
 </section>
