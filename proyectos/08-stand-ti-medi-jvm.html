@@ -20,6 +20,9 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -44,13 +47,14 @@
     <h1>Stand para TI-MEDI / JVM</h1>
   </div>
 </section>
-<div class="wrap"><div class="proj__img"><img src="../assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="Stand para TI-MEDI / JVM" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/JVM.jpeg'"></div></div>
+<div class="wrap"><div class="proj__img"><img src="../assets/img/proyectos/08-stand-ti-medi-jvm.jpg" alt="Stand para TI-MEDI / JVM" loading="lazy"></div></div>
 <section class="sec sec--tight">
   <div class="wrap proj__body">
     <p class="proj__n" aria-hidden="true">08</p><dl class="pmeta"><div><dt>Cliente</dt><dd>TI-MEDI / JVM</dd></div><div><dt>Proyecto</dt><dd>Stand comercial</dd></div><div><dt>Lugar</dt><dd>Barcelona</dd></div><div><dt>Servicio</dt><dd>Diseño y producción</dd></div></dl>
     <div class="prose"><p>Diseño y producción del stand comercial de TI-MEDI / JVM en Barcelona.</p><p>Diseñamos un espacio pensado para presentar su catálogo de productos de forma clara y accesible, con una distribución que facilitara tanto la exposición como las demostraciones y reuniones con clientes.</p><p>Nos encargamos de todo el proceso de producción y montaje, desde la fabricación de los diferentes elementos hasta su instalación en feria, prestando atención a los materiales, los acabados y la distribución.</p><p>El resultado fue un stand práctico y atractivo, pensado para mostrar los productos y facilitar el contacto con los visitantes.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal" style="columns:1"><img src="../assets/img/proyectos/08-stand-ti-medi-jvm-2.jpg" alt="Zona de producto del stand de TI-MEDI / JVM" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/07-stand-truphone.html"><span class="eyebrow">← Anterior</span><strong>Stand para Truphone</strong></a>
