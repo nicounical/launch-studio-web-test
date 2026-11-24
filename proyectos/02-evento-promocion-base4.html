@@ -20,6 +20,9 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -51,6 +54,7 @@
     <div class="prose"><p>Con motivo del Día Internacional de la Mujer, colaboramos en un evento de promoción de BASE4, celebrado en el marco de una carrera solidaria para fomentar la concienciación sobre la salud femenina.</p><p>Nuestra participación incluyó el diseño y la producción de las camisetas oficiales del evento, concebidas para reforzar la identidad de la iniciativa y acompañar a los participantes durante la jornada.</p><p>Además, coordinamos la creación del contenido fotográfico y audiovisual del evento, generando un material visual que permitió comunicar la experiencia y amplificar su alcance en los canales de la marca.</p><p>Un proyecto en el que diseño, producción y contenido trabajaron de forma conjunta para transmitir los valores de BASE4 y dar mayor visibilidad a una causa de gran impacto social.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal"><video src="../assets/video/02-evento-promocion-base4.mp4" poster="../assets/video/02-evento-promocion-base4.jpg" controls muted playsinline loop preload="metadata" aria-label="Vídeo del evento de BASE4"></video><img src="../assets/img/proyectos/02-evento-promocion-base4-2.jpg" alt="Corredor con la camiseta de BASE4" loading="lazy"><img src="../assets/img/proyectos/02-evento-promocion-base4-3.jpg" alt="Corredora con la camiseta de BASE4 durante la carrera" loading="lazy"><img src="../assets/img/proyectos/02-evento-promocion-base4-4.jpg" alt="Participantes caminando por el recorrido" loading="lazy"><img src="../assets/img/proyectos/02-evento-promocion-base4-5.jpg" alt="Grupo de participantes posando en el recorrido" loading="lazy"><img src="../assets/img/proyectos/02-evento-promocion-base4-6.jpg" alt="Participantes celebrando con los brazos en alto" loading="lazy"><img src="../assets/img/proyectos/02-evento-promocion-base4-7.jpg" alt="Corredores con camisetas de BASE4 por el camino" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/01-taller-amona.html"><span class="eyebrow">← Anterior</span><strong>Taller Amona</strong></a>
