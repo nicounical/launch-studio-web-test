@@ -20,6 +20,9 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -51,6 +54,7 @@
     <div class="prose"><p>Organización y producción de un market en The Office Studio, reuniendo a más de 10 marcas de moda, arte y cerámica.</p><p>Un espacio pensado para conectar proyectos creativos, generar comunidad y dar visibilidad a marcas emergentes.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal"><img src="../assets/img/proyectos/03-market-the-office-studio-2.jpg" alt="Cerámica y fotografía en el market" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-3.jpg" alt="Instalación de joyería sobre lienzo pintado" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-4.jpg" alt="Mesa de catering del market" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-5.jpg" alt="Joyería artesanal expuesta en el market" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-6.jpg" alt="Bisutería de cuentas de colores" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-7.jpg" alt="Artista en su mesa del market" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-8.jpg" alt="Puesto de joyería con visitante" loading="lazy"><img src="../assets/img/proyectos/03-market-the-office-studio-9.jpg" alt="Moda y accesorios en el market" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/02-evento-promocion-base4.html"><span class="eyebrow">← Anterior</span><strong>Evento de promoción para BASE4</strong></a>
