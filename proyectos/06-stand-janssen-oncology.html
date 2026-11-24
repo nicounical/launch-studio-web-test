@@ -20,6 +20,9 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -51,6 +54,7 @@
     <div class="prose"><p>Producción y montaje integral del stand de Janssen Oncology para su participación en un congreso en Barcelona.</p><p>Nos encargamos de todo el proceso, desde la fabricación de las estructuras y los diferentes elementos del stand hasta la integración audiovisual y los acabados. Coordinamos cada fase para que todo estuviera listo y en su sitio el día del montaje.</p><p>El resultado fue un espacio pensado para recibir a los asistentes, facilitar el encuentro y dar visibilidad a Janssen Oncology durante el congreso.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal"><img src="../assets/img/proyectos/06-stand-janssen-oncology-2.jpg" alt="Vista cenital del stand de Janssen Oncology" loading="lazy"><img src="../assets/img/proyectos/06-stand-janssen-oncology-3.jpg" alt="Zona de reuniones y pantallas del stand de Janssen Oncology" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/05-pop-up-store-venca.html"><span class="eyebrow">← Anterior</span><strong>Pop-up store para Venca</strong></a>

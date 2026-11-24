@@ -20,6 +20,9 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -51,6 +54,7 @@
     <div class="prose"><p>Producción y montaje de la pop-up store de Venca en Barcelona.</p><p>Nos encargamos de llevar el proyecto a la realidad, desde la fabricación de los diferentes elementos hasta su instalación y montaje final. Coordinamos todo el proceso para que el espacio estuviera listo en los plazos previstos y respondiera a la imagen que la marca quería transmitir.</p><p>El resultado fue una tienda temporal pensada para acercar Venca al público en un espacio propio, atractivo y adaptado a la experiencia de compra.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal"><img src="../assets/img/proyectos/05-pop-up-store-venca-2.jpg" alt="Pop-up store de Venca iluminada de noche" loading="lazy"><img src="../assets/img/proyectos/05-pop-up-store-venca-3.jpg" alt="Lateral de la pop-up store de Venca" loading="lazy"><img src="../assets/img/proyectos/05-pop-up-store-venca-4.jpg" alt="Fachada de la pop-up store de Venca" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/04-evento-corporativo-ntt-data.html"><span class="eyebrow">← Anterior</span><strong>Evento corporativo para NTT DATA</strong></a>
