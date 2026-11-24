@@ -20,6 +20,13 @@
 .wrap:has(>.proj__img){max-width:calc(1180px + 2*var(--pad))}
 .proj__n{display:none}
 .wrap.pager{max-width:calc(1180px + 2*var(--pad))}
+.proj__vid{position:relative;aspect-ratio:752/480}
+.proj__vid video{display:block;width:100%;height:100%;object-fit:cover;background:#111}
+.pv__snd{position:absolute;right:14px;bottom:14px;font:400 11px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#F1F0E8;background:rgba(11,11,11,.6);border:1px solid rgba(241,240,232,.35);border-radius:999px;padding:8px 14px;cursor:pointer}
+.pv__snd:hover{background:#D93333;border-color:#D93333}
+.proj__gal{max-width:calc(1180px + 2*var(--pad));columns:2;column-gap:clamp(12px,1.6vw,22px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(30px,4vw,60px)}
+.proj__gal img,.proj__gal video{display:block;width:100%;height:auto;margin:0 0 clamp(12px,1.6vw,22px);break-inside:avoid;background:#111}
+@media (max-width:600px){.proj__gal{columns:1}}
 .proj__body{grid-template-columns:minmax(0,1fr) minmax(0,2fr);max-width:calc(1180px + 2*var(--pad));padding-top:clamp(36px,4vw,60px)}
 .pmeta{margin:0}
 .pmeta div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line,rgba(11,11,11,.14));font-size:15px}
@@ -44,13 +51,14 @@
     <h1>Taller Amona</h1>
   </div>
 </section>
-<div class="wrap"><div class="proj__img"><img src="../assets/img/proyectos/01-taller-amona.jpg" alt="Taller Amona" loading="lazy" onerror="this.onerror=null;this.src='https://www.launchstudiogroup.com/project-1.JPG'"></div></div>
+<div class="wrap"><div class="proj__img proj__vid"><video id="pv" src="../assets/video/01-taller-amona.mp4" poster="../assets/video/01-taller-amona.jpg" autoplay muted loop playsinline aria-label="Vídeo del Taller Amona"></video><button type="button" class="pv__snd" id="pvs" aria-pressed="false">Activar sonido</button></div></div>
 <section class="sec sec--tight">
   <div class="wrap proj__body">
     <p class="proj__n" aria-hidden="true">01</p><dl class="pmeta"><div><dt>Cliente</dt><dd>Amona Concept</dd></div><div><dt>Proyecto</dt><dd>Experiencia de marca</dd></div><div><dt>Lugar</dt><dd>Barcelona</dd></div><div><dt>Servicio</dt><dd>Diseño y producción</dd></div></dl>
     <div class="prose"><p>Diseño y producción de una experiencia de marca para @amonaconcept en Espai Can Juan, a través de un taller exclusivo de personalización de alpargatas.</p><p>Una propuesta creada para convertir el proceso artesanal en una experiencia inmersiva, reforzando el vínculo entre la identidad de marca y su comunidad.</p></div>
   </div>
 </section>
+<div class="wrap proj__gal"><img src="../assets/img/proyectos/01-taller-amona-2.jpg" alt="Mesa del taller junto al lago" loading="lazy"><img src="../assets/img/proyectos/01-taller-amona-3.jpg" alt="Detalle de la mesa preparada para el taller" loading="lazy"></div>
 </article>
 <nav class="wrap pager" aria-label="Otros proyectos">
   <a href="../proyectos/10-team-building-base4.html"><span class="eyebrow">← Anterior</span><strong>Team building para BASE4 Biosciences</strong></a>
@@ -78,5 +86,6 @@
   <div class="foot__base"><span>© 2026 Launch Studio. Todos los derechos reservados.</span><span>Estudio creativo especializado en stands y eventos corporativos</span></div>
 </footer>
 <script src="../js/sitio.js?v=202611041102"></script>
+<script>(function(){var v=document.getElementById('pv'),b=document.getElementById('pvs');if(!v||!b)return;b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted)v.play();b.textContent=v.muted?'Activar sonido':'Silenciar';b.setAttribute('aria-pressed',String(!v.muted))})})();</script>
 </body>
 </html>
